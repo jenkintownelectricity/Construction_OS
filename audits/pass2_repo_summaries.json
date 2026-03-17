@@ -1,0 +1,278 @@
+{
+  "audit_version": "v1",
+  "audit_date": "2026-03-17",
+  "audit_type": "repo-level-summaries",
+  "family": "construction-kernel",
+  "pass": 2,
+  "repos": {
+    "Construction_Reference_Intelligence": {
+      "role": "reference-intelligence",
+      "score": 97,
+      "total_files": 305,
+      "file_counts": {
+        "schemas": 23,
+        "contracts": 13,
+        "examples": 14,
+        "maps": 17,
+        "doctrine_docs": 5,
+        "architecture_docs": 11,
+        "system_docs": 4,
+        "shared_artifacts": 9,
+        "intelligence_docs": 24,
+        "state": 1
+      },
+      "coverage": {
+        "doctrine": "complete",
+        "schemas": "complete",
+        "contracts": "complete",
+        "examples": "complete",
+        "frozen_seams": "present",
+        "baseline_state": "present",
+        "authoritative_paths": "present",
+        "dependency_map": "present",
+        "repo_manifest": "present",
+        "ai_readiness": "present",
+        "division07_alignment": "present",
+        "standards_reference": "present",
+        "immutability_policy": "present",
+        "dataset_discovery": "present",
+        "db_expansion": "present"
+      },
+      "findings": [
+        "Highest schema count in the family (23). Strong schema-contract-example alignment.",
+        "Hosts canonical shared artifacts for the entire family.",
+        "Full coverage of all 23 audit criteria from this repo's perspective."
+      ]
+    },
+    "Construction_Specification_Kernel": {
+      "role": "specification-kernel",
+      "score": 95,
+      "total_files": 209,
+      "file_counts": {
+        "schemas": 14,
+        "contracts": 6,
+        "examples": 5,
+        "maps": 14,
+        "doctrine_docs": 4,
+        "architecture_docs": 10,
+        "system_docs": 5,
+        "kernel_docs": 16,
+        "shared": 1,
+        "state": 1
+      },
+      "coverage": {
+        "doctrine": "complete",
+        "truth_boundary": "present",
+        "schemas": "complete",
+        "contracts": "adequate",
+        "examples": "adequate",
+        "frozen_seams": "present",
+        "baseline_state": "present",
+        "shared_pointer": "present",
+        "kernel_to_family_map": "present",
+        "standards_alignment": "present"
+      },
+      "findings": [
+        "Strong schema coverage with 14 schemas covering all spec-domain entities.",
+        "Good truth boundary documentation with explicit NOT-owned declarations.",
+        "FAMILY_SHARED_POINTER.md correctly references canonical shared artifacts."
+      ]
+    },
+    "Construction_Assembly_Kernel": {
+      "role": "assembly-kernel",
+      "score": 93,
+      "total_files": 190,
+      "file_counts": {
+        "schemas": 11,
+        "contracts": 5,
+        "examples": 0,
+        "maps": 14,
+        "doctrine_docs": 4,
+        "architecture_docs": 10,
+        "system_docs": 5,
+        "kernel_docs": 16,
+        "shared": 1,
+        "state": 1
+      },
+      "coverage": {
+        "doctrine": "complete",
+        "truth_boundary": "present",
+        "schemas": "complete",
+        "contracts": "adequate",
+        "examples": "MISSING",
+        "frozen_seams": "present",
+        "baseline_state": "present",
+        "control_layer_model": "present",
+        "transition_model": "present",
+        "lifecycle_context": "present",
+        "climate_context": "present",
+        "geometry_context": "present"
+      },
+      "findings": [
+        "11 schemas covering assembly systems, layers, transitions, penetrations, edges, tie-ins, and tested assemblies.",
+        "Richest kernel model documentation (control_layer_model, transition_model, continuity_model, penetration_model).",
+        "GAP: Zero example files. Schemas exist without corresponding example instances.",
+        "FROZEN_SEAMS.md has the most detailed frozen interface documentation of any kernel."
+      ]
+    },
+    "Construction_Material_Kernel": {
+      "role": "material-kernel",
+      "score": 93,
+      "total_files": 197,
+      "file_counts": {
+        "schemas": 9,
+        "contracts": 5,
+        "examples": 5,
+        "maps": 14,
+        "doctrine_docs": 4,
+        "architecture_docs": 10,
+        "system_docs": 5,
+        "kernel_docs": 16,
+        "shared": 1,
+        "state": 1
+      },
+      "coverage": {
+        "doctrine": "complete",
+        "truth_boundary": "present",
+        "schemas": "complete",
+        "contracts": "adequate",
+        "examples": "adequate",
+        "frozen_seams": "present",
+        "baseline_state": "present",
+        "compatibility_model": "present",
+        "hygrothermal_model": "present",
+        "weathering_model": "present"
+      },
+      "findings": [
+        "9 schemas covering material entries, properties, compatibility, hygrothermal, weathering, classes, forms, performance, and standards references.",
+        "FROZEN_SEAMS.md uses seam-ID-based registry format (SEAM-MATL-001 through SEAM-MATL-009) -- most formalized seam tracking.",
+        "Good example coverage including TPO membrane, polyiso insulation, compatibility, UV weathering, and vapor permeance."
+      ]
+    },
+    "Construction_Chemistry_Kernel": {
+      "role": "chemistry-kernel",
+      "score": 88,
+      "total_files": 138,
+      "file_counts": {
+        "schemas": 10,
+        "contracts": 5,
+        "examples": 4,
+        "maps": 0,
+        "doctrine_docs": 4,
+        "architecture_docs": 10,
+        "system_docs": 5,
+        "kernel_docs": 11,
+        "shared": 1,
+        "state": 1
+      },
+      "coverage": {
+        "doctrine": "complete",
+        "truth_boundary": "present",
+        "schemas": "complete",
+        "contracts": "adequate",
+        "examples": "adequate",
+        "frozen_seams": "present",
+        "baseline_state": "present",
+        "maps": "MISSING"
+      },
+      "findings": [
+        "10 schemas including chemistry_entry, chemical_system, cure_mechanism, degradation_mechanism, incompatibility_rule, adhesion_rule, polymer_family, additive, solvent_system, chemical_hazard_record.",
+        "GAP: No maps directory or map files. Other kernels have 14 maps each.",
+        "Good example coverage with 4 examples (moisture cure, plasticizer migration, silicone-bitumen incompatibility, urethane sealant).",
+        "FROZEN_SEAMS.md defines cross-kernel seams to Material, Assembly, Specification, and Reference Intelligence."
+      ]
+    },
+    "Construction_Scope_Kernel": {
+      "role": "scope-kernel",
+      "score": 78,
+      "total_files": 131,
+      "file_counts": {
+        "schemas": 1,
+        "contracts": 0,
+        "examples": 0,
+        "maps": 0,
+        "doctrine_docs": 4,
+        "architecture_docs": 10,
+        "system_docs": 5,
+        "kernel_docs": 14,
+        "shared": 1,
+        "state": 1
+      },
+      "coverage": {
+        "doctrine": "complete",
+        "truth_boundary": "present",
+        "schemas": "MINIMAL",
+        "contracts": "MISSING",
+        "examples": "MISSING",
+        "maps": "MISSING",
+        "frozen_seams": "present",
+        "baseline_state": "present",
+        "commissioning_step_model": "present",
+        "inspection_step_model": "present",
+        "operation_model": "present",
+        "closeout_model": "present",
+        "sequencing_model": "present",
+        "trade_responsibility_model": "present"
+      },
+      "findings": [
+        "SIGNIFICANT GAP: Only 1 schema (scope_entry.schema.json) despite 14 kernel model documents defining commissioning steps, inspection steps, operations, closeout, sequencing, and trade responsibilities.",
+        "SIGNIFICANT GAP: Zero contracts, zero examples, zero maps.",
+        "commissioning_step_model.md references 'schemas/commissioning_step.schema.json' which does not exist.",
+        "Rich kernel model documentation is present but not yet machine-actionable through schemas.",
+        "Doctrine, architecture docs, system docs, and frozen seams are all complete and well-structured.",
+        "Lowest score in the family due to schema/contract/example gaps."
+      ]
+    },
+    "ValidKernel_Registry": {
+      "role": "family-registry",
+      "score": 90,
+      "total_files": 238,
+      "file_counts": {
+        "schemas": 0,
+        "contracts": 5,
+        "catalogs": 4,
+        "entries": 5,
+        "repositories": 2,
+        "reports": 9,
+        "system_map": 16,
+        "topology": 0,
+        "baselines": 1,
+        "state": 1,
+        "scripts": 4,
+        "docs": 28,
+        "audits": 1
+      },
+      "coverage": {
+        "family_catalog": "present",
+        "kernel_catalog": "present",
+        "repository_catalog": "present",
+        "domain_catalog": "present",
+        "frozen_seams": "present",
+        "baseline_state": "present",
+        "registry_spec": "present",
+        "system_topology": "present",
+        "repository_role_model": "present"
+      },
+      "findings": [
+        "Family catalog correctly lists construction-kernel family with all 5 kernels and intelligence layer.",
+        "Kernel catalog contains entries for all construction kernels with correct kernel_ids.",
+        "FROZEN_SEAMS.md defines frozen structural elements: catalog JSON format, topology format, role model categories, layer numbering.",
+        "Contains CI workflows (registry-integrity.yml, registry-topology-check.yml) and utility scripts -- appropriate for registry role.",
+        "Contains external repo references under repositories/ with .ts files -- these are tracking references, not runtime code owned by the registry."
+      ]
+    }
+  },
+  "family_summary": {
+    "total_repos": 7,
+    "total_files": 1408,
+    "total_schemas": 68,
+    "total_contracts": 39,
+    "total_examples": 28,
+    "total_maps": 45,
+    "shared_artifacts": 9,
+    "repos_with_full_coverage": 4,
+    "repos_with_gaps": 3,
+    "primary_gap_repo": "Construction_Scope_Kernel",
+    "primary_gap_description": "Scope Kernel has rich kernel model documentation (14 models) but only 1 schema, 0 contracts, 0 examples, and 0 maps. Models reference schemas that do not yet exist."
+  }
+}
