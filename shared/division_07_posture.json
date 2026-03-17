@@ -1,0 +1,26 @@
+{
+  "schema_version": "v1",
+  "family": "construction-kernel",
+  "artifact_type": "domain-posture",
+  "domain_focus": "CSI Division 07 - Building Envelope Systems",
+  "posture_statement": "Division 07 is treated as an enclosure control-layer system, not merely a product bucket. All kernel truth, reference intelligence, and scope operations are organized around control-layer continuity and interface-zone integrity.",
+  "csi_division": "07",
+  "csi_title": "Thermal and Moisture Protection",
+  "architectural_framing": "enclosure-control-layer-system",
+  "control_layer_reference": "shared/control_layers.json",
+  "interface_zone_reference": "shared/interface_zones.json",
+  "initial_subsections": [
+    "07 01 00 - Operation and Maintenance of Thermal and Moisture Protection",
+    "07 10 00 - Dampproofing and Waterproofing",
+    "07 20 00 - Thermal Protection",
+    "07 25 00 - Weather Barriers",
+    "07 27 00 - Air Barriers",
+    "07 30 00 - Steep Slope Roofing",
+    "07 40 00 - Roofing and Siding Panels",
+    "07 50 00 - Membrane Roofing",
+    "07 60 00 - Flashing and Sheet Metal",
+    "07 70 00 - Roof and Wall Specialties and Accessories",
+    "07 80 00 - Fire and Smoke Protection",
+    "07 90 00 - Joint Protection"
+  ]
+}
