@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Intelligence Entry",
+  "description": "Schema for a reference intelligence record. Each entry captures an observation, pattern, precedent, or trend derived from kernel truth — never overriding it. Intelligence is evidence-linked and confidence-tracked.",
+  "type": "object",
+  "required": ["schema_version", "entry_id", "entry_type", "title", "status", "confidence"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "v1"
+    },
+    "entry_id": {
+      "type": "string",
+      "description": "Unique identifier for this intelligence entry."
+    },
+    "entry_type": {
+      "type": "string",
+      "enum": ["failure_pattern", "success_pattern", "precedent", "trend", "interface_risk", "climate_observation", "lifecycle_observation", "geometry_observation"],
+      "description": "Classification of the intelligence fact."
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable title."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "draft", "deprecated", "superseded"]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "established"],
+      "description": "Current confidence level in this intelligence."
+    },
+    "control_layers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Control layer IDs this intelligence relates to."
+    },
+    "interface_zones": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Interface zone IDs this intelligence relates to."
+    },
+    "kernel_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kernel", "entry_id"],
+        "properties": {
+          "kernel": { "type": "string", "description": "Sibling kernel repo name." },
+          "entry_id": { "type": "string", "description": "Entry ID in that kernel." }
+        }
+      },
+      "description": "References to kernel truth entries that this intelligence observes."
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "summary"],
+        "properties": {
+          "source": { "type": "string", "description": "Evidence source (field observation, lab test, forensic report, literature, etc.)." },
+          "summary": { "type": "string", "description": "Brief summary of the evidence." },
+          "date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "observation": {
+      "type": "string",
+      "description": "The intelligence observation itself."
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

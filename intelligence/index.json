@@ -1,0 +1,23 @@
+{
+  "schema_version": "v1",
+  "index_type": "intelligence-registry",
+  "family": "construction-kernel",
+  "domain_focus": "CSI Division 07 - Building Envelope Systems",
+  "description": "Index of reference intelligence entries. Intelligence observes kernel truth but does not override it. All entries are evidence-linked and confidence-tracked.",
+  "entry_types": [
+    "failure_pattern",
+    "success_pattern",
+    "precedent",
+    "trend",
+    "interface_risk",
+    "climate_observation",
+    "lifecycle_observation",
+    "geometry_observation"
+  ],
+  "entries": [],
+  "summary": {
+    "total_entries": 0,
+    "by_type": {},
+    "by_confidence": {}
+  }
+}

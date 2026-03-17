@@ -3,18 +3,21 @@
   "repo": "Construction_Reference_Intelligence",
   "family": "construction-kernel",
   "role": "reference-intelligence",
-  "baseline": "construction-kernel-pass-1",
-  "status": "seed",
-  "pass": 1,
+  "baseline": "construction-kernel-pass-2",
+  "status": "initialized",
+  "pass": 2,
   "created": "2026-03-17",
+  "updated": "2026-03-17",
   "domain_focus": "CSI Division 07 - Building Envelope Systems",
-  "artifacts_seeded": [
+  "artifacts": [
     "README.md",
     "docs/system/REPO_MANIFEST.md",
     "state/BASELINE_STATE.json",
     "shared/FAMILY_CONTEXT.md",
     "shared/control_layers.json",
     "shared/interface_zones.json",
-    "shared/division_07_posture.json"
+    "shared/division_07_posture.json",
+    "schemas/intelligence_entry.schema.json",
+    "intelligence/index.json"
   ]
 }
