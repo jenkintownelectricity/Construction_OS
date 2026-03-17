@@ -1,6 +1,7 @@
-"""Spec Intelligence App.
+"""Spec Intelligence App v0.2.
 
-Lightweight entry point that demonstrates the spec intelligence pipeline.
+Lightweight entry point that demonstrates the spec intelligence pipeline
+with structured audit logging.
 """
 
 import json
@@ -16,25 +17,25 @@ from runtime.pipeline import run_spec_pipeline
 SAMPLE_INPUT = """
 Section 07 92 00 - Joint Sealants
 
-1.1 Summary
+1.1 - Summary
 This section includes joint sealant materials and installation for
 exterior and interior applications.
 
-1.2 Related Sections
+1.2 - Related Sections
 Section 07 91 00 - Preformed Joint Seals
 
-2.1 Products
+2.1 - Products
 Manufacturer: Dow Corning
 Product: 795 Silicone Building Sealant
 Basis of Design: Dow Corning 795
 
-2.2 Requirements
+2.2 - Requirements
 The sealant shall comply with ASTM C920, Type S, Grade NS, Class 25.
 Joint width must be minimum 1/4" and maximum 1".
 Surface preparation shall be performed per manufacturer recommendations.
 Primer is required on all porous substrates.
 
-3.1 Execution
+3.1 - Execution
 All joints must be clean, dry, and free of contaminants before application.
 Backer rod is mandatory for joints deeper than 1/2".
 Model No: 795-SBS
@@ -44,7 +45,7 @@ Model No: 795-SBS
 def main():
     """Run the spec intelligence app with sample input."""
     print("=" * 60)
-    print("Construction Runtime — Spec Intelligence App")
+    print("Construction Runtime v0.2 — Spec Intelligence App")
     print("=" * 60)
 
     raw_input = SAMPLE_INPUT
@@ -78,6 +79,14 @@ def main():
         print("SPEC INTELLIGENCE")
         print("-" * 60)
         print(json.dumps(outputs["intelligence"], indent=2))
+
+    if "audit_log" in outputs:
+        print()
+        print("-" * 60)
+        print(f"AUDIT LOG ({len(outputs['audit_log'])} events)")
+        print("-" * 60)
+        for event in outputs["audit_log"]:
+            print(f"  [{event['event_type']}] {event['stage']}: {event['message']}")
 
     print()
     print("Done.")

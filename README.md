@@ -1,4 +1,4 @@
-# Construction Runtime v0.1
+# Construction Runtime v0.2 — Hardened Execution Engine
 
 **Construction_Runtime** is the execution layer for **Construction_Kernel**.
 
@@ -14,22 +14,40 @@ Universal_Truth_Kernel
         ↓
 Construction_Kernel
         ↓
-Construction_Runtime
+Construction_Runtime (v0.2)
         ↓
 Construction Applications
 ```
 
-## Responsibilities
+## v0.2 Pipeline
 
-The runtime is responsible for:
+```
+INPUT
+  → Parse
+  → Normalize
+  → Structural Validation
+  → Domain Validation
+  → Geometry Engine
+  → DrawingInstructionSet
+  → Generation Validation
+  → DXF Writer
+  → SVG Writer
+  → DeliverableModel
+  → Audit Log
+```
+
+## Responsibilities
 
 - **Input ingestion** — accepting raw assembly or specification data
 - **Normalization** — cleaning and standardizing input before parsing
 - **Parsing** — extracting structured data from normalized input
-- **Kernel-boundary validation** — ensuring parsed data respects Construction_Kernel truth
-- **Assembly/spec runtime modeling** — building runtime objects from parsed data
-- **Deliverable generation** — producing structured outputs (drawings, reports)
-- **Runtime reporting** — logging and summarizing execution outcomes
+- **Multi-layer validation** — structural, domain, and generation validation (fail-closed)
+- **Contract enforcement** — JSON schema contracts at every pipeline stage
+- **Geometry engine** — deterministic layout with provenance metadata
+- **Drawing instruction generation** — canonical intermediate representation
+- **DXF + SVG dual output** — both derive from DrawingInstructionSet
+- **Deliverable packaging** — versioned multi-format output
+- **Audit logging** — append-only structured event trail
 
 ## Runtime Layers
 
@@ -37,11 +55,15 @@ The runtime is responsible for:
 |---|---|
 | **Parsers** | Ingest, normalize, and extract structured data from raw input |
 | **Adapters** | Translate Construction_Kernel concepts into runtime-usable objects |
-| **Models** | Runtime data structures (assembly, geometry, material, deliverable, report) |
+| **Models** | Runtime data structures (assembly, geometry, material, deliverable, drawing instruction, report) |
+| **Validators** | Multi-layer fail-closed validation: structural, domain, generation |
+| **Contracts** | JSON schema contracts for every pipeline stage |
+| **Geometry Engine** | Deterministic layout with provenance-tracked derived dimensions |
 | **Engines** | Combine runtime objects, enforce constraints, produce buildable structures |
-| **Validators** | Fail-closed validation of parsed fields, references, and runtime integrity |
-| **Generators** | Produce structured deliverables (shop drawings, exports, previews) |
-| **Pipeline** | Orchestrate the full runtime flow from ingestion to report |
+| **Generators** | DXF writer + SVG writer consuming DrawingInstructionSet only |
+| **Pipeline** | Orchestrate the full runtime flow from ingestion to audit report |
+| **Standards** | Error codes, layer standards, SVG standards |
+| **Rules** | Geometry rules for panel layout, spacing, overlap detection |
 | **Apps** | Lightweight entry points for specific use cases |
 
 ## Applications
@@ -62,5 +84,13 @@ python -m apps.spec_intelligence_app.main
 ## Testing
 
 ```bash
-python -m pytest tests/
+python -m pytest tests/ -v
 ```
+
+Test categories:
+- `tests/parser_tests/` — parser normalization and extraction
+- `tests/engine_tests/` — assembly engine and constraint engine
+- `tests/pipeline_tests/` — pipeline happy path and failure
+- `tests/mutation/` — fail-closed mutation tests
+- `tests/golden/` — golden fixture tests against known inputs
+- `tests/snapshots/` — output structure stability tests

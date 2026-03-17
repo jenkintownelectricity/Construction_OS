@@ -3,3 +3,4 @@ from .geometry_model import GeometryModel
 from .material_model import MaterialModel
 from .deliverable_model import DeliverableModel
 from .runtime_report_model import RuntimeReportModel
+from .drawing_instruction import DrawingInstructionSet

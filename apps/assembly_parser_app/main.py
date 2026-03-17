@@ -1,6 +1,7 @@
-"""Assembly Parser App.
+"""Assembly Parser App v0.2.
 
-Lightweight entry point that demonstrates the assembly pipeline.
+Lightweight entry point that demonstrates the assembly pipeline
+with DXF, SVG, and JSON outputs.
 """
 
 import json
@@ -32,7 +33,7 @@ Tolerance: +/- 1/16" on all dimensions
 def main():
     """Run the assembly parser app with sample input."""
     print("=" * 60)
-    print("Construction Runtime — Assembly Parser App")
+    print("Construction Runtime v0.2 — Assembly Parser App")
     print("=" * 60)
 
     raw_input = SAMPLE_INPUT
@@ -61,12 +62,30 @@ def main():
         print(f"Errors:            {report.errors}")
 
     if "deliverable" in outputs:
+        deliverable = outputs["deliverable"]
         print()
         print("-" * 60)
-        print("DELIVERABLE PREVIEW")
+        print("DELIVERABLE")
         print("-" * 60)
-        preview = outputs["deliverable"].payload.get("preview", {})
+        print(f"ID:      {deliverable.deliverable_id}")
+        print(f"Version: {deliverable.deliverable_version}")
+        for fmt_name, fmt in deliverable.formats.items():
+            print(f"Format [{fmt_name}]: status={fmt.status}, size={len(fmt.content)} chars")
+
+        print()
+        print("-" * 60)
+        print("JSON PREVIEW")
+        print("-" * 60)
+        preview = deliverable.payload.get("preview", {})
         print(json.dumps(preview, indent=2))
+
+    if "audit_log" in outputs:
+        print()
+        print("-" * 60)
+        print(f"AUDIT LOG ({len(outputs['audit_log'])} events)")
+        print("-" * 60)
+        for event in outputs["audit_log"]:
+            print(f"  [{event['event_type']}] {event['stage']}: {event['message']}")
 
     print()
     print("Done.")
