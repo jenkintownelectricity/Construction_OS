@@ -8,22 +8,25 @@
 
 Read these files in this order to understand the repository:
 
-1. `README.md` — Repository purpose and core constraints.
-2. `docs/doctrine/worker-doctrine.md` — Foundational worker doctrine.
-3. `docs/doctrine/proposal-vs-truth-policy.md` — Proposal vs truth boundary.
-4. `docs/doctrine/worker-boundaries.md` — What workers may and may not do.
-5. `docs/doctrine/handoff-doctrine.md` — Handoff requirements.
-6. `docs/doctrine/signal-generation-policy.md` — Signal generation process.
-7. `docs/architecture/stack-position.md` — Position beside the stack.
-8. `docs/architecture/worker-system-map.md` — System architecture.
-9. `docs/architecture/worker-inventory-overview.md` — The 5 initial workers.
-10. `docs/system/FROZEN_SEAMS.md` — Frozen constraints.
-11. `docs/system/DEPENDENCY_MAP.md` — Upstream and downstream dependencies.
-12. `docs/system/AUTHORITATIVE_PATHS.md` — Authoritative file paths.
-13. `contracts/` — Output contracts.
-14. `maps/` — Worker-to-stack mapping.
-15. `workers/` — Individual worker definitions.
-16. `state/BASELINE_STATE.json` — Baseline state.
+1. Universal_Truth_Kernel → `nucleus/NUCLEUS_DOCTRINE.md` (upstream, conceptual)
+2. ValidKernel_Registry → topology surfaces (upstream, conceptual)
+3. `docs/system/REPO_MANIFEST.md` — This file. Repository purpose and stack role.
+4. `docs/system/AUTHORITATIVE_PATHS.md` — Authoritative file paths.
+5. `docs/system/DEPENDENCY_MAP.md` — Upstream and downstream dependencies.
+6. `docs/system/FROZEN_SEAMS.md` — Frozen constraints.
+7. `README.md` — Repository purpose and core constraints.
+8. `docs/doctrine/worker-doctrine.md` — Foundational worker doctrine.
+9. `docs/doctrine/proposal-vs-truth-policy.md` — Proposal vs truth boundary.
+10. `docs/doctrine/worker-boundaries.md` — What workers may and may not do.
+11. `docs/doctrine/handoff-doctrine.md` — Handoff requirements.
+12. `docs/doctrine/signal-generation-policy.md` — Signal generation process.
+13. `docs/architecture/stack-position.md` — Position beside the stack.
+14. `docs/architecture/worker-system-map.md` — System architecture.
+15. `docs/architecture/worker-inventory-overview.md` — The 5 initial workers.
+16. `contracts/` — Output contracts.
+17. `maps/` — Worker-to-stack mapping.
+18. `workers/` — Individual worker definitions.
+19. `state/BASELINE_STATE.json` — Baseline state.
 
 ## File Inventory
 
