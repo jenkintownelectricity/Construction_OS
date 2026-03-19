@@ -7,7 +7,10 @@
 - **Stack Layer:** Layer 5 — Domain Kernel
 - **Baseline Version:** v0.1
 - **Manifest Version:** v0.1
-
+- **primary_area:** truth
+- **grown_from:** ValidKernel lineage (Universal_Truth_Kernel)
+- **role:** Top construction truth boundary
+ 
 ## Ownership
 
 ### Owns
@@ -17,7 +20,8 @@
 - Kernel relationship map
 - App dependency map
 - Construction-domain truth boundaries
-
+- Construction-domain truth boundary definition (primary truth surface for all construction sub-kernels)
+ 
 ### Does Not Own
 
 - Universal truth origination (Universal_Truth_Kernel)
@@ -27,7 +31,8 @@
 - Generic runtime execution (ValidKernel_Runtime)
 - Construction runtime execution (Construction_Runtime)
 - Application UX (Construction_Application_OS)
-
+- Sub-kernel specialized truth (owned by Construction_Assembly_Kernel, Construction_Chemistry_Kernel, Construction_Material_Kernel, Construction_Scope_Kernel, Construction_Specification_Kernel)
+ 
 ## Stack Position
 
 ### Upstream
