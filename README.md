@@ -42,6 +42,7 @@ This registry covers only repositories that have been confirmed as part of the C
 - **Drawing Instruction IR**: See [`Construction_Kernel/docs/system/DRAWING_INSTRUCTION_IR.md`](https://github.com/jenkintownelectricity/Construction_Kernel/blob/master/docs/system/DRAWING_INSTRUCTION_IR.md) for engine-agnostic drawing instruction layer.
 - **Deterministic Drawing Runtime**: See [`Construction_Runtime/docs/system/DETERMINISTIC_DRAWING_RUNTIME.md`](https://github.com/jenkintownelectricity/Construction_Runtime/blob/master/docs/system/DETERMINISTIC_DRAWING_RUNTIME.md) for runtime execution engine architecture.
 - **Kernel/Runtime Contract Seams**: See [`Construction_Kernel/contracts/seams/seam_manifest.json`](https://github.com/jenkintownelectricity/Construction_Kernel/blob/master/contracts/seams/seam_manifest.json) for governed contract seam definitions.
+- **Intake & Review Surfaces**: See [`Construction_Runtime/docs/system/INTAKE_APPLICATION_SURFACES.md`](https://github.com/jenkintownelectricity/Construction_Runtime/blob/master/docs/system/INTAKE_APPLICATION_SURFACES.md) for Wave 7 intake application architecture.
 
 ---
 
