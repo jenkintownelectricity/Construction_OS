@@ -1,41 +1,41 @@
-"""Graph relation typing schema — kernel typing contract.
+"""Kernel-owned graph relation typing schema.
 
-Defines the typing rules for distinguishing hard runtime edges
-from enrichment-derived edges. This is critical for governance:
-pattern-derived relations must remain distinguishable from
-authoritative runtime facts.
+Defines typing rules for how graph edges relate node types.
+This is a structural contract — runtime enforces it during materialization.
 """
-from dataclasses import dataclass, field
 
-@dataclass
-class GraphRelationTypingSchema:
-    """Typing contract for graph relation classification.
-
-    Kernel defines the boundary between hard facts and enrichment.
-    Runtime enforces it during materialization.
-    """
-    relation_class: str = ""  # "hard_fact" | "enrichment"
-    source_authority: str = ""  # "runtime" | "pattern_kernel" | "evidence"
-    requires_confidence: bool = False
-    confidence_threshold: float = 0.0
-    mutable_by_enrichment: bool = False
-
-RELATION_TYPING_RULES: dict[str, GraphRelationTypingSchema] = {
-    "depends_on": GraphRelationTypingSchema(relation_class="hard_fact", source_authority="runtime"),
-    "blocked_by": GraphRelationTypingSchema(relation_class="hard_fact", source_authority="runtime"),
-    "interfaces_with": GraphRelationTypingSchema(relation_class="hard_fact", source_authority="runtime"),
-    "implemented_by": GraphRelationTypingSchema(relation_class="hard_fact", source_authority="runtime"),
-    "resolved_by": GraphRelationTypingSchema(relation_class="hard_fact", source_authority="runtime"),
-    "derived_from": GraphRelationTypingSchema(relation_class="hard_fact", source_authority="evidence"),
-    "classified_as": GraphRelationTypingSchema(
-        relation_class="enrichment",
-        source_authority="pattern_kernel",
-        requires_confidence=True,
-        confidence_threshold=0.5,
-        mutable_by_enrichment=True,
-    ),
-    "included_in": GraphRelationTypingSchema(relation_class="hard_fact", source_authority="runtime"),
-    "revised_by": GraphRelationTypingSchema(relation_class="hard_fact", source_authority="runtime"),
-    "owned_by": GraphRelationTypingSchema(relation_class="hard_fact", source_authority="runtime"),
-    "supported_by": GraphRelationTypingSchema(relation_class="hard_fact", source_authority="evidence"),
-}
+# Valid (from_node_type, edge_type, to_node_type) triples.
+# Runtime must validate materialized edges against this set.
+VALID_EDGE_RELATIONS = frozenset({
+    # Dependency and blocking
+    ("condition", "depends_on", "condition"),
+    ("condition", "blocked_by", "blocker"),
+    ("condition", "blocked_by", "issue"),
+    ("blocker", "resolved_by", "remediation"),
+    ("issue", "resolved_by", "remediation"),
+    # Interface relationships
+    ("assembly", "interfaces_with", "assembly"),
+    ("condition", "interfaces_with", "interface"),
+    # Implementation and derivation
+    ("detail", "implemented_by", "assembly"),
+    ("condition", "derived_from", "evidence"),
+    ("artifact", "derived_from", "package"),
+    # Classification (enrichment-derived)
+    ("condition", "classified_as", "pattern"),
+    # Inclusion / containment
+    ("assembly", "included_in", "package"),
+    ("artifact", "included_in", "package"),
+    ("detail", "included_in", "assembly"),
+    ("condition", "included_in", "assembly"),
+    # Revision lineage
+    ("condition", "revised_by", "revision"),
+    ("assembly", "revised_by", "revision"),
+    ("package", "revised_by", "revision"),
+    ("artifact", "revised_by", "revision"),
+    # Ownership
+    ("condition", "owned_by", "owner"),
+    ("assembly", "owned_by", "owner"),
+    # Support
+    ("evidence", "supported_by", "artifact"),
+    ("remediation", "supported_by", "evidence"),
+})
