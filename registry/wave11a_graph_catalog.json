@@ -1,0 +1,32 @@
+{
+  "wave": "11A",
+  "title": "Condition Graph Engine",
+  "status": "delivered",
+  "modules": [
+    {"module": "runtime/graph", "type": "graph_core", "description": "Condition graph container, node/edge shapes, identity strategy"},
+    {"module": "runtime/graph_nodes", "type": "node_projection", "description": "Node projection from runtime outputs"},
+    {"module": "runtime/graph_edges", "type": "edge_projection", "description": "Edge projection from runtime relations"},
+    {"module": "runtime/graph_materialization", "type": "materialization_pipeline", "description": "Full materialization pipeline: nodes → edges → validation → indexing"},
+    {"module": "runtime/graph_validation", "type": "validation", "description": "Graph structural validation and rebuildability verification"},
+    {"module": "runtime/graph_queries", "type": "query_engine", "description": "Deterministic graph query services: neighborhood, blockers, dependencies, remediation, ownership"},
+    {"module": "runtime/readiness_routing", "type": "readiness_routing", "description": "Graph-driven readiness routing: blocking chains, next actions, unblock paths"},
+    {"module": "runtime/impact_analysis", "type": "impact_analysis", "description": "Graph-driven impact analysis: downstream, upstream, artifact, package, revision impacts"}
+  ],
+  "kernel_contracts": [
+    {"contract": "contracts/graph_node_typing", "description": "Graph node type schemas (13 types)"},
+    {"contract": "contracts/graph_edge_typing", "description": "Graph edge type schemas (11 types)"},
+    {"contract": "contracts/graph_relation_typing", "description": "Graph relation rules and duplicate prevention"}
+  ],
+  "node_types": ["condition", "assembly", "interface", "detail", "issue", "blocker", "remediation", "artifact", "evidence", "pattern", "package", "revision", "owner"],
+  "edge_types": ["depends_on", "blocked_by", "interfaces_with", "implemented_by", "resolved_by", "derived_from", "classified_as", "included_in", "revised_by", "owned_by", "supported_by"],
+  "governance_rules": {
+    "graph_is_derived_projection": true,
+    "graph_is_not_canonical_truth": true,
+    "graph_is_rebuildable": true,
+    "enrichment_edges_distinguishable": true,
+    "owner_unknown_explicit": true,
+    "kernel_typing_only": true,
+    "registry_catalog_only": true,
+    "vkbus_observer_only": true
+  }
+}
