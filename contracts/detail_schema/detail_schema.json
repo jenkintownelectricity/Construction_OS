@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "contract_id": "construction_kernel.detail_schema.v0.6",
+  "contract_id": "construction_kernel.detail_schema",
+  "version": "1.0",
   "contract_type": "governed_detail_schema",
   "authority": "Construction_Kernel",
   "description": "Governed detail schema contract. Defines the structure of canonical detail logic definitions: required fields, valid component roles, valid relationship types, and valid parameter inputs. Runtime consumes this schema and does not define it.",

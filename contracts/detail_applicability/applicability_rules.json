@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "contract_id": "construction_kernel.detail_applicability.rules.v0.6",
+  "contract_id": "construction_kernel.detail_applicability.rules",
+  "version": "1.0",
   "contract_type": "governed_applicability_rules",
   "authority": "Construction_Kernel",
   "description": "Governed detail applicability rules. Runtime consumes these rules and does not define them. Each rule maps a construction condition pattern to a canonical detail logic definition.",

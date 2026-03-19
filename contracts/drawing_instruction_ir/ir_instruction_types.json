@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "contract_id": "construction_kernel.drawing_instruction_ir.v0.6",
+  "contract_id": "construction_kernel.drawing_instruction_ir",
+  "version": "1.0",
   "contract_type": "governed_ir_contract",
   "authority": "Construction_Kernel",
   "description": "Governed Drawing Instruction IR contract. Defines the valid instruction types, instruction fields, and boundary rules for construction-semantic IR. Runtime consumes this contract and does not define IR instruction types.",

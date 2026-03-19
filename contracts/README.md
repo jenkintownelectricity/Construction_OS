@@ -14,11 +14,15 @@ Markdown documentation remains the human-readable doctrine layer. These JSON con
 
 ## Contract Artifacts
 
-| Contract | File | Governed By |
-|---|---|---|
-| Detail Applicability Rules | `detail_applicability/applicability_rules.json` | `CONSTRUCTION_DETAIL_APPLICABILITY_MODEL.md` |
-| Detail Schema | `detail_schema/detail_schema.json` | `CONSTRUCTION_DETAIL_SCHEMA.md` |
-| Drawing Instruction IR | `drawing_instruction_ir/ir_instruction_types.json` | `DRAWING_INSTRUCTION_IR.md` |
+| Contract | File | Governed By | Schema |
+|---|---|---|---|
+| Detail Applicability Rules | `detail_applicability/applicability_rules.json` | `CONSTRUCTION_DETAIL_APPLICABILITY_MODEL.md` | `schemas/detail_applicability.schema.json` |
+| Detail Schema | `detail_schema/detail_schema.json` | `CONSTRUCTION_DETAIL_SCHEMA.md` | `schemas/detail_schema.schema.json` |
+| Drawing Instruction IR | `drawing_instruction_ir/ir_instruction_types.json` | `DRAWING_INSTRUCTION_IR.md` | `schemas/ir_instruction_types.schema.json` |
+
+## Contract Schemas
+
+Schema definitions live in `schemas/` and are owned by Construction_Kernel. Runtime loads and validates contracts against these schemas. Runtime must not define, embed, or override schema structures. Minimal structural checks in the runtime loader are permitted strictly for runtime safety (e.g., confirming a loaded object is a dict before schema validation runs).
 
 ## Terminology
 
@@ -35,4 +39,9 @@ If a governed contract artifact is missing, malformed, or contains unrecognized 
 
 ## Versioning
 
-Each contract carries a `contract_id` with a version suffix (e.g., `v0.6`). Version changes require coordinated update between kernel contracts and runtime contract loaders.
+Each contract carries an explicit `"version"` field (e.g., `"1.0"`). Version policy:
+
+- **Runtime requires exact version match.** The runtime contract loader declares the expected version and rejects contracts with any other version.
+- **No implicit compatibility.** There is no "compatible range" or coercion logic.
+- **Unknown versions fail closed.** If the contract version does not match exactly, the runtime raises `ContractVersionError` and halts.
+- **Version changes require coordinated update** between kernel contracts and runtime contract loaders.
