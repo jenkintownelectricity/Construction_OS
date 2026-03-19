@@ -25,6 +25,12 @@ This registry covers only repositories that have been confirmed as part of the C
 
 ---
 
+## Architecture References
+
+- **Construction Truth Spine**: See [`Construction_Kernel/docs/system/CONSTRUCTION_TRUTH_SPINE.md`](https://github.com/jenkintownelectricity/Construction_Kernel/blob/master/docs/system/CONSTRUCTION_TRUTH_SPINE.md) for the canonical truth history architecture.
+
+---
+
 ## Repository Rename Notice
 
 This repository was originally created under the name `ConstructionOS_Registry`.
