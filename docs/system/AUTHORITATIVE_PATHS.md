@@ -19,13 +19,14 @@ Then repo-specific authoritative files:
 
 ## Authoritative
 
-These files define the runtime's v0.2 contract surface and canonical standards. Changes here require careful review.
+These files define the runtime's v0.2 contract surface and governed runtime standards. Changes here require careful review. Note: "authoritative" here means governing within the runtime's scope — kernel-level canonical truth lives in Construction_Kernel.
 
 - `contracts/*.schema.json` — 6 JSON schemas defining pipeline stage boundaries
-- `standards/error_codes.py` — Canonical error taxonomy (62 codes, 11 categories)
-- `standards/layer_standards.py` — 10 canonical A- layers with ACI color indices
-- `runtime/models/drawing_instruction.py` — DrawingInstructionSet (canonical intermediate representation)
+- `standards/error_codes.py` — Runtime error taxonomy (62 codes, 11 categories)
+- `standards/layer_standards.py` — 10 governed A- layers with ACI color indices
+- `runtime/models/drawing_instruction.py` — DrawingInstructionSet (governed intermediate representation)
 - `runtime/pipeline/construction_pipeline.py` — Pipeline orchestrator (stage order is frozen)
+- `runtime/drawing_engine/contract_loader.py` — Governed contract loader (loads kernel contracts)
 
 ## Supporting
 
