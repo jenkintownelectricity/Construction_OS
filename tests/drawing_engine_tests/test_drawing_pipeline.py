@@ -8,10 +8,16 @@ Proves that:
 - Fail-closed on invalid input
 - Fail-closed on unresolved applicability
 - Fail-closed on parameter conflicts
+- Runtime loads governed contracts from Construction_Kernel
+- Missing or malformed governed artifacts fail closed
+- IR instruction types match governed contract
+- Runtime no longer defines applicability rules inline
 """
 
 import sys
 import os
+import json
+import inspect
 
 # Add project root to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -22,6 +28,12 @@ from runtime.drawing_engine.parameterizer import parameterize_detail
 from runtime.drawing_engine.ir_emitter import emit_ir
 from runtime.drawing_engine.renderer import render_svg
 from runtime.drawing_engine.pipeline import run_drawing_pipeline
+from runtime.drawing_engine.contract_loader import (
+    load_applicability_rules,
+    load_ir_instruction_types,
+    load_detail_schema,
+    ContractLoadError,
+)
 
 
 # ──────────────────────────────────────────────
@@ -255,7 +267,7 @@ class TestIREmission:
         assert len(ir_result.errors) > 0
 
     def test_ir_instructions_are_construction_semantic(self):
-        """Verify IR uses construction-semantic types, not CAD commands."""
+        """Verify IR uses only instruction types governed by kernel contract."""
         resolution = resolve_detail(VALID_EPDM_PARAPET_CONDITION)
         param_result = parameterize_detail(
             resolution.components,
@@ -269,15 +281,11 @@ class TestIREmission:
             param_result.resolved_parameters,
             VALID_EPDM_PARAPET_CONDITION["view_intent"],
         )
-        allowed_types = {
-            "define_view_boundary", "set_representation_depth",
-            "draw_component", "draw_profile", "draw_relationship",
-            "place_symbol", "place_annotation", "place_dimension",
-            "place_material_tag",
-        }
+        # Load allowed types from governed kernel contract — not self-authored
+        governed_types = set(load_ir_instruction_types())
         for inst in ir_result.instructions:
-            assert inst.instruction_type in allowed_types, (
-                f"Non-semantic IR type: {inst.instruction_type}"
+            assert inst.instruction_type in governed_types, (
+                f"IR type '{inst.instruction_type}' not in governed contract"
             )
 
 
@@ -383,6 +391,131 @@ class TestDrawingPipeline:
         result = run_drawing_pipeline(VALID_TPO_EDGE_CONDITION)
         assert result.success is True
         assert result.detail_id == "TPO_ROOF_EDGE_STANDARD"
+
+
+# ──────────────────────────────────────────────
+# Governed Contract Tests (Wave 6.5 Hardening)
+# ──────────────────────────────────────────────
+
+
+class TestGovernedContracts:
+    """Prove runtime consumes governed contracts from Construction_Kernel."""
+
+    def test_applicability_rules_load_from_kernel(self):
+        """Runtime loads applicability rules from governed kernel contracts."""
+        rules = load_applicability_rules()
+        assert isinstance(rules, list)
+        assert len(rules) >= 5
+
+    def test_applicability_rules_have_required_fields(self):
+        """Every governed rule has all required fields."""
+        rules = load_applicability_rules()
+        required = {"rule_id", "condition_pattern", "applies_detail", "detail_family", "components", "relationships"}
+        for rule in rules:
+            missing = required - set(rule.keys())
+            assert not missing, f"Rule {rule.get('rule_id')} missing: {missing}"
+
+    def test_ir_instruction_types_load_from_kernel(self):
+        """Runtime loads IR types from governed kernel contract."""
+        types = load_ir_instruction_types()
+        assert isinstance(types, list)
+        assert len(types) == 9
+        assert "draw_component" in types
+        assert "draw_profile" in types
+
+    def test_detail_schema_loads_from_kernel(self):
+        """Runtime loads detail schema from governed kernel contract."""
+        schema = load_detail_schema()
+        assert "valid_component_roles" in schema
+        assert "valid_relationship_types" in schema
+        assert "waterproofing" in schema["valid_component_roles"]
+
+    def test_resolver_no_inline_rules(self):
+        """Prove detail_resolver.py no longer defines APPLICABILITY_RULES inline."""
+        import runtime.drawing_engine.detail_resolver as mod
+        source = inspect.getsource(mod)
+        assert "APPLICABILITY_RULES" not in source, (
+            "detail_resolver.py must not define APPLICABILITY_RULES inline. "
+            "Rules must be loaded from governed kernel contracts."
+        )
+
+    def test_resolver_uses_contract_loader(self):
+        """Prove detail_resolver.py imports from contract_loader."""
+        import runtime.drawing_engine.detail_resolver as mod
+        source = inspect.getsource(mod)
+        assert "contract_loader" in source
+        assert "load_applicability_rules" in source
+
+
+class TestGovernedContractFailClosed:
+    """Prove runtime fails closed when governed contracts are missing or malformed."""
+
+    def test_missing_contracts_fail_closed(self, monkeypatch):
+        """If kernel contracts path does not exist, resolution fails closed."""
+        monkeypatch.setenv("CONSTRUCTION_KERNEL_CONTRACTS_PATH", "/nonexistent/path")
+        # Must reimport to pick up env change
+        from runtime.drawing_engine import contract_loader
+        try:
+            contract_loader.load_applicability_rules()
+            assert False, "Should have raised ContractLoadError"
+        except ContractLoadError as exc:
+            assert "missing" in str(exc).lower() or "Governed contract" in str(exc)
+
+    def test_malformed_contracts_fail_closed(self, tmp_path, monkeypatch):
+        """If kernel contract JSON is malformed, resolution fails closed."""
+        bad_dir = tmp_path / "detail_applicability"
+        bad_dir.mkdir(parents=True)
+        (bad_dir / "applicability_rules.json").write_text("NOT VALID JSON {{{")
+        monkeypatch.setenv("CONSTRUCTION_KERNEL_CONTRACTS_PATH", str(tmp_path))
+        from runtime.drawing_engine import contract_loader
+        try:
+            contract_loader.load_applicability_rules()
+            assert False, "Should have raised ContractLoadError"
+        except ContractLoadError as exc:
+            assert "malformed" in str(exc).lower() or "Governed contract" in str(exc)
+
+    def test_empty_rules_fail_closed(self, tmp_path, monkeypatch):
+        """If kernel contract has no rules, resolution fails closed."""
+        rules_dir = tmp_path / "detail_applicability"
+        rules_dir.mkdir(parents=True)
+        (rules_dir / "applicability_rules.json").write_text(json.dumps({"rules": []}))
+        monkeypatch.setenv("CONSTRUCTION_KERNEL_CONTRACTS_PATH", str(tmp_path))
+        from runtime.drawing_engine import contract_loader
+        try:
+            contract_loader.load_applicability_rules()
+            assert False, "Should have raised ContractLoadError"
+        except ContractLoadError as exc:
+            assert "no rules" in str(exc).lower() or "Governed contract" in str(exc)
+
+    def test_pipeline_fails_closed_on_missing_contracts(self, monkeypatch):
+        """Full pipeline fails closed when governed contracts are unreachable."""
+        monkeypatch.setenv("CONSTRUCTION_KERNEL_CONTRACTS_PATH", "/nonexistent/path")
+        result = run_drawing_pipeline(VALID_EPDM_PARAPET_CONDITION)
+        assert result.success is False
+        assert len(result.errors) > 0
+
+
+class TestDeterminismPreserved:
+    """Prove deterministic output unchanged after contract externalization."""
+
+    def test_epdm_parapet_output_stable(self):
+        """EPDM parapet produces identical output across two runs."""
+        r1 = run_drawing_pipeline(VALID_EPDM_PARAPET_CONDITION)
+        r2 = run_drawing_pipeline(VALID_EPDM_PARAPET_CONDITION)
+        assert r1.success is True
+        assert r2.success is True
+        assert r1.detail_id == r2.detail_id == "EPDM_PARAPET_FLASHING_STANDARD"
+        assert r1.ir_instruction_count == r2.ir_instruction_count
+        assert r1.render_result["svg_content"] == r2.render_result["svg_content"]
+
+    def test_tpo_edge_output_stable(self):
+        """TPO edge produces identical output across two runs."""
+        r1 = run_drawing_pipeline(VALID_TPO_EDGE_CONDITION)
+        r2 = run_drawing_pipeline(VALID_TPO_EDGE_CONDITION)
+        assert r1.success is True
+        assert r2.success is True
+        assert r1.detail_id == r2.detail_id == "TPO_ROOF_EDGE_STANDARD"
+        assert r1.ir_instruction_count == r2.ir_instruction_count
 
 
 # ──────────────────────────────────────────────

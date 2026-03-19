@@ -12,13 +12,13 @@ Six JSON schemas frozen at v0.2: assembly_input, runtime_assembly, spec_input, r
 
 Validation proceeds in fixed order: structural → domain → generation. No stage may be skipped, reordered, or bypassed. Fail-closed at every stage.
 
-### Canonical Error Taxonomy
+### Error Taxonomy
 
-62 error codes across 11 categories. The taxonomy structure is frozen. New codes may be appended to existing categories; categories and existing codes must not be redefined.
+62 error codes across 11 categories. The taxonomy structure is frozen at the runtime level. New codes may be appended to existing categories; categories and existing codes must not be redefined. This is a runtime-level standard, not kernel-level canonical truth.
 
 ### DrawingInstructionSet
 
-The canonical intermediate representation. DrawingInstructionSet is the sole input to both DXF and SVG generation. No generation path may accept input from any other source.
+The governed intermediate representation for this runtime. DrawingInstructionSet is the sole input to both DXF and SVG generation. No generation path may accept input from any other source. Note: "governed" here means authoritative within the runtime's scope — it is not kernel-level canonical truth.
 
 ### Dual-Output Derivation
 
@@ -52,7 +52,7 @@ The deliverable model structure is frozen at v0.2.
 - Contract schemas
 - Validation stage order (structural → domain → generation)
 - Error taxonomy structure
-- DrawingInstructionSet as canonical intermediate representation
+- DrawingInstructionSet as governed intermediate representation
 - Dual-output derivation from single instruction set
 - Audit append-only model
 - Authority status levels (EXPLICIT / DERIVED / INFERRED / UNAPPROVED)
