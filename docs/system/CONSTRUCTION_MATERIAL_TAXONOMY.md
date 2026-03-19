@@ -30,7 +30,7 @@ The Material Taxonomy defines what materials exist in the canonical vocabulary. 
 |---|---|
 | polymer | Synthetic or natural polymer-based materials |
 | metal | Ferrous and non-ferrous metals and alloys |
-| mineral | Cement,ite,ite, calcium silicate, mineral-based materials |
+| mineral |ite, calcium silicate,ite, and mineral-based materials |
 | organic | Wood, cellulose, natural fiber materials |
 | composite | Multi-phase materials combining distinct material physics |
 | glass | Silicate-based transparent or translucent materials |
