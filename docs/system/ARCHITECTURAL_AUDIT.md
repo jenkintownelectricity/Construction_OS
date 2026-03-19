@@ -104,3 +104,34 @@ The provisional classification of "execution-layer workers running automation pi
 - Clarify the "beside the stack" positioning — if workers are execution-layer, they should be in the stack, not beside it.
 - Monitor whether the proposal-only output model holds as implementation progresses, or whether workers eventually gain direct write capabilities.
 - Role fit confidence will increase once executable code exists.
+
+---
+
+## Confirmed Classification
+
+| Field | Value |
+|-------|-------|
+| **repo_name** | Construction_Intelligence_Workers |
+| **layer** | execution |
+| **primary_area** | execution |
+| **grown_from** | Construction_Runtime |
+| **upstream_affinity** | Construction_Runtime |
+
+**Tags:** workers, extraction, proposals, doctrine, signal-generation, execution
+
+*Classification confirmed from completed ecosystem audit findings.*
+
+---
+
+## Registry Rename Note
+
+At the time of the original audit documentation, the Construction OS registry
+repository was temporarily named `ConstructionOS_Registry`.
+
+It has since been renamed to:
+`Construction_OS_Registry`
+
+The rename was performed to align with the canonical repository naming
+conventions used across the Construction OS ecosystem.
+
+No architectural or lineage changes occurred as a result of this rename.
