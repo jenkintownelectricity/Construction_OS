@@ -1,0 +1,69 @@
+{
+  "$schema": "construction-os/registry/mirror-drift/v1",
+  "schema_version": "1.0.0",
+  "registry_name": "mirror-drift-registry",
+  "description": "Canonical registry of all drift events detected across mirrors. Drift occurs when a mirror's reflected behavior diverges from its source system's actual behavior beyond acceptable tolerance thresholds. Each record captures the nature, severity, and resolution status of a drift event.",
+  "last_updated": "2026-03-20T00:00:00Z",
+  "maintainer": "registry-control-plane",
+  "records": [],
+  "registry_metadata": {
+    "total_records": 0,
+    "records_by_severity": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "INFO": 0
+    },
+    "records_by_status": {
+      "DETECTED": 0,
+      "INVESTIGATING": 0,
+      "CONFIRMED": 0,
+      "APPROVED_DIVERGENCE": 0,
+      "REMEDIATED": 0,
+      "ESCALATED": 0
+    },
+    "records_by_mirror": {},
+    "valid_drift_severities": [
+      "CRITICAL",
+      "HIGH",
+      "MEDIUM",
+      "LOW",
+      "INFO"
+    ],
+    "valid_drift_statuses": [
+      "DETECTED",
+      "INVESTIGATING",
+      "CONFIRMED",
+      "APPROVED_DIVERGENCE",
+      "REMEDIATED",
+      "ESCALATED"
+    ],
+    "valid_drift_categories": [
+      "SCHEMA_DRIFT",
+      "BEHAVIORAL_DRIFT",
+      "PERFORMANCE_DRIFT",
+      "SECURITY_DRIFT",
+      "CONFIGURATION_DRIFT",
+      "DATA_DRIFT",
+      "API_DRIFT"
+    ],
+    "record_schema": {
+      "drift_id": "string — Unique identifier for the drift event (DRIFT-XXXX-NNNN)",
+      "mirror_id": "string — Reference to the mirror where drift was detected",
+      "slice_id": "string|null — Reference to the specific slice, if applicable",
+      "detected_at": "datetime — ISO 8601 timestamp of detection",
+      "detected_by": "string — System or operator that detected the drift",
+      "category": "string — One of valid_drift_categories",
+      "severity": "string — One of valid_drift_severities",
+      "status": "string — One of valid_drift_statuses",
+      "summary": "string — Human-readable summary of the drift",
+      "details": "object — Structured details of the drift including expected vs actual values",
+      "impact_assessment": "string — Description of downstream impact",
+      "resolution": "object|null — Resolution details including action taken and resolved_at",
+      "approved_divergence": "object|null — If drift is approved as acceptable divergence, includes approver and justification",
+      "related_drift_ids": "array — References to related drift events",
+      "tags": "array — Freeform tags for categorization"
+    }
+  }
+}
