@@ -1,0 +1,67 @@
+{
+  "$schema": "construction-os/registry/mirror-breakaway/v1",
+  "schema_version": "1.0.0",
+  "registry_name": "mirror-breakaway-registry",
+  "description": "Canonical registry of all breakaway events. A breakaway occurs when a mirror or slice intentionally or unintentionally diverges from its source system to the degree that the reflection relationship is no longer maintainable. Breakaway is a terminal drift condition that requires explicit freeze, remediation, or retirement.",
+  "last_updated": "2026-03-20T00:00:00Z",
+  "maintainer": "registry-control-plane",
+  "records": [],
+  "registry_metadata": {
+    "total_records": 0,
+    "records_by_status": {
+      "DETECTED": 0,
+      "UNDER_REVIEW": 0,
+      "FROZEN": 0,
+      "REMEDIATION_IN_PROGRESS": 0,
+      "REMEDIATED": 0,
+      "RETIRED": 0,
+      "PROMOTED_TO_CORE": 0
+    },
+    "records_by_mirror": {},
+    "valid_breakaway_statuses": [
+      "DETECTED",
+      "UNDER_REVIEW",
+      "FROZEN",
+      "REMEDIATION_IN_PROGRESS",
+      "REMEDIATED",
+      "RETIRED",
+      "PROMOTED_TO_CORE"
+    ],
+    "valid_breakaway_causes": [
+      "ACCUMULATED_DRIFT",
+      "SOURCE_SYSTEM_DEPRECATION",
+      "SOURCE_SYSTEM_BREAKING_CHANGE",
+      "INTENTIONAL_FORK",
+      "TRUST_BOUNDARY_VIOLATION",
+      "SECURITY_INCIDENT",
+      "COMPLIANCE_REQUIREMENT",
+      "PERFORMANCE_DIVERGENCE"
+    ],
+    "valid_resolution_paths": [
+      "FREEZE_AND_REMEDIATE",
+      "FREEZE_AND_RETIRE",
+      "PROMOTE_TO_CORE",
+      "RECONNECT_TO_NEW_SOURCE",
+      "EMERGENCY_SHUTDOWN"
+    ],
+    "record_schema": {
+      "breakaway_id": "string — Unique identifier (BREAKAWAY-XXXX-NNNN)",
+      "mirror_id": "string — Reference to the mirror in breakaway",
+      "slice_id": "string|null — Reference to the specific slice, if slice-level breakaway",
+      "detected_at": "datetime — ISO 8601 timestamp of breakaway detection",
+      "detected_by": "string — System or operator that detected the breakaway",
+      "cause": "string — One of valid_breakaway_causes",
+      "status": "string — One of valid_breakaway_statuses",
+      "summary": "string — Human-readable summary of the breakaway condition",
+      "drift_ids": "array — References to drift events that contributed to the breakaway",
+      "impact_assessment": "object — Structured impact assessment including affected_systems, data_integrity_risk, and operational_risk",
+      "resolution_path": "string|null — One of valid_resolution_paths, set during review",
+      "freeze_record": "object|null — Details of freeze action if applied, including frozen_at, frozen_by, freeze_scope",
+      "remediation_record": "object|null — Details of remediation if attempted, including plan, started_at, completed_at",
+      "promotion_record": "object|null — Details of promotion to core if applicable",
+      "retirement_record": "object|null — Details of retirement if applicable",
+      "review_notes": "array — Timestamped review notes from reviewers",
+      "tags": "array — Freeform tags for categorization"
+    }
+  }
+}

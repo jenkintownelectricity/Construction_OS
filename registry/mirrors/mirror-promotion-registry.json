@@ -1,0 +1,65 @@
+{
+  "$schema": "construction-os/registry/mirror-promotion/v1",
+  "schema_version": "1.0.0",
+  "registry_name": "mirror-promotion-registry",
+  "description": "Canonical registry of all promotion reviews. Promotion is the process by which a mirror reflection (or individual slice) is evaluated for absorption into the Construction OS kernel as a first-class capability. Promotion requires demonstrated stability, parity, coverage, and architectural alignment.",
+  "last_updated": "2026-03-20T00:00:00Z",
+  "maintainer": "registry-control-plane",
+  "records": [],
+  "registry_metadata": {
+    "total_records": 0,
+    "records_by_status": {
+      "NOMINATED": 0,
+      "UNDER_REVIEW": 0,
+      "APPROVED": 0,
+      "REJECTED": 0,
+      "IN_PROGRESS": 0,
+      "COMPLETED": 0,
+      "ROLLED_BACK": 0
+    },
+    "records_by_mirror": {},
+    "valid_promotion_statuses": [
+      "NOMINATED",
+      "UNDER_REVIEW",
+      "APPROVED",
+      "REJECTED",
+      "IN_PROGRESS",
+      "COMPLETED",
+      "ROLLED_BACK"
+    ],
+    "valid_promotion_types": [
+      "FULL_MIRROR",
+      "SINGLE_SLICE",
+      "SLICE_GROUP",
+      "CAPABILITY_EXTRACT"
+    ],
+    "promotion_criteria": {
+      "minimum_parity_score": 0.95,
+      "minimum_active_duration_days": 90,
+      "maximum_open_drift_events": 0,
+      "maximum_breakaway_events_lifetime": 0,
+      "required_parity_reviews": 3,
+      "required_approvers": 2,
+      "required_test_coverage": 0.90,
+      "required_documentation_completeness": true
+    },
+    "record_schema": {
+      "promotion_id": "string — Unique identifier (PROMO-XXXX-NNNN)",
+      "mirror_id": "string — Reference to the source mirror",
+      "slice_ids": "array — References to specific slices being promoted (empty for full mirror)",
+      "promotion_type": "string — One of valid_promotion_types",
+      "status": "string — One of valid_promotion_statuses",
+      "nominated_at": "datetime — ISO 8601 timestamp of nomination",
+      "nominated_by": "string — Operator or system that nominated the promotion",
+      "nomination_justification": "string — Detailed justification for the promotion",
+      "review_started_at": "datetime|null — When formal review began",
+      "reviewers": "array — List of assigned reviewers with their review status",
+      "criteria_evaluation": "object — Evaluation of each promotion criterion with pass/fail and evidence",
+      "decision": "object|null — Final decision including decided_at, decided_by, decision_rationale",
+      "implementation_plan": "object|null — Plan for executing the promotion including phases and rollback strategy",
+      "completion_record": "object|null — Record of completed promotion including completed_at, verification_results",
+      "rollback_record": "object|null — Record of rollback if promotion was reversed",
+      "tags": "array — Freeform tags for categorization"
+    }
+  }
+}
