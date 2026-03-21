@@ -37,3 +37,18 @@ This kernel organizes construction knowledge into seven supporting kernels:
 7. Intelligence
 
 This kernel operates within the truth boundary defined by Universal_Truth_Kernel. Truth doctrine is defined there and referenced here.
+
+## Explicit Dependencies
+
+| Dependency | Relationship |
+|------------|-------------|
+| **Universal_Truth_Kernel** | Root doctrine — truth boundary definition (REFERENCE-ONLY) |
+| **ValidKernel_Geometry_Kernel** | Consumes universal spatial primitives for construction domain objects |
+
+## Downstream Consumers
+
+| Consumer | Relationship |
+|----------|-------------|
+| **Construction_Atlas** | Consumes construction domain ontology and truth boundaries |
+| **Construction_Runtime** | Executes against truth boundaries defined in this kernel |
+| **Construction_Reference_Intelligence** | Derives intelligence from construction-domain truths |
