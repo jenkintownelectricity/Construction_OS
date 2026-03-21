@@ -17,7 +17,8 @@ Universal_Truth_Kernel
 ```
 
 > **Architecture Status:** FROZEN
-> **Construction_Atlas** (formerly Construction_Atlas_UI) is a spatial context truth layer that binds geometry and construction meaning. It is NOT a UI surface.
+> **Root Reference:** Universal_Truth_Kernel (reference-only / no-write in downstream passes)
+> **Construction_Atlas** (formerly Construction_Atlas_UI) is a spatial context truth layer that binds geometry and construction meaning. It is NOT a UI surface. It is NOT an execution layer.
 > **UI Authority:** Construction_Application_OS is the sole UI surface of Construction OS.
 
 ## Construction_Atlas Dependency
