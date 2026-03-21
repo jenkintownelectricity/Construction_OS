@@ -84,18 +84,18 @@ let keysLoaded = false;
 function loadKeys(): void {
   if (keysLoaded) return;
 
-  // Load from env vars
-  const providers: ProviderId[] = ["openai", "anthropic", "gemini", "groq"];
-  for (const p of providers) {
-    const envKey = process.env[`${KEYS_ENV_PREFIX}${p.toUpperCase()}`];
-    if (envKey) keyStore.set(p, envKey);
-  }
+  // In a Vite app, env vars are accessed via import.meta.env.VITE_*
+  // Keys can also be set programmatically via setProviderKey()
+  const envMap: Record<ProviderId, string> = {
+    openai: import.meta.env.VITE_OPENAI_API_KEY ?? "",
+    anthropic: import.meta.env.VITE_ANTHROPIC_API_KEY ?? "",
+    gemini: import.meta.env.VITE_GOOGLE_API_KEY ?? "",
+    groq: import.meta.env.VITE_GROQ_API_KEY ?? "",
+  };
 
-  // Also check common env var names
-  if (process.env.OPENAI_API_KEY) keyStore.set("openai", process.env.OPENAI_API_KEY);
-  if (process.env.ANTHROPIC_API_KEY) keyStore.set("anthropic", process.env.ANTHROPIC_API_KEY);
-  if (process.env.GOOGLE_API_KEY) keyStore.set("gemini", process.env.GOOGLE_API_KEY);
-  if (process.env.GROQ_API_KEY) keyStore.set("groq", process.env.GROQ_API_KEY);
+  for (const [provider, key] of Object.entries(envMap)) {
+    if (key) keyStore.set(provider as ProviderId, key);
+  }
 
   keysLoaded = true;
 }
