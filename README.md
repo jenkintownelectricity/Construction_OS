@@ -20,6 +20,15 @@ Universal_Truth_Kernel
 > **UI Authority:** This repository is the sole UI surface of Construction OS. All UI rendering, workspace shells, panel systems, event orchestration, atlas navigation interfaces, inspectors, overlays, and assistant interaction surfaces are owned exclusively by this repository.
 > **Construction_Atlas** (formerly Construction_Atlas_UI) is a spatial context truth layer. It provides spatial selectors, anchors, navigable spatial objects, and context resolution — but must NOT contain React components, UI rendering logic, workspace layout systems, or panel orchestration.
 
+## Atlas Purification Record
+
+| Field | Value |
+|-------|-------|
+| **Purification** | Option A — Atlas purified to spatial context layer only (2026-03-21) |
+| **Migrated From Atlas** | AI control plane library (4 providers, capability routing, health monitoring, audit logging), branding system, API routes |
+| **Absorbed Into** | `src/lib/ai/`, `src/lib/branding/`, `src/ui/providers/`, `src/ui/components/ai/`, `src/api/` |
+| **Duplicate UI Surfaces** | None — Atlas Next.js pages deleted; Application_OS Dockview panels are the stronger implementation |
+
 ## UI Ownership
 
 Construction_Application_OS owns:
@@ -29,10 +38,13 @@ Construction_Application_OS owns:
 - Atlas navigation interface
 - Inspectors and overlays
 - Assistant interaction
+- AI control plane (migrated from Atlas — provider routing, health monitoring, audit logging)
+- Branding system (migrated from Atlas — white-label configuration)
+- Application settings and configuration
 
 Construction_Application_OS does **not** own canonical spatial truth. Spatial truth is defined by Construction_Atlas and Construction_Kernel.
 
-Construction_Atlas may define spatial selectors, anchors, navigable spatial objects, and context resolution that this application consumes and renders.
+Construction_Atlas defines spatial selectors, anchors, navigable spatial objects, and context resolution that this application consumes and renders.
 
 ## Explicit Dependencies
 
@@ -193,6 +205,34 @@ npm run test:watch # Watch mode
 src/
 ├── App.tsx                          # Application root
 ├── main.tsx                         # Entry point
+├── lib/
+│   ├── ai/                          # AI control plane (migrated from Atlas)
+│   │   ├── provider-types.ts        # Core type definitions
+│   │   ├── provider-service.ts      # AI request executor
+│   │   ├── provider-registry.ts     # Provider metadata
+│   │   ├── provider-routing.ts      # Capability routing
+│   │   ├── provider-health.ts       # Health monitoring
+│   │   ├── provider-errors.ts       # Error handling
+│   │   ├── provider-audit.ts        # Audit logging
+│   │   ├── settings-store.ts        # Settings persistence
+│   │   ├── normalize-response.ts    # Response normalization
+│   │   └── providers/               # Provider implementations
+│   │       ├── openai.ts
+│   │       ├── anthropic.ts
+│   │       ├── gemini.ts
+│   │       └── groq.ts
+│   └── branding/                    # Branding system (migrated from Atlas)
+│       ├── branding-types.ts        # Branding config types
+│       └── branding-store.ts        # Branding storage
+├── api/                             # API routes (migrated from Atlas)
+│   ├── ai/                          # AI control plane API
+│   │   ├── chat/route.ts
+│   │   ├── health/route.ts
+│   │   ├── settings/route.ts
+│   │   ├── providers/route.ts
+│   │   ├── models/route.ts
+│   │   └── test/route.ts
+│   └── branding/route.ts            # Branding API
 └── ui/
     ├── contracts/
     │   ├── events.ts                # Typed event contracts (14 event types)
@@ -220,6 +260,13 @@ src/
     │   ├── reference/               # Reference panel
     │   ├── spatial/                 # Spatial panel
     │   └── system/                  # System panel
+    ├── components/
+    │   └── ai/                      # AI UI components (migrated from Atlas)
+    │       ├── GlobalAISettings.tsx  # Global AI configuration
+    │       └── ProviderCard.tsx      # Provider card component
+    ├── providers/
+    │   ├── InteractionProvider.tsx   # Interaction context
+    │   └── BrandingProvider.tsx      # Branding context (migrated from Atlas)
     ├── registry/
     │   └── PanelRegistry.ts         # Panel definitions & metadata
     ├── theme/
