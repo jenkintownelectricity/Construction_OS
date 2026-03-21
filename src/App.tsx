@@ -8,12 +8,15 @@
 
 import { GlobalStyles } from './ui/theme/GlobalStyles';
 import { WorkspaceShell } from './ui/workspace/WorkspaceShell';
+import { InteractionProvider } from './ui/providers/InteractionProvider';
 
 export function App() {
   return (
     <>
       <GlobalStyles />
-      <WorkspaceShell />
+      <InteractionProvider>
+        <WorkspaceShell />
+      </InteractionProvider>
     </>
   );
 }
