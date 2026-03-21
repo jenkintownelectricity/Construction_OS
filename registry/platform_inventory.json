@@ -66,14 +66,19 @@
       "repo_name": "Construction_Reference_Intelligence",
       "layer": "capabilities",
       "primary_area": "capabilities",
-      "role_summary": "Governance-controlled intelligence curation system with evidence-linked failure/success patterns, confidence tracking, and immutable history.",
+      "role_1": "reference intelligence layer",
+      "role_2": "construction architecture guidance relay",
+      "authority_level": "non-doctrinal",
+      "registry_relation": "observer",
+      "role_summary": "Reference intelligence layer + construction architecture guidance relay. Owns immutable, evidence-linked failure/success patterns, confidence tracking, and immutable history. Also acts as the construction-family guidance, observation, and relay layer analogous to ValidKernelOS_VKBUS.",
       "tags": [
         "intelligence",
         "evidence-linked",
         "knowledge-curation",
         "building-envelope",
         "observation",
-        "capabilities"
+        "capabilities",
+        "guidance-relay"
       ]
     },
     {
@@ -149,13 +154,14 @@
       "repo_name": "ValidKernelOS_VKBUS",
       "layer": "observation",
       "primary_area": "observation",
-      "role_summary": "Shadow observation bus that monitors architecture drift, seam integrity, derived artifact discipline, and registry completeness. Read-only — never mutates system state.",
+      "role_summary": "Governed guidance, observation, and relay layer that reads ValidKernel architecture authorities and safely exposes guidance to downstream domain systems without owning doctrine or replacing registry authority.",
       "tags": [
         "observation",
         "bus",
-        "shadow",
+        "guidance-relay",
         "drift-detection",
-        "seam-integrity"
+        "seam-integrity",
+        "architecture-observation"
       ]
     },
     {

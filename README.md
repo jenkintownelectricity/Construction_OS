@@ -20,7 +20,8 @@ Universal_Truth_Kernel
 Infrastructure Authorities:
   Construction_OS_Registry              ← YOU ARE HERE (Construction OS topology authority)
   ValidKernel_Registry                  → Global kernel lineage authority
-  ValidKernelOS_VKBUS                   → Canonical interaction transport layer
+  ValidKernelOS_VKBUS                   → Governed guidance / observation / relay layer
+  Construction_Reference_Intelligence   → Reference intelligence + construction guidance relay
 ```
 
 > **Architecture Status:** FROZEN
