@@ -29,7 +29,7 @@ Universal_Truth_Kernel
 ```
 
 > **Architecture Status:** FROZEN
-> **Atlas Role:** Core spatial construction context layer — NOT a UI surface.
+> **Atlas Role:** Core spatial construction context layer — NOT a UI surface. NOT an execution layer. UI-aware but UI-independent.
 > **UI Authority:** Construction_Application_OS is the sole UI surface of Construction OS.
 
 ## Purpose
@@ -62,8 +62,11 @@ Construction_Atlas is a **truth/context layer** that resolves spatial constructi
 - UI rendering logic
 - Workspace layout systems
 - Panel orchestration
+- Runtime artifact generation
+- Execution pipeline logic
 
 All UI rendering is owned exclusively by Construction_Application_OS.
+All artifact generation is owned exclusively by Construction_Runtime.
 
 ## Dependencies
 
@@ -77,4 +80,14 @@ All UI rendering is owned exclusively by Construction_Application_OS.
 | Consumer | Relationship |
 |----------|-------------|
 | **Construction_Runtime** | Consumes spatial context for deterministic artifact generation |
-| **Construction_Application_OS** | Consumes spatial selectors, anchors, and navigable objects for UI rendering |
+| **Construction_Application_OS** | Consumes navigation context — spatial selectors, anchors, and navigable objects for UI rendering |
+| **Construction_Reference_Intelligence** | Observes architecture context for intelligence derivation and guidance relay |
+
+## Boundary Statement
+
+Construction_Atlas is the **spatial context layer**. It is:
+- **NOT** a UI surface
+- **NOT** an execution layer
+
+All UI rendering is owned exclusively by Construction_Application_OS.
+All execution is owned by Construction_Runtime.
