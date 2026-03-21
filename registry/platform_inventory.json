@@ -7,8 +7,10 @@
   "atlas_status": "CORE_CONTEXT_LAYER",
   "ui_authority": "Construction_Application_OS",
   "frozen_topology": {
-    "spine": [
-      "Universal_Truth_Kernel",
+    "root_reference_layer": [
+      "Universal_Truth_Kernel"
+    ],
+    "writable_frozen_spine": [
       "ValidKernel_Geometry_Kernel",
       "ValidKernel-Governance",
       "Construction_Kernel",
@@ -20,6 +22,19 @@
       "Construction_OS_Registry",
       "ValidKernel_Registry",
       "ValidKernelOS_VKBUS"
+    ],
+    "dependency_edges": [
+      {"source": "Construction_Kernel", "target": "ValidKernel_Geometry_Kernel", "relationship": "consumes-spatial-primitives"},
+      {"source": "Construction_Atlas", "target": "Construction_Kernel", "relationship": "consumes-construction-ontology"},
+      {"source": "Construction_Atlas", "target": "ValidKernel_Geometry_Kernel", "relationship": "consumes-spatial-primitives"},
+      {"source": "Construction_Runtime", "target": "Construction_Atlas", "relationship": "consumes-spatial-context"},
+      {"source": "Construction_Application_OS", "target": "Construction_Atlas", "relationship": "consumes-atlas-navigation-context"},
+      {"source": "Construction_Application_OS", "target": "Construction_Runtime", "relationship": "interacts-with-runtime"}
+    ],
+    "vkbus_guidance_observation_paths": [
+      {"path": "ValidKernelOS_VKBUS <-> Construction_Atlas", "direction": "bidirectional", "purpose": "spatial context state observation"},
+      {"path": "ValidKernelOS_VKBUS <-> Construction_Runtime", "direction": "bidirectional", "purpose": "execution state observation"},
+      {"path": "ValidKernelOS_VKBUS <-> Construction_Application_OS", "direction": "bidirectional", "purpose": "UI event observation"}
     ]
   },
   "rename_lineage": [
@@ -66,14 +81,19 @@
       "repo_name": "Construction_Reference_Intelligence",
       "layer": "capabilities",
       "primary_area": "capabilities",
-      "role_summary": "Governance-controlled intelligence curation system with evidence-linked failure/success patterns, confidence tracking, and immutable history.",
+      "role_1": "reference intelligence layer",
+      "role_2": "construction architecture guidance relay",
+      "authority_level": "non-doctrinal",
+      "registry_relation": "observer",
+      "role_summary": "Reference intelligence layer + construction architecture guidance relay. Owns immutable, evidence-linked failure/success patterns, confidence tracking, and immutable history. Also acts as the construction-family guidance, observation, and relay layer analogous to ValidKernelOS_VKBUS.",
       "tags": [
         "intelligence",
         "evidence-linked",
         "knowledge-curation",
         "building-envelope",
         "observation",
-        "capabilities"
+        "capabilities",
+        "guidance-relay"
       ]
     },
     {
@@ -149,13 +169,14 @@
       "repo_name": "ValidKernelOS_VKBUS",
       "layer": "observation",
       "primary_area": "observation",
-      "role_summary": "Shadow observation bus that monitors architecture drift, seam integrity, derived artifact discipline, and registry completeness. Read-only — never mutates system state.",
+      "role_summary": "Governed guidance, observation, and relay layer that reads ValidKernel architecture authorities and safely exposes guidance to downstream domain systems without owning doctrine or replacing registry authority.",
       "tags": [
         "observation",
         "bus",
-        "shadow",
+        "guidance-relay",
         "drift-detection",
-        "seam-integrity"
+        "seam-integrity",
+        "architecture-observation"
       ]
     },
     {
