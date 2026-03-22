@@ -1,24 +1,24 @@
 /**
- * Construction OS — Deterministic Proximity Field Model
+ * Construction OS — Deterministic Proximity Field Model (Stabilized)
  *
- * Implements proximity field logic for all reactive edges.
- * Rules:
- * - Each reactive edge has a trigger band and a ramp band
- * - Center safe zone = no edge expansion
- * - Only one edge may dominate at a time (strongest proximity wins)
- * - Locked panels override proximity collapse
- * - Transitions are smooth and predictable
+ * Intent-state transitions replace continuous raw-pointer layout resizing:
+ *   idle → sensing (edge_armed) → preview → locked → (release → idle)
  *
- * FAIL_CLOSED: Invalid mouse coordinates or state returns idle layout.
+ * Hysteresis: entry threshold (80px) vs exit threshold (120px) prevents flicker.
+ * Cooldown: collapsed edges cannot be re-triggered for 300ms.
+ * Transition lock: no re-layout while transition_in_progress = true.
+ * Strongest-edge-wins: only one edge dominates at a time.
+ *
+ * FAIL_CLOSED: Invalid coordinates or state → idle layout.
  */
 
 import {
   PROXIMITY,
   type EdgeId,
-  type EdgeState,
   type EdgeFieldState,
   type ProximityFieldSnapshot,
   createIdleSnapshot,
+  createIdleFieldState,
 } from './ProximityConstants';
 
 type Listener = (snapshot: ProximityFieldSnapshot) => void;
@@ -28,6 +28,7 @@ class ProximityFieldEngine {
   private listeners = new Set<Listener>();
   private animFrame: number | null = null;
   private active = false;
+  private transitionTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor() {
     this.snapshot = createIdleSnapshot();
@@ -51,6 +52,10 @@ class ProximityFieldEngine {
       cancelAnimationFrame(this.animFrame);
       this.animFrame = null;
     }
+    if (this.transitionTimer != null) {
+      clearTimeout(this.transitionTimer);
+      this.transitionTimer = null;
+    }
     this.snapshot = createIdleSnapshot();
     this.notify();
   }
@@ -64,40 +69,61 @@ class ProximityFieldEngine {
     return this.snapshot;
   }
 
-  /** Unlock a specific edge, returning it to proximity-driven behavior */
+  /** Unlock a specific edge, returning it to idle with cooldown */
   unlockEdge(edge: EdgeId): void {
     const field = this.snapshot[edge];
-    if (field.state === 'locked') {
-      this.snapshot = {
-        ...this.snapshot,
-        [edge]: { ...field, state: 'idle', lockedAt: null },
-      };
-      this.notify();
+    if (field.state === 'locked' || field.state === 'preview') {
+      this.collapseEdge(edge);
     }
   }
 
   /** Lock a specific edge open */
   lockEdge(edge: EdgeId): void {
+    if (this.snapshot.transitionInProgress) return;
     const field = this.snapshot[edge];
+    this.beginTransition();
     this.snapshot = {
       ...this.snapshot,
-      [edge]: { ...field, state: 'locked', lockedAt: Date.now() },
+      [edge]: { ...field, state: 'locked', lockedAt: Date.now(), proximity: 1 },
     };
     this.notify();
   }
 
   // ─── Private ─────────────────────────────────────────────────────────
 
-  private handleMouseMove = (e: MouseEvent): void => {
+  private collapseEdge(edge: EdgeId): void {
+    const field = this.snapshot[edge];
+    this.beginTransition();
     this.snapshot = {
       ...this.snapshot,
-      mouseX: e.clientX,
-      mouseY: e.clientY,
+      [edge]: {
+        ...field,
+        state: 'idle',
+        lockedAt: null,
+        intentTimestamp: null,
+        proximity: 0,
+        collapsedAt: Date.now(),
+      },
+      dominantEdge: this.snapshot.dominantEdge === edge ? null : this.snapshot.dominantEdge,
     };
+    this.notify();
+  }
+
+  private beginTransition(): void {
+    this.snapshot = { ...this.snapshot, transitionInProgress: true };
+    if (this.transitionTimer != null) clearTimeout(this.transitionTimer);
+    this.transitionTimer = setTimeout(() => {
+      this.snapshot = { ...this.snapshot, transitionInProgress: false };
+      this.transitionTimer = null;
+      this.notify();
+    }, PROXIMITY.maxDuration + 30);
+  }
+
+  private handleMouseMove = (e: MouseEvent): void => {
+    this.snapshot = { ...this.snapshot, mouseX: e.clientX, mouseY: e.clientY };
   };
 
   private handleClick = (_e: MouseEvent): void => {
-    // Click locks the dominant edge if it's in preview state
     const dom = this.snapshot.dominantEdge;
     if (dom) {
       const field = this.snapshot[dom];
@@ -122,151 +148,144 @@ class ProximityFieldEngine {
   };
 
   private update(): void {
-    const { mouseX, mouseY, viewportWidth, viewportHeight } = this.snapshot;
+    const { mouseX, mouseY, viewportWidth, viewportHeight, transitionInProgress } = this.snapshot;
 
-    // FAIL_CLOSED: invalid coordinates → idle
-    if (mouseX < 0 || mouseY < 0 || viewportWidth <= 0 || viewportHeight <= 0) {
-      return;
-    }
+    // FAIL_CLOSED: invalid coordinates → no update
+    if (mouseX < 0 || mouseY < 0 || viewportWidth <= 0 || viewportHeight <= 0) return;
+
+    // No re-layout while transition is in progress
+    if (transitionInProgress) return;
 
     const now = Date.now();
-
-    // Calculate raw proximity for each edge (0 = far, 1 = at edge)
     const leftDist = mouseX;
     const rightDist = viewportWidth - mouseX;
     const topDist = mouseY;
     const bottomDist = viewportHeight - mouseY;
 
-    // Check center safe zone
+    // Center safe zone check
     const inCenterX = mouseX > PROXIMITY.centerSafeZone && mouseX < viewportWidth - PROXIMITY.centerSafeZone;
     const inCenterY = mouseY > PROXIMITY.centerSafeZone && mouseY < viewportHeight - PROXIMITY.centerSafeZone;
     const inCenter = inCenterX && inCenterY;
 
-    // Calculate proximity values
-    const leftProx = inCenter ? 0 : this.calcProximity(leftDist);
-    const rightProx = inCenter ? 0 : this.calcProximity(rightDist);
-    const topProx = inCenter ? 0 : this.calcProximity(topDist);
-    const bottomProx = inCenter ? 0 : this.calcProximity(bottomDist);
+    // Calculate proximity with hysteresis per edge
+    const leftProx = inCenter ? 0 : this.calcProximityWithHysteresis(leftDist, this.snapshot.left);
+    const rightProx = inCenter ? 0 : this.calcProximityWithHysteresis(rightDist, this.snapshot.right);
+    const topProx = inCenter ? 0 : this.calcProximityWithHysteresis(topDist, this.snapshot.top);
+    const bottomProx = inCenter ? 0 : this.calcProximityWithHysteresis(bottomDist, this.snapshot.bottom);
 
-    // Determine dominant edge (strongest proximity wins)
-    const proximities: [EdgeId, number][] = [
-      ['left', leftProx],
-      ['right', rightProx],
-      ['top', topProx],
-      ['bottom', bottomProx],
-    ];
-
-    // Find strongest non-idle edge
+    // Determine dominant edge (strongest proximity wins, locked edges persist)
     let dominantEdge: EdgeId | null = null;
     let maxProx = 0;
-    for (const [edge, prox] of proximities) {
-      if (prox > maxProx) {
-        maxProx = prox;
+    const prox: [EdgeId, number][] = [['left', leftProx], ['right', rightProx], ['top', topProx], ['bottom', bottomProx]];
+    for (const [edge, p] of prox) {
+      // Locked edges always stay active
+      if (this.snapshot[edge].state === 'locked') {
+        if (!dominantEdge || this.snapshot[dominantEdge].state !== 'locked') {
+          dominantEdge = edge;
+          maxProx = 1;
+        }
+        continue;
+      }
+      if (p > maxProx) {
+        maxProx = p;
         dominantEdge = edge;
       }
     }
 
-    // Also consider locked edges — they stay dominant
-    const edges: EdgeId[] = ['left', 'right', 'top', 'bottom'];
-    for (const edge of edges) {
-      if (this.snapshot[edge].state === 'locked') {
-        // Locked edge persists regardless of proximity
-      }
-    }
-
-    // Update each edge field
-    const left = this.updateEdgeField(this.snapshot.left, leftProx, dominantEdge === 'left', now);
-    const right = this.updateEdgeField(this.snapshot.right, rightProx, dominantEdge === 'right', now);
-    const top = this.updateEdgeField(this.snapshot.top, topProx, dominantEdge === 'top', now);
-    const bottom = this.updateEdgeField(this.snapshot.bottom, bottomProx, dominantEdge === 'bottom', now);
+    // Update each edge with deterministic intent-state model
+    const left = this.updateEdge(this.snapshot.left, leftProx, dominantEdge === 'left', now);
+    const right = this.updateEdge(this.snapshot.right, rightProx, dominantEdge === 'right', now);
+    const top = this.updateEdge(this.snapshot.top, topProx, dominantEdge === 'top', now);
+    const bottom = this.updateEdge(this.snapshot.bottom, bottomProx, dominantEdge === 'bottom', now);
 
     const newSnapshot: ProximityFieldSnapshot = {
-      left,
-      right,
-      top,
-      bottom,
+      left, right, top, bottom,
       dominantEdge: maxProx > 0 ? dominantEdge : null,
-      mouseX,
-      mouseY,
-      viewportWidth,
-      viewportHeight,
+      mouseX, mouseY, viewportWidth, viewportHeight,
+      transitionInProgress: false,
     };
 
-    // Only notify if state actually changed
-    if (this.hasChanged(newSnapshot)) {
+    // Only notify on state changes (not continuous proximity noise)
+    if (this.hasStateChanged(newSnapshot)) {
+      // Begin transition lock if any edge changed state
+      if (this.hasEdgeStateChanged(newSnapshot)) {
+        newSnapshot.transitionInProgress = true;
+        if (this.transitionTimer != null) clearTimeout(this.transitionTimer);
+        this.transitionTimer = setTimeout(() => {
+          this.snapshot = { ...this.snapshot, transitionInProgress: false };
+          this.transitionTimer = null;
+          this.notify();
+        }, PROXIMITY.maxDuration + 30);
+      }
       this.snapshot = newSnapshot;
       this.notify();
     }
   }
 
-  private calcProximity(distFromEdge: number): number {
-    const { triggerBand, rampBand } = PROXIMITY;
-    if (distFromEdge > triggerBand) return 0;
-    if (distFromEdge <= rampBand) return 1;
-    // Linear ramp between trigger and ramp band
-    return 1 - (distFromEdge - rampBand) / (triggerBand - rampBand);
+  /** Hysteresis-aware proximity: use entryThreshold to enter, exitThreshold to leave */
+  private calcProximityWithHysteresis(distFromEdge: number, current: EdgeFieldState): number {
+    const isCurrentlyActive = current.state !== 'idle';
+
+    if (isCurrentlyActive) {
+      // Use wider exit threshold — must move further away to disengage
+      if (distFromEdge > PROXIMITY.exitThreshold) return 0;
+      if (distFromEdge <= PROXIMITY.rampBand) return 1;
+      return 1 - (distFromEdge - PROXIMITY.rampBand) / (PROXIMITY.exitThreshold - PROXIMITY.rampBand);
+    }
+
+    // Use tighter entry threshold
+    if (distFromEdge > PROXIMITY.entryThreshold) return 0;
+    if (distFromEdge <= PROXIMITY.rampBand) return 1;
+    return 1 - (distFromEdge - PROXIMITY.rampBand) / (PROXIMITY.entryThreshold - PROXIMITY.rampBand);
   }
 
-  private updateEdgeField(
-    current: EdgeFieldState,
-    proximity: number,
-    isDominant: boolean,
-    now: number
-  ): EdgeFieldState {
-    // Locked state ignores proximity collapse
+  /** Intent-state transitions: idle → sensing → preview → locked */
+  private updateEdge(current: EdgeFieldState, proximity: number, isDominant: boolean, now: number): EdgeFieldState {
+    // Locked state ignores proximity — only explicit unlock releases
     if (current.state === 'locked') {
-      return { ...current, proximity };
+      return { ...current, proximity: 1 };
     }
 
+    // Cooldown enforcement — cannot re-arm during collapse cooldown
+    if (current.collapsedAt && now - current.collapsedAt < PROXIMITY.collapseCooldown) {
+      return { ...current, proximity: 0, state: 'idle', intentTimestamp: null };
+    }
+
+    // Zero proximity → idle
     if (proximity === 0) {
-      // Far from edge → idle
-      return {
-        ...current,
-        proximity: 0,
-        state: 'idle',
-        intentTimestamp: null,
-      };
+      if (current.state !== 'idle') {
+        return { ...current, proximity: 0, state: 'idle', intentTimestamp: null, collapsedAt: now };
+      }
+      return current;
     }
 
+    // Not dominant → demote to idle (but preserve collapsedAt)
     if (!isDominant) {
-      // Not the dominant edge → sensing at most
-      return {
-        ...current,
-        proximity,
-        state: proximity > 0 ? 'sensing' : 'idle',
-        intentTimestamp: null,
-      };
+      if (current.state === 'preview' || current.state === 'expanding') {
+        return { ...current, proximity, state: 'idle', intentTimestamp: null, collapsedAt: now };
+      }
+      return { ...current, proximity: 0, state: 'idle', intentTimestamp: null };
     }
 
-    // This is the dominant edge
+    // === This is the dominant edge ===
+
+    // idle/sensing → wait for intent delay, then promote to preview
     if (current.state === 'idle' || current.state === 'sensing') {
-      // Start intent timer
       const intentTs = current.intentTimestamp ?? now;
       const elapsed = now - intentTs;
       if (elapsed >= PROXIMITY.intentDelay) {
-        // Intent confirmed → expanding
-        return {
-          ...current,
-          proximity,
-          state: proximity >= 0.8 ? 'preview' : 'expanding',
-          intentTimestamp: intentTs,
-        };
+        // Intent confirmed → jump straight to preview (no continuous expanding)
+        return { ...current, proximity, state: 'preview', intentTimestamp: intentTs, collapsedAt: null };
       }
-      return {
-        ...current,
-        proximity,
-        state: 'sensing',
-        intentTimestamp: intentTs,
-      };
+      return { ...current, proximity, state: 'sensing', intentTimestamp: intentTs };
     }
 
+    // expanding → promote to preview (legacy compat)
     if (current.state === 'expanding') {
-      if (proximity >= 0.8) {
-        return { ...current, proximity, state: 'preview' };
-      }
-      return { ...current, proximity };
+      return { ...current, proximity, state: 'preview', collapsedAt: null };
     }
 
+    // preview → stay in preview
     if (current.state === 'preview') {
       return { ...current, proximity };
     }
@@ -274,18 +293,25 @@ class ProximityFieldEngine {
     return { ...current, proximity };
   }
 
-  private hasChanged(next: ProximityFieldSnapshot): boolean {
+  /** Check if any edge state changed (not just proximity values) */
+  private hasStateChanged(next: ProximityFieldSnapshot): boolean {
     const prev = this.snapshot;
     return (
       prev.left.state !== next.left.state ||
       prev.right.state !== next.right.state ||
       prev.top.state !== next.top.state ||
       prev.bottom.state !== next.bottom.state ||
-      prev.dominantEdge !== next.dominantEdge ||
-      Math.abs(prev.left.proximity - next.left.proximity) > 0.01 ||
-      Math.abs(prev.right.proximity - next.right.proximity) > 0.01 ||
-      Math.abs(prev.top.proximity - next.top.proximity) > 0.01 ||
-      Math.abs(prev.bottom.proximity - next.bottom.proximity) > 0.01
+      prev.dominantEdge !== next.dominantEdge
+    );
+  }
+
+  private hasEdgeStateChanged(next: ProximityFieldSnapshot): boolean {
+    const prev = this.snapshot;
+    return (
+      prev.left.state !== next.left.state ||
+      prev.right.state !== next.right.state ||
+      prev.top.state !== next.top.state ||
+      prev.bottom.state !== next.bottom.state
     );
   }
 

@@ -18,6 +18,7 @@ import { type ReactNode, useEffect, useState } from 'react';
 import { tokens } from '../theme/tokens';
 import type { PanelId, SourceBasis } from '../contracts/events';
 import { useActiveObject } from '../stores/useSyncExternalStore';
+import { NudgeControls } from '../gravity/NudgeControls';
 
 interface PanelShellProps {
   panelId: PanelId;
@@ -28,6 +29,15 @@ interface PanelShellProps {
   /** Badge count for waiting content (validation, artifacts, proposals, diagnostics) */
   badgeCount?: number;
 }
+
+/** Panels that show nudge controls */
+const NUDGE_PANELS: PanelId[] = ['explorer', 'work', 'reference'];
+type NudgePosition = 'left' | 'right' | 'center';
+const NUDGE_POSITION_MAP: Record<string, NudgePosition> = {
+  explorer: 'left',
+  work: 'center',
+  reference: 'right',
+};
 
 /** Panels that are always relevant regardless of active object */
 const ALWAYS_RELEVANT: PanelId[] = ['work', 'system'];
@@ -130,6 +140,10 @@ export function PanelShell({ panelId, title, children, basis = 'mock', isMock = 
           )}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: tokens.space.xs }}>
+          {/* Panel-local nudge controls — low-visibility, glow on hover */}
+          {NUDGE_PANELS.includes(panelId) && (
+            <NudgeControls position={NUDGE_POSITION_MAP[panelId] ?? 'center'} />
+          )}
           {/* Badge dot for waiting content */}
           {badgeCount != null && badgeCount > 0 && (
             <span style={{

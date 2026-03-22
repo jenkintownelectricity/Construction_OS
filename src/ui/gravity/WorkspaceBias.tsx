@@ -1,23 +1,22 @@
 /**
- * Construction OS — Workspace Bias Controls
+ * Construction OS — Workspace Bias Controls (Stabilized)
  *
- * Four controls in workspace header:
- *   + expand workspace (increase dominance)
- *   - shrink workspace (increase surrounding visibility)
- *   ← visual/spatial bias (expand right visual usage)
- *   → document/reference bias (expand left document usage)
+ * Controls wire to shared LayoutState — changes real layout state,
+ * not visual placeholders.
  *
- * No freeform manual resizing. Deterministic bias steps.
+ *   + expand workspace (increases workspace_scale)
+ *   - shrink workspace (decreases workspace_scale)
+ *   ← visual/spatial bias (decreases horizontal_bias)
+ *   → document/reference bias (increases horizontal_bias)
  */
 
 import { useCallback } from 'react';
 import { tokens } from '../theme/tokens';
 import { PROXIMITY } from './ProximityConstants';
+import { layoutStore } from './LayoutState';
 
 export interface BiasState {
-  /** Workspace share percentage (40-90) */
   workspaceShare: number;
-  /** Horizontal bias: negative = visual/spatial, positive = document/reference */
   horizontalBias: number;
 }
 
@@ -28,31 +27,27 @@ interface WorkspaceBiasProps {
 
 export function WorkspaceBiasControls({ bias, onBiasChange }: WorkspaceBiasProps) {
   const handleExpand = useCallback(() => {
-    onBiasChange({
-      ...bias,
-      workspaceShare: Math.min(bias.workspaceShare + PROXIMITY.biasStep, PROXIMITY.workspaceMaxShare),
-    });
+    const newShare = Math.min(bias.workspaceShare + PROXIMITY.biasStep, PROXIMITY.workspaceMaxShare);
+    layoutStore.setWorkspaceScale(newShare);
+    onBiasChange({ ...bias, workspaceShare: newShare });
   }, [bias, onBiasChange]);
 
   const handleShrink = useCallback(() => {
-    onBiasChange({
-      ...bias,
-      workspaceShare: Math.max(bias.workspaceShare - PROXIMITY.biasStep, PROXIMITY.workspaceMinShare),
-    });
+    const newShare = Math.max(bias.workspaceShare - PROXIMITY.biasStep, PROXIMITY.workspaceMinShare);
+    layoutStore.setWorkspaceScale(newShare);
+    onBiasChange({ ...bias, workspaceShare: newShare });
   }, [bias, onBiasChange]);
 
   const handleVisualBias = useCallback(() => {
-    onBiasChange({
-      ...bias,
-      horizontalBias: Math.max(bias.horizontalBias - PROXIMITY.biasStep, -40),
-    });
+    const newBias = Math.max(bias.horizontalBias - PROXIMITY.biasStep, -40);
+    layoutStore.setHorizontalBias(newBias);
+    onBiasChange({ ...bias, horizontalBias: newBias });
   }, [bias, onBiasChange]);
 
   const handleDocBias = useCallback(() => {
-    onBiasChange({
-      ...bias,
-      horizontalBias: Math.min(bias.horizontalBias + PROXIMITY.biasStep, 40),
-    });
+    const newBias = Math.min(bias.horizontalBias + PROXIMITY.biasStep, 40);
+    layoutStore.setHorizontalBias(newBias);
+    onBiasChange({ ...bias, horizontalBias: newBias });
   }, [bias, onBiasChange]);
 
   return (
@@ -93,10 +88,7 @@ export function WorkspaceBiasControls({ bias, onBiasChange }: WorkspaceBiasProps
 }
 
 function BiasButton({ label, title, onClick, active }: {
-  label: string;
-  title: string;
-  onClick: () => void;
-  active: boolean;
+  label: string; title: string; onClick: () => void; active: boolean;
 }) {
   return (
     <button

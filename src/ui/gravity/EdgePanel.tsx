@@ -1,16 +1,15 @@
 /**
- * Construction OS — Reactive Edge Panel
+ * Construction OS — Reactive Edge Panel (Stabilized)
  *
- * A panel that lives on a viewport edge and responds to proximity field state.
- * Transitions between idle strip → expanding → preview → locked states.
+ * Uses discrete intent-state widths instead of continuous pointer-driven sizing.
+ * States: idle (4px) → armed (4px) → preview (320px) → locked (380px)
  *
- * Left Edge: documents / specs / PDFs / references
- * Right Edge: drawings / details / spatial / visual previews
+ * No raw-pointer width multiplication. Transitions are deterministic.
  */
 
 import { type ReactNode, useCallback } from 'react';
 import { tokens } from '../theme/tokens';
-import { PROXIMITY, type EdgeId, type EdgeState } from './ProximityConstants';
+import { PROXIMITY, type EdgeState } from './ProximityConstants';
 import { glassMorphStyle } from './GlassMorph';
 import { proximityField } from './ProximityField';
 
@@ -23,15 +22,15 @@ interface EdgePanelProps {
 }
 
 export function EdgePanel({ edge, edgeState, proximity, children, title }: EdgePanelProps) {
-  const isActive = edgeState === 'expanding' || edgeState === 'preview' || edgeState === 'locked';
+  const isActive = edgeState === 'preview' || edgeState === 'locked';
   const isLocked = edgeState === 'locked';
 
-  // Calculate width based on state
+  // Discrete state-based width — no continuous raw-pointer multiplication
   const width = (() => {
     switch (edgeState) {
       case 'idle': return PROXIMITY.edgeIdleWidth;
-      case 'sensing': return PROXIMITY.edgeIdleWidth + (proximity * 8);
-      case 'expanding': return PROXIMITY.edgeIdleWidth + (proximity * (PROXIMITY.edgePreviewWidth - PROXIMITY.edgeIdleWidth));
+      case 'sensing': return PROXIMITY.edgeIdleWidth;
+      case 'expanding': return PROXIMITY.edgePreviewWidth; // jump to preview
       case 'preview': return PROXIMITY.edgePreviewWidth;
       case 'locked': return PROXIMITY.edgeLockedWidth;
       default: return PROXIMITY.edgeIdleWidth;
@@ -42,9 +41,6 @@ export function EdgePanel({ edge, edgeState, proximity, children, title }: EdgeP
     proximityField.unlockEdge(edge);
   }, [edge]);
 
-  const easing = PROXIMITY.easing;
-  const duration = isActive ? PROXIMITY.expandDuration : PROXIMITY.collapseDuration;
-
   return (
     <div
       style={{
@@ -53,13 +49,12 @@ export function EdgePanel({ edge, edgeState, proximity, children, title }: EdgeP
         bottom: 0,
         [edge]: 0,
         width: `${width}px`,
-        ...(isActive ? glassMorphStyle : {}),
-        background: isActive ? glassMorphStyle.background : 'transparent',
+        background: isActive ? (glassMorphStyle.background as string) : 'transparent',
         backdropFilter: isActive ? 'blur(12px)' : 'none',
         WebkitBackdropFilter: isActive ? 'blur(12px)' : 'none',
         borderRight: edge === 'left' && isActive ? '1px solid rgba(255,255,255,0.06)' : 'none',
         borderLeft: edge === 'right' && isActive ? '1px solid rgba(255,255,255,0.06)' : 'none',
-        transition: `width ${duration}ms ${easing}, background ${duration}ms ${easing}, backdrop-filter ${duration}ms ${easing}`,
+        transition: `width ${PROXIMITY.expandDuration}ms ${PROXIMITY.easing}`,
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
@@ -67,7 +62,7 @@ export function EdgePanel({ edge, edgeState, proximity, children, title }: EdgeP
         pointerEvents: isActive ? 'auto' : 'none',
       }}
     >
-      {/* Edge idle indicator strip */}
+      {/* Edge idle indicator strip — subtle, not jumpy */}
       {!isActive && (
         <div style={{
           position: 'absolute',
@@ -80,12 +75,12 @@ export function EdgePanel({ edge, edgeState, proximity, children, title }: EdgeP
             ? `${tokens.color.accentPrimary}30`
             : `${tokens.color.fgMuted}15`,
           borderRadius: edge === 'left' ? '0 2px 2px 0' : '2px 0 0 2px',
-          transition: `background ${PROXIMITY.expandDuration}ms ${easing}`,
+          transition: `background ${PROXIMITY.expandDuration}ms ${PROXIMITY.easing}`,
           pointerEvents: 'none',
         }} />
       )}
 
-      {/* Panel content — visible when expanded */}
+      {/* Panel content — visible when in preview or locked state */}
       {isActive && (
         <>
           {/* Panel header */}
@@ -117,31 +112,26 @@ export function EdgePanel({ edge, edgeState, proximity, children, title }: EdgeP
                   LOCKED
                 </span>
               )}
-              {isLocked && (
-                <button
-                  onClick={handleUnlock}
-                  style={{
-                    padding: `${tokens.space.xs} ${tokens.space.sm}`,
-                    background: 'rgba(255,255,255,0.06)',
-                    color: tokens.color.fgMuted,
-                    border: 'none',
-                    borderRadius: tokens.radius.sm,
-                    cursor: 'pointer',
-                    fontSize: tokens.font.sizeXs,
-                  }}
-                >
-                  {'\u2715'}
-                </button>
-              )}
+              <button
+                onClick={handleUnlock}
+                style={{
+                  padding: `${tokens.space.xs} ${tokens.space.sm}`,
+                  background: 'rgba(255,255,255,0.06)',
+                  color: tokens.color.fgMuted,
+                  border: 'none',
+                  borderRadius: tokens.radius.sm,
+                  cursor: 'pointer',
+                  fontSize: tokens.font.sizeXs,
+                }}
+                title="Close panel"
+              >
+                {'\u2715'}
+              </button>
             </div>
           </div>
 
           {/* Panel body */}
-          <div style={{
-            flex: 1,
-            overflow: 'auto',
-            padding: tokens.space.sm,
-          }}>
+          <div style={{ flex: 1, overflow: 'auto', padding: tokens.space.sm }}>
             {children}
           </div>
         </>
