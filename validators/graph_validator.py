@@ -2,12 +2,17 @@
 Graph Validator for Construction_Pattern_Language_OS
 
 Validates the pattern relationship graph:
-  - All source_id and target_id references point to existing entities
+  - All source and target references point to existing entities
   - No dangling references
   - No self-referencing relationships
   - relationship_type must be one of: adjacency, conflict, dependency
   - Artifact intent pattern_refs must reference existing entities
   - Constraint profile applies_to references must reference existing entities
+  - Dependency subgraph is acyclic (no circular dependencies)
+  - Adjacency cycles are allowed (bidirectional adjacency is valid)
+  - Conflict relationships are symmetric (A conflicts B implies B conflicts A)
+  - Deprecation/index integrity (no deprecated IDs referenced)
+  - Schema/version compatibility across entities
 
 Fail-closed: any violation causes validation failure.
 """
@@ -16,8 +21,9 @@ import json
 import sys
 import os
 import yaml
+from collections import defaultdict, deque
 from pathlib import Path
-from typing import Dict, List, Set
+from typing import Dict, List, Set, Tuple
 
 
 VALID_RELATIONSHIP_TYPES = {"adjacency", "conflict", "dependency"}
@@ -127,6 +133,187 @@ def collect_constraint_profiles(root_dir: str) -> List[dict]:
     return profiles
 
 
+def extract_ref_id(ref) -> str:
+    """Extract an entity ID from a reference that may be a string or a dict with 'id' key."""
+    if isinstance(ref, str):
+        return ref
+    if isinstance(ref, dict):
+        return ref.get("id", "")
+    return ""
+
+
+def extract_source_target(rel: dict) -> Tuple[str, str]:
+    """Extract source and target IDs from a relationship record.
+
+    Handles both flat format (source_id, target_id) and nested format
+    (source.id, target.id).
+    """
+    source = rel.get("source_id", "")
+    if not source:
+        source_obj = rel.get("source", {})
+        if isinstance(source_obj, dict):
+            source = source_obj.get("id", "")
+
+    target = rel.get("target_id", "")
+    if not target:
+        target_obj = rel.get("target", {})
+        if isinstance(target_obj, dict):
+            target = target_obj.get("id", "")
+
+    return source, target
+
+
+def extract_rel_type(rel: dict) -> str:
+    """Extract relationship type, handling both 'relationship_type' and 'type' keys."""
+    return rel.get("relationship_type", "") or rel.get("type", "")
+
+
+def detect_dependency_cycles(relationships: List[dict]) -> List[str]:
+    """Check that the dependency subgraph is acyclic (DAG). Returns error strings."""
+    adj: Dict[str, Set[str]] = defaultdict(set)
+    for rel in relationships:
+        rel_type = extract_rel_type(rel)
+        if rel_type != "dependency":
+            continue
+        source, target = extract_source_target(rel)
+        if source and target:
+            adj[source].add(target)
+
+    # Topological sort via Kahn's algorithm
+    in_degree: Dict[str, int] = defaultdict(int)
+    all_nodes: Set[str] = set()
+    for src, targets in adj.items():
+        all_nodes.add(src)
+        for tgt in targets:
+            all_nodes.add(tgt)
+            in_degree[tgt] += 1
+
+    queue = deque(n for n in all_nodes if in_degree[n] == 0)
+    visited = 0
+    while queue:
+        node = queue.popleft()
+        visited += 1
+        for neighbor in adj.get(node, set()):
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                queue.append(neighbor)
+
+    errors = []
+    if visited < len(all_nodes):
+        cycle_nodes = [n for n in all_nodes if in_degree[n] > 0]
+        errors.append(
+            f"Dependency cycle detected involving: {sorted(cycle_nodes)}"
+        )
+    return errors
+
+
+def check_conflict_symmetry(relationships: List[dict]) -> List[str]:
+    """Check that conflict relationships are symmetric.
+
+    If A conflicts with B, there must be a corresponding B conflicts with A
+    relationship (or the same relationship is understood as bidirectional).
+    Returns warnings for missing symmetric pairs.
+    """
+    conflict_pairs: Set[Tuple[str, str]] = set()
+    for rel in relationships:
+        rel_type = extract_rel_type(rel)
+        if rel_type != "conflict":
+            continue
+        source, target = extract_source_target(rel)
+        if source and target:
+            conflict_pairs.add((source, target))
+
+    errors = []
+    for source, target in conflict_pairs:
+        if (target, source) not in conflict_pairs:
+            errors.append(
+                f"Conflict asymmetry: '{source}' conflicts with '{target}' "
+                f"but no reverse conflict '{target}' → '{source}' exists"
+            )
+    return errors
+
+
+def check_schema_version_compatibility(
+    relationships: List[dict],
+    artifact_intents: List[dict],
+    constraint_profiles: List[dict],
+    all_records: List[dict],
+) -> List[str]:
+    """Check that all entities use compatible schema_version and pattern_language_version."""
+    errors = []
+    all_entities = relationships + artifact_intents + constraint_profiles + all_records
+    versions_seen: Dict[str, Set[str]] = {
+        "schema_version": set(),
+        "pattern_language_version": set(),
+    }
+
+    for entity in all_entities:
+        for key in ("schema_version", "pattern_language_version"):
+            val = entity.get(key, "")
+            if val:
+                versions_seen[key].add(val)
+
+    for key, vals in versions_seen.items():
+        if len(vals) > 1:
+            errors.append(
+                f"Mixed {key} values detected: {sorted(vals)}. "
+                f"All entities must use compatible versions."
+            )
+
+    return errors
+
+
+def check_deprecation_integrity(all_ids: Set[str], root_dir: str) -> List[str]:
+    """Check that no entity references a deprecated ID.
+
+    Deprecated entities (if any exist) are identified by a 'deprecated: true'
+    field or 'status: deprecated'. Any reference to a deprecated ID from a
+    non-deprecated entity is an error.
+    """
+    deprecated_ids: Set[str] = set()
+    errors = []
+
+    for subdir in ("pattern_language", "pattern_relationships",
+                    "artifact_intents", "constraint_profiles"):
+        dirpath = os.path.join(root_dir, subdir)
+        for filepath in gather_files_from(dirpath):
+            for record in extract_records(filepath):
+                rid = record.get("id", "")
+                if not rid:
+                    continue
+                is_deprecated = (
+                    record.get("deprecated", False) is True
+                    or record.get("status", "").lower() == "deprecated"
+                )
+                if is_deprecated:
+                    deprecated_ids.add(rid)
+
+    if not deprecated_ids:
+        return errors
+
+    # Scan all references for deprecated IDs
+    rel_dir = os.path.join(root_dir, "pattern_relationships")
+    for filepath in gather_files_from(rel_dir):
+        for record in extract_records(filepath):
+            rid = record.get("id", "")
+            if rid in deprecated_ids:
+                continue
+            source, target = extract_source_target(record)
+            src_file = record.get("_source_file", "<unknown>")
+            if source in deprecated_ids:
+                errors.append(
+                    f"Reference to deprecated ID '{source}' in "
+                    f"relationship '{rid}'  [{src_file}]"
+                )
+            if target in deprecated_ids:
+                errors.append(
+                    f"Reference to deprecated ID '{target}' in "
+                    f"relationship '{rid}'  [{src_file}]"
+                )
+
+    return errors
+
+
 def validate_graph(root_dir: str) -> bool:
     """Validate the relationship graph and cross-references. Fail-closed."""
     errors: List[str] = []
@@ -156,9 +343,8 @@ def validate_graph(root_dir: str) -> bool:
     # ---- Validate relationships ----
     for rel in relationships:
         rel_id = rel.get("id", "UNKNOWN")
-        source = rel.get("source_id", "")
-        target = rel.get("target_id", "")
-        rel_type = rel.get("relationship_type", "")
+        source, target = extract_source_target(rel)
+        rel_type = extract_rel_type(rel)
         src_file = rel.get("_source_file", "<unknown>")
 
         # Validate relationship type
@@ -168,31 +354,31 @@ def validate_graph(root_dir: str) -> bool:
                 f"(must be one of {sorted(VALID_RELATIONSHIP_TYPES)})  [{src_file}]"
             )
 
-        # Validate source_id exists
+        # Validate source exists
         if not source:
             errors.append(
-                f"Relationship '{rel_id}': missing source_id  [{src_file}]"
+                f"Relationship '{rel_id}': missing source  [{src_file}]"
             )
         elif source not in all_ids:
             errors.append(
-                f"Relationship '{rel_id}': dangling source_id '{source}'  [{src_file}]"
+                f"Relationship '{rel_id}': dangling source '{source}'  [{src_file}]"
             )
 
-        # Validate target_id exists
+        # Validate target exists
         if not target:
             errors.append(
-                f"Relationship '{rel_id}': missing target_id  [{src_file}]"
+                f"Relationship '{rel_id}': missing target  [{src_file}]"
             )
         elif target not in all_ids:
             errors.append(
-                f"Relationship '{rel_id}': dangling target_id '{target}'  [{src_file}]"
+                f"Relationship '{rel_id}': dangling target '{target}'  [{src_file}]"
             )
 
         # No self-referencing
         if source and target and source == target:
             errors.append(
                 f"Relationship '{rel_id}': self-referencing "
-                f"(source_id == target_id == '{source}')  [{src_file}]"
+                f"(source == target == '{source}')  [{src_file}]"
             )
 
     # ---- Validate artifact intent pattern_refs ----
@@ -203,9 +389,10 @@ def validate_graph(root_dir: str) -> bool:
         if pattern_refs is None:
             pattern_refs = []
         for ref in pattern_refs:
-            if ref not in all_ids:
+            ref_id = extract_ref_id(ref)
+            if ref_id and ref_id not in all_ids:
                 errors.append(
-                    f"ArtifactIntent '{art_id}': dangling pattern_refs reference '{ref}'  [{src_file}]"
+                    f"ArtifactIntent '{art_id}': dangling pattern_refs reference '{ref_id}'  [{src_file}]"
                 )
 
     # ---- Validate constraint profile applies_to references ----
@@ -216,9 +403,10 @@ def validate_graph(root_dir: str) -> bool:
         if applies_to is None:
             applies_to = []
         for ref in applies_to:
-            if ref not in all_ids:
+            ref_id = extract_ref_id(ref)
+            if ref_id and ref_id not in all_ids:
                 errors.append(
-                    f"ConstraintProfile '{cns_id}': dangling applies_to reference '{ref}'  [{src_file}]"
+                    f"ConstraintProfile '{cns_id}': dangling applies_to reference '{ref_id}'  [{src_file}]"
                 )
 
     # ---- Check for duplicate relationship IDs ----
@@ -234,6 +422,33 @@ def validate_graph(root_dir: str) -> bool:
         else:
             seen_rel_ids[rid] = src_file
 
+    # ---- Dependency acyclicity (DAG check) ----
+    cycle_errors = detect_dependency_cycles(relationships)
+    errors.extend(cycle_errors)
+
+    # ---- Adjacency cycles are allowed ----
+    # Adjacency relationships are permitted to form cycles (bidirectional
+    # adjacency is architecturally valid — A adjacent to B and B adjacent to A).
+    # No validation error is raised for adjacency cycles.
+
+    # ---- Conflict symmetry ----
+    symmetry_errors = check_conflict_symmetry(relationships)
+    errors.extend(symmetry_errors)
+
+    # ---- Schema/version compatibility ----
+    all_pattern_records = []
+    pattern_lang_dir = os.path.join(root_dir, "pattern_language")
+    for filepath in gather_files_from(pattern_lang_dir):
+        all_pattern_records.extend(extract_records(filepath))
+    version_errors = check_schema_version_compatibility(
+        relationships, artifact_intents, constraint_profiles, all_pattern_records
+    )
+    errors.extend(version_errors)
+
+    # ---- Deprecation/index integrity ----
+    dep_errors = check_deprecation_integrity(all_ids, root_dir)
+    errors.extend(dep_errors)
+
     # ---- Report ----
     print("Graph Validation Report")
     print("=" * 60)
@@ -241,6 +456,16 @@ def validate_graph(root_dir: str) -> bool:
     print(f"Relationships found:    {len(relationships)}")
     print(f"Artifact intents found: {len(artifact_intents)}")
     print(f"Constraint profiles:    {len(constraint_profiles)}")
+    print(f"Checks performed:")
+    print(f"  - Reference integrity (source/target/applies_to)")
+    print(f"  - Relationship type validation")
+    print(f"  - Self-reference detection")
+    print(f"  - Duplicate ID detection")
+    print(f"  - Dependency acyclicity (DAG)")
+    print(f"  - Adjacency cycles (allowed)")
+    print(f"  - Conflict symmetry")
+    print(f"  - Schema/version compatibility")
+    print(f"  - Deprecation/index integrity")
     print(f"Errors:                 {len(errors)}")
 
     if errors:

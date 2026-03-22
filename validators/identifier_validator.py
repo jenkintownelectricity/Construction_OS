@@ -4,6 +4,12 @@ Identifier Validator for Construction_Pattern_Language_OS
 Validates that all identifiers conform to the canonical format:
   <CLASS>-CONSTR-<TYPE>-<NAME>-<INDEX>-R<REV>
 
+Two-tier validation:
+  1. Format validation: every identifier found anywhere must match the format
+  2. Uniqueness validation: each top-level entity 'id' (the defining occurrence)
+     must be unique. Cross-references from relationships, constraints, and
+     artifact intents are NOT counted as duplicate definitions.
+
 Fail-closed: any non-conforming identifier causes validation failure.
 """
 
@@ -58,15 +64,15 @@ def validate_identifier(identifier: str) -> Tuple[bool, str]:
 def validate_uniqueness(
     id_sources: Dict[str, List[str]],
 ) -> List[str]:
-    """Check that no identifier appears in more than one location.
-    id_sources maps identifier -> list of file paths where it was found.
+    """Check that no top-level entity identifier is defined in more than one file.
+    id_sources maps identifier -> list of file paths where it was defined.
     Returns list of error strings for duplicates.
     """
     errors = []
     for ident, sources in id_sources.items():
         if len(sources) > 1:
             locations = ", ".join(sources)
-            errors.append(f"DUPLICATE ID: '{ident}' found in: {locations}")
+            errors.append(f"DUPLICATE DEFINITION: '{ident}' defined in: {locations}")
     return errors
 
 
@@ -75,7 +81,7 @@ def load_yaml_file(filepath: str) -> object:
     try:
         with open(filepath, "r") as f:
             return yaml.safe_load(f)
-    except (yaml.YAMLError, IOError) as exc:
+    except (yaml.YAMLError, IOError):
         return None
 
 
@@ -88,7 +94,7 @@ def load_json_file(filepath: str) -> object:
         return None
 
 
-def extract_identifiers(data: object) -> List[str]:
+def extract_all_identifiers(data: object) -> List[str]:
     """Recursively extract all identifier-like strings from a data structure."""
     identifiers = []
 
@@ -107,19 +113,25 @@ def extract_identifiers(data: object) -> List[str]:
     return identifiers
 
 
-def collect_identifiers_from_file(filepath: str) -> List[str]:
-    """Extract all identifiers from a YAML or JSON file."""
+def extract_top_level_id(data: object) -> str:
+    """Extract only the top-level 'id' field from a data structure.
+
+    This identifies the entity being DEFINED (not referenced).
+    """
+    if isinstance(data, dict):
+        rid = data.get("id", "")
+        if isinstance(rid, str) and "CONSTR" in rid:
+            return rid
+    return ""
+
+
+def load_file(filepath: str) -> object:
+    """Load a YAML or JSON file."""
     if filepath.endswith((".yaml", ".yml")):
-        data = load_yaml_file(filepath)
+        return load_yaml_file(filepath)
     elif filepath.endswith(".json"):
-        data = load_json_file(filepath)
-    else:
-        return []
-
-    if data is None:
-        return []
-
-    return extract_identifiers(data)
+        return load_json_file(filepath)
+    return None
 
 
 def gather_files(root_dir: str) -> List[str]:
@@ -140,9 +152,10 @@ def validate_directory(root_dir: str) -> bool:
     Fail-closed: returns False on any error.
     """
     errors: List[str] = []
-    id_sources: Dict[str, List[str]] = {}
+    definition_sources: Dict[str, List[str]] = {}
     files_checked = 0
     total_ids = 0
+    total_definitions = 0
 
     files = gather_files(root_dir)
 
@@ -150,23 +163,34 @@ def validate_directory(root_dir: str) -> bool:
         if ".git" in filepath or "schema" in Path(filepath).name:
             continue
         files_checked += 1
-        ids = collect_identifiers_from_file(filepath)
-        for ident in ids:
+
+        data = load_file(filepath)
+        if data is None:
+            continue
+
+        # Extract ALL identifiers for format validation
+        all_ids = extract_all_identifiers(data)
+        for ident in all_ids:
             total_ids += 1
             valid, msg = validate_identifier(ident)
             if not valid:
                 errors.append(f"  {filepath}: {msg}")
-            id_sources.setdefault(ident, []).append(filepath)
 
-    dup_errors = validate_uniqueness(id_sources)
+        # Extract only the TOP-LEVEL id for uniqueness validation
+        top_id = extract_top_level_id(data)
+        if top_id:
+            total_definitions += 1
+            definition_sources.setdefault(top_id, []).append(filepath)
+
+    dup_errors = validate_uniqueness(definition_sources)
     for dup in dup_errors:
         errors.append(f"  {dup}")
 
     print("Identifier Validation Report")
     print("=" * 60)
     print(f"Files checked:      {files_checked}")
-    print(f"Identifiers found:  {total_ids}")
-    print(f"Unique identifiers: {len(id_sources)}")
+    print(f"Identifiers found:  {total_ids} ({total_definitions} definitions)")
+    print(f"Unique definitions: {len(definition_sources)}")
     print(f"Errors:             {len(errors)}")
 
     if errors:

@@ -1,66 +1,81 @@
 # =============================================================================
-# PatternVariant: Gravel Stop — Formed Metal
+# Example: Gravel Stop — Formed Metal
 # =============================================================================
-# Gravel stop brake-formed from sheet metal stock, allowing custom
-# profiles, gauges, and material selections.
+# Brake-formed sheet metal gravel stop installation example referencing
+# the CHEM-CONSTR-VAR-GRAVELFRM-104-R1 pattern variant.
 # =============================================================================
 
-id: "CHEM-CONSTR-VAR-FORMED-202-R1"
-name: "Gravel Stop — Formed Metal"
+id: EXAMPLE-EDGE-GRAVELFRM-104-001
+name: Formed Metal Gravel Stop Installation Example
 description: >
-  Gravel stop variant fabricated by brake-forming flat sheet metal stock
-  into the required L-shaped profile with a nailing hem. Brake-forming
-  allows custom profile dimensions, variable leg heights, and a wide
-  selection of base metals including galvanized steel, stainless steel,
-  copper, and zinc. Formed gravel stops are typically fabricated in 8 to
-  10 foot lengths and joined with 6-inch overlap splices sealed with
-  roofing cement or butyl tape. The horizontal flange is mechanically
-  fastened to the roof deck and stripped in with the roof membrane. This
-  is the most cost-effective gravel stop option for standard commercial
-  applications and is readily available from local sheet metal shops.
-
+  Worked example of a brake-formed sheet metal gravel stop installed on
+  a low-slope commercial roof with a built-up or modified bitumen membrane.
+  The gravel stop retains aggregate ballast at the roof perimeter and
+  provides a finished edge detail.  This example uses 22 gauge galvanized
+  steel formed to a 4-inch face height with a continuous cleat anchor.
 schema_version: "1.0.0"
 pattern_language_version: "1.0.0"
 entity_revision: 1
 created_at: "2026-03-22T00:00:00Z"
 
-pattern_id: "DNA-CONSTR-PAT-EDGE-GRAVELSTOP-002-R1"
+variant_id: CHEM-CONSTR-VAR-GRAVELFRM-104-R1
+pattern_id: DNA-CONSTR-PAT-EDGE-GRAVELSTOP-011-R1
 
-method: "brake_forming"
+method: brake_formed_installation
 
 materials:
-  - name: "24-gauge galvanized steel sheet"
-    specification: "ASTM A653/A653M, G90 coating designation"
-    role: "edge_flashing"
-  - name: "12-gauge galvanized roofing nails"
-    specification: "ASTM F1667, Type I"
-    role: "fastener"
-  - name: "Roofing cement"
-    specification: "ASTM D4586, Type I"
-    role: "sealant"
-  - name: "Peel-and-stick membrane strip"
-    specification: "ASTM D1970"
-    role: "stripping_membrane"
+  - name: 22-gauge galvanized steel sheet
+    specification: ASTM A653/A653M, G90 coating designation
+    role: edge_flashing
+  - name: continuous cleat
+    specification: same material as gravel stop, 2" wide, nailed at 8" OC
+    role: anchor
+  - name: 12-gauge galvanized roofing nails
+    specification: ASTM F1667, Type I, hot-dip galvanized
+    role: fastener
+  - name: roofing cement
+    specification: ASTM D4586, Type I
+    role: sealant
+  - name: peel-and-stick membrane strip
+    specification: ASTM D1970, 4" minimum width
+    role: stripping_membrane
 
 dimensional_constraints:
-  min_height: "3 in"
-  max_height: "6 in"
-  min_width: "4 in"
-  min_thickness: "0.024 in"
-  tolerance: "+/- 1/8 in"
+  face_height_min_inches: 3
+  face_height_actual_inches: 4
+  max_unsupported_height_inches: 6
+  min_cleat_width_inches: 2
+  piece_length_feet: 10
+  splice_overlap_inches: 6
+
+installation_steps:
+  - step: 1
+    action: >
+      Install continuous cleat along the roof edge, nailing through the
+      cleat and nailer into the blocking at 8 inches on center.
+  - step: 2
+    action: >
+      Set formed gravel stop sections onto the cleat, engaging the
+      bottom hem of the gravel stop over the cleat leg.
+  - step: 3
+    action: >
+      Overlap end joints a minimum of 6 inches.  Apply roofing cement
+      between overlapping surfaces.  Orient lap direction opposing
+      the prevailing wind.
+  - step: 4
+    action: >
+      Flash the horizontal flange into the roof membrane system using
+      a minimum 4-inch-wide peel-and-stick membrane strip lapped from
+      the deck surface onto the flange.
 
 manufacturer_refs:
-  - "Local sheet metal fabrication shop"
-  - "Exceptional Metals"
-  - "Metal Era"
+  - Exceptional Metals
+  - Metal Era
+  - local sheet metal fabrication shop
 
 notes: >
-  Formed gravel stops should have a 3/8 in hemmed edge on the exposed
-  vertical leg to provide stiffness and a safe finished edge. Overlap
-  splices must be a minimum of 6 in with sealant between lapped surfaces.
-  Install with the lap direction opposing the prevailing wind. Nail spacing
-  is 8 in o.c. along the horizontal flange in field zones and 4 in o.c.
-  in perimeter and corner zones per the roof system manufacturer
-  requirements. Flash-in the horizontal flange with a minimum 4 in wide
-  strip of self-adhering modified bitumen membrane lapping from the deck
-  onto the flange.
+  Hem all exposed edges with a minimum 3/8" hem for stiffness and safety.
+  In high-wind zones, reduce fastener spacing to 4 inches on center in
+  perimeter and corner zones per ANSI/SPRI ES-1.  Verify face height does
+  not exceed maximum unsupported height constraint without adding stiffening
+  ribs or intermediate support.

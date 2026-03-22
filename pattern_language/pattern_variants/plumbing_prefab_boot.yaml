@@ -1,35 +1,26 @@
+id: CHEM-CONSTR-VAR-PLUMBBOOT-114-R1
+name: Prefabricated Pipe Boot
+description: >
+  Factory-molded EPDM pipe boot providing a one-piece seal around
+  plumbing vent penetrations.  Stainless steel clamp compresses the
+  boot collar against the pipe for a watertight seal.
 schema_version: "1.0.0"
 pattern_language_version: "1.0.0"
 entity_revision: 1
 created_at: "2026-03-22T00:00:00Z"
-
-id: "CHEM-CONSTR-VAR-PLUMBBOOT-114-R1"
-name: "Prefabricated Pipe Boot"
-description: >
-  A pipe penetration flashing variant using a factory-fabricated elastomeric boot
-  that slips over the penetrating pipe and seals to the roof membrane at a flat
-  base flange. The boot is typically molded from EPDM rubber with a flexible
-  cone that is trimmed to match the pipe diameter and clamped with a stainless
-  steel band. This is the preferred method for standard circular pipe
-  penetrations as it provides a reliable, low-maintenance, factory-controlled
-  seal geometry.
-pattern_id: "DNA-CONSTR-PAT-PIPE-PLUMBING-040-R1"
-method: "Factory-molded elastomeric boot with stainless steel pipe clamp and membrane-bonded flange"
+pattern_id: DNA-CONSTR-PAT-PIPE-PLUMBING-040-R1
+method: prefab_boot_installation
 materials:
-  - name: "Pipe boot"
-    specification: "EPDM rubber boot per ASTM C1085, UV and ozone resistant, temperature range -40F to 250F"
-  - name: "Pipe clamp"
-    specification: "300-series stainless steel worm-drive clamp, sized to pipe OD, tightened to manufacturer torque spec"
-  - name: "Flange adhesive"
-    specification: "Membrane-compatible bonding adhesive per roof system manufacturer, applied to boot base flange"
-  - name: "Membrane stripping"
-    specification: "6 in wide membrane strip over boot flange to field membrane transition, fully adhered"
+  - name: EPDM pipe boot
+    specification: per ASTM C1085, UV-stabilized, -40°F to 212°F service range
+  - name: stainless steel clamp
+    specification: worm-drive type, 300 series stainless steel
+  - name: membrane-compatible adhesive
+    specification: per roof membrane manufacturer requirements
 dimensional_constraints:
   min_flange_width_inches: 4
   max_pipe_diameter_inches: 6
-  min_boot_height_above_membrane_inches: 2
-  clamp_position_above_membrane_inches: 1
-notes:
-  - "Trim the boot cone at the graduation mark matching the pipe outside diameter for a snug fit."
-  - "Boot must be fully bonded to the roof membrane with no voids beneath the flange."
-  - "For pipe diameters exceeding 6 inches, use a curb-mounted detail or custom-fabricated flashing."
+notes: >
+  Trim boot cone to provide a snug fit around the pipe.  Clamp must
+  be tightened after 24 hours to compensate for EPDM relaxation.
+  Bond boot flange to the membrane per manufacturer instructions.

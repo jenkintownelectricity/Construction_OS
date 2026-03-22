@@ -1,34 +1,26 @@
+id: CHEM-CONSTR-VAR-CONDFLUSH-116-R1
+name: Flush-Mount Conduit Penetration
+description: >
+  Conduit penetrating the roof membrane at deck level with a
+  galvanized sleeve and umbrella flashing.  Suitable for smaller
+  diameter conduits where a raised curb is not practical.
 schema_version: "1.0.0"
 pattern_language_version: "1.0.0"
 entity_revision: 1
 created_at: "2026-03-22T00:00:00Z"
-
-id: "CHEM-CONSTR-VAR-CONDFLUSH-116-R1"
-name: "Flush-Mounted Conduit Penetration"
-description: >
-  A conduit penetration variant where individual conduits pass directly through
-  the roof membrane at deck level without a raised curb. Each conduit receives
-  an individual prefabricated pipe boot or is flashed with a field-fabricated
-  membrane collar. Flush mounting is used for single isolated conduits where a
-  curb would be unnecessarily complex. The penetration location must be in a
-  positive drainage area to prevent ponding around the base.
-pattern_id: "DNA-CONSTR-PAT-PIPE-CONDUIT-041-R1"
-method: "Individual pipe boot or membrane collar at each conduit at deck level"
+pattern_id: DNA-CONSTR-PAT-PIPE-CONDUIT-041-R1
+method: flush_mount_installation
 materials:
-  - name: "Pipe boot"
-    specification: "Prefabricated EPDM, TPO, or PVC boot sized to conduit OD, matching membrane type"
-  - name: "Compression clamp"
-    specification: "Stainless steel worm-drive clamp at conduit-to-boot interface"
-  - name: "Membrane adhesive"
-    specification: "Membrane-compatible bonding adhesive or hot-air weld for boot flange to field sheet"
-  - name: "Pipe sealant"
-    specification: "Polyurethane sealant at clamp-to-conduit interface"
+  - name: galvanized sleeve
+    specification: schedule 40 galvanized steel pipe, set in roof deck
+  - name: umbrella flashing
+    specification: lead or TPO pre-formed cone, sized to pipe OD
+  - name: polyurethane sealant
+    specification: single-component moisture-curing, ASTM C920 Type S
 dimensional_constraints:
-  boot_base_flange: "6 in minimum from conduit center to flange edge"
-  conduit_diameter_range: "3/4 in to 4 in typical"
-  minimum_spacing: "12 in on center between adjacent flush-mounted penetrations"
-  boot_height: "6 in minimum above membrane surface"
-notes:
-  - "Flush mounting is limited to single isolated conduits; use curb mounting for clusters."
-  - "Ensure positive drainage away from each penetration to prevent ponding."
-  - "UV-resistant boots required for all exposed conduit flashing."
+  min_height_above_roof_inches: 2
+  max_pipe_diameter_inches: 4
+notes: >
+  Sleeve must extend minimum 2 inches above finished roof surface.
+  Apply sealant around the conduit-to-sleeve annular space.  Bond
+  umbrella flashing flange to roof membrane.

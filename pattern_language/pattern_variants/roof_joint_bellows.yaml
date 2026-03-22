@@ -1,37 +1,28 @@
+id: CHEM-CONSTR-VAR-JOINTBELL-117-R1
+name: Bellows-Type Roof Expansion Joint
+description: >
+  Flexible EPDM bellows membrane spanning a structural expansion
+  joint in the roof deck.  Stainless steel retaining bars clamp the
+  bellows to raised curbs on each side of the joint, allowing cyclic
+  thermal and seismic movement.
 schema_version: "1.0.0"
 pattern_language_version: "1.0.0"
 entity_revision: 1
 created_at: "2026-03-22T00:00:00Z"
-
-id: "CHEM-CONSTR-VAR-JOINTBELL-117-R1"
-name: "Bellows-Type Roof Expansion Joint"
-description: >
-  A roof expansion joint variant using a flexible bellows membrane that spans the
-  gap between two raised curbs on either side of the structural joint. The
-  bellows is typically a factory-fabricated EPDM, thermoplastic, or reinforced
-  elastomeric sheet shaped into a loop or omega profile that accommodates
-  multi-directional movement. The bellows edges are clamped to the curb tops
-  with metal termination bars, and the roofing membrane is flashed up each curb
-  face independently.
-pattern_id: "DNA-CONSTR-PAT-JOINT-ROOF-050-R1"
-method: "Elastomeric bellows membrane spanning raised curbs with bar-clamped termination"
+pattern_id: DNA-CONSTR-PAT-JOINT-ROOF-050-R1
+method: bellows_installation
 materials:
-  - name: "Bellows membrane"
-    specification: "Factory-fabricated EPDM or TPO bellows, 60 mil minimum thickness, omega or loop profile"
-  - name: "Curbs"
-    specification: "Sheet metal curbs, 18 ga galvanized steel, minimum 8 in height, on each side of structural joint"
-  - name: "Termination bars"
-    specification: "Pre-drilled aluminum termination bars, 1 in x 1/8 in, with stainless steel fasteners"
-  - name: "Roofing membrane"
-    specification: "Field roofing membrane flashed up each curb independently, not crossing the joint"
-  - name: "Cover plate"
-    specification: "Optional removable metal cover plate for UV and traffic protection of bellows"
+  - name: EPDM bellows membrane
+    specification: 60-mil minimum, factory-formed loop, UV-stabilized
+  - name: stainless steel retaining bars
+    specification: 16 gauge, 1.5" wide, pre-drilled at 6" OC
+  - name: compressible filler
+    specification: closed-cell polyethylene foam, snug fit in joint gap
 dimensional_constraints:
-  curb_height: "8 in minimum above finished roof surface"
-  bellows_loop_depth: "Minimum 2x the expected joint movement range"
-  joint_width: "2 in to 8 in typical structural gap"
-  movement_capacity: "Plus or minus 50% of bellows loop depth"
-notes:
-  - "Bellows loop must be sized to accommodate the full structural engineer's stated movement range."
-  - "Corners and intersections require factory-fabricated transition pieces."
-  - "Bellows must not be adhered at the bottom of the loop to allow free movement."
+  min_joint_width_inches: 2
+  max_movement_inches: 4
+notes: >
+  Size bellows loop to accommodate expected movement plus 50% safety
+  factor.  Terminate roof membrane onto curb face below retaining
+  bar.  Fill joint gap loosely with compressible filler to support
+  bellows in the rest position.
