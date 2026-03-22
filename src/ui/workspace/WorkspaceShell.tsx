@@ -19,6 +19,10 @@ import { WorkPanel } from '../panels/work/WorkPanel';
 import { ReferencePanel } from '../panels/reference/ReferencePanel';
 import { SpatialPanel } from '../panels/spatial/SpatialPanel';
 import { SystemPanel } from '../panels/system/SystemPanel';
+import { AwarenessPanel } from '../panels/awareness/AwarenessPanel';
+import { ProposalMailbox } from '../panels/proposals/ProposalMailbox';
+import { RuntimeDiagnosticsPanel } from '../panels/diagnostics/RuntimeDiagnosticsPanel';
+import { AssistantConsole } from '../panels/assistant/AssistantConsole';
 import { initTruthEcho, destroyTruthEcho } from '../orchestration/TruthEcho';
 import { detectDeviceClass, getDeviceLayout } from '../orchestration/DeviceOrchestrator';
 import { activeObjectStore } from '../stores/activeObjectStore';
@@ -32,6 +36,10 @@ function WorkWrapper(_props: IDockviewPanelProps) { return <WorkPanel />; }
 function ReferenceWrapper(_props: IDockviewPanelProps) { return <ReferencePanel />; }
 function SpatialWrapper(_props: IDockviewPanelProps) { return <SpatialPanel />; }
 function SystemWrapper(_props: IDockviewPanelProps) { return <SystemPanel />; }
+function AwarenessWrapper(_props: IDockviewPanelProps) { return <AwarenessPanel />; }
+function ProposalsWrapper(_props: IDockviewPanelProps) { return <ProposalMailbox />; }
+function DiagnosticsWrapper(_props: IDockviewPanelProps) { return <RuntimeDiagnosticsPanel />; }
+function AssistantWrapper(_props: IDockviewPanelProps) { return <AssistantConsole />; }
 
 const PANEL_COMPONENTS: Record<string, React.FC<IDockviewPanelProps>> = {
   explorer: ExplorerWrapper,
@@ -39,6 +47,10 @@ const PANEL_COMPONENTS: Record<string, React.FC<IDockviewPanelProps>> = {
   reference: ReferenceWrapper,
   spatial: SpatialWrapper,
   system: SystemWrapper,
+  awareness: AwarenessWrapper,
+  proposals: ProposalsWrapper,
+  diagnostics: DiagnosticsWrapper,
+  assistant: AssistantWrapper,
 };
 
 // ─── Workspace Presets ──────────────────────────────────────────────────────
@@ -67,18 +79,31 @@ function applyPreset(api: DockviewReadyEvent['api'], preset: PresetName, deviceC
       api.addPanel({ id: 'explorer', component: 'explorer', title: 'EXPLORER', position: { referencePanel: workPanel, direction: 'left' } });
       api.addPanel({ id: 'reference', component: 'reference', title: 'REFERENCE', position: { referencePanel: workPanel, direction: 'right' } });
     } else {
-      // Desktop / Ultrawide: full cockpit
+      // Desktop / Ultrawide: full cockpit with governance panels
       // Top row: Explorer | Work | Reference
       const workPanel = api.addPanel({ id: 'work', component: 'work', title: 'WORK' });
       api.addPanel({ id: 'explorer', component: 'explorer', title: 'EXPLORER', position: { referencePanel: workPanel, direction: 'left' } });
       api.addPanel({ id: 'reference', component: 'reference', title: 'REFERENCE', position: { referencePanel: workPanel, direction: 'right' } });
 
-      // Bottom row: Spatial | System
-      api.addPanel({ id: 'spatial', component: 'spatial', title: 'SPATIAL', position: { referencePanel: workPanel, direction: 'below' } });
+      // Middle row: Awareness | Diagnostics | Proposals
+      api.addPanel({ id: 'awareness', component: 'awareness', title: 'AWARENESS', position: { referencePanel: workPanel, direction: 'below' } });
+      const awarenessPanel = api.panels.find((p) => p.id === 'awareness');
+      if (awarenessPanel) {
+        api.addPanel({ id: 'diagnostics', component: 'diagnostics', title: 'DIAGNOSTICS', position: { referencePanel: awarenessPanel, direction: 'right' } });
+        const diagnosticsPanel = api.panels.find((p) => p.id === 'diagnostics');
+        if (diagnosticsPanel) {
+          api.addPanel({ id: 'proposals', component: 'proposals', title: 'PROPOSALS', position: { referencePanel: diagnosticsPanel, direction: 'right' } });
+        }
+      }
 
+      // Bottom row: Spatial | System | Assistant
+      if (awarenessPanel) {
+        api.addPanel({ id: 'spatial', component: 'spatial', title: 'SPATIAL', position: { referencePanel: awarenessPanel, direction: 'below' } });
+      }
       const spatialPanel = api.panels.find((p) => p.id === 'spatial');
       if (spatialPanel) {
         api.addPanel({ id: 'system', component: 'system', title: 'SYSTEM', position: { referencePanel: spatialPanel, direction: 'right' } });
+        api.addPanel({ id: 'assistant', component: 'assistant', title: 'ASSISTANT', position: { referencePanel: spatialPanel, direction: 'right' } });
       }
     }
   }
@@ -93,6 +118,10 @@ function CompanionSwitcher({ onSwitch, currentPanel }: { onSwitch: (panel: Panel
     { id: 'reference', label: 'REF' },
     { id: 'spatial', label: 'SPA' },
     { id: 'system', label: 'SYS' },
+    { id: 'awareness', label: 'AWR' },
+    { id: 'proposals', label: 'PRP' },
+    { id: 'diagnostics', label: 'DGN' },
+    { id: 'assistant', label: 'AST' },
   ];
 
   return (

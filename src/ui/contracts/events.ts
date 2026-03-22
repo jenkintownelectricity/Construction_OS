@@ -130,7 +130,7 @@ export interface TruthEchoFailedPayload {
 
 // ─── Enums / Unions ─────────────────────────────────────────────────────────
 
-export type PanelId = 'explorer' | 'work' | 'reference' | 'spatial' | 'system';
+export type PanelId = 'explorer' | 'work' | 'reference' | 'spatial' | 'system' | 'awareness' | 'proposals' | 'diagnostics' | 'assistant';
 
 export type WorkspaceMode = 'default' | 'compare' | 'focus' | 'review';
 
