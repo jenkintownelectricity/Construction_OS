@@ -26,6 +26,23 @@ from runtime.events.event_builder import build_event_envelope, EventBuildError
 from runtime.events.bus_adapter import CognitiveBusAdapter, BusPublicationError
 
 
+def create_emitter(bus_adapter: CognitiveBusAdapter | None = None) -> RuntimeEventEmitter | None:
+    """Bounded factory for default emitter creation.
+
+    Attempts to create a RuntimeEventEmitter with a real bus adapter.
+    Returns None if the Cognitive Bus module is not importable.
+    When an emitter is returned, all emissions are fail-closed.
+    When None is returned, pipeline callers must skip emission.
+    """
+    if bus_adapter is not None:
+        return RuntimeEventEmitter(bus_adapter=bus_adapter)
+    try:
+        from bus.admission_gate import receive_event  # type: ignore[import-untyped]
+        return RuntimeEventEmitter(bus_adapter=CognitiveBusAdapter(publish_fn=receive_event))
+    except ImportError:
+        return None
+
+
 class EventEmissionError(Exception):
     """Raised when a required event emission fails.
 

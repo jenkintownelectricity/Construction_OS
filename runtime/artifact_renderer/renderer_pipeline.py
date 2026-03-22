@@ -34,6 +34,8 @@ from runtime.artifact_renderer.renderer_errors import (
 from runtime.artifact_renderer.dxf_renderer import DxfRenderer
 from runtime.artifact_renderer.svg_renderer import SvgRenderer
 from runtime.artifact_renderer.pdf_renderer import PdfRenderer
+from runtime.events.event_emitter import RuntimeEventEmitter, create_emitter
+from runtime.events.pipeline_hooks import on_artifact_success, on_unexpected_failure
 
 
 PIPELINE_VERSION = "18.0"
@@ -44,6 +46,7 @@ def render_artifacts(
     detail_dna: dict[str, Any] | None = None,
     variant_params: dict[str, Any] | None = None,
     registry: RendererRegistry | None = None,
+    event_emitter: RuntimeEventEmitter | None = None,
 ) -> RenderResult:
     """Render artifacts from a manifest.
 
@@ -59,6 +62,10 @@ def render_artifacts(
     Returns:
         RenderResult with artifacts, lineage, and any errors.
     """
+    # Bounded emitter initialization — single creation point per pipeline run
+    if event_emitter is None:
+        event_emitter = create_emitter()
+
     # Normalize manifest
     if isinstance(manifest, dict):
         manifest = _dict_to_manifest(manifest)
@@ -96,9 +103,25 @@ def render_artifacts(
                     "format": artifact.format,
                     "renderer_id": artifact.renderer_id,
                 })
+
+                # Checkpoint 3: ARTIFACT SUCCESS — emit ArtifactRendered
+                if event_emitter is not None:
+                    on_artifact_success(
+                        event_emitter,
+                        artifact_id=artifact.artifact_id,
+                        artifact_type=artifact.format,
+                        renderer_name=artifact.renderer_id,
+                        instruction_set_id=instruction_set.get("instruction_set_id", ""),
+                        lineage_hash=artifact.content_hash,
+                    )
+
             except RendererNotFoundError as e:
                 result.errors.append(e.to_dict())
             except Exception as e:
+                # Import to check type without circular ref
+                from runtime.events.event_emitter import EventEmissionError
+                if isinstance(e, EventEmissionError):
+                    raise
                 result.errors.append({
                     "code": "RENDER_FORMAT_ERROR",
                     "message": f"Failed to render {fmt}: {e}",
@@ -121,6 +144,18 @@ def render_artifacts(
     except PipelineError as e:
         result.errors.append(e.to_dict())
     except Exception as e:
+        from runtime.events.event_emitter import EventEmissionError
+        if isinstance(e, EventEmissionError):
+            raise
+
+        # Checkpoint 5: UNEXPECTED FAILURE — emit RuntimeError
+        if event_emitter is not None:
+            on_unexpected_failure(
+                event_emitter,
+                exception=e,
+                pipeline_stage="artifact_rendering",
+            )
+
         result.errors.append({
             "code": "PIPELINE_UNEXPECTED_ERROR",
             "message": str(e),
