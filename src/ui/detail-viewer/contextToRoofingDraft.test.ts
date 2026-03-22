@@ -318,4 +318,22 @@ describe('mapContextToRoofingDraft', () => {
     expect(result.success).toBe(false);
     expect(result.errorCode).toBe('UNMAPPABLE_MANUFACTURER');
   });
+
+  // ─── Assembly Object → Mapper convergence ─────────────────────
+
+  it('Roof Assembly object projected contexts map through the same mapper', () => {
+    // Prove assembly-object sourceContexts use the identical mapper path
+    const assemblyContexts: GenerationSourceContext[] = [
+      { submittalId: 'RA-001', title: 'Main Roof — Low-Slope Area A', manufacturer: 'Carlisle SynTec', spec: '07 52 16', project: 'Heritage Plaza' },
+      { submittalId: 'RA-002', title: 'Mechanical Penthouse Roof', manufacturer: 'GAF', spec: '07 54 23', project: 'Heritage Plaza' },
+      { submittalId: 'RA-003', title: 'Podium Level Roof — Plaza Deck', manufacturer: 'Johns Manville', spec: '07 54 19', project: 'Heritage Plaza' },
+      { submittalId: 'RA-004', title: 'Service Wing — Modified Bitumen', manufacturer: 'Henry Company', spec: '07 52 13', project: 'Heritage Plaza' },
+    ];
+    for (const ctx of assemblyContexts) {
+      const result = mapContextToRoofingDraft(ctx);
+      expect(result.success).toBe(true);
+      expect(result.draft).toBeDefined();
+      expect(result.draft!.system_id).toBe(`DRAFT-ROOF-${ctx.submittalId}`);
+    }
+  });
 });

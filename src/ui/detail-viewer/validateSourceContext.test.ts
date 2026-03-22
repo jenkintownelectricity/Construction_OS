@@ -162,4 +162,50 @@ describe('validateSourceContext', () => {
     expect(result.valid).toBe(false);
     expect(result.errorCode).toBe('NON_ROOFING_SPEC');
   });
+
+  // ─── Assembly Object projected contexts validate correctly ──────
+
+  it('validates Roof Assembly RA-001 projected context (Carlisle SynTec, 07 52 16)', () => {
+    const result = validateSourceContext({
+      submittalId: 'RA-001',
+      title: 'Main Roof — Low-Slope Area A',
+      manufacturer: 'Carlisle SynTec',
+      spec: '07 52 16',
+      project: 'Heritage Plaza',
+    });
+    expect(result.valid).toBe(true);
+  });
+
+  it('validates Roof Assembly RA-002 projected context (GAF, 07 54 23)', () => {
+    const result = validateSourceContext({
+      submittalId: 'RA-002',
+      title: 'Mechanical Penthouse Roof',
+      manufacturer: 'GAF',
+      spec: '07 54 23',
+      project: 'Heritage Plaza',
+    });
+    expect(result.valid).toBe(true);
+  });
+
+  it('validates Roof Assembly RA-003 projected context (Johns Manville, 07 54 19)', () => {
+    const result = validateSourceContext({
+      submittalId: 'RA-003',
+      title: 'Podium Level Roof — Plaza Deck',
+      manufacturer: 'Johns Manville',
+      spec: '07 54 19',
+      project: 'Heritage Plaza',
+    });
+    expect(result.valid).toBe(true);
+  });
+
+  it('validates Roof Assembly RA-004 projected context (Henry Company, 07 52 13)', () => {
+    const result = validateSourceContext({
+      submittalId: 'RA-004',
+      title: 'Service Wing — Modified Bitumen',
+      manufacturer: 'Henry Company',
+      spec: '07 52 13',
+      project: 'Heritage Plaza',
+    });
+    expect(result.valid).toBe(true);
+  });
 });
