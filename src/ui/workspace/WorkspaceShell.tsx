@@ -2,7 +2,7 @@
  * Construction OS — Workspace Shell
  *
  * Dockview-based multi-panel workspace with docking, resize, and movement.
- * Implements HERO_COCKPIT_DEFAULT preset.
+ * Implements HERO_COCKPIT_DEFAULT preset and Command Deck activation.
  * No page-based navigation — panels are live systems.
  */
 
@@ -23,6 +23,7 @@ import { AwarenessPanel } from '../panels/awareness/AwarenessPanel';
 import { ProposalMailbox } from '../panels/proposals/ProposalMailbox';
 import { RuntimeDiagnosticsPanel } from '../panels/diagnostics/RuntimeDiagnosticsPanel';
 import { AssistantConsole } from '../panels/assistant/AssistantConsole';
+import { DeckPicker } from '../decks/DeckPicker';
 import { initTruthEcho, destroyTruthEcho } from '../orchestration/TruthEcho';
 import { detectDeviceClass, getDeviceLayout } from '../orchestration/DeviceOrchestrator';
 import { activeObjectStore } from '../stores/activeObjectStore';
@@ -203,6 +204,60 @@ export function WorkspaceShell() {
     }
   }, []);
 
+  // ─── Deck Layout Application ──────────────────────────────────────────────
+  // Called by DeckActivation to apply a deck's panel layout atomically.
+
+  const applyDeckLayout = useCallback((visiblePanels: readonly PanelId[], promotedPanel: PanelId) => {
+    if (!apiRef.current) return;
+    const api = apiRef.current;
+
+    // Clear all existing panels
+    api.panels.forEach((p) => api.removePanel(p));
+
+    if (visiblePanels.length === 0) return;
+
+    // Add promoted panel first (it becomes the anchor)
+    const promoted = api.addPanel({
+      id: promotedPanel,
+      component: promotedPanel,
+      title: promotedPanel.toUpperCase(),
+    });
+
+    // Add remaining panels relative to promoted
+    const remaining = visiblePanels.filter((p) => p !== promotedPanel);
+    let lastLeft = promoted;
+    let lastRight = promoted;
+    let lastBelow = promoted;
+
+    for (let i = 0; i < remaining.length; i++) {
+      const panelId = remaining[i];
+      // Alternate placement: right, left, below
+      if (i % 3 === 0) {
+        lastRight = api.addPanel({
+          id: panelId,
+          component: panelId,
+          title: panelId.toUpperCase(),
+          position: { referencePanel: lastRight, direction: 'right' },
+        });
+      } else if (i % 3 === 1) {
+        lastLeft = api.addPanel({
+          id: panelId,
+          component: panelId,
+          title: panelId.toUpperCase(),
+          position: { referencePanel: promoted, direction: 'below' },
+        });
+        lastBelow = lastLeft;
+      } else {
+        api.addPanel({
+          id: panelId,
+          component: panelId,
+          title: panelId.toUpperCase(),
+          position: { referencePanel: lastBelow, direction: 'right' },
+        });
+      }
+    }
+  }, []);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: tokens.color.bgDeep }}>
       {/* Status Bar */}
@@ -232,7 +287,8 @@ export function WorkspaceShell() {
             WORKSTATION
           </span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: tokens.space.md }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: tokens.space.sm }}>
+          <DeckPicker applyLayout={applyDeckLayout} />
           <span style={{
             fontSize: tokens.font.sizeXs,
             color: tokens.color.mock,
