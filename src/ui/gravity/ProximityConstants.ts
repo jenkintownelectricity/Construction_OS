@@ -9,22 +9,27 @@
 
 export const PROXIMITY = {
   // ─── Edge bands (pixels from viewport edge) ────────────────────────
-  /** Trigger band: start sensing cursor intent */
-  triggerBand: 80,
-  /** Ramp band: expansion strength scales with distance to edge */
+  /** Entry threshold: start sensing cursor intent */
+  entryThreshold: 80,
+  /** Exit threshold: must move further out before state resets (hysteresis) */
+  exitThreshold: 120,
+  /** Ramp band: deeper proximity for preview promotion */
   rampBand: 40,
   /** Center safe zone: no edge expansion within this region */
   centerSafeZone: 200,
+
+  // Backwards compat aliases
+  get triggerBand() { return this.entryThreshold; },
 
   // ─── Timing ────────────────────────────────────────────────────────
   /** Intent delay before expansion begins (ms) */
   intentDelay: 180,
   /** Expansion animation duration (ms) */
-  expandDuration: 180,
+  expandDuration: 200,
   /** Collapse animation duration (ms) */
-  collapseDuration: 200,
-  /** Mouse polling interval (ms) */
-  pollInterval: 16,
+  collapseDuration: 220,
+  /** Collapse cooldown — proximity cannot reopen during this period (ms) */
+  collapseCooldown: 300,
 
   // ─── Expansion sizes ──────────────────────────────────────────────
   /** Idle strip width for edge panels (px) */
@@ -51,19 +56,13 @@ export const PROXIMITY = {
   workspaceDefaultShare: 65,
 
   // ─── Hover peek ───────────────────────────────────────────────────
-  /** Hover peek delay before showing preview (ms) */
   peekDelay: 200,
-  /** Peek panel share (50/50 split) */
   peekShare: 50,
 
   // ─── Deck fan-out ─────────────────────────────────────────────────
-  /** Fan-out idle strip width (px) */
   fanIdleWidth: 6,
-  /** Fan-out expanded width (px) */
   fanExpandedWidth: 280,
-  /** Fan-out card height (px) */
   fanCardHeight: 64,
-  /** Fan-out card gap (px) */
   fanCardGap: 4,
 
   // ─── Motion doctrine ──────────────────────────────────────────────
@@ -76,14 +75,22 @@ export const PROXIMITY = {
 } as const;
 
 export type EdgeId = 'left' | 'right' | 'top' | 'bottom';
+
+/**
+ * Intent-state model:
+ *   idle → edge_armed → preview → locked → (release → idle)
+ * No continuous raw-pointer sizing. Only discrete state transitions.
+ */
 export type EdgeState = 'idle' | 'sensing' | 'expanding' | 'preview' | 'locked';
 
 export interface EdgeFieldState {
   edge: EdgeId;
-  proximity: number;  // 0 (far) to 1 (at edge)
+  proximity: number;
   state: EdgeState;
   intentTimestamp: number | null;
   lockedAt: number | null;
+  /** Timestamp of last collapse — used for cooldown enforcement */
+  collapsedAt: number | null;
 }
 
 export interface ProximityFieldSnapshot {
@@ -96,6 +103,7 @@ export interface ProximityFieldSnapshot {
   mouseY: number;
   viewportWidth: number;
   viewportHeight: number;
+  transitionInProgress: boolean;
 }
 
 export function createIdleFieldState(edge: EdgeId): EdgeFieldState {
@@ -105,6 +113,7 @@ export function createIdleFieldState(edge: EdgeId): EdgeFieldState {
     state: 'idle',
     intentTimestamp: null,
     lockedAt: null,
+    collapsedAt: null,
   };
 }
 
@@ -117,7 +126,8 @@ export function createIdleSnapshot(): ProximityFieldSnapshot {
     dominantEdge: null,
     mouseX: -1,
     mouseY: -1,
-    viewportWidth: window.innerWidth,
-    viewportHeight: window.innerHeight,
+    viewportWidth: typeof window !== 'undefined' ? window.innerWidth : 1920,
+    viewportHeight: typeof window !== 'undefined' ? window.innerHeight : 1080,
+    transitionInProgress: false,
   };
 }

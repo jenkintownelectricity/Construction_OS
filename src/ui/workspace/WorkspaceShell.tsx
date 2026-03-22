@@ -242,21 +242,34 @@ export function WorkspaceShell() {
     activeObjectStore.setDevToolsVisible(!devToolsVisible);
   }, [devToolsVisible]);
 
-  // ─── Proximity-derived state ─────────────────────────────────────────
-  const leftEdge = proxSnapshot?.left ?? { edge: 'left' as const, proximity: 0, state: 'idle' as const, intentTimestamp: null, lockedAt: null };
-  const rightEdge = proxSnapshot?.right ?? { edge: 'right' as const, proximity: 0, state: 'idle' as const, intentTimestamp: null, lockedAt: null };
-  const bottomEdge = proxSnapshot?.bottom ?? { edge: 'bottom' as const, proximity: 0, state: 'idle' as const, intentTimestamp: null, lockedAt: null };
-  const leftActive = leftEdge.state === 'expanding' || leftEdge.state === 'preview' || leftEdge.state === 'locked';
-  const rightActive = rightEdge.state === 'expanding' || rightEdge.state === 'preview' || rightEdge.state === 'locked';
+  // ─── Proximity-derived state (discrete states only) ───────────────────
+  const idle = { edge: 'left' as const, proximity: 0, state: 'idle' as const, intentTimestamp: null, lockedAt: null, collapsedAt: null };
+  const leftEdge = proxSnapshot?.left ?? idle;
+  const rightEdge = proxSnapshot?.right ?? { ...idle, edge: 'right' as const };
+  const bottomEdge = proxSnapshot?.bottom ?? { ...idle, edge: 'bottom' as const };
+  const leftActive = leftEdge.state === 'preview' || leftEdge.state === 'locked';
+  const rightActive = rightEdge.state === 'preview' || rightEdge.state === 'locked';
   const deckFanExpanded = leftEdge.state === 'preview' || leftEdge.state === 'locked';
 
   // Bottom dock proximity state
   const bottomProximity = bottomEdge.proximity;
-  const bottomActive = bottomEdge.state === 'expanding' || bottomEdge.state === 'preview' || bottomEdge.state === 'locked';
+  const bottomActive = bottomEdge.state === 'preview' || bottomEdge.state === 'locked';
 
-  // ─── Workspace sizing from bias ──────────────────────────────────────
-  const workspaceMarginLeft = leftActive ? PROXIMITY.edgePreviewWidth : 0;
-  const workspaceMarginRight = rightActive ? PROXIMITY.edgePreviewWidth : 0;
+  // ─── Workspace sizing from bias (drives real layout) ─────────────────
+  // Discrete edge widths — no continuous pointer-driven resizing
+  const leftEdgeWidth = leftActive
+    ? (leftEdge.state === 'locked' ? PROXIMITY.edgeLockedWidth : PROXIMITY.edgePreviewWidth)
+    : PROXIMITY.edgeIdleWidth;
+  const rightEdgeWidth = rightActive
+    ? (rightEdge.state === 'locked' ? PROXIMITY.edgeLockedWidth : PROXIMITY.edgePreviewWidth)
+    : PROXIMITY.edgeIdleWidth;
+
+  // Apply horizontal bias to edge widths when edges are not active
+  const biasLeftExtra = !leftActive && bias.horizontalBias > 0 ? bias.horizontalBias * 2 : 0;
+  const biasRightExtra = !rightActive && bias.horizontalBias < 0 ? Math.abs(bias.horizontalBias) * 2 : 0;
+
+  const workspaceMarginLeft = leftEdgeWidth + biasLeftExtra;
+  const workspaceMarginRight = rightEdgeWidth + biasRightExtra;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: tokens.color.bgDeep, minHeight: 0, position: 'relative', overflow: 'hidden' }}>

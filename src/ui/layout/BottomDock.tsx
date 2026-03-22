@@ -1,22 +1,22 @@
 /**
- * Construction OS — Bottom Command Dock
- *
- * Replaces crowded simultaneous lower panels with a proximity-reactive bottom dock.
- * Tabs: Awareness | Diagnostics | Proposals | Spatial | Assistant | System
+ * Construction OS — Bottom Command Dock (Stabilized)
  *
  * Behavior:
- * - Idle height: 24-32px (thin strip)
- * - Expands aggressively on cursor proximity
- * - Auto-collapses on cursor exit unless pinned
- * - Supports expand / collapse / pin
+ * - Idle height: 28px (thin strip)
+ * - Expands on tab click or proximity (respects cooldown)
+ * - Close button collapses immediately + enters 300ms cooldown
+ * - Proximity cannot reopen during cooldown
+ * - Pin/lock overrides collapse
  * - Preserves panel state when switching tabs
  * - Glass morph styling when expanded
+ * - Panel-local nudge controls on dock host
  */
 
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { tokens } from '../theme/tokens';
 import { PROXIMITY } from '../gravity/ProximityConstants';
 import { glassMorphDockStyle } from '../gravity/GlassMorph';
+import { NudgeControls } from '../gravity/NudgeControls';
 import { AwarenessPanel } from '../panels/awareness/AwarenessPanel';
 import { RuntimeDiagnosticsPanel } from '../panels/diagnostics/RuntimeDiagnosticsPanel';
 import { ProposalMailbox } from '../panels/proposals/ProposalMailbox';
@@ -36,9 +36,7 @@ const DOCK_TABS: { id: DockTab; label: string }[] = [
 ];
 
 interface BottomDockProps {
-  /** Proximity value from bottom edge (0-1) */
   bottomProximity?: number;
-  /** Whether bottom edge is in active proximity state */
   bottomActive?: boolean;
 }
 
@@ -47,6 +45,16 @@ export function BottomDock({ bottomProximity = 0, bottomActive = false }: Bottom
   const [expanded, setExpanded] = useState(false);
   const [pinned, setPinned] = useState(false);
   const [userOpened, setUserOpened] = useState(false);
+  const cooldownUntilRef = useRef(0);
+
+  const isInCooldown = () => Date.now() < cooldownUntilRef.current;
+
+  // Close button: collapse immediately + enter cooldown
+  const handleClose = useCallback(() => {
+    setUserOpened(false);
+    setExpanded(false);
+    cooldownUntilRef.current = Date.now() + PROXIMITY.collapseCooldown;
+  }, []);
 
   const handleToggleExpand = useCallback(() => {
     setExpanded((prev) => !prev);
@@ -54,7 +62,10 @@ export function BottomDock({ bottomProximity = 0, bottomActive = false }: Bottom
   }, []);
 
   const handleTogglePin = useCallback(() => {
-    setPinned((prev) => !prev);
+    setPinned((prev) => {
+      if (!prev) setUserOpened(true); // pinning also opens
+      return !prev;
+    });
   }, []);
 
   const handleTabClick = useCallback((tab: DockTab) => {
@@ -62,23 +73,16 @@ export function BottomDock({ bottomProximity = 0, bottomActive = false }: Bottom
     setUserOpened(true);
   }, []);
 
-  // Determine effective open state
-  const isOpen = pinned || userOpened || expanded || bottomActive;
-  const isExpanded = expanded;
+  // Determine effective open state — proximity respects cooldown
+  const proximityCanOpen = bottomActive && !isInCooldown();
+  const isOpen = pinned || userOpened || expanded || proximityCanOpen;
 
-  // Calculate dock height
+  // Dock height: discrete states only
   const dockHeight = (() => {
-    if (!isOpen) {
-      // Idle: thin strip, grows slightly with proximity
-      return PROXIMITY.dockIdleHeight + (bottomProximity * 16);
-    }
-    if (isExpanded) {
-      return PROXIMITY.dockExpandedHeight;
-    }
+    if (!isOpen) return PROXIMITY.dockIdleHeight;
+    if (expanded) return PROXIMITY.dockExpandedHeight;
     return PROXIMITY.dockPreviewHeight;
   })();
-
-  const easing = PROXIMITY.easing;
 
   return (
     <div style={{
@@ -86,10 +90,11 @@ export function BottomDock({ bottomProximity = 0, bottomActive = false }: Bottom
       flexDirection: 'column',
       height: `${dockHeight}px`,
       minHeight: `${PROXIMITY.dockIdleHeight}px`,
-      ...(isOpen ? glassMorphDockStyle : {}),
-      background: isOpen ? glassMorphDockStyle.background : tokens.color.bgBase,
+      background: isOpen ? (glassMorphDockStyle.background as string) : tokens.color.bgBase,
+      backdropFilter: isOpen ? 'blur(12px)' : 'none',
+      WebkitBackdropFilter: isOpen ? 'blur(12px)' : 'none',
       borderTop: `1px solid ${isOpen ? 'rgba(255,255,255,0.06)' : tokens.color.border}`,
-      transition: `height ${PROXIMITY.expandDuration}ms ${easing}, background ${PROXIMITY.expandDuration}ms ${easing}`,
+      transition: `height ${PROXIMITY.expandDuration}ms ${PROXIMITY.easing}`,
       overflow: 'hidden',
       flexShrink: 0,
     }}>
@@ -128,10 +133,13 @@ export function BottomDock({ bottomProximity = 0, bottomActive = false }: Bottom
           ))}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '2px', padding: `0 ${tokens.space.sm}`, flexShrink: 0 }}>
+          {/* Nudge controls on dock host */}
+          {isOpen && <NudgeControls position="bottom" />}
           <DockBtn label={pinned ? '\u25C9' : '\u25CB'} title={pinned ? 'Unpin' : 'Pin'} active={pinned} onClick={handleTogglePin} />
-          <DockBtn label={isExpanded ? '\u25BC' : '\u25B2'} title={isExpanded ? 'Shrink' : 'Expand'} active={isExpanded} onClick={handleToggleExpand} />
-          {userOpened && !pinned && (
-            <DockBtn label={'\u25BC'} title="Collapse" active={false} onClick={() => setUserOpened(false)} />
+          <DockBtn label={expanded ? '\u25BD' : '\u25B3'} title={expanded ? 'Shrink' : 'Expand'} active={expanded} onClick={handleToggleExpand} />
+          {/* Close button — collapses immediately with cooldown */}
+          {isOpen && !pinned && (
+            <DockBtn label={'\u2715'} title="Close dock (cooldown 300ms)" active={false} onClick={handleClose} />
           )}
         </div>
       </div>
