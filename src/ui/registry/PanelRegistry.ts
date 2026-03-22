@@ -75,6 +75,46 @@ export const PANEL_DEFINITIONS: Record<PanelId, PanelDefinition> = {
     ownedState: ['activeTab', 'validationSummary', 'tasks', 'proposals', 'alerts'],
     defaultSizeWeight: 200,
   },
+  awareness: {
+    id: 'awareness',
+    title: 'Awareness',
+    description: 'Awareness Cache snapshot — conditions, artifacts, proposals, FAIL_CLOSED log',
+    subscribesTo: ['truth-echo.propagated'],
+    emits: [],
+    truthEchoSubscriber: true,
+    ownedState: ['awarenessState', 'activeTab'],
+    defaultSizeWeight: 250,
+  },
+  proposals: {
+    id: 'proposals',
+    title: 'Proposal Mailbox',
+    description: 'Proposal review — approve/reject/elaborate workflow routed to Ring 1',
+    subscribesTo: ['truth-echo.propagated', 'proposal.created'],
+    emits: ['proposal.created'],
+    truthEchoSubscriber: true,
+    ownedState: ['proposals', 'filter', 'actionInFlight'],
+    defaultSizeWeight: 250,
+  },
+  diagnostics: {
+    id: 'diagnostics',
+    title: 'Runtime Diagnostics',
+    description: 'Pipeline state, runtime events, artifact lifecycle, FAIL_CLOSED visibility',
+    subscribesTo: ['truth-echo.propagated'],
+    emits: [],
+    truthEchoSubscriber: true,
+    ownedState: ['diagnosticsState', 'activeTab'],
+    defaultSizeWeight: 300,
+  },
+  assistant: {
+    id: 'assistant',
+    title: 'Assistant Console',
+    description: 'Bounded assistant output — no execution authority, proposals route to mailbox',
+    subscribesTo: ['truth-echo.propagated'],
+    emits: ['proposal.created'],
+    truthEchoSubscriber: true,
+    ownedState: ['responses', 'query', 'submitting'],
+    defaultSizeWeight: 250,
+  },
 };
 
-export const ALL_PANELS: PanelId[] = ['explorer', 'work', 'reference', 'spatial', 'system'];
+export const ALL_PANELS: PanelId[] = ['explorer', 'work', 'reference', 'spatial', 'system', 'awareness', 'proposals', 'diagnostics', 'assistant'];
