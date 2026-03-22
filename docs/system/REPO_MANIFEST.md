@@ -1,75 +1,64 @@
-# Repository Manifest
+# REPO MANIFEST: Construction_Intelligence_Workers
 
-**Repo**: Construction_Intelligence_Workers
-**Version**: v0.1
-**Role**: Signal extraction and proposal worker fleet
+## Identity
 
-## First-Read Order
+- **Repository**: Construction_Intelligence_Workers
+- **Organization**: jenkintownelectricity
+- **Layer**: Cognitive Layer
+- **Primary Role**: Active thought / proposal generation
 
-Read these files in this order to understand the repository:
+## Purpose
 
-1. Universal_Truth_Kernel → `nucleus/NUCLEUS_DOCTRINE.md` (upstream, conceptual)
-2. ValidKernel_Registry → topology surfaces (upstream, conceptual)
-3. `docs/system/REPO_MANIFEST.md` — This file. Repository purpose and stack role.
-4. `docs/system/AUTHORITATIVE_PATHS.md` — Authoritative file paths.
-5. `docs/system/DEPENDENCY_MAP.md` — Upstream and downstream dependencies.
-6. `docs/system/FROZEN_SEAMS.md` — Frozen constraints.
-7. `README.md` — Repository purpose and core constraints.
-8. `docs/doctrine/worker-doctrine.md` — Foundational worker doctrine.
-9. `docs/doctrine/proposal-vs-truth-policy.md` — Proposal vs truth boundary.
-10. `docs/doctrine/worker-boundaries.md` — What workers may and may not do.
-11. `docs/doctrine/handoff-doctrine.md` — Handoff requirements.
-12. `docs/doctrine/signal-generation-policy.md` — Signal generation process.
-13. `docs/architecture/stack-position.md` — Position beside the stack.
-14. `docs/architecture/worker-system-map.md` — System architecture.
-15. `docs/architecture/worker-inventory-overview.md` — The 5 initial workers.
-16. `contracts/` — Output contracts.
-17. `maps/` — Worker-to-stack mapping.
-18. `workers/` — Individual worker definitions.
-19. `state/BASELINE_STATE.json` — Baseline state.
+Construction_Intelligence_Workers is the active thought and proposal generation layer for Construction OS. It performs analysis, generates proposals, emits observations, and produces signals. All outputs are non-authoritative and must pass through governed validation and admission surfaces before entering the system of record.
 
-## File Inventory
+## Classification
 
-### Root
-- `README.md`
+- **Service type**: Cognitive-layer service
+- **Authority level**: Non-authority
+- **Self-canonicalization**: Prohibited — this repo must never self-canonicalize
 
-### docs/doctrine/
-- `worker-doctrine.md`
-- `proposal-vs-truth-policy.md`
-- `signal-generation-policy.md`
-- `worker-boundaries.md`
-- `handoff-doctrine.md`
+## What It IS
 
-### docs/architecture/
-- `worker-system-map.md`
-- `worker-inventory-overview.md`
-- `stack-position.md`
-- `future-worker-expansion.md`
+- The active thought and proposal generation layer for Construction OS
+- A producer of proposals, observations, and signals
+- A consumer of structural intelligence (from CRI) and frozen compiled awareness (from Awareness Cache)
+- A cognitive worker pool that performs extraction, classification, analysis, and proposal formation
+- A lineage-preserving emitter that attaches provenance to every output
 
-### docs/system/
-- `REPO_MANIFEST.md` (this file)
-- `FROZEN_SEAMS.md`
-- `DEPENDENCY_MAP.md`
-- `AUTHORITATIVE_PATHS.md`
+## What It IS NOT
 
-### state/
-- `BASELINE_STATE.json`
+- **NOT truth authorities** — workers do not produce validated, canonical facts
+- **NOT self-canonicalizing** — workers never write their own outputs into any system of record
+- **NOT a kernel** — workers do not govern system structure, schema, or authority rules
+- **NOT a registry** — workers do not maintain canonical entity registries or identity resolution
+- **NOT the cognitive bus** — workers do not validate, route, or admit events into the system
+- **NOT the awareness cache** — workers do not compile, freeze, or serve awareness snapshots
 
-### contracts/
-- `observation_output_contract.md`
-- `proposal_output_contract.md`
-- `normalized_structure_contract.md`
-- `no-self-canonicalization-policy.md`
+## Interactions with Other Repos
 
-### maps/
-- `worker_to_runtime_map.md`
-- `worker_to_kernel_map.md`
-- `worker_to_app_map.md`
-- `signal_surface_map.md`
+### Construction_Kernel
+Workers operate under structural governance defined by the Kernel. The Kernel defines schemas, authority rules, and validation contracts that constrain what workers may emit and how outputs must be formed. Workers consume Kernel-published contracts but never modify or override them.
 
-### workers/
-- `assembly_interpreter/` — README.md, inputs.md, outputs.md, guardrails.md
-- `spec_parser/` — README.md, inputs.md, outputs.md, guardrails.md
-- `detail_extractor/` — README.md, inputs.md, outputs.md, guardrails.md
-- `material_intelligence/` — README.md, inputs.md, outputs.md, guardrails.md
-- `compliance_signal/` — README.md, inputs.md, outputs.md, guardrails.md
+### Construction_Registry
+Workers consume registry-resolved entities as reference data for analysis and proposal generation. Workers do not write to, update, or modify the registry. Entity identity resolution is the registry's authority, not the workers'.
+
+### Construction_CRI (Contextual/Relational Intelligence)
+Workers consume CRI structural intelligence as a primary input for active thought. CRI provides the relational and contextual data that workers analyze to generate proposals and observations. Workers read from CRI but do not write structural intelligence back.
+
+### Construction_Cognitive_Bus
+Workers emit all proposals, observations, and signals into the Cognitive Bus. The bus independently validates, routes, and admits these outputs according to its own governance rules. Workers do not validate their own outputs, do not route events, and do not bypass the bus under any circumstances.
+
+### Construction_Awareness_Cache
+Workers read frozen compiled awareness from the Awareness Cache as contextual input for analysis and proposal generation. Workers do not write to, trigger compilation of, or modify the cache in any way. The cache is a read-only source of compiled context for worker consumption.
+
+### Construction_Assistant
+Workers do not direct or control the assistant. Worker outputs reach the assistant indirectly — only after passing through bus admission and awareness compilation. There is no direct communication channel from workers to the assistant.
+
+## Non-Authority Guarantees
+
+1. **Emit proposals/observations/signals only** — workers produce non-authoritative cognitive outputs exclusively
+2. **NOT truth authorities** — no worker output constitutes validated fact or canonical record
+3. **Never self-canonicalize** — workers are structurally prohibited from writing their own outputs into any system of record or truth store
+4. **Must hand off into governed validation/admission surfaces** — all outputs are emitted into the Cognitive Bus, which independently validates and admits them
+5. **Fail-closed** — if validation or emission fails, the output is dropped, not forced through; workers do not retry around governance
+6. **Lineage preservation** — every output carries full provenance and lineage metadata from source through processing to emission
