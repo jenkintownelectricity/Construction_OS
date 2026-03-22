@@ -2,7 +2,7 @@
   "registry_version": "v1",
   "registry_type": "construction_os_platform_inventory",
   "description": "Canonical inventory of repositories confirmed as part of the Construction OS platform.",
-  "last_updated": "2026-03-21",
+  "last_updated": "2026-03-22",
   "architecture_status": "FROZEN",
   "atlas_status": "CORE_CONTEXT_LAYER_PURIFIED",
   "ui_authority": "Construction_Application_OS",
@@ -38,7 +38,9 @@
       {"source": "Construction_Atlas", "target": "ValidKernel_Geometry_Kernel", "relationship": "consumes-spatial-primitives"},
       {"source": "Construction_Runtime", "target": "Construction_Atlas", "relationship": "consumes-spatial-context"},
       {"source": "Construction_Application_OS", "target": "Construction_Atlas", "relationship": "consumes-atlas-navigation-context"},
-      {"source": "Construction_Application_OS", "target": "Construction_Runtime", "relationship": "interacts-with-runtime"}
+      {"source": "Construction_Application_OS", "target": "Construction_Runtime", "relationship": "interacts-with-runtime"},
+      {"source": "Construction_Pattern_Language_OS", "target": "ValidKernel_Patterns", "relationship": "grown-from-structural-patterns"},
+      {"source": "Construction_Kernel", "target": "Construction_Pattern_Language_OS", "relationship": "consumes-pattern-definitions"}
     ],
     "vkbus_guidance_observation_paths": [
       {"path": "ValidKernelOS_VKBUS <-> Construction_Atlas", "direction": "bidirectional", "purpose": "spatial context state observation"},
@@ -203,6 +205,27 @@
         "governance",
         "catalogs",
         "architecture"
+      ]
+    },
+    {
+      "repo_name": "Construction_Pattern_Language_OS",
+      "layer": "truth",
+      "primary_area": "truth",
+      "kernel_type": "domain_pattern_language",
+      "lineage_parent": "ValidKernel_Patterns",
+      "schema_version": "1.0.0",
+      "pattern_language_version": "1.0.0",
+      "role_summary": "Canonical construction pattern language kernel defining pattern families, patterns, variants, relationships, artifact intents, and constraint profiles for the building envelope domain. Pattern truth only — no reasoning, runtime, rendering, or UI logic.",
+      "domain_scope": "construction_patterns",
+      "registered_at": "2026-03-22T00:00:00Z",
+      "tags": [
+        "kernel",
+        "truth",
+        "pattern-language",
+        "construction-patterns",
+        "detail-families",
+        "building-envelope",
+        "domain-kernel"
       ]
     }
   ],
