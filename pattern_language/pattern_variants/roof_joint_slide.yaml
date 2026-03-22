@@ -1,0 +1,36 @@
+schema_version: "1.0.0"
+pattern_language_version: "1.0.0"
+entity_revision: 1
+created_at: "2026-03-22T00:00:00Z"
+
+id: "CHEM-CONSTR-VAR-JOINTSLIDE-118-R1"
+name: "Sliding Cover Roof Expansion Joint"
+description: >
+  A roof expansion joint variant using a metal cover plate mounted on a sliding
+  track system that bridges the gap between two raised curbs. One side of the
+  cover is fixed to one curb, and the other side slides freely over the opposite
+  curb on a low-friction bearing pad. A compressible water seal beneath the
+  cover plate provides waterproofing as the joint opens and closes. This system
+  is well-suited for joints with primarily unidirectional movement.
+pattern_id: "DNA-CONSTR-PAT-JOINT-ROOF-050-R1"
+method: "Metal cover plate on sliding track with compression water seal between curbs"
+materials:
+  - name: "Cover plate"
+    specification: "14 ga stainless steel or aluminum cover plate, Kynar 500 finish"
+  - name: "Slide track"
+    specification: "Extruded aluminum track with PTFE (Teflon) slide bearing pads"
+  - name: "Water seal"
+    specification: "Closed-cell neoprene compression seal, sized to joint width, continuous at joint center"
+  - name: "Curbs"
+    specification: "Sheet metal curbs, 18 ga galvanized steel, minimum 8 in height, each side of joint"
+  - name: "Roofing membrane"
+    specification: "Field roofing membrane flashed up each curb face independently"
+dimensional_constraints:
+  curb_height: "8 in minimum above finished roof surface"
+  cover_plate_overlap: "4 in minimum over sliding curb at maximum joint opening"
+  joint_width: "2 in to 6 in typical structural gap"
+  movement_capacity: "Plus or minus 2 in typical for standard assemblies"
+notes:
+  - "Sliding cover joints are best for primarily longitudinal movement."
+  - "Not recommended for joints with significant transverse or vertical displacement."
+  - "PTFE bearing pads must be replaceable from above without removing the cover plate."

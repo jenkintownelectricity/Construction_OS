@@ -1,0 +1,37 @@
+schema_version: "1.0.0"
+pattern_language_version: "1.0.0"
+entity_revision: 1
+created_at: "2026-03-22T00:00:00Z"
+
+id: "CHEM-CONSTR-VAR-WALLJCOV-119-R1"
+name: "Metal Cover Plate Wall Expansion Joint"
+description: >
+  A wall expansion joint variant using a surface-mounted metal cover plate
+  system that spans the joint gap on the building exterior. The cover plate is
+  fixed on one side and slides on the other, concealing the joint sealant and
+  backer rod assembly beneath. An internal flexible membrane or gasket behind
+  the cover provides secondary waterproofing. This system offers a clean
+  architectural appearance while protecting the primary sealant joint from UV
+  degradation and physical damage.
+pattern_id: "DNA-CONSTR-PAT-JOINT-WALL-051-R1"
+method: "Surface-mounted sliding metal cover plate with internal waterproof membrane"
+materials:
+  - name: "Cover plate"
+    specification: "20 ga stainless steel or extruded aluminum, factory-finished to match wall cladding"
+  - name: "Mounting clips"
+    specification: "Stainless steel fixed clip one side, sliding clip with slotted holes opposite side"
+  - name: "Internal membrane"
+    specification: "EPDM or silicone rubber bellows membrane, bonded to wall substrates behind cover plate"
+  - name: "Backer rod"
+    specification: "Closed-cell polyethylene backer rod, diameter 25% larger than joint width"
+  - name: "Sealant"
+    specification: "Silicone sealant per ASTM C920, Class 50, at cover plate perimeter and membrane terminations"
+dimensional_constraints:
+  cover_plate_width: "Joint width plus 4 in minimum overlap each side"
+  joint_width: "1 in to 4 in typical"
+  movement_capacity: "Plus or minus 50% of joint width"
+  cover_plate_depth: "1/2 in maximum projection from wall face"
+notes:
+  - "Cover plate finish and profile should be coordinated with architect for aesthetics."
+  - "Internal membrane provides redundant waterproofing behind the cover plate."
+  - "Floor-line transitions require specially fabricated corner pieces."

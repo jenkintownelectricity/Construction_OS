@@ -1,0 +1,35 @@
+schema_version: "1.0.0"
+pattern_language_version: "1.0.0"
+entity_revision: 1
+created_at: "2026-03-22T00:00:00Z"
+
+id: "CHEM-CONSTR-VAR-PLUMBPITCH-113-R1"
+name: "Pitch Pocket Penetration"
+description: >
+  A pipe penetration flashing variant using a sheet metal pocket (pan) that
+  surrounds the penetrating element and is filled with a pourable sealant
+  compound. The pocket is integrated with the roof membrane at its base flange
+  and provides a reservoir of sealant that seals against the irregular surface
+  of the penetrating pipe. Pitch pockets are considered a maintenance-intensive
+  detail and are typically used only when prefabricated boots or conventional
+  flashing methods cannot accommodate the penetration geometry.
+pattern_id: "DNA-CONSTR-PAT-PIPE-PLUMBING-040-R1"
+method: "Sheet metal pocket with pourable sealant fill around penetrating element"
+materials:
+  - name: "Pitch pocket"
+    specification: "16 oz copper (ASTM B370) or 24 ga galvanized steel (ASTM A653 G90), soldered watertight seams"
+  - name: "Pourable sealant"
+    specification: "Hot-poured coal tar or cold-applied polyurethane pour grade sealant, UV-stable"
+  - name: "Backer rod"
+    specification: "Closed-cell polyethylene backer rod, diameter to friction-fit between pipe and pocket wall"
+  - name: "Base flashing"
+    specification: "Roof membrane flashing integrated with pocket base flange, minimum 4 in beyond pocket on all sides"
+dimensional_constraints:
+  min_pocket_height_inches: 3
+  min_clearance_from_pipe_inches: 1
+  max_pocket_area_sqin: 144
+  sealant_fill_depth_inches: 2
+notes:
+  - "Pitch pockets require periodic inspection and sealant topping-off as part of routine roof maintenance."
+  - "Sealant must be poured to a convex meniscus above the pocket rim to shed water away from the pipe."
+  - "Use only when prefabricated pipe boots or curb-mounted details are not feasible."

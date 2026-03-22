@@ -1,0 +1,74 @@
+# Moisture Exposure Environmental Constraints
+# Waterproofing, ponding prevention, and freeze-thaw requirements for moisture-exposed assemblies
+
+schema_version: "1.0.0"
+pattern_language_version: "1.0.0"
+entity_revision: 1
+created_at: "2026-03-22T00:00:00Z"
+
+id: "CLIMATE-CONSTR-CNS-MOISTURE-002-R1"
+name: "Moisture Exposure Constraints"
+constraint_type: environmental
+
+description: >
+  Environmental constraints for roof components continuously exposed to
+  moisture, including drains, pipe penetrations, and expansion joints. These
+  assemblies are the most vulnerable points in the roof envelope because they
+  interrupt the continuous membrane and create potential water entry paths.
+  All materials at these locations must resist prolonged water contact without
+  degradation, prevent ponding through positive drainage slope, and withstand
+  cyclic freeze-thaw loading in cold climates where trapped moisture expands
+  and can fracture sealants, crack rigid flashings, and delaminate membrane
+  adhesion.
+
+applies_to:
+  - id: "DNA-CONSTR-FAM-DRAIN-003-R1"
+    name: "Drain Family"
+  - id: "DNA-CONSTR-FAM-PIPE-004-R1"
+    name: "Pipe Penetration Family"
+  - id: "DNA-CONSTR-FAM-JOINT-005-R1"
+    name: "Expansion Joint Family"
+
+parameters:
+  waterproofing_required: true
+  ponding_prevention: true
+  freeze_thaw_rated: true
+  max_ponding_depth_inches: 1.0
+  min_slope_to_drain_inches_per_foot: 0.25
+  sealant_immersion_rated: true
+
+material_requirements:
+  sealants: >
+    All sealants at moisture-exposed locations must be rated for continuous
+    immersion per ASTM C1247 and must maintain adhesion through a minimum
+    of 50 freeze-thaw cycles per ASTM C666 modified testing.
+  flashings: >
+    Flashing materials must be inherently waterproof (not relying solely on
+    coatings) and must not wick moisture through capillary action. Metals
+    must be corrosion-resistant or protected with factory-applied coatings.
+  membranes: >
+    Membrane reinforcement plies are required at all penetrations, drains,
+    and joints. Minimum 6-inch overlap beyond the flashing base on all sides.
+
+ponding_prevention:
+  description: >
+    IBC Section 1611.1 requires roofs to be designed for ponding loads or to
+    be sloped to prevent ponding. Positive slope must be provided around all
+    drains, penetrations, and joints to ensure water does not accumulate at
+    these vulnerable locations.
+  tapered_insulation_required: true
+  cricket_saddle_at_penetrations: recommended
+
+validation:
+  - check: waterproofing_continuous
+    required: true
+    fail_action: reject
+  - check: positive_slope_verified
+    min_slope_in_per_ft: 0.25
+    fail_action: reject
+  - check: freeze_thaw_rating
+    required: true
+    fail_action: warn
+  - check: ponding_depth_within_limit
+    max_inches: 1.0
+    fail_action: reject
