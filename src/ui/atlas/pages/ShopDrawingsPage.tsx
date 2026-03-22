@@ -10,6 +10,7 @@ import { DEFAULT_BRANDING } from '../../../lib/branding/branding-types';
 import { generationStore } from '../../stores/generationStore';
 import { activeObjectStore } from '../../stores/activeObjectStore';
 import { eventBus } from '../../events/EventBus';
+import { RoofAssemblyPanel } from '../RoofAssemblyPanel';
 import type { AtlasRoute } from '../types';
 
 const c = DEFAULT_BRANDING.colors;
@@ -193,6 +194,9 @@ export function ShopDrawingsPage({ onNavigate }: ShopDrawingsPageProps) {
             </button>
           </div>
         </div>
+
+        {/* Roof Assembly Mini-Map */}
+        <RoofAssemblyPanel onNavigate={onNavigate} />
 
         {/* Metadata grid */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '12px', marginBottom: '24px' }}>
