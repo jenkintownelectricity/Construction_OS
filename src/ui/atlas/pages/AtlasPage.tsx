@@ -1,16 +1,19 @@
 /**
  * Construction Atlas — Atlas Page
  *
- * Building roof map surface + interactive reference graph.
- * Atlas spatial surface Level 1: clickable roof assembly map
- * that launches the governed roofing generation loop.
+ * Building roof map surface + assembly relationship graph +
+ * interactive reference graph. Atlas spatial surface Level 1
+ * with construction intelligence layer.
  *
  * Governance: VKGL04R — Ring 3 TOUCH-ALLOWED
  */
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DEFAULT_BRANDING } from '../../../lib/branding/branding-types';
 import { BuildingRoofMap } from '../BuildingRoofMap';
+import { RelatedAssembliesPanel } from '../RelatedAssembliesPanel';
+import { generationStore } from '../../stores/generationStore';
+import { ROOF_ASSEMBLY_OBJECTS } from '../roofAssemblyObjects';
 import type { AtlasRoute } from '../types';
 
 const c = DEFAULT_BRANDING.colors;
@@ -60,17 +63,43 @@ interface AtlasPageProps {
 
 export function AtlasPage({ onNavigate }: AtlasPageProps = {}) {
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
+  const [selectedAssemblyId, setSelectedAssemblyId] = useState<string | null>(null);
 
   const handleNavigate = onNavigate ?? (() => {});
+
+  // Track selected assembly from generationStore sourceContext
+  useEffect(() => {
+    const sync = () => {
+      const ctx = generationStore.getState().sourceContext;
+      if (ctx) {
+        const isAssemblyObj = ROOF_ASSEMBLY_OBJECTS.some(
+          (o) => o.objectId === ctx.submittalId,
+        );
+        if (isAssemblyObj) {
+          setSelectedAssemblyId(ctx.submittalId);
+        }
+      }
+    };
+    sync();
+    return generationStore.subscribe(sync);
+  }, []);
 
   return (
     <div>
       <h1 style={{ fontSize: '24px', fontWeight: 700, color: c.text, margin: 0 }}>Atlas</h1>
       <p style={{ color: c.textMuted, margin: '4px 0 24px', fontSize: '14px' }}>Building roof map, detail graph, and installation sequences</p>
 
-      {/* Building Roof Map Surface */}
-      <div style={{ ...cardStyle, marginBottom: '24px' }}>
-        <BuildingRoofMap onNavigate={handleNavigate} />
+      {/* Building Roof Map Surface + Related Assemblies */}
+      <div style={{ display: 'flex', gap: '24px', marginBottom: '24px' }}>
+        <div style={{ ...cardStyle, flex: 2 }}>
+          <BuildingRoofMap onNavigate={handleNavigate} />
+        </div>
+        <div style={{ flex: 1 }}>
+          <RelatedAssembliesPanel
+            selectedAssemblyId={selectedAssemblyId}
+            onNavigate={handleNavigate}
+          />
+        </div>
       </div>
 
       <div style={{ display: 'flex', gap: '24px' }}>
