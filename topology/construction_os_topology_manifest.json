@@ -1,55 +1,28 @@
 {
   "schema": "construction_os_topology_manifest",
-  "version": "1.0.0",
-  "pass_id": "registry-induction-topology-pass-construction-os-registry",
-  "pass_timestamp": "2026-03-29T00:00:00Z",
-  "description": "Canonical topology manifest for the Construction OS ecosystem. Defines the governed topology shape, node set, and edge set for registry truth rendering.",
+  "version": "2.0.0",
+  "pass_id": "registry-native-expansion-construction-os-registry",
+  "pass_timestamp": "2026-03-29T12:00:00Z",
+  "description": "Expanded canonical topology manifest. Distinguishes ACTIVE_NATIVE nodes from ATTACHED_REFERENCE nodes.",
   "topology_shape": {
     "bands": [
-      {
-        "band_id": "top",
-        "band_label": "Governance",
-        "position": 1,
-        "members": ["VTI_TM"]
-      },
-      {
-        "band_id": "middle",
-        "band_label": "Kernel + Registry",
-        "position": 2,
-        "members": ["Construction_Kernel", "Construction_Assembly_Kernel", "Construction_Workforce_OS", "Construction_OS_Registry"]
-      },
-      {
-        "band_id": "execution_intelligence",
-        "band_label": "Execution / Intelligence",
-        "position": 3,
-        "members": ["Construction_Runtime", "Construction_Cognitive_Bus", "Construction_Awareness_Cache", "Construction_Assistant", "Construction_Intelligence_Workers"]
-      },
-      {
-        "band_id": "knowledge_enrichment",
-        "band_label": "Knowledge / Enrichment",
-        "position": 4,
-        "members": ["construction_dna", "Construction_Pattern_Language_OS", "Construction_Reference_Intelligence"]
-      },
-      {
-        "band_id": "surface",
-        "band_label": "Application Surface",
-        "position": 5,
-        "members": ["Construction_Application_OS"]
-      }
+      {"band_id":"attached_upstream","band_label":"Attached Upstream References","position":0,"scope":"ATTACHED_REFERENCE","members":["Universal_Truth_Kernel","ValidKernel-Governance","ValidKernel_Geometry_Kernel","ValidKernel_Patterns","ValidKernelOS_VKBUS","ValidKernel_Registry"]},
+      {"band_id":"top","band_label":"Governance","position":1,"scope":"ACTIVE_NATIVE","members":["VTI_TM"]},
+      {"band_id":"middle","band_label":"Kernel + Registry","position":2,"scope":"ACTIVE_NATIVE","members":["Construction_Kernel","Construction_Assembly_Kernel","Construction_Workforce_OS","Construction_OS_Registry","Construction_Chemistry_Kernel","Construction_Scope_Kernel","Construction_Material_Kernel","Construction_Specification_Kernel"]},
+      {"band_id":"execution_intelligence","band_label":"Execution / Intelligence","position":3,"scope":"ACTIVE_NATIVE","members":["Construction_Runtime","Construction_Cognitive_Bus","Construction_Awareness_Cache","Construction_Assistant","Construction_Intelligence_Workers","Construction_ALEXANDER_Engine"]},
+      {"band_id":"knowledge_enrichment","band_label":"Knowledge / Enrichment","position":4,"scope":"ACTIVE_NATIVE","members":["construction_dna","Construction_Pattern_Language_OS","Construction_Reference_Intelligence","Construction_Atlas","ShopDrawing_Compiler"]},
+      {"band_id":"surface","band_label":"Application Surface","position":5,"scope":"ACTIVE_NATIVE","members":["Construction_Application_OS"]},
+      {"band_id":"attached_external","band_label":"Attached External Platforms","position":6,"scope":"ATTACHED_REFERENCE","members":["trade_os","SUPA-SAINT"]}
     ]
   },
-  "artifact_references": {
-    "nodes": "topology/construction_os_topology_nodes.json",
-    "edges": "topology/construction_os_topology_edges.json",
-    "inventory": "inventory/repo_inventory.json",
-    "classification": "inventory/repo_classification.json"
-  },
-  "node_count": 14,
-  "edge_count": 30,
-  "notes": [
-    "This manifest emits registry topology artifacts only. It does not modify any UI topology renderer.",
-    "Construction_Runtime node sourced from PRIOR_RUN_AUDIT. Direct observation not available this session.",
-    "Topology shape bands are advisory for rendering. They do not impose runtime constraints.",
-    "All 13 OBSERVES edges are explicit per-repo. No vague global observer statement used."
+  "artifact_references":{"nodes":"topology/construction_os_topology_nodes.json","edges":"topology/construction_os_topology_edges.json","inventory":"inventory/repo_inventory.json","classification":"inventory/repo_classification.json"},
+  "node_count":29,
+  "edge_count":null,
+  "notes":[
+    "This manifest distinguishes ACTIVE_NATIVE (21 nodes) from ATTACHED_REFERENCE (8 nodes).",
+    "Group B repos (7) newly induced as ACTIVE_NATIVE from prior-run audit evidence.",
+    "Group C repos (8) attached as reference nodes only. Not flattened into native active layer.",
+    "All Group B and Group C classifications sourced from PRIOR_RUN_AUDIT (platform_inventory.json and 2026-03-22 system map). Inferred edges marked explicitly.",
+    "Historical audit layers preserved unchanged."
   ]
 }
