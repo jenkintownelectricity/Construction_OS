@@ -17,12 +17,15 @@
   },
   "artifact_references":{"nodes":"topology/construction_os_topology_nodes.json","edges":"topology/construction_os_topology_edges.json","inventory":"inventory/repo_inventory.json","classification":"inventory/repo_classification.json"},
   "node_count":29,
-  "edge_count":null,
+  "edge_count":63,
+  "inferred_edges_note":"All Group B native edges and Group C attached-reference edges are marked inferred=true with explicit evidence fields. Evidence sourced from platform_inventory.json and 2026-03-22 CONSTRUCTION_OS_SYSTEM_MAP.md.",
   "notes":[
-    "This manifest distinguishes ACTIVE_NATIVE (21 nodes) from ATTACHED_REFERENCE (8 nodes).",
-    "Group B repos (7) newly induced as ACTIVE_NATIVE from prior-run audit evidence.",
-    "Group C repos (8) attached as reference nodes only. Not flattened into native active layer.",
-    "All Group B and Group C classifications sourced from PRIOR_RUN_AUDIT (platform_inventory.json and 2026-03-22 system map). Inferred edges marked explicitly.",
+    "21 ACTIVE_NATIVE nodes. 8 ATTACHED_REFERENCE nodes.",
+    "30 existing edges preserved unchanged from prior induction.",
+    "15 new native edges (7 REGISTERS_TO, 3 SUPPORTS, 3 READS_FROM, 1 EMITS_TO, 1 SUPPORTS).",
+    "7 new OBSERVES edges for newly induced native repos.",
+    "9 new attached-reference edges. 2 new attached external READS_FROM edges.",
+    "All new edges marked inferred with evidence source.",
     "Historical audit layers preserved unchanged."
   ]
 }
