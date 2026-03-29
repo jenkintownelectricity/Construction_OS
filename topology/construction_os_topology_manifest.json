@@ -45,10 +45,11 @@
     "classification": "inventory/repo_classification.json"
   },
   "node_count": 14,
-  "edge_count": null,
+  "edge_count": 30,
   "notes": [
     "This manifest emits registry topology artifacts only. It does not modify any UI topology renderer.",
     "Construction_Runtime node sourced from PRIOR_RUN_AUDIT. Direct observation not available this session.",
-    "Topology shape bands are advisory for rendering. They do not impose runtime constraints."
+    "Topology shape bands are advisory for rendering. They do not impose runtime constraints.",
+    "All 13 OBSERVES edges are explicit per-repo. No vague global observer statement used."
   ]
 }

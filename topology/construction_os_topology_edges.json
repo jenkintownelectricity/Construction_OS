@@ -1,0 +1,278 @@
+{
+  "schema": "construction_os_topology_edges",
+  "version": "1.0.0",
+  "pass_id": "registry-induction-topology-pass-construction-os-registry",
+  "pass_timestamp": "2026-03-29T00:00:00Z",
+  "edge_count": 30,
+  "edges": [
+    {
+      "edge_id": "edge-vti-tm-governs-construction-os-registry",
+      "source": "VTI_TM",
+      "relation": "GOVERNS",
+      "target": "Construction_OS_Registry",
+      "source_node_id": "node-vti-tm",
+      "target_node_id": "node-construction-os-registry"
+    },
+    {
+      "edge_id": "edge-vti-tm-governs-construction-application-os",
+      "source": "VTI_TM",
+      "relation": "GOVERNS",
+      "target": "Construction_Application_OS",
+      "source_node_id": "node-vti-tm",
+      "target_node_id": "node-construction-application-os"
+    },
+    {
+      "edge_id": "edge-construction-kernel-registers-to-construction-os-registry",
+      "source": "Construction_Kernel",
+      "relation": "REGISTERS_TO",
+      "target": "Construction_OS_Registry",
+      "source_node_id": "node-construction-kernel",
+      "target_node_id": "node-construction-os-registry"
+    },
+    {
+      "edge_id": "edge-construction-assembly-kernel-registers-to-construction-os-registry",
+      "source": "Construction_Assembly_Kernel",
+      "relation": "REGISTERS_TO",
+      "target": "Construction_OS_Registry",
+      "source_node_id": "node-construction-assembly-kernel",
+      "target_node_id": "node-construction-os-registry"
+    },
+    {
+      "edge_id": "edge-construction-workforce-os-registers-to-construction-os-registry",
+      "source": "Construction_Workforce_OS",
+      "relation": "REGISTERS_TO",
+      "target": "Construction_OS_Registry",
+      "source_node_id": "node-construction-workforce-os",
+      "target_node_id": "node-construction-os-registry"
+    },
+    {
+      "edge_id": "edge-construction-runtime-registers-to-construction-os-registry",
+      "source": "Construction_Runtime",
+      "relation": "REGISTERS_TO",
+      "target": "Construction_OS_Registry",
+      "source_node_id": "node-construction-runtime",
+      "target_node_id": "node-construction-os-registry",
+      "note": "Runtime sourced from PRIOR_RUN_AUDIT"
+    },
+    {
+      "edge_id": "edge-construction-runtime-executes-construction-kernel",
+      "source": "Construction_Runtime",
+      "relation": "EXECUTES",
+      "target": "Construction_Kernel",
+      "source_node_id": "node-construction-runtime",
+      "target_node_id": "node-construction-kernel",
+      "note": "Runtime sourced from PRIOR_RUN_AUDIT"
+    },
+    {
+      "edge_id": "edge-construction-runtime-executes-construction-assembly-kernel",
+      "source": "Construction_Runtime",
+      "relation": "EXECUTES",
+      "target": "Construction_Assembly_Kernel",
+      "source_node_id": "node-construction-runtime",
+      "target_node_id": "node-construction-assembly-kernel",
+      "note": "Runtime sourced from PRIOR_RUN_AUDIT"
+    },
+    {
+      "edge_id": "edge-construction-runtime-executes-construction-workforce-os",
+      "source": "Construction_Runtime",
+      "relation": "EXECUTES",
+      "target": "Construction_Workforce_OS",
+      "source_node_id": "node-construction-runtime",
+      "target_node_id": "node-construction-workforce-os",
+      "note": "Runtime sourced from PRIOR_RUN_AUDIT"
+    },
+    {
+      "edge_id": "edge-construction-cognitive-bus-emits-to-construction-awareness-cache",
+      "source": "Construction_Cognitive_Bus",
+      "relation": "EMITS_TO",
+      "target": "Construction_Awareness_Cache",
+      "source_node_id": "node-construction-cognitive-bus",
+      "target_node_id": "node-construction-awareness-cache"
+    },
+    {
+      "edge_id": "edge-construction-awareness-cache-supports-construction-assistant",
+      "source": "Construction_Awareness_Cache",
+      "relation": "SUPPORTS",
+      "target": "Construction_Assistant",
+      "source_node_id": "node-construction-awareness-cache",
+      "target_node_id": "node-construction-assistant"
+    },
+    {
+      "edge_id": "edge-construction-intelligence-workers-supports-construction-assistant",
+      "source": "Construction_Intelligence_Workers",
+      "relation": "SUPPORTS",
+      "target": "Construction_Assistant",
+      "source_node_id": "node-construction-intelligence-workers",
+      "target_node_id": "node-construction-assistant"
+    },
+    {
+      "edge_id": "edge-construction-cognitive-bus-coordinates-construction-intelligence-workers",
+      "source": "Construction_Cognitive_Bus",
+      "relation": "COORDINATES",
+      "target": "Construction_Intelligence_Workers",
+      "source_node_id": "node-construction-cognitive-bus",
+      "target_node_id": "node-construction-intelligence-workers"
+    },
+    {
+      "edge_id": "edge-construction-dna-enriches-construction-assembly-kernel",
+      "source": "construction_dna",
+      "relation": "ENRICHES",
+      "target": "Construction_Assembly_Kernel",
+      "source_node_id": "node-construction-dna",
+      "target_node_id": "node-construction-assembly-kernel"
+    },
+    {
+      "edge_id": "edge-construction-pattern-language-os-enriches-construction-runtime",
+      "source": "Construction_Pattern_Language_OS",
+      "relation": "ENRICHES",
+      "target": "Construction_Runtime",
+      "source_node_id": "node-construction-pattern-language-os",
+      "target_node_id": "node-construction-runtime"
+    },
+    {
+      "edge_id": "edge-construction-reference-intelligence-supports-construction-runtime",
+      "source": "Construction_Reference_Intelligence",
+      "relation": "SUPPORTS",
+      "target": "Construction_Runtime",
+      "source_node_id": "node-construction-reference-intelligence",
+      "target_node_id": "node-construction-runtime"
+    },
+    {
+      "edge_id": "edge-construction-application-os-reads-from-construction-os-registry",
+      "source": "Construction_Application_OS",
+      "relation": "READS_FROM",
+      "target": "Construction_OS_Registry",
+      "source_node_id": "node-construction-application-os",
+      "target_node_id": "node-construction-os-registry"
+    },
+    {
+      "edge_id": "edge-construction-application-os-reads-from-construction-runtime",
+      "source": "Construction_Application_OS",
+      "relation": "READS_FROM",
+      "target": "Construction_Runtime",
+      "source_node_id": "node-construction-application-os",
+      "target_node_id": "node-construction-runtime"
+    },
+    {
+      "edge_id": "edge-construction-application-os-reads-from-construction-awareness-cache",
+      "source": "Construction_Application_OS",
+      "relation": "READS_FROM",
+      "target": "Construction_Awareness_Cache",
+      "source_node_id": "node-construction-application-os",
+      "target_node_id": "node-construction-awareness-cache"
+    },
+    {
+      "edge_id": "edge-construction-assistant-advises-construction-application-os",
+      "source": "Construction_Assistant",
+      "relation": "ADVISES",
+      "target": "Construction_Application_OS",
+      "source_node_id": "node-construction-assistant",
+      "target_node_id": "node-construction-application-os"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-vti-tm",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "VTI_TM",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-vti-tm"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-application-os",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Application_OS",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-application-os"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-cognitive-bus",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Cognitive_Bus",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-cognitive-bus"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-assembly-kernel",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Assembly_Kernel",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-assembly-kernel"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-awareness-cache",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Awareness_Cache",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-awareness-cache"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-assistant",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Assistant",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-assistant"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-kernel",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Kernel",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-kernel"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-workforce-os",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Workforce_OS",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-workforce-os"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-intelligence-workers",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Intelligence_Workers",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-intelligence-workers"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-dna",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "construction_dna",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-dna"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-pattern-language-os",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Pattern_Language_OS",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-pattern-language-os"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-reference-intelligence",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Reference_Intelligence",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-reference-intelligence"
+    },
+    {
+      "edge_id": "edge-construction-os-registry-observes-construction-runtime",
+      "source": "Construction_OS_Registry",
+      "relation": "OBSERVES",
+      "target": "Construction_Runtime",
+      "source_node_id": "node-construction-os-registry",
+      "target_node_id": "node-construction-runtime",
+      "note": "Runtime sourced from PRIOR_RUN_AUDIT"
+    }
+  ]
+}
