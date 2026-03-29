@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "pass_id": "registry-induction-topology-pass-construction-os-registry",
   "pass_timestamp": "2026-03-29T00:00:00Z",
-  "status": "DRAFT",
+  "status": "FINAL",
   "audit_entries": [
     {
       "repo_name": "VTI_TM",
@@ -103,7 +103,7 @@
       "notes": "Self-registration. Write target for this pass. Contains registry/ with platform_inventory.json and wave catalogs.",
       "blockers": [],
       "induction_status": "INDUCED",
-      "inferred_relations": ["OBSERVES all 13 other repos (explicit per-repo edges)"]
+      "inferred_relations": ["OBSERVES all 13 other repos (explicit per-repo edges in topology)"]
     },
     {
       "repo_name": "construction_dna",
