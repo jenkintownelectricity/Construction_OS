@@ -1,0 +1,117 @@
+{
+  "schema": "construction_os_registry_audit_reconciliation_report",
+  "version": "1.0.0",
+  "pass_id": "registry-branch-audit-append-construction-os-registry",
+  "pass_timestamp": "2026-03-29T00:00:00Z",
+  "description": "Reconciliation report comparing the 2026-03-22 broad full-system architecture audit with the 2026-03-29 active registry induction topology pass. These are different scope layers, not competing truths.",
+  "reconciliation": {
+    "broad_reference": {
+      "audit_id": "audit-2026-03-22-full-system-map",
+      "audit_date": "2026-03-22",
+      "scope_type": "FULL_SYSTEM_REFERENCE",
+      "source_artifact": "registry/CONSTRUCTION_OS_SYSTEM_MAP.md",
+      "source_branch": "claude/review-construction-system-Hn6XJ",
+      "total_repos": 21,
+      "merged_to_main": false
+    },
+    "active_induction": {
+      "audit_id": "audit-2026-03-29-registry-induction",
+      "audit_date": "2026-03-29",
+      "scope_type": "ACTIVE_INDUCED_TOPOLOGY",
+      "source_artifacts": "inventory/, topology/, receipts/",
+      "source_branch": "claude/observer-audit-construction-8q0qi",
+      "total_repos": 14,
+      "merged_to_main": false
+    },
+    "relationship": "BROAD_REFERENCE_TO_ACTIVE_SUBSET",
+    "relationship_explanation": "The 2026-03-29 induction is a governed active topology subset extracted from the broader Construction OS ecosystem. It does not erase, replace, or contradict the 2026-03-22 full system map. The broader audit remains the most comprehensive architecture reference. The active induction provides deterministic node/edge registry truth for the 14 repos currently staged for topology rendering."
+  },
+  "overlap_set": {
+    "description": "Repos present in BOTH the 2026-03-22 broad audit AND the 2026-03-29 active induction",
+    "count": 10,
+    "repos": [
+      "Construction_Kernel",
+      "Construction_Pattern_Language_OS",
+      "Construction_Assembly_Kernel",
+      "Construction_Runtime",
+      "Construction_Application_OS",
+      "Construction_Cognitive_Bus",
+      "Construction_Awareness_Cache",
+      "Construction_Reference_Intelligence",
+      "Construction_Intelligence_Workers",
+      "Construction_Assistant"
+    ]
+  },
+  "broad_only_set": {
+    "description": "Repos present in the 2026-03-22 broad audit but NOT in the 2026-03-29 active induction. These remain valid architecture references but were not staged for active topology induction in this pass.",
+    "count": 11,
+    "repos": [
+      "Universal_Truth_Kernel",
+      "ValidKernel-Governance",
+      "ValidKernel_Geometry_Kernel",
+      "ValidKernel_Patterns",
+      "Construction_Chemistry_Kernel",
+      "Construction_Scope_Kernel",
+      "Construction_Material_Kernel",
+      "Construction_Specification_Kernel",
+      "Construction_Atlas",
+      "Construction_ALEXANDER_Engine",
+      "ShopDrawing_Compiler"
+    ],
+    "notes": [
+      "These repos were documented in the broader 2026-03-22 system map but were not in the 14-repo staged set for the 2026-03-29 induction.",
+      "Universal_Truth_Kernel, ValidKernel-Governance, ValidKernel_Geometry_Kernel, and ValidKernel_Patterns are upstream ValidKernel governance repos — reference-only for Construction OS.",
+      "Construction_Chemistry_Kernel, Construction_Scope_Kernel, Construction_Material_Kernel, Construction_Specification_Kernel are domain sub-kernels documented in the system map under Construction_Kernel's domain kernel family.",
+      "Construction_Atlas is the purified spatial context layer (purified 2026-03-21).",
+      "Construction_ALEXANDER_Engine is the Ring 2 pattern intelligence engine.",
+      "ShopDrawing_Compiler is a capabilities-layer compilation service.",
+      "Their absence from the active induction does NOT mean they are removed from the architecture. They simply were not in scope for this topology pass."
+    ]
+  },
+  "active_only_set": {
+    "description": "Repos present in the 2026-03-29 active induction but NOT in the 2026-03-22 broad audit's primary 21-repo list",
+    "count": 4,
+    "repos": [
+      "VTI_TM",
+      "Construction_Workforce_OS",
+      "construction_dna",
+      "Construction_OS_Registry"
+    ],
+    "notes": [
+      "VTI_TM is the governance reference authority. It was not listed as a primary audited repo in the 2026-03-22 system map but is the overarching governance entity for the ecosystem.",
+      "Construction_Workforce_OS is a domain kernel for workforce operations. It was not individually listed in the 2026-03-22 system map's primary repo inventory.",
+      "construction_dna is the DNA enrichment layer providing foundational construction domain packages. Not individually listed in the 2026-03-22 system map.",
+      "Construction_OS_Registry was listed in the 2026-03-22 system map as infrastructure but not as a primary audited member. The 2026-03-29 induction self-registers it as a topology node.",
+      "These additions represent ecosystem growth and explicit governance registration that occurred between the two audit dates."
+    ]
+  },
+  "infrastructure_noted_in_both": {
+    "description": "Infrastructure repos acknowledged in both audits but with different treatment",
+    "repos": [
+      {
+        "repo": "Construction_OS_Registry",
+        "in_2022_03_22": "Listed as infrastructure/governance, not a primary audited member",
+        "in_2026_03_29": "Self-registered as REGISTRY node in active topology"
+      },
+      {
+        "repo": "ValidKernel_Registry",
+        "in_2022_03_22": "Listed as infrastructure/governance",
+        "in_2026_03_29": "Not in scope for active induction"
+      },
+      {
+        "repo": "ValidKernelOS_VKBUS",
+        "in_2022_03_22": "Listed as infrastructure/governance + observation layer",
+        "in_2026_03_29": "Not in scope for active induction"
+      }
+    ]
+  },
+  "contradictions_found": false,
+  "contradiction_notes": "No contradictions detected between the two audits. The 2026-03-22 system map and the 2026-03-29 induction are complementary. Classification labels differ in format (the system map uses prose layer names; the induction uses formal architectural_class and topology_node_type enums) but describe consistent roles.",
+  "reconciliation_guidance": [
+    "For full-system architecture reference, consult the 2026-03-22 CONSTRUCTION_OS_SYSTEM_MAP.md on branch claude/review-construction-system-Hn6XJ.",
+    "For active topology rendering and registry node/edge truth, consult the 2026-03-29 artifacts in inventory/ and topology/ on branch claude/observer-audit-construction-8q0qi.",
+    "For platform inventory with frozen topology edges, consult registry/platform_inventory.json on main.",
+    "Future induction passes should consider expanding the active topology to include broad-only repos (especially Construction_Atlas, Construction_ALEXANDER_Engine, and domain sub-kernels) as they become staged.",
+    "The 2026-03-22 system map should be considered for merge to main to preserve its comprehensive architecture truth in the canonical branch history."
+  ]
+}
