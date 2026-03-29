@@ -1,12 +1,12 @@
 /**
  * Construction OS — Control Tower Sidebar
- * Wave C1 — Enterprise-grade construction-native persistent sidebar.
- * Dark professional interface. Construction-intelligence tone.
+ * Wave C1 + VTI Absorption — Grouped navigation with collapsible sections.
+ * Premium dark enterprise sidebar with section headers.
  */
 
 import { useState } from 'react';
 import { tokens } from '../ui/theme/tokens';
-import { CONTROL_TOWER_NAV, type ControlTowerRoute } from './controlTowerTypes';
+import { CONTROL_TOWER_NAV_GROUPS, type ControlTowerRoute } from './controlTowerTypes';
 
 const t = tokens;
 
@@ -17,8 +17,21 @@ interface ConstructionSidebarProps {
 
 export function ConstructionSidebar({ activeRoute, onNavigate }: ConstructionSidebarProps) {
   const [collapsed, setCollapsed] = useState(false);
+  const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(new Set());
 
-  const sidebarWidth = collapsed ? 56 : 220;
+  const sidebarWidth = collapsed ? 56 : 230;
+
+  const toggleGroup = (label: string) => {
+    setCollapsedGroups((prev) => {
+      const next = new Set(prev);
+      if (next.has(label)) {
+        next.delete(label);
+      } else {
+        next.add(label);
+      }
+      return next;
+    });
+  };
 
   return (
     <div
@@ -90,66 +103,107 @@ export function ConstructionSidebar({ activeRoute, onNavigate }: ConstructionSid
         )}
       </div>
 
-      {/* Navigation */}
+      {/* Grouped Navigation */}
       <nav
         style={{
           flex: 1,
           overflowY: 'auto',
-          padding: '8px 0',
+          padding: '4px 0',
         }}
       >
-        {CONTROL_TOWER_NAV.map((item) => {
-          const isActive = activeRoute === item.id;
+        {CONTROL_TOWER_NAV_GROUPS.map((group) => {
+          const isGroupCollapsed = collapsedGroups.has(group.label);
+          const hasActiveItem = group.items.some((item) => item.id === activeRoute);
+
           return (
-            <button
-              key={item.id}
-              onClick={() => onNavigate(item.id)}
-              title={collapsed ? item.label : undefined}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                width: collapsed ? 'calc(100% - 8px)' : 'calc(100% - 16px)',
-                margin: collapsed ? '1px 4px' : '1px 8px',
-                padding: collapsed ? '8px 0' : '7px 12px',
-                justifyContent: collapsed ? 'center' : 'flex-start',
-                border: 'none',
-                borderRadius: t.radius.md,
-                cursor: 'pointer',
-                fontSize: t.font.sizeXs,
-                fontWeight: isActive ? Number(t.font.weightSemibold) : Number(t.font.weightMedium),
-                fontFamily: t.font.family,
-                color: isActive ? '#ffffff' : t.color.fgSecondary,
-                background: isActive ? t.color.accentMuted : 'transparent',
-                borderLeft: isActive ? `3px solid ${t.color.accentPrimary}` : '3px solid transparent',
-                transition: `background ${t.transition.fast}, color ${t.transition.fast}`,
-                textAlign: 'left',
-              }}
-              onMouseEnter={(e) => {
-                if (!isActive) {
-                  e.currentTarget.style.background = t.color.bgHover;
-                  e.currentTarget.style.color = t.color.fgPrimary;
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isActive) {
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.color = t.color.fgSecondary;
-                }
-              }}
-            >
-              <span
-                style={{
-                  fontSize: '14px',
-                  width: '20px',
-                  textAlign: 'center',
-                  flexShrink: 0,
-                }}
-              >
-                {item.icon}
-              </span>
-              {!collapsed && <span>{item.label}</span>}
-            </button>
+            <div key={group.label} style={{ marginBottom: 2 }}>
+              {/* Group Header */}
+              {!collapsed && (
+                <button
+                  onClick={() => toggleGroup(group.label)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    width: 'calc(100% - 16px)',
+                    margin: '4px 8px 2px',
+                    padding: '4px 8px',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                    fontSize: '10px',
+                    fontWeight: Number(t.font.weightSemibold),
+                    fontFamily: t.font.family,
+                    color: hasActiveItem ? t.color.fgSecondary : t.color.fgMuted,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    textAlign: 'left',
+                  }}
+                >
+                  <span>{group.label}</span>
+                  <span style={{ fontSize: '8px', color: t.color.fgMuted }}>
+                    {isGroupCollapsed ? '\u25B6' : '\u25BC'}
+                  </span>
+                </button>
+              )}
+
+              {/* Group Items */}
+              {(!isGroupCollapsed || collapsed) &&
+                group.items.map((item) => {
+                  const isActive = activeRoute === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => onNavigate(item.id)}
+                      title={collapsed ? `${group.label} \u2014 ${item.label}` : undefined}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        width: collapsed ? 'calc(100% - 8px)' : 'calc(100% - 16px)',
+                        margin: collapsed ? '1px 4px' : '1px 8px',
+                        padding: collapsed ? '6px 0' : '5px 12px',
+                        justifyContent: collapsed ? 'center' : 'flex-start',
+                        border: 'none',
+                        borderRadius: t.radius.md,
+                        cursor: 'pointer',
+                        fontSize: t.font.sizeXs,
+                        fontWeight: isActive ? Number(t.font.weightSemibold) : Number(t.font.weightMedium),
+                        fontFamily: t.font.family,
+                        color: isActive ? '#ffffff' : t.color.fgSecondary,
+                        background: isActive ? t.color.accentMuted : 'transparent',
+                        borderLeft: isActive ? `3px solid ${t.color.accentPrimary}` : '3px solid transparent',
+                        transition: `background ${t.transition.fast}, color ${t.transition.fast}`,
+                        textAlign: 'left',
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isActive) {
+                          e.currentTarget.style.background = t.color.bgHover;
+                          e.currentTarget.style.color = t.color.fgPrimary;
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isActive) {
+                          e.currentTarget.style.background = 'transparent';
+                          e.currentTarget.style.color = t.color.fgSecondary;
+                        }
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: '13px',
+                          width: '18px',
+                          textAlign: 'center',
+                          flexShrink: 0,
+                        }}
+                      >
+                        {item.icon}
+                      </span>
+                      {!collapsed && <span>{item.label}</span>}
+                    </button>
+                  );
+                })}
+            </div>
           );
         })}
       </nav>
@@ -188,7 +242,7 @@ export function ConstructionSidebar({ activeRoute, onNavigate }: ConstructionSid
             letterSpacing: '0.05em',
           }}
         >
-          Wave C1 — Surface Only
+          Control Tower — Primary Surface
         </div>
       )}
     </div>
