@@ -48,6 +48,7 @@ import { SpecificationsPage } from '../pages/specifications/SpecificationsPage';
 import { ChemistryPage } from '../pages/chemistry/ChemistryPage';
 import { ScopePage } from '../pages/scope/ScopePage';
 import { PatternLanguagePage } from '../pages/patterns/PatternLanguagePage';
+import { BarrettPMMAGeneratorPage } from '../pages/pmma-generator/BarrettPMMAGeneratorPage';
 
 // Admin
 import { BrandingPage } from '../pages/branding/BrandingPage';
@@ -125,6 +126,8 @@ function renderPage(route: ControlTowerRoute) {
       return <ScopePage />;
     case 'patterns':
       return <PatternLanguagePage />;
+    case 'pmma-generator':
+      return <BarrettPMMAGeneratorPage />;
 
     // Admin
     case 'branding':
