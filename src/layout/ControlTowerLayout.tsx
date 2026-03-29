@@ -1,7 +1,7 @@
 /**
  * Construction OS — Control Tower Layout
- * Wave C1 — Primary application shell with construction-native sidebar
- * and routed content area. Extends existing app cleanly.
+ * Wave C1 + VTI Absorption — Primary application shell with grouped sidebar
+ * navigation and routed content area for all absorbed control tower surfaces.
  */
 
 import { useState } from 'react';
@@ -9,23 +9,49 @@ import { tokens } from '../ui/theme/tokens';
 import { ConstructionSidebar } from './ConstructionSidebar';
 import type { ControlTowerRoute } from './controlTowerTypes';
 
-// Pages
+// Core
 import { ConstructionDashboard } from '../pages/dashboard/ConstructionDashboard';
+import { MirrorBuilderPage } from '../pages/mirror-builder/MirrorBuilderPage';
+
+// Foundry
 import { ConstructionFoundry } from '../pages/foundry/ConstructionFoundry';
-import { TruthSpine } from '../pages/spine/TruthSpine';
+import { BirthPlannerPage } from '../pages/birth-planner/BirthPlannerPage';
+import { KernelsPage } from '../pages/kernels/KernelsPage';
+
+// Atlas
 import { AtlasPage } from '../pages/atlas/AtlasPage';
+import { TopologyPage } from '../pages/topology/TopologyPage';
 import { AssembliesPage } from '../pages/assemblies/AssembliesPage';
+
+// Runtime
+import { RuntimePage } from '../pages/runtime/RuntimePage';
+import { EnginesPage } from '../pages/engines/EnginesPage';
+import { SignalsPage } from '../pages/signals/SignalsPage';
+import { CapabilitiesPage } from '../pages/capabilities/CapabilitiesPage';
+
+// Governance
+import { GovernancePage } from '../pages/governance/GovernancePage';
+import { ContractsPage } from '../pages/contracts/ContractsPage';
+import { DoctrinePage } from '../pages/doctrine/DoctrinePage';
+import { TruthSpine } from '../pages/spine/TruthSpine';
+
+// Registry
+import { RegistryPage } from '../pages/registry/RegistryPage';
+import { ReceiptsPage } from '../pages/receipts/ReceiptsPage';
+import { MirrorsPage } from '../pages/mirrors/MirrorsPage';
+
+// Platform
+import { ViewerPage } from '../pages/viewer/ViewerPage';
+import { PlansPage } from '../pages/plans/PlansPage';
 import { MaterialsPage } from '../pages/materials/MaterialsPage';
 import { SpecificationsPage } from '../pages/specifications/SpecificationsPage';
 import { ChemistryPage } from '../pages/chemistry/ChemistryPage';
 import { ScopePage } from '../pages/scope/ScopePage';
 import { PatternLanguagePage } from '../pages/patterns/PatternLanguagePage';
-import { RuntimePage } from '../pages/runtime/RuntimePage';
-import { RegistryPage } from '../pages/registry/RegistryPage';
-import { SignalsPage } from '../pages/signals/SignalsPage';
-import { ReceiptsPage } from '../pages/receipts/ReceiptsPage';
+
+// Admin
 import { BrandingPage } from '../pages/branding/BrandingPage';
-import { MirrorBuilderPage } from '../pages/mirror-builder/MirrorBuilderPage';
+import { AdminPage } from '../pages/admin/AdminPage';
 
 const t = tokens;
 
@@ -34,18 +60,61 @@ const FULL_VIEWPORT_ROUTES: ControlTowerRoute[] = ['mirror-builder'];
 
 function renderPage(route: ControlTowerRoute) {
   switch (route) {
+    // Core
     case 'dashboard':
       return <ConstructionDashboard />;
     case 'mirror-builder':
       return <MirrorBuilderPage />;
+
+    // Foundry
     case 'foundry':
       return <ConstructionFoundry />;
-    case 'truth-spine':
-      return <TruthSpine />;
+    case 'birth-planner':
+      return <BirthPlannerPage />;
+    case 'kernels':
+      return <KernelsPage />;
+
+    // Atlas
     case 'atlas':
       return <AtlasPage />;
+    case 'topology':
+      return <TopologyPage />;
     case 'assemblies':
       return <AssembliesPage />;
+
+    // Runtime
+    case 'runtime':
+      return <RuntimePage />;
+    case 'engines':
+      return <EnginesPage />;
+    case 'signals':
+      return <SignalsPage />;
+    case 'capabilities':
+      return <CapabilitiesPage />;
+
+    // Governance
+    case 'governance':
+      return <GovernancePage />;
+    case 'contracts':
+      return <ContractsPage />;
+    case 'doctrine':
+      return <DoctrinePage />;
+    case 'truth-spine':
+      return <TruthSpine />;
+
+    // Registry
+    case 'registry':
+      return <RegistryPage />;
+    case 'receipts':
+      return <ReceiptsPage />;
+    case 'mirrors':
+      return <MirrorsPage />;
+
+    // Platform
+    case 'viewer':
+      return <ViewerPage />;
+    case 'plans':
+      return <PlansPage />;
     case 'materials':
       return <MaterialsPage />;
     case 'specifications':
@@ -56,16 +125,13 @@ function renderPage(route: ControlTowerRoute) {
       return <ScopePage />;
     case 'patterns':
       return <PatternLanguagePage />;
-    case 'runtime':
-      return <RuntimePage />;
-    case 'registry':
-      return <RegistryPage />;
-    case 'signals':
-      return <SignalsPage />;
-    case 'receipts':
-      return <ReceiptsPage />;
+
+    // Admin
     case 'branding':
       return <BrandingPage />;
+    case 'admin':
+      return <AdminPage />;
+
     default:
       return <ConstructionDashboard />;
   }
