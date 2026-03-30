@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "construction-os-v2/absorption-receipt-schema-v2",
+  "title": "Absorption Receipt Schema v2",
+  "description": "Schema for recording the absorption of a sovereign Construction repository into the Construction OS v2 monorepo container.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "source_repo",
+    "source_commit_sha",
+    "destination_folder",
+    "absorption_date",
+    "absorbed_by",
+    "authority_command",
+    "file_count",
+    "integrity_hash",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "2.0"
+    },
+    "receipt_id": {
+      "type": "string",
+      "description": "Unique identifier for this absorption receipt"
+    },
+    "source_repo": {
+      "type": "string",
+      "description": "Name of the sovereign repository that was absorbed"
+    },
+    "source_commit_sha": {
+      "type": "string",
+      "description": "Commit SHA of the source repo at the time of absorption"
+    },
+    "destination_folder": {
+      "type": "string",
+      "description": "Target folder within the Construction OS v2 monorepo"
+    },
+    "absorption_date": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date of absorption"
+    },
+    "absorbed_by": {
+      "type": "string",
+      "description": "Identity of the agent or authority that performed the absorption"
+    },
+    "authority_command": {
+      "type": "string",
+      "description": "L0 command document ID authorizing this absorption"
+    },
+    "file_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of files absorbed"
+    },
+    "integrity_hash": {
+      "type": "string",
+      "description": "SHA-256 hash of the absorbed content for integrity verification"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "failed", "rolled_back"],
+      "description": "Final status of the absorption operation"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes about the absorption"
+    }
+  },
+  "additionalProperties": false
+}
