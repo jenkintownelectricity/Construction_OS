@@ -1,0 +1,80 @@
+{
+  "component_name": "Constraint_Port",
+  "component_id": "CPORT-001",
+  "version": "0.1.0",
+  "ring": 2,
+  "ring_label": "Engines-Tools-Datasets",
+  "authority_boundary": {
+    "description": "Bounded evaluation surface for construction constraints. Evaluates but does not own truth.",
+    "location": "10-Construction_OS/2-Engines-Tools-Datasets/Constraint-Port/",
+    "governance_doc": "L0-CMD-CONOS-VKGL04R-CPORT-001"
+  },
+  "consumed_truth_sources": [
+    {
+      "source": "Construction_Material_Kernel",
+      "access": "read-only",
+      "purpose": "Material properties, compatibility data"
+    },
+    {
+      "source": "Construction_Chemistry_Kernel",
+      "access": "read-only",
+      "purpose": "Chemical interaction rules and matrices"
+    },
+    {
+      "source": "Construction_Assembly_Kernel",
+      "access": "read-only",
+      "purpose": "Assembly sequence, method, and attachment constraints"
+    },
+    {
+      "source": "Construction_Specification_Kernel",
+      "access": "read-only",
+      "purpose": "Specification compliance requirements"
+    },
+    {
+      "source": "Construction_Scope_Kernel",
+      "access": "read-only",
+      "purpose": "Scope boundary and responsibility constraints"
+    },
+    {
+      "source": "Construction_Reference_Intelligence",
+      "access": "read-only",
+      "purpose": "External code/standard references"
+    }
+  ],
+  "emitted_outputs": [
+    {
+      "output": "ConstraintDecision",
+      "consumer": "Construction_Runtime",
+      "purpose": "Structured decisions for execution gating"
+    },
+    {
+      "output": "ConstraintDecision",
+      "consumer": "Construction_Application_OS",
+      "purpose": "Constraint status for UI and reporting"
+    },
+    {
+      "output": "EvaluationReceipt",
+      "consumer": "5-State-Receipts-Signals",
+      "purpose": "Audit trail for constraint evaluations"
+    }
+  ],
+  "standalone_valid": true,
+  "runtime_authority": false,
+  "kernel_authority": false,
+  "registry_registration_status": "pending",
+  "schemas": [
+    "constraint_object.schema.json",
+    "constraint_evidence.schema.json",
+    "constraint_decision.schema.json"
+  ],
+  "contracts": [
+    "constraintTypes.ts",
+    "constraintEvaluatorContract.ts"
+  ],
+  "taxonomy_files": [
+    "constraintSeverity.json",
+    "constraintActions.json"
+  ],
+  "created_date": "2026-03-30",
+  "created_by": "L0 Command — Armand Lefebvre"
+}

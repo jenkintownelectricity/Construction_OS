@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "constraint_object.schema.json",
+  "title": "Constraint Object",
+  "description": "Schema for a single constraint rule within the Constraint Port.",
+  "type": "object",
+  "required": [
+    "rule_id",
+    "rule_label",
+    "rule_family",
+    "constraint_type",
+    "source_authority",
+    "source_ref",
+    "applies_to",
+    "trigger",
+    "dependency_map",
+    "logic_operator",
+    "required_evidence",
+    "decision_on_fail"
+  ],
+  "properties": {
+    "rule_id": {
+      "type": "string",
+      "description": "Unique identifier for this constraint rule.",
+      "pattern": "^CR-[A-Z0-9]+-[0-9]+$"
+    },
+    "rule_label": {
+      "type": "string",
+      "description": "Human-readable label for this constraint rule.",
+      "maxLength": 200
+    },
+    "rule_family": {
+      "type": "string",
+      "description": "Grouping family for related constraint rules.",
+      "examples": ["ROOFING_CHEMISTRY", "STRUCTURAL_CODE", "WARRANTY_COMPLIANCE"]
+    },
+    "constraint_type": {
+      "type": "string",
+      "enum": [
+        "PHYSICAL_INCOMPATIBILITY",
+        "CODE_VIOLATION",
+        "WARRANTY_VOID",
+        "SPEC_CONFLICT",
+        "INSTALL_SEQUENCE_VIOLATION",
+        "RESPONSIBILITY_CONFLICT"
+      ],
+      "description": "Classification of the constraint type."
+    },
+    "source_authority": {
+      "type": "string",
+      "description": "The authoritative body or entity that owns this constraint truth.",
+      "examples": ["IBC 2021", "ASTM D6878", "Manufacturer X Technical Bulletin 42"]
+    },
+    "source_ref": {
+      "type": "string",
+      "description": "Specific reference within the source authority (section, clause, bulletin number)."
+    },
+    "applies_to": {
+      "type": "object",
+      "description": "Target scope this constraint applies to.",
+      "required": ["entity_type"],
+      "properties": {
+        "entity_type": {
+          "type": "string",
+          "enum": ["material", "assembly", "system", "method", "sequence", "scope_boundary"]
+        },
+        "entity_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Optional list of specific entity identifiers."
+        },
+        "entity_filter": {
+          "type": "object",
+          "description": "Optional filter criteria to match applicable entities.",
+          "additionalProperties": true
+        }
+      }
+    },
+    "trigger": {
+      "type": "object",
+      "description": "Conditions that activate this constraint evaluation.",
+      "required": ["condition"],
+      "properties": {
+        "condition": {
+          "type": "string",
+          "description": "Deterministic condition expression."
+        },
+        "context_requirements": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Required context data for trigger evaluation."
+        }
+      }
+    },
+    "dependency_map": {
+      "type": "object",
+      "description": "External data dependencies required for evaluation.",
+      "properties": {
+        "kernels": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Kernel sources this rule depends on."
+        },
+        "external_refs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "External reference sources required."
+        }
+      }
+    },
+    "logic_operator": {
+      "type": "string",
+      "enum": ["BLOCK", "WARN", "REQUIRE_HUMAN_STAMP"],
+      "description": "The action to take when this constraint is violated."
+    },
+    "required_evidence": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of evidence items required for evaluation.",
+      "minItems": 1
+    },
+    "decision_on_fail": {
+      "type": "string",
+      "enum": ["BLOCK", "WARN", "REQUIRE_HUMAN_STAMP", "DEFER_FOR_MISSING_EVIDENCE"],
+      "description": "Decision when evaluation cannot complete (fail-closed default: BLOCK)."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes for human reviewers.",
+      "maxLength": 500
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "constraint_decision.schema.json",
+  "title": "Constraint Decision",
+  "description": "Schema for the output decision of a constraint evaluation.",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "rule_id",
+    "evidence_id",
+    "timestamp",
+    "action",
+    "severity",
+    "rationale",
+    "source_authority",
+    "deterministic"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string",
+      "description": "Unique identifier for this decision.",
+      "pattern": "^CD-[A-Z0-9]+-[0-9]+$"
+    },
+    "rule_id": {
+      "type": "string",
+      "description": "The constraint rule that produced this decision.",
+      "pattern": "^CR-[A-Z0-9]+-[0-9]+$"
+    },
+    "evidence_id": {
+      "type": "string",
+      "description": "Reference to the evidence record used.",
+      "pattern": "^EV-[A-Z0-9]+-[0-9]+$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of decision."
+    },
+    "action": {
+      "type": "string",
+      "enum": ["PASS", "WARN", "BLOCK", "REQUIRE_HUMAN_STAMP", "DEFER_FOR_MISSING_EVIDENCE"],
+      "description": "The decision action."
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"],
+      "description": "Severity classification of the constraint evaluation result."
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Human-readable explanation of why this decision was reached.",
+      "maxLength": 1000
+    },
+    "source_authority": {
+      "type": "string",
+      "description": "The authority that owns the constraint truth behind this decision."
+    },
+    "triggered_by": {
+      "type": "object",
+      "description": "The specific evidence that caused the trigger.",
+      "properties": {
+        "evidence_key": { "type": "string" },
+        "evidence_value": {},
+        "threshold": {},
+        "comparison": { "type": "string" }
+      }
+    },
+    "dependency_chain": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ordered list of dependencies evaluated to reach this decision."
+    },
+    "deterministic": {
+      "type": "boolean",
+      "description": "Must be true. Non-deterministic evaluations are invalid.",
+      "const": true
+    },
+    "human_override": {
+      "type": "object",
+      "description": "Present only if a human has stamped an override.",
+      "properties": {
+        "overridden_by": { "type": "string" },
+        "override_timestamp": { "type": "string", "format": "date-time" },
+        "override_rationale": { "type": "string" },
+        "original_action": {
+          "type": "string",
+          "enum": ["BLOCK", "REQUIRE_HUMAN_STAMP"]
+        }
+      },
+      "required": ["overridden_by", "override_timestamp", "override_rationale", "original_action"]
+    }
+  },
+  "additionalProperties": false
+}

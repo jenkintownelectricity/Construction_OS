@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "constraint_evidence.schema.json",
+  "title": "Constraint Evidence",
+  "description": "Schema for evidence collected during constraint evaluation.",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "rule_id",
+    "timestamp",
+    "evidence_items",
+    "completeness"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "description": "Unique identifier for this evidence record.",
+      "pattern": "^EV-[A-Z0-9]+-[0-9]+$"
+    },
+    "rule_id": {
+      "type": "string",
+      "description": "The constraint rule this evidence applies to.",
+      "pattern": "^CR-[A-Z0-9]+-[0-9]+$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when evidence was collected."
+    },
+    "evidence_items": {
+      "type": "array",
+      "description": "Collected evidence data points.",
+      "items": {
+        "type": "object",
+        "required": ["key", "value", "source"],
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Evidence field name matching required_evidence in constraint object."
+          },
+          "value": {
+            "description": "The evidence value. Can be string, number, boolean, or object."
+          },
+          "source": {
+            "type": "string",
+            "description": "Origin of this evidence (kernel name, reference ID, etc.)."
+          },
+          "verified": {
+            "type": "boolean",
+            "description": "Whether this evidence has been verified against its source.",
+            "default": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "completeness": {
+      "type": "string",
+      "enum": ["COMPLETE", "PARTIAL", "MISSING"],
+      "description": "Whether all required evidence was collected."
+    },
+    "missing_items": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of required evidence items that could not be collected."
+    }
+  },
+  "additionalProperties": false
+}
