@@ -1,0 +1,189 @@
+{
+  "$schema": "construction-os/registry/mirror-lifecycle/v1",
+  "schema_version": "1.0.0",
+  "registry_name": "mirror-lifecycle-registry",
+  "description": "Canonical registry of all lifecycle state transitions for mirrors. Every state change is recorded as an immutable transition record with full provenance, enabling complete audit trail reconstruction for any mirror's lifecycle history.",
+  "last_updated": "2026-03-20T00:00:00Z",
+  "maintainer": "registry-control-plane",
+  "transitions": [
+    {
+      "transition_id": "TRANS-GCP-SD-001",
+      "mirror_id": "MIRROR-GCP-SHOPDRAWING-001",
+      "mirror_name": "gcp_shopdrawing",
+      "from_state": null,
+      "to_state": "PROPOSED",
+      "transitioned_at": "2026-03-20T00:00:00Z",
+      "transitioned_by": "construction-os/mirror-team",
+      "reason": "Initial mirror proposal for GCP Shop Drawing integration. Source system identified, scope defined, and integration surface mapped.",
+      "validation_result": {
+        "passed": true,
+        "checks": [
+          {
+            "check": "source_system_reachable",
+            "result": "PASS",
+            "details": "GCP shop drawing API endpoint verified as reachable."
+          },
+          {
+            "check": "unique_mirror_name",
+            "result": "PASS",
+            "details": "No existing mirror with name gcp_shopdrawing."
+          },
+          {
+            "check": "kernel_ref_valid",
+            "result": "PASS",
+            "details": "KERN-INTEGRATION-MIRROR-NUCLEUS is a valid kernel reference."
+          }
+        ]
+      },
+      "artifacts": {
+        "proposal_document": "proposals/gcp-shopdrawing-mirror-proposal.md",
+        "scope_definition": "proposals/gcp-shopdrawing-scope.json"
+      },
+      "tags": ["initial", "proposal"]
+    },
+    {
+      "transition_id": "TRANS-GCP-SD-002",
+      "mirror_id": "MIRROR-GCP-SHOPDRAWING-001",
+      "mirror_name": "gcp_shopdrawing",
+      "from_state": "PROPOSED",
+      "to_state": "CHARTERED",
+      "transitioned_at": "2026-03-20T00:00:00Z",
+      "transitioned_by": "construction-os/architecture-board",
+      "reason": "Mirror charter approved by architecture board. Integration contract defined, trust boundary established, slice inventory finalized at 15 slices, and resource allocation confirmed.",
+      "validation_result": {
+        "passed": true,
+        "checks": [
+          {
+            "check": "charter_document_complete",
+            "result": "PASS",
+            "details": "Charter document includes scope, boundaries, success criteria, and rollback plan."
+          },
+          {
+            "check": "trust_boundary_defined",
+            "result": "PASS",
+            "details": "Trust boundary EXTERNAL_MANAGED with authentication, authorization, and encryption configured."
+          },
+          {
+            "check": "slice_inventory_complete",
+            "result": "PASS",
+            "details": "15 slices defined with dependencies, transfer classes, and descriptions."
+          },
+          {
+            "check": "owner_assigned",
+            "result": "PASS",
+            "details": "Owner construction-os/mirror-team assigned with contact verified."
+          },
+          {
+            "check": "architecture_board_approval",
+            "result": "PASS",
+            "details": "Approved by architecture board with 3/3 votes."
+          }
+        ]
+      },
+      "artifacts": {
+        "charter_document": "charters/gcp-shopdrawing-mirror-charter.md",
+        "integration_contract": "contracts/gcp-shopdrawing-integration-contract.json",
+        "approval_record": "approvals/APPROVAL-GCP-SD-CHARTER-001.json"
+      },
+      "tags": ["charter", "approved"]
+    },
+    {
+      "transition_id": "TRANS-GCP-SD-003",
+      "mirror_id": "MIRROR-GCP-SHOPDRAWING-001",
+      "mirror_name": "gcp_shopdrawing",
+      "from_state": "CHARTERED",
+      "to_state": "STAGED",
+      "transitioned_at": "2026-03-20T00:00:00Z",
+      "transitioned_by": "construction-os/mirror-team",
+      "reason": "Mirror staging complete. All 15 slices registered in slice registry. 5 core slices (detail_normalization, rules_engine, validation, artifact_manifest, lineage) activated. Transfer records initialized. Mirror is ready for operational validation period prior to full activation.",
+      "validation_result": {
+        "passed": true,
+        "checks": [
+          {
+            "check": "all_slices_registered",
+            "result": "PASS",
+            "details": "15/15 slices registered in mirror-slices-registry."
+          },
+          {
+            "check": "core_slices_active",
+            "result": "PASS",
+            "details": "5 core slices activated: detail_normalization, rules_engine, validation, artifact_manifest, lineage."
+          },
+          {
+            "check": "transfer_records_initialized",
+            "result": "PASS",
+            "details": "15 transfer records created in mirror-transfer-registry."
+          },
+          {
+            "check": "health_checks_passing",
+            "result": "PASS",
+            "details": "All 5 active slices reporting HEALTHY status."
+          },
+          {
+            "check": "dependency_graph_valid",
+            "result": "PASS",
+            "details": "No circular dependencies detected. All dependencies resolvable."
+          },
+          {
+            "check": "configuration_complete",
+            "result": "PASS",
+            "details": "Source system connection, authentication, and mapping configuration verified."
+          }
+        ]
+      },
+      "artifacts": {
+        "staging_report": "reports/gcp-shopdrawing-staging-report.json",
+        "health_check_results": "reports/gcp-shopdrawing-health-check-001.json"
+      },
+      "tags": ["staging", "core-slices-active"]
+    }
+  ],
+  "registry_metadata": {
+    "total_transitions": 3,
+    "transitions_by_mirror": {
+      "MIRROR-GCP-SHOPDRAWING-001": 3
+    },
+    "transitions_by_target_state": {
+      "PROPOSED": 1,
+      "CHARTERED": 1,
+      "STAGED": 1,
+      "ACTIVE": 0,
+      "FROZEN": 0,
+      "RETIRED": 0
+    },
+    "valid_lifecycle_states": [
+      "PROPOSED",
+      "CHARTERED",
+      "STAGED",
+      "ACTIVE",
+      "FROZEN",
+      "RETIRED"
+    ],
+    "valid_transitions": [
+      { "from": null, "to": "PROPOSED", "description": "Initial mirror creation" },
+      { "from": "PROPOSED", "to": "CHARTERED", "description": "Charter approved by architecture board" },
+      { "from": "CHARTERED", "to": "STAGED", "description": "Slices registered and core configuration complete" },
+      { "from": "STAGED", "to": "ACTIVE", "description": "Operational validation passed, mirror fully active" },
+      { "from": "ACTIVE", "to": "FROZEN", "description": "Mirror frozen due to breakaway, incident, or maintenance" },
+      { "from": "FROZEN", "to": "ACTIVE", "description": "Mirror unfrozen after remediation" },
+      { "from": "FROZEN", "to": "RETIRED", "description": "Frozen mirror retired permanently" },
+      { "from": "ACTIVE", "to": "RETIRED", "description": "Active mirror retired (graceful decommission)" },
+      { "from": "STAGED", "to": "RETIRED", "description": "Staged mirror abandoned before activation" },
+      { "from": "PROPOSED", "to": "RETIRED", "description": "Proposal rejected or withdrawn" },
+      { "from": "CHARTERED", "to": "RETIRED", "description": "Charter revoked before staging" }
+    ],
+    "transition_record_schema": {
+      "transition_id": "string — Unique identifier (TRANS-XXXX-NNNN)",
+      "mirror_id": "string — Reference to the mirror",
+      "mirror_name": "string — Human-readable mirror name",
+      "from_state": "string|null — Previous state (null for initial creation)",
+      "to_state": "string — Target state",
+      "transitioned_at": "datetime — ISO 8601 timestamp",
+      "transitioned_by": "string — Operator or system that initiated the transition",
+      "reason": "string — Detailed reason for the transition",
+      "validation_result": "object — Results of pre-transition validation checks",
+      "artifacts": "object — References to supporting documents and records",
+      "tags": "array — Freeform tags"
+    }
+  }
+}

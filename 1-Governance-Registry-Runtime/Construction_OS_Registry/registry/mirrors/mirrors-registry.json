@@ -1,0 +1,91 @@
+{
+  "$schema": "construction-os/registry/mirrors/v1",
+  "schema_version": "1.0.0",
+  "registry_name": "mirrors-registry",
+  "description": "Canonical registry of all mirrors in the Construction OS ecosystem. Each mirror represents a bounded integration surface that reflects external system capabilities into the kernel trust boundary.",
+  "last_updated": "2026-03-20T00:00:00Z",
+  "maintainer": "registry-control-plane",
+  "mirrors": [
+    {
+      "mirror_id": "MIRROR-GCP-SHOPDRAWING-001",
+      "mirror_name": "gcp_shopdrawing",
+      "display_name": "GCP Shop Drawing Mirror",
+      "description": "Integration mirror for Google Cloud Platform shop drawing services. Reflects shop drawing generation, normalization, validation, and artifact management capabilities into the Construction OS kernel trust boundary.",
+      "source_system": "gcp_shopdrawing",
+      "source_system_type": "CLOUD_PLATFORM",
+      "source_system_provider": "Google Cloud Platform",
+      "lifecycle_state": "STAGED",
+      "lifecycle_state_reason": "All slices registered and baseline configuration complete. Awaiting activation review.",
+      "trust_boundary": "EXTERNAL_MANAGED",
+      "trust_boundary_details": {
+        "authentication": "service_account_key",
+        "authorization": "iam_role_binding",
+        "encryption_in_transit": true,
+        "encryption_at_rest": true,
+        "audit_logging": true
+      },
+      "created_at": "2026-03-20T00:00:00Z",
+      "updated_at": "2026-03-20T00:00:00Z",
+      "chartered_at": "2026-03-20T00:00:00Z",
+      "staged_at": "2026-03-20T00:00:00Z",
+      "activated_at": null,
+      "frozen_at": null,
+      "retired_at": null,
+      "owner": "construction-os/mirror-team",
+      "owner_contact": "mirror-team@construction-os.internal",
+      "version": "0.1.0",
+      "kernel_ref": "KERN-INTEGRATION-MIRROR-NUCLEUS",
+      "kernel_ref_version": "1.0.0",
+      "slice_count": 15,
+      "active_slice_count": 5,
+      "parity_score": null,
+      "last_parity_review": null,
+      "drift_count": 0,
+      "breakaway_count": 0,
+      "tags": [
+        "gcp",
+        "shop-drawing",
+        "integration",
+        "cloud-platform"
+      ],
+      "metadata": {
+        "region": "us-central1",
+        "project_id": "construction-os-mirrors",
+        "service_tier": "standard",
+        "sla_target_uptime": 0.995
+      }
+    }
+  ],
+  "registry_metadata": {
+    "total_mirrors": 1,
+    "mirrors_by_state": {
+      "PROPOSED": 0,
+      "CHARTERED": 0,
+      "STAGED": 1,
+      "ACTIVE": 0,
+      "FROZEN": 0,
+      "RETIRED": 0
+    },
+    "valid_lifecycle_states": [
+      "PROPOSED",
+      "CHARTERED",
+      "STAGED",
+      "ACTIVE",
+      "FROZEN",
+      "RETIRED"
+    ],
+    "valid_trust_boundaries": [
+      "INTERNAL",
+      "EXTERNAL_MANAGED",
+      "EXTERNAL_UNMANAGED",
+      "FEDERATED"
+    ],
+    "valid_source_system_types": [
+      "CLOUD_PLATFORM",
+      "ON_PREMISE",
+      "SAAS",
+      "HYBRID",
+      "EDGE"
+    ]
+  }
+}

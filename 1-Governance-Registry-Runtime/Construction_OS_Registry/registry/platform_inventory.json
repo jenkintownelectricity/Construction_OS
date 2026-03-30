@@ -1,0 +1,333 @@
+{
+  "registry_version": "v1",
+  "registry_type": "construction_os_platform_inventory",
+  "description": "Canonical inventory of repositories confirmed as part of the Construction OS platform.",
+  "last_updated": "2026-03-22",
+  "architecture_status": "FROZEN",
+  "atlas_status": "CORE_CONTEXT_LAYER_PURIFIED",
+  "ui_authority": "Construction_Application_OS",
+  "atlas_purification": {
+    "date": "2026-03-21",
+    "method": "Option A — Atlas purified to spatial context layer only",
+    "drift_corrected": "Prior UI/application implementation (React/Next.js SPA, AI control plane, branding, 10+ tools) removed from Atlas",
+    "ui_migrated_to": "Construction_Application_OS",
+    "atlas_now_contains": "Spatial object graph types, context resolution types, spatial selectors, anchors, navigable objects",
+    "no_topology_role_change": true,
+    "no_role_weakening": true
+  },
+  "frozen_topology": {
+    "root_reference_layer": [
+      "Universal_Truth_Kernel"
+    ],
+    "writable_frozen_spine": [
+      "ValidKernel_Geometry_Kernel",
+      "ValidKernel-Governance",
+      "Construction_Kernel",
+      "Construction_Atlas",
+      "Construction_Runtime",
+      "Construction_Application_OS"
+    ],
+    "infrastructure": [
+      "Construction_OS_Registry",
+      "ValidKernel_Registry",
+      "ValidKernelOS_VKBUS"
+    ],
+    "dependency_edges": [
+      {"source": "Construction_Kernel", "target": "ValidKernel_Geometry_Kernel", "relationship": "consumes-spatial-primitives"},
+      {"source": "Construction_Atlas", "target": "Construction_Kernel", "relationship": "consumes-construction-ontology"},
+      {"source": "Construction_Atlas", "target": "ValidKernel_Geometry_Kernel", "relationship": "consumes-spatial-primitives"},
+      {"source": "Construction_Runtime", "target": "Construction_Atlas", "relationship": "consumes-spatial-context"},
+      {"source": "Construction_Application_OS", "target": "Construction_Atlas", "relationship": "consumes-atlas-navigation-context"},
+      {"source": "Construction_Application_OS", "target": "Construction_Runtime", "relationship": "interacts-with-runtime"},
+      {"source": "Construction_Pattern_Language_OS", "target": "ValidKernel_Patterns", "relationship": "grown-from-structural-patterns"},
+      {"source": "Construction_Kernel", "target": "Construction_Pattern_Language_OS", "relationship": "consumes-pattern-definitions"}
+    ],
+    "vkbus_guidance_observation_paths": [
+      {"path": "ValidKernelOS_VKBUS <-> Construction_Atlas", "direction": "bidirectional", "purpose": "spatial context state observation"},
+      {"path": "ValidKernelOS_VKBUS <-> Construction_Runtime", "direction": "bidirectional", "purpose": "execution state observation"},
+      {"path": "ValidKernelOS_VKBUS <-> Construction_Application_OS", "direction": "bidirectional", "purpose": "UI event observation"}
+    ]
+  },
+  "rename_lineage": [
+    {
+      "previous_name": "Construction_Atlas_UI",
+      "current_name": "Construction_Atlas",
+      "version": "V2",
+      "reason": "Separation of spatial context truth layer and UI surface",
+      "status": "permanent"
+    }
+  ],
+  "entries": [
+    {
+      "repo_name": "Construction_Application_OS",
+      "layer": "interfaces",
+      "primary_area": "interfaces",
+      "role_summary": "Sole UI operating surface of Construction OS. Workspace shell, panel system, event orchestration, atlas navigation interface, inspectors, overlays, assistant interaction, AI control plane (migrated from Atlas 2026-03-21), and branding system (migrated from Atlas 2026-03-21).",
+      "ui_authority": true,
+      "tags": [
+        "application-os",
+        "sole-ui-surface",
+        "workspace-shell",
+        "panel-system",
+        "interfaces",
+        "ai-control-plane",
+        "branding"
+      ]
+    },
+    {
+      "repo_name": "Construction_Atlas",
+      "formerly": "Construction_Atlas_UI",
+      "layer": "context",
+      "primary_area": "spatial-context",
+      "role_summary": "Purified spatial construction context layer binding geometry and construction meaning. Resolves spatial conditions: object existence, placement, adjacency, and applicable rules. NOT a UI surface. Purified 2026-03-21 via Option A — all UI/application drift removed.",
+      "rename_lineage": "Construction_Atlas_UI → Construction_Atlas (V2)",
+      "purification_date": "2026-03-21",
+      "purification_method": "Option A",
+      "tags": [
+        "spatial-context",
+        "object-graph",
+        "zones",
+        "adjacency",
+        "context-layer",
+        "truth",
+        "purified"
+      ]
+    },
+    {
+      "repo_name": "Construction_Reference_Intelligence",
+      "layer": "capabilities",
+      "primary_area": "capabilities",
+      "role_1": "reference intelligence layer",
+      "role_2": "construction architecture guidance relay",
+      "authority_level": "non-doctrinal",
+      "registry_relation": "observer",
+      "role_summary": "Reference intelligence layer + construction architecture guidance relay. Owns immutable, evidence-linked failure/success patterns, confidence tracking, and immutable history. Also acts as the construction-family guidance, observation, and relay layer analogous to ValidKernelOS_VKBUS.",
+      "tags": [
+        "intelligence",
+        "evidence-linked",
+        "knowledge-curation",
+        "building-envelope",
+        "observation",
+        "capabilities",
+        "guidance-relay"
+      ]
+    },
+    {
+      "repo_name": "Construction_Intelligence_Workers",
+      "layer": "execution",
+      "primary_area": "execution",
+      "role_summary": "Worker fleet specification and doctrine repo defining extraction workers, output contracts, and routing rules for construction signal generation.",
+      "tags": [
+        "workers",
+        "extraction",
+        "proposals",
+        "doctrine",
+        "signal-generation",
+        "execution"
+      ]
+    },
+    {
+      "repo_name": "trade_os",
+      "layer": "execution",
+      "primary_area": "execution",
+      "role_summary": "Execution platform for service-based contractor operations.",
+      "tags": [
+        "platform",
+        "contractor_operations",
+        "service"
+      ],
+      "owner_approved": true,
+      "admission_status": "v2_approved"
+    },
+    {
+      "repo_name": "SUPA-SAINT",
+      "layer": "execution",
+      "primary_area": "execution",
+      "role_summary": "Execution platform for building-envelope delivery pipeline.",
+      "tags": [
+        "platform",
+        "pipeline",
+        "building_envelope"
+      ],
+      "owner_approved": true,
+      "admission_status": "v2_approved"
+    },
+    {
+      "repo_name": "Construction_Kernel",
+      "layer": "truth",
+      "primary_area": "truth",
+      "role_summary": "Canonical kernel defining construction truth structures, contracts, schemas, and the condition pattern library. Does not implement runtime logic.",
+      "tags": [
+        "kernel",
+        "truth",
+        "contracts",
+        "schemas",
+        "patterns",
+        "condition-patterns"
+      ]
+    },
+    {
+      "repo_name": "Construction_Runtime",
+      "layer": "execution",
+      "primary_area": "execution",
+      "role_summary": "Deterministic execution engine implementing evidence ingestion, assembly inference, drawing generation, QA checks, revision management, package building, export, and graph reference projection.",
+      "tags": [
+        "runtime",
+        "execution",
+        "drawing-generation",
+        "qa",
+        "evidence",
+        "revision",
+        "export"
+      ]
+    },
+    {
+      "repo_name": "ValidKernelOS_VKBUS",
+      "layer": "observation",
+      "primary_area": "observation",
+      "role_summary": "Governed guidance, observation, and relay layer that reads ValidKernel architecture authorities and safely exposes guidance to downstream domain systems without owning doctrine or replacing registry authority.",
+      "tags": [
+        "observation",
+        "bus",
+        "guidance-relay",
+        "drift-detection",
+        "seam-integrity",
+        "architecture-observation"
+      ]
+    },
+    {
+      "repo_name": "ValidKernel_Registry",
+      "layer": "governance",
+      "primary_area": "governance",
+      "role_summary": "Master registry cataloging kernels, repositories, domains, families, and system-wide architecture snapshots.",
+      "tags": [
+        "registry",
+        "governance",
+        "catalogs",
+        "architecture"
+      ]
+    },
+    {
+      "repo_name": "Construction_Pattern_Language_OS",
+      "layer": "truth",
+      "primary_area": "truth",
+      "kernel_type": "domain_pattern_language",
+      "lineage_parent": "ValidKernel_Patterns",
+      "lineage_status": "FROZEN",
+      "lineage_frozen_at": "2026-03-22T00:00:00Z",
+      "schema_version": "1.0.0",
+      "pattern_language_version": "1.0.0",
+      "role_summary": "Canonical construction pattern language kernel defining pattern families, patterns, variants, relationships, artifact intents, and constraint profiles for the building envelope domain. Pattern truth only — no reasoning, runtime, rendering, or UI logic.",
+      "domain_scope": "construction_patterns",
+      "registered_at": "2026-03-22T00:00:00Z",
+      "hardened_at": "2026-03-22T00:00:00Z",
+      "entity_inventory": {
+        "pattern_families": 5,
+        "patterns": 10,
+        "pattern_variants": 20,
+        "pattern_relationships": 8,
+        "artifact_intents": 5,
+        "constraint_profiles": 5,
+        "total_entities": 53
+      },
+      "validators": [
+        "validators/graph_validator.py",
+        "validators/hierarchy_validator.py",
+        "validators/identifier_validator.py"
+      ],
+      "validator_checks": [
+        "reference_integrity",
+        "relationship_type_validation",
+        "self_reference_detection",
+        "duplicate_id_detection",
+        "dependency_acyclicity",
+        "adjacency_cycle_allowed",
+        "conflict_symmetry",
+        "schema_version_compatibility",
+        "deprecation_index_integrity",
+        "hierarchy_integrity",
+        "identifier_format_compliance",
+        "identifier_uniqueness"
+      ],
+      "governance_documents": {
+        "truth_ownership": "docs/TRUTH_OWNERSHIP.md",
+        "canonical_id_index": "docs/CANONICAL_ID_INDEX.yaml",
+        "alias_lookup": "docs/ALIAS_LOOKUP.yaml",
+        "consumer_contract_alexander": "docs/ALEXANDER_CONSUMER_CONTRACT.md"
+      },
+      "truth_ownership": {
+        "owns": [
+          "pattern_families",
+          "patterns",
+          "pattern_variants",
+          "pattern_relationships",
+          "artifact_intents",
+          "constraint_profiles",
+          "identifier_assignment"
+        ],
+        "does_not_own": [
+          "root_doctrine",
+          "assembly_schemas",
+          "condition_evaluation",
+          "graph_backbone",
+          "runtime_execution",
+          "rendering",
+          "topology_authority"
+        ]
+      },
+      "upstream_dependencies": [
+        {"repo": "Universal_Truth_Kernel", "relationship": "operates-within-root-doctrine"},
+        {"repo": "ValidKernel_Patterns", "relationship": "grown-from-structural-patterns"}
+      ],
+      "downstream_consumers": [
+        {"repo": "Construction_Kernel", "relationship": "consumes-pattern-definitions"},
+        {"repo": "Construction_Runtime", "relationship": "references-pattern-ids"},
+        {"repo": "Construction_ALEXANDER_Engine", "relationship": "consumer-readiness-contract-active"}
+      ],
+      "tags": [
+        "kernel",
+        "truth",
+        "pattern-language",
+        "construction-patterns",
+        "detail-families",
+        "building-envelope",
+        "domain-kernel",
+        "hardened"
+      ]
+    },
+    {
+      "repo_name": "Construction_ALEXANDER_Engine",
+      "layer": "reasoning",
+      "primary_area": "pattern-resolution",
+      "ring": 2,
+      "engine_type": "ring_2_pattern_intelligence",
+      "role_summary": "Ring 2 pattern intelligence engine that consumes governed pattern truth from Construction_Pattern_Language_OS and resolves ConditionSignature inputs into deterministic advisory PatternFamily / Pattern / PatternVariant / ArtifactIntent proposal outputs. Advisory only — no truth ownership, no kernel mutation, no artifact rendering, no execution commands.",
+      "registered_at": "2026-03-22T00:00:00Z",
+      "consumer_contracts": [
+        {"source": "Construction_Pattern_Language_OS", "relationship": "consumes-pattern-truth"},
+        {"source": "Construction_Atlas", "relationship": "consumes-spatial-context"},
+        {"source": "Construction_Reference_Intelligence", "relationship": "consumes-reference-intelligence"}
+      ],
+      "cognitive_bus_integration": {
+        "source_component": "Construction_ALEXANDER_Engine",
+        "allowed_event_classes": ["Proposal", "Observation"],
+        "forbidden_event_classes": ["ExternallyValidatedEvent"]
+      },
+      "tags": [
+        "engine",
+        "ring-2",
+        "pattern-intelligence",
+        "advisory",
+        "resolution",
+        "fail-closed",
+        "deterministic"
+      ]
+    }
+  ],
+  "exclusions": [
+    {
+      "repo_name": "CADless_drawings",
+      "reason": "PRE-UTK independent system. Not part of Construction OS. See ValidKernel_Registry for classification."
+    }
+  ]
+}
