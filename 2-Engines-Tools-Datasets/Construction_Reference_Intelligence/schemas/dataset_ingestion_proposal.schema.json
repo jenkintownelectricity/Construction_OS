@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dataset Ingestion Proposal",
+  "description": "Proposal for ingesting an external dataset candidate.",
+  "type": "object",
+  "required": ["schema_version", "proposal_id", "candidate_ref", "title", "status", "proposed_date"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "proposal_id": { "type": "string" },
+    "candidate_ref": { "type": "string", "description": "Reference to dataset_candidate record." },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["proposed", "approved", "rejected", "ingested"] },
+    "proposed_date": { "type": "string", "format": "date" },
+    "rationale": { "type": "string" },
+    "governance_approval": { "type": "string" },
+    "ingestion_plan": { "type": "string" }
+  },
+  "additionalProperties": false
+}

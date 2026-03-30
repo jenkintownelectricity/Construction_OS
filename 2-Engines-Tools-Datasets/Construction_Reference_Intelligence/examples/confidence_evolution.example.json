@@ -1,0 +1,35 @@
+{
+  "schema_version": "v1",
+  "record_id": "CE-07-001",
+  "target_record_id": "FP-07-001",
+  "history": [
+    {
+      "date": "2022-06-15",
+      "confidence": "low",
+      "basis": "Initial field observation from single project — TPO delamination at parapet base noted during warranty inspection",
+      "evidence_ref": "EV-001",
+      "note": "Single project, single observer. Pattern hypothesis formed but insufficient data to confirm."
+    },
+    {
+      "date": "2023-01-20",
+      "confidence": "medium",
+      "basis": "Three additional projects in climate zone 5A reported similar parapet base delamination. Forensic pull-test data from two projects confirmed adhesion values below 2 pli.",
+      "evidence_ref": "EV-002",
+      "note": "Cross-project correlation strengthens hypothesis. Common factor: inadequate substrate priming in freeze-thaw exposure."
+    },
+    {
+      "date": "2023-09-10",
+      "confidence": "medium",
+      "basis": "Manufacturer technical bulletin issued acknowledging primer sensitivity in cold-weather installations. Six total projects now documented.",
+      "evidence_ref": "EV-005",
+      "note": "Manufacturer acknowledgment provides independent validation. Root cause narrowing to primer application temperature."
+    },
+    {
+      "date": "2024-04-05",
+      "confidence": "high",
+      "basis": "Twelve projects across climate zones 5A and 6A now documented. Forensic testing confirms consistent adhesion failure at parapet base when substrate primer was applied below 40F. Control group of properly primed installations shows no delamination.",
+      "evidence_ref": "EV-008",
+      "note": "Pattern confirmed with statistical significance. Promoted to active status with high confidence."
+    }
+  ]
+}

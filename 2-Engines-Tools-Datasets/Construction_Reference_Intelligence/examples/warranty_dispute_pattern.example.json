@@ -1,0 +1,20 @@
+{
+  "schema_version": "v1",
+  "pattern_id": "FP-07-003",
+  "title": "Warranty Claims Denied Due to Unauthorized Substrate Modifications",
+  "status": "active",
+  "confidence": "high",
+  "failure_mode": "Roofing membrane warranty voided after post-installation substrate modifications — HVAC equipment additions, penetration cuts, and overlay patches performed by trades other than the roofing contractor without manufacturer notification or approved repair procedures",
+  "control_layers": ["bulk_water_control"],
+  "interface_zones": ["penetration", "curb_transition"],
+  "root_cause_category": "trade_miscoordination",
+  "frequency": "recurring — documented in 9 warranty dispute cases across 5 manufacturers, 2019-2025",
+  "severity": "critical",
+  "evidence_refs": ["EV-040", "EV-041", "EV-042", "EV-043"],
+  "kernel_refs": [
+    {"kernel": "Construction_Scope_Kernel", "entry_id": "SCOPE-07-015"},
+    {"kernel": "Construction_Specification_Kernel", "entry_id": "SPEC-07-5400"}
+  ],
+  "lifecycle_stage": "maintenance",
+  "notes": "Pattern is most common in institutional and commercial buildings where facility maintenance teams cut new penetrations or install rooftop equipment 2-5 years post-occupancy without engaging the original roofing contractor. Manufacturers consistently deny claims citing 'unauthorized alterations' clause. Prevention requires owner education on warranty maintenance requirements and mandatory notification protocols."
+}

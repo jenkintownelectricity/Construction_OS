@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Climate Context",
+  "description": "Climate context block for environmental exposure metadata.",
+  "type": "object",
+  "required": ["schema_version"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "ashrae_climate_zone": { "type": "string" },
+    "exposure_flags": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["marine_exposure", "high_uv", "freeze_thaw", "coastal_salt", "high_wind", "high_humidity", "severe_precipitation"] }
+    },
+    "exposure_class": { "type": "string", "enum": ["sheltered", "moderate", "severe", "extreme"] },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

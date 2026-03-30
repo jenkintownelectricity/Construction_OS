@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pattern Detection Record",
+  "description": "Records a detected emerging pattern or hypothesis from intelligence analysis.",
+  "type": "object",
+  "required": ["schema_version", "detection_id", "hypothesis", "status", "confidence", "supporting_records", "detected_date"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "detection_id": { "type": "string" },
+    "hypothesis": { "type": "string" },
+    "status": { "type": "string", "enum": ["proposed", "under_review", "confirmed", "rejected"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high", "established"] },
+    "supporting_records": { "type": "array", "items": { "type": "string" } },
+    "detected_date": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": false
+}

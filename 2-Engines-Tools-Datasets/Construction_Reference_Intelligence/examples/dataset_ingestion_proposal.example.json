@@ -1,0 +1,11 @@
+{
+  "schema_version": "v1",
+  "proposal_id": "IP-001",
+  "candidate_ref": "DC-07-002",
+  "title": "Ingest Manufacturer Compatibility Charts for Division 07 Sealant and Adhesive Products",
+  "status": "proposed",
+  "proposed_date": "2025-11-15",
+  "rationale": "Multiple incompatibility precedent records (PR-07-001, PR-07-003, PR-07-005) reference sealant-to-substrate and adhesive-to-membrane compatibility as root cause factors. Currently, compatibility data is scattered across individual manufacturer technical data sheets with no centralized, machine-readable index. Ingesting structured compatibility charts from the five major Division 07 sealant manufacturers would enable automated cross-referencing between chemistry kernel entries and intelligence pattern records, reducing reliance on manual lookup during pattern analysis.",
+  "governance_approval": "Pending — requires review of manufacturer data licensing terms and confirmation that ingested data does not duplicate Chemistry Kernel entries",
+  "ingestion_plan": "Phase 1: Digitize compatibility matrices from Dow, Sika, Tremco, Pecora, and Bostik product lines. Phase 2: Normalize material identifiers to align with Material Kernel entry IDs. Phase 3: Map compatibility results to existing compatibility_pattern schema (compatible/incompatible/conditional). Phase 4: Validate against known precedent records. Estimated effort: 40 hours for digitization, 20 hours for normalization and validation."
+}

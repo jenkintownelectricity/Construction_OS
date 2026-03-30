@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Confidence Assessment",
+  "description": "Current confidence snapshot for a target record.",
+  "type": "object",
+  "required": ["schema_version", "assessment_id", "target_record_id", "confidence_level", "basis", "assessed_date"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "assessment_id": { "type": "string" },
+    "target_record_id": { "type": "string" },
+    "confidence_level": { "type": "string", "enum": ["low", "medium", "high", "established"] },
+    "basis": { "type": "string", "description": "Rationale for the confidence level." },
+    "assessed_date": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": false
+}

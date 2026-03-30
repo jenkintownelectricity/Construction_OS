@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Compatibility Pattern",
+  "description": "Material and chemistry compatibility pattern record.",
+  "type": "object",
+  "required": ["schema_version", "pattern_id", "title", "status", "confidence", "compatibility_result"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "pattern_id": { "type": "string" },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "draft", "deprecated", "superseded"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high", "established"] },
+    "compatibility_result": { "type": "string", "enum": ["compatible", "incompatible", "conditional", "unknown"] },
+    "material_refs": { "type": "array", "items": { "type": "string" } },
+    "chemistry_refs": { "type": "array", "items": { "type": "string" } },
+    "conditions": { "type": "string", "description": "Conditions under which the compatibility result applies." },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

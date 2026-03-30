@@ -1,0 +1,14 @@
+{
+  "schema_version": "v1",
+  "gap_id": "DG-07-001",
+  "title": "No Systematic Data on Long-Term Air Barrier Performance in Marine Exposure",
+  "domain": "Division 07 — Air Barrier Systems",
+  "severity": "high",
+  "status": "open",
+  "description": "No structured dataset exists tracking 10+ year performance of fluid-applied and self-adhered air barrier systems in marine exposure environments (coastal salt, high humidity, wind-driven rain). Current intelligence on air barrier durability is based primarily on inland climate zone data. Marine exposure introduces salt crystallization cycling, elevated humidity sustained above 80% RH, and chloride attack on adhesive bond lines that may accelerate degradation beyond inland-derived predictions.",
+  "needed_evidence_types": ["field_observation", "lab_test", "inspection_report", "sensor_data"],
+  "related_kernel_refs": [
+    {"kernel": "Construction_Material_Kernel", "entry_id": "MAT-AIR-005"},
+    {"kernel": "Construction_Assembly_Kernel", "entry_id": "ASSY-WAL-012"}
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "audit_version": "v1",
+  "audit_date": "2026-03-17",
+  "audit_type": "ring-2-architecture-check",
+  "family": "construction-kernel",
+  "pass": 2,
+  "overall_ring2_score": 91,
+  "overall_verdict": "pass",
+  "architecture_safety": "pass",
+  "deterministic_build_integrity": "pass",
+  "repo_scores": {
+    "Construction_Reference_Intelligence": 97,
+    "Construction_Specification_Kernel": 95,
+    "Construction_Assembly_Kernel": 93,
+    "Construction_Material_Kernel": 93,
+    "Construction_Chemistry_Kernel": 88,
+    "Construction_Scope_Kernel": 78,
+    "ValidKernel_Registry": 90
+  },
+  "criteria_results": [
+    {
+      "criterion_id": 1,
+      "criterion": "kernel boundary integrity",
+      "status": "pass",
+      "findings": "Each kernel has a truth-boundary.md (Spec, Assembly, Material, Chemistry, Scope) that explicitly declares owned truth surfaces and NOT-owned surfaces. Ref Intel has non-goals.md with identical boundary declarations. Each doctrine file states single-source-of-truth for its domain. Cross-kernel references use pointer IDs (material_ref, spec_ref, chemistry_ref, assembly_ref), never embedded copies. Verified in: Construction_Specification_Kernel/docs/doctrine/truth-boundary.md, Construction_Assembly_Kernel/docs/doctrine/truth-boundary.md, Construction_Material_Kernel/docs/doctrine/kernel-doctrine.md.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 2,
+      "criterion": "reference intelligence non-ownership",
+      "status": "pass",
+      "findings": "Reference Intelligence doctrine explicitly states it 'never overrides, replaces, or contradicts kernel truth' (reference-intelligence-doctrine.md line 9). Non-goals.md lists all 5 kernel domains as NOT owned. Relationship table confirms read-only posture for all 5 kernel truth surfaces. FROZEN_SEAMS.md confirms read-only boundary for all 5 sibling kernels. No schema in Ref Intel defines spec, assembly, material, chemistry, or scope entities.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 3,
+      "criterion": "doctrine safety",
+      "status": "pass",
+      "findings": "All 6 construction repos have doctrine files. Fail-closed: explicitly stated in Ref Intel doctrine (section 4 'Fail-Closed Validation'), Spec Kernel doctrine (section 2 'Fail-Closed Governance'), Assembly Kernel doctrine (section 3 'Fail-Closed Posture'), Material Kernel doctrine (section 2), Chemistry Kernel doctrine (principle 2), Scope Kernel doctrine (principle 2). Immutable history: stated in Ref Intel immutability-policy.md (supersession model) and in all kernel doctrines. No standards text copying: stated in Ref Intel standards-reference-posture.md and all kernel doctrines. All doctrines state 'by citation only'.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 4,
+      "criterion": "runtime isolation",
+      "status": "pass",
+      "findings": "Zero executable files (*.py, *.js, *.ts, *.go, *.rs, *.sh, Dockerfile, docker-compose) found across all 6 construction repos. Ref Intel non-goals.md explicitly states 'no executable services, no APIs, no databases, no scheduled jobs'. AI-readiness-posture.md states 'no executable code, no APIs, no triggers, no webhooks, no scheduled jobs'. ValidKernel_Registry contains some .ts files but they are under repositories/ subdirectories tracking external repos, plus utility scripts and CI workflows -- acceptable for a registry repo.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 5,
+      "criterion": "schema hardening",
+      "status": "pass",
+      "findings": "All sampled schemas use '$schema: https://json-schema.org/draft/2020-12/schema'. All sampled schemas include 'additionalProperties: false' at root level. All sampled schemas have 'required' arrays with critical fields. Verified: failure_pattern.schema.json, specification_entry.schema.json, assembly_entry.schema.json, material_entry.schema.json, chemistry_entry.schema.json, scope_entry.schema.json, confidence_evolution_record.schema.json, supersession_record.schema.json, evidence_reference.schema.json, testing_requirement.schema.json, schema_change_proposal.schema.json, dataset_candidate.schema.json, db_expansion_proposal.schema.json. Minor note: Some nested objects use additionalProperties: true (e.g., specification_entry.schema.json performance_values, material_entry.schema.json physical_properties) -- this is acceptable for flexible property bags but noted.",
+      "severity": "low"
+    },
+    {
+      "criterion_id": 6,
+      "criterion": "standards-reference non-duplication",
+      "status": "pass",
+      "findings": "Standards-reference-posture.md explicitly prohibits copying tables, quoting requirement language, paraphrasing specific clauses, reproducing annexes, or hosting PDFs. All kernel doctrines state 'by citation only'. shared_standards_registry.json contains only identifiers, titles, scope summaries, and URLs -- no standards text. Example files reference standards by designation (e.g., 'ASTM E2357', 'ASHRAE_90_1'). Specification examples use test_method_refs with standard IDs, not quoted text. Climate context model references ASHRAE 90.1 table values with explicit caveat 'Values are approximate and referenced by citation'.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 7,
+      "criterion": "Division 07 control-layer correctness",
+      "status": "pass",
+      "findings": "control_layers.json contains exactly 11 control layers: bulk_water_control, capillary_control, air_control, vapor_control, thermal_control, fire_smoke_control, movement_control, weathering_surface, drainage_plane, protection_layer, vegetation_support_layer. shared_enum_registry.json control_layer_ids array matches exactly. Assembly Kernel control_layer_model.md lists all 11 with descriptions. failure_pattern.schema.json enum matches all 11. division_07_posture.json frames Division 07 as 'enclosure-control-layer-system'. division07_alignment.md describes 11 control layers with functions.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 8,
+      "criterion": "interface/transition modeling completeness",
+      "status": "pass",
+      "findings": "interface_zones.json contains exactly 10 interface zones: roof_to_wall, parapet_transition, penetration, fenestration_edge, below_grade_transition, expansion_joint, deck_to_wall, roof_edge, curb_transition, drain_transition. shared_enum_registry.json interface_zone_ids matches exactly. Assembly Kernel has dedicated transition_model.md with transition structure, common transition types, and risk assessment. Assembly schemas include transition_condition.schema.json, penetration_condition.schema.json, edge_condition.schema.json, tie_in_condition.schema.json. failure_pattern.schema.json has interface_zones enum with all 10 values.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 9,
+      "criterion": "lifecycle-stage modeling",
+      "status": "pass",
+      "findings": "shared_enum_registry.json lifecycle_stages contains exactly 8 stages: design, procurement, installation, commissioning, operation, maintenance, failure, replacement. Assembly Kernel lifecycle_context_model.md describes all 8 stages with assembly relevance. failure_pattern.schema.json has lifecycle_stage enum with all 8 values. All kernel schemas reference lifecycle stages. Scope Kernel has commissioning_step_model.md with BECx phases mapped to lifecycle.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 10,
+      "criterion": "climate/exposure modeling",
+      "status": "pass",
+      "findings": "shared_enum_registry.json climate_exposure_flags contains exactly 7 flags: marine_exposure, high_uv, freeze_thaw, coastal_salt, high_wind, high_humidity, severe_precipitation. Assembly Kernel climate_context_model.md describes ASHRAE climate zones, all 7 exposure flags with assembly impact, and exposure classes. failure_pattern.schema.json includes climate_context with $ref to climate_context.schema.json. All kernel repos have climate-posture.md in docs/architecture/.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 11,
+      "criterion": "geometry-context modeling",
+      "status": "pass",
+      "findings": "shared_enum_registry.json geometry_contexts contains exactly 8 values: low_slope_roof, steep_slope_roof, complex_roof_geometry, large_parapet_run, multi_penetration_field, irregular_drainage_geometry, tall_wall_field, podium_condition. Assembly Kernel geometry_context_model.md describes all 8 with design impact. All kernel repos have geometry-posture.md. Ref Intel has geometry_context.schema.json.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 12,
+      "criterion": "confidence evolution modeling",
+      "status": "pass",
+      "findings": "shared_enum_registry.json confidence_levels: [low, medium, high, established]. confidence_evolution_record.schema.json tracks history array with date, confidence level, basis, evidence_ref -- all with additionalProperties: false. confidence_evolution.example.json exists. confidence_evolution_contract.md exists. Ref Intel doctrine section 3 describes confidence tracking: 'Confidence transitions are recorded, never silently changed'. failure_pattern.schema.json requires confidence field with enum.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 13,
+      "criterion": "evidence/testing/commissioning posture",
+      "status": "pass",
+      "findings": "shared_enum_registry.json evidence_types has 10 types: field_observation, lab_test, forensic_report, manufacturer_data, literature, expert_judgment, sensor_data, inspection_report, commissioning_report, warranty_claim. evidence_reference.schema.json enforces evidence_type enum, quality_tier (primary/secondary/tertiary), test_method, and source_ref. Spec Kernel has testing_requirement.schema.json with test_type enum (field_test, lab_test, mock_up, preconstruction). Scope Kernel has commissioning_step_model.md with 6 BECx phases and acceptance criteria. shared_evidence_registry.json exists as evidence source catalog.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 14,
+      "criterion": "immutability and supersession posture",
+      "status": "pass",
+      "findings": "Ref Intel immutability-policy.md defines full supersession model: new record created, supersedes field references predecessor, predecessor transitions to superseded status, predecessor never deleted. supersession_record.schema.json enforces superseded_record_id, superseding_record_id, reason, effective_date. shared_enum_registry.json revision_postures: [immutable, append_only, revisable_with_audit, draft]. All kernel doctrines state immutable committed records with lineage tracking.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 15,
+      "criterion": "AI-readiness without execution leakage",
+      "status": "pass",
+      "findings": "ai-readiness-posture.md defines clear AI consumption modes: Read (yes), Query (yes), Propose (yes), Commit (no), Mutate (no), Delete (no). States 'no executable code, no APIs, no triggers, no webhooks, no scheduled jobs'. Proposal workflow requires human review before active status. Schema versioning documented. All kernel repos have ai-readiness-posture.md. All repos have ai_readiness_map.md (except Chemistry and Scope which have the doc but not the map). No runtime code found in any construction repo.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 16,
+      "criterion": "cross-repo enum consistency",
+      "status": "pass",
+      "findings": "shared_enum_registry.json is the canonical source in Construction_Reference_Intelligence/shared/. All kernel FROZEN_SEAMS.md files reference this registry. All kernel schemas use enum values matching the shared registry for control_layer_ids, interface_zone_ids, lifecycle_stages, confidence_levels, risk_levels. Assembly Kernel FROZEN_SEAMS.md explicitly lists all frozen enum values matching shared registry. Spec, Material, Chemistry, Scope kernel shared/SHARED_ARTIFACTS_POINTER.md points to Construction_Reference_Intelligence/shared/ as canonical source. Verified enum match in failure_pattern.schema.json, assembly_entry.schema.json, specification_entry.schema.json.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 17,
+      "criterion": "schema-contract-example consistency",
+      "status": "partial",
+      "findings": "Ref Intel: 23 schemas, 13 contracts, 14 examples -- strong coverage. Spec Kernel: 14 schemas, 6 contracts, 5 examples -- adequate for core entities. Assembly Kernel: 11 schemas, 5 contracts, 0 examples -- MISSING examples directory is empty. Material Kernel: 9 schemas, 5 contracts, 5 examples -- adequate. Chemistry Kernel: 10 schemas, 5 contracts, 4 examples -- adequate. Scope Kernel: 1 schema, 0 contracts, 0 examples -- SIGNIFICANT GAP. Scope has the fewest schemas (only scope_entry.schema.json) and zero contracts or examples despite having rich kernel models.",
+      "severity": "medium"
+    },
+    {
+      "criterion_id": 18,
+      "criterion": "family relationship map consistency",
+      "status": "pass",
+      "findings": "ValidKernel_Registry catalogs/families/catalog.json correctly lists all 5 kernels and 1 intelligence layer with correct repository names and roles. kernel_to_family_map.md in Spec Kernel lists all 6 family members with correct roles and truth surfaces. DEPENDENCY_MAP.md exists in all repos. Family dependency posture docs exist in Spec, Assembly, Material kernels. Shared artifacts canonical source correctly identified as Construction_Reference_Intelligence in all pointers.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 19,
+      "criterion": "frozen seam clarity",
+      "status": "pass",
+      "findings": "FROZEN_SEAMS.md present in all 7 repos: Construction_Reference_Intelligence/docs/system/FROZEN_SEAMS.md, Construction_Specification_Kernel/docs/system/FROZEN_SEAMS.md, Construction_Assembly_Kernel/docs/system/FROZEN_SEAMS.md, Construction_Material_Kernel/docs/system/FROZEN_SEAMS.md, Construction_Chemistry_Kernel/docs/system/FROZEN_SEAMS.md, Construction_Scope_Kernel/docs/system/FROZEN_SEAMS.md, ValidKernel_Registry/docs/system/FROZEN_SEAMS.md. All define frozen interfaces, change protocols, and versioning rules. Baseline references are consistent (construction-kernel-pass-2 across construction repos).",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 20,
+      "criterion": "concurrency/cache-freeze integrity",
+      "status": "pass",
+      "findings": "BASELINE_STATE.json present in all 7 repos. Construction repos (Ref Intel, Spec, Assembly, Material, Chemistry, Scope) declare baseline 'construction-kernel-pass-2' with status 'hardened' and pass 2. ValidKernel_Registry has its own baseline format. Schema versions are consistently 'v1' across all repos. All frozen seam documents reference the same baseline. State files contain file counts and structure metadata for verification.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 21,
+      "criterion": "governed proposal posture",
+      "status": "pass",
+      "findings": "schema_change_proposal.schema.json enforces proposal_id, target_schema, status enum (proposed/approved/rejected/implemented), rationale. db_expansion_proposal.schema.json enforces target_zone enum (canonical_truth_zone/reference_intelligence_zone/proposal_zone). dataset_ingestion_proposal.schema.json exists. schema_change_proposal_contract.md defines governance workflow: proposed->approved/rejected, approved->implemented, breaking changes require migration plan. AI-readiness-posture.md blocks AI from autonomous commits. FROZEN_SEAMS.md files require written proposals for boundary changes.",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 22,
+      "criterion": "dataset discovery posture",
+      "status": "pass",
+      "findings": "dataset-discovery-posture.md identifies 15 candidate dataset categories with descriptions and value statements. dataset_candidate.schema.json provides structured schema for candidate records with source_type, relevance, url, format, data_quality, coverage. dataset_candidate.example.json exists. dataset_ingestion_proposal.schema.json exists for governed ingestion workflow. Constraints section states: 'No dataset is ingested into this repository. Datasets are referenced, not stored.'",
+      "severity": "info"
+    },
+    {
+      "criterion_id": 23,
+      "criterion": "DB expansion posture",
+      "status": "pass",
+      "findings": "db-expansion-posture.md defines exactly 3 zones: (1) Canonical Truth Zone (shared/ directory, family-level governance, frozen per baseline), (2) Reference Intelligence Zone (intelligence/ and schemas/, repo-level governance, append-only for committed records), (3) Proposal Zone (state/ directory, lightweight governance, mutable until promoted). db_expansion_proposal.schema.json target_zone enum matches: canonical_truth_zone, reference_intelligence_zone, proposal_zone. Expansion rules table defines permitted actions per zone with explicit 'Autonomously mutate any zone: Nobody: Blocked' rule.",
+      "severity": "info"
+    }
+  ],
+  "findings_summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 1,
+    "info": 21
+  },
+  "structural_findings": [
+    "All 7 repos follow consistent directory structure: docs/doctrine/, docs/architecture/, docs/system/, schemas/, contracts/, maps/, shared or kernel/, state/, examples/.",
+    "FROZEN_SEAMS.md, AUTHORITATIVE_PATHS.md, DEPENDENCY_MAP.md, and REPO_MANIFEST.md present in all 7 repos under docs/system/.",
+    "BASELINE_STATE.json present in all 7 repos under state/.",
+    "Shared artifacts are canonically sourced from Construction_Reference_Intelligence/shared/ and referenced via SHARED_ARTIFACTS_POINTER.md in all kernel repos.",
+    "No runtime code (executables, services, workers, assistants, apps) found in any of the 6 construction repos.",
+    "ValidKernel_Registry contains utility scripts and CI workflows which is appropriate for its registry role.",
+    "Assembly Kernel lacks example files despite having 11 schemas -- recommend adding examples for key entity types.",
+    "Scope Kernel has only 1 schema (scope_entry.schema.json) despite having 13 kernel model documents -- significant schema gap. Missing: commissioning_step.schema.json (referenced in model docs), inspection_step.schema.json, operation.schema.json, closeout.schema.json, sequencing.schema.json, trade_responsibility.schema.json."
+  ],
+  "schema_contract_findings": [
+    "All sampled schemas use JSON Schema 2020-12 with additionalProperties: false at root level.",
+    "Minor: specification_entry.schema.json and material_entry.schema.json use additionalProperties: true on nested property-bag objects (performance_values, physical_properties) -- acceptable for flexible property storage but reduces strictness.",
+    "All schemas declare schema_version as a required const field, enabling version tracking.",
+    "Scope Kernel schema coverage is thin: 1 schema for an entire kernel domain. Chemistry Kernel has 10 schemas providing better coverage.",
+    "Assembly Kernel has 0 example files despite 11 schemas and 5 contracts -- examples needed for validation reference.",
+    "Scope Kernel has 0 contracts and 0 examples -- contracts and examples needed for completeness.",
+    "Schema-to-contract alignment is strong in Ref Intel (23 schemas, 13 contracts) and Spec Kernel (14 schemas, 6 contracts)."
+  ],
+  "content_completeness_findings": [
+    "Division 07 control-layer system: 11 layers fully defined and consistent across all registries, schemas, and documentation.",
+    "Interface zones: 10 zones fully defined and consistent across all registries, schemas, and documentation.",
+    "Lifecycle stages: 8 stages fully defined in shared_enum_registry.json and documented in all kernel lifecycle_context_model.md files.",
+    "Climate/exposure: 7 exposure flags, ASHRAE zone references, and exposure classes all documented and schema-enforced.",
+    "Geometry contexts: 8 contexts fully defined and documented with assembly impact analysis.",
+    "Confidence evolution: 4 levels with full tracking schema and supersession model.",
+    "Evidence types: 10 types with quality tier tracking (primary/secondary/tertiary).",
+    "Dataset discovery: 15 candidate categories identified with structured proposal workflow.",
+    "DB expansion: 3 zones clearly defined with governance rules per zone.",
+    "Scope Kernel has the weakest content completeness -- rich kernel model documents exist but lack corresponding schemas, contracts, and examples to make them machine-actionable."
+  ]
+}

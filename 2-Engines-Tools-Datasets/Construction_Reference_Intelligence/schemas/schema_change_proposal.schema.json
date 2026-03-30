@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Schema Change Proposal",
+  "description": "Proposal for modifying an existing schema definition.",
+  "type": "object",
+  "required": ["schema_version", "proposal_id", "target_schema", "title", "status", "proposed_date", "rationale"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "proposal_id": { "type": "string" },
+    "target_schema": { "type": "string" },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["proposed", "approved", "rejected", "implemented"] },
+    "proposed_date": { "type": "string", "format": "date" },
+    "rationale": { "type": "string" }
+  },
+  "additionalProperties": false
+}

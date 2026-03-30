@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dataset Candidate",
+  "description": "External dataset candidate for potential ingestion into the intelligence layer.",
+  "type": "object",
+  "required": ["schema_version", "candidate_id", "title", "source_type", "relevance"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "candidate_id": { "type": "string" },
+    "title": { "type": "string" },
+    "source_type": { "type": "string", "enum": ["manufacturer", "lab", "consultant", "inspector", "literature", "sensor", "owner"] },
+    "relevance": { "type": "string" },
+    "url": { "type": "string", "format": "uri" },
+    "format": { "type": "string" },
+    "estimated_size": { "type": "string" },
+    "data_quality": { "type": "string" },
+    "coverage": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

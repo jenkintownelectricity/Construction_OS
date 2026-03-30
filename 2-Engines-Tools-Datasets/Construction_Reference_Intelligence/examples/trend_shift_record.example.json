@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "trend_id": "TR-07-001",
+  "title": "Increasing Adoption of Fluid-Applied Air Barriers Over Self-Adhered Sheet",
+  "status": "active",
+  "confidence": "high",
+  "direction": "increasing",
+  "domain": "Division 07 — Air Barrier Systems",
+  "time_range": "2018-2025",
+  "data_points": [
+    {"date": "2018-12-31", "value": "Fluid-applied air barrier specification rate: 35% of new commercial projects surveyed"},
+    {"date": "2020-12-31", "value": "Fluid-applied specification rate: 45%"},
+    {"date": "2022-12-31", "value": "Fluid-applied specification rate: 58%"},
+    {"date": "2024-12-31", "value": "Fluid-applied specification rate: 67%"}
+  ],
+  "evidence_refs": ["EV-020", "EV-021", "EV-022"],
+  "notes": "Driven by labor advantages (faster installation, fewer seams), improved cold-weather application formulations, and better compatibility with diverse substrates. Self-adhered sheet remains dominant in below-grade and high-movement applications. Trend is strongest in climate zones 4A-6A where air barrier requirements are code-mandated."
+}

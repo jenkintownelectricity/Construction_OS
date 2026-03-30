@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Failure Pattern",
+  "description": "Documented failure pattern observed across construction assemblies.",
+  "type": "object",
+  "required": ["schema_version", "pattern_id", "title", "status", "confidence", "failure_mode"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "pattern_id": { "type": "string" },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "draft", "deprecated", "superseded"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high", "established"] },
+    "failure_mode": { "type": "string", "description": "Description of the failure mode." },
+    "control_layers": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["bulk_water_control", "capillary_control", "air_control", "vapor_control", "thermal_control", "fire_smoke_control", "movement_control", "weathering_surface", "drainage_plane", "protection_layer", "vegetation_support_layer"] }
+    },
+    "interface_zones": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["roof_to_wall", "parapet_transition", "penetration", "fenestration_edge", "below_grade_transition", "expansion_joint", "deck_to_wall", "roof_edge", "curb_transition", "drain_transition"] }
+    },
+    "root_cause_category": { "type": "string", "enum": ["material_defect", "installation_error", "design_error", "chemical_incompatibility", "movement_failure", "moisture_intrusion", "thermal_stress", "aging_degradation", "trade_miscoordination"] },
+    "frequency": { "type": "string" },
+    "severity": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } },
+    "kernel_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kernel", "entry_id"],
+        "properties": { "kernel": { "type": "string" }, "entry_id": { "type": "string" } },
+        "additionalProperties": false
+      }
+    },
+    "climate_context": { "$ref": "climate_context.schema.json" },
+    "geometry_context": { "$ref": "geometry_context.schema.json" },
+    "lifecycle_stage": { "type": "string", "enum": ["design", "procurement", "installation", "commissioning", "operation", "maintenance", "failure", "replacement"] },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

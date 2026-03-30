@@ -1,0 +1,9 @@
+{
+  "schema_version": "v1",
+  "proposal_id": "DBX-001",
+  "target_zone": "reference_intelligence_zone",
+  "title": "Add commissioning_evidence Collection to Reference Intelligence Zone",
+  "status": "proposed",
+  "proposed_date": "2025-12-01",
+  "rationale": "Data gap record DG-07-003 identified that building enclosure commissioning test results (air barrier field adhesion tests, water spray tests per ASTM E1105, air leakage tests per ASTM E3158) have no dedicated collection in the reference_intelligence_zone. Currently, commissioning data is stored as generic evidence records (EV-NNN) without structured fields for test method, pass/fail result, measured values, or acceptance thresholds. A dedicated commissioning_evidence collection would enable structured capture of test results with fields for: test_standard (enum), test_method_section, measured_value (number), acceptance_threshold (number), result (pass/fail/conditional), assembly_ref (link to Assembly Kernel), and location_on_building. This supports success pattern validation — confirmed successful systems should reference commissioning test results that verify as-built performance."
+}

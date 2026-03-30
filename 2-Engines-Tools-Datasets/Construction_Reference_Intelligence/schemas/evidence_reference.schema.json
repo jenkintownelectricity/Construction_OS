@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence Reference",
+  "description": "Evidence linkage record connecting observations to their supporting evidence.",
+  "type": "object",
+  "required": ["schema_version", "evidence_id", "evidence_type", "source_ref", "summary", "date"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "evidence_id": { "type": "string" },
+    "evidence_type": { "type": "string", "enum": ["field_observation", "lab_test", "forensic_report", "manufacturer_data", "literature", "expert_judgment", "sensor_data", "inspection_report", "commissioning_report", "warranty_claim"] },
+    "source_ref": { "type": "string", "description": "Reference to a source_reference record." },
+    "summary": { "type": "string" },
+    "date": { "type": "string", "format": "date" },
+    "quality_tier": { "type": "string", "enum": ["primary", "secondary", "tertiary"] },
+    "test_method": { "type": "string" },
+    "document_ref": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

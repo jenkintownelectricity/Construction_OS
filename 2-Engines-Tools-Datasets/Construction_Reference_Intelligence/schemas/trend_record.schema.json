@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trend Record",
+  "description": "Trend observation tracking directional changes in construction intelligence.",
+  "type": "object",
+  "required": ["schema_version", "trend_id", "title", "status", "confidence", "direction"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "trend_id": { "type": "string" },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "draft", "deprecated", "superseded"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high", "established"] },
+    "direction": { "type": "string", "enum": ["increasing", "decreasing", "stable", "emerging", "declining"] },
+    "domain": { "type": "string" },
+    "time_range": { "type": "string" },
+    "data_points": { "type": "array", "items": { "type": "object", "properties": { "date": { "type": "string", "format": "date" }, "value": { "type": "string" } }, "additionalProperties": false } },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

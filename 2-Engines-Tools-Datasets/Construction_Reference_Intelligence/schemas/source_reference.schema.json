@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source Reference",
+  "description": "Source provenance record for tracking evidence origins.",
+  "type": "object",
+  "required": ["schema_version", "source_id", "source_type", "name", "quality_tier"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "source_id": { "type": "string" },
+    "source_type": { "type": "string", "enum": ["manufacturer", "lab", "consultant", "inspector", "literature", "sensor", "owner"] },
+    "name": { "type": "string" },
+    "quality_tier": { "type": "string", "enum": ["primary", "secondary", "tertiary"] },
+    "organization": { "type": "string" },
+    "contact_ref": { "type": "string" },
+    "trust_posture": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

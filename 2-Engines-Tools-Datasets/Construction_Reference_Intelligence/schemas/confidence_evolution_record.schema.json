@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Confidence Evolution Record",
+  "description": "Tracks the history of confidence changes for a target record.",
+  "type": "object",
+  "required": ["schema_version", "record_id", "target_record_id", "history"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "record_id": { "type": "string" },
+    "target_record_id": { "type": "string" },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "confidence", "basis"],
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "confidence": { "type": "string", "enum": ["low", "medium", "high", "established"] },
+          "basis": { "type": "string" },
+          "evidence_ref": { "type": "string" },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

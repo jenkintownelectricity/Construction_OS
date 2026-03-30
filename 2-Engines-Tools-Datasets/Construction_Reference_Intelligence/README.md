@@ -1,0 +1,172 @@
+# Construction_Reference_Intelligence
+
+Construction_Reference_Intelligence is the immutable reference intelligence layer for the construction-domain kernel family and additionally serves as the construction-family architecture guidance, observation, and relay layer.
+
+## Construction OS Core Architecture (FROZEN)
+
+```
+Universal_Truth_Kernel
+├── ValidKernel_Geometry_Kernel
+├── ValidKernel-Governance
+└── Construction_Kernel
+     ├── Construction_Atlas (formerly Construction_Atlas_UI)
+     ├── Construction_Runtime
+     └── Construction_Application_OS
+
+Flow: Construction_Atlas → Construction_Runtime → Construction_Application_OS
+
+Infrastructure / Guidance Authorities:
+  Construction_OS_Registry              → Construction OS topology authority
+  ValidKernel_Registry                  → Global kernel lineage authority
+  ValidKernelOS_VKBUS                   → Governed guidance / observation / relay layer
+  Construction_Reference_Intelligence   ← YOU ARE HERE (Reference intelligence + construction guidance relay)
+```
+
+> **Architecture Status:** FROZEN
+> **Construction_Atlas** (formerly Construction_Atlas_UI) is a spatial context truth layer — not a UI surface.
+> **UI Authority:** Construction_Application_OS is the sole UI surface of Construction OS.
+
+## Role 1: Reference Intelligence Layer
+
+This repository owns **immutable, version-controlled construction-domain reference intelligence**:
+
+- Failure patterns
+- Success patterns
+- Precedents
+- Trends
+- Evidence-linked observations
+- Confidence evolution
+- Interface-risk observations
+- Climate/lifecycle/geometry-linked intelligence
+
+## Role 2: Construction Architecture Guidance Relay
+
+Construction_Reference_Intelligence also acts as the **construction-family guidance, observation, and relay layer**, analogous to ValidKernelOS_VKBUS for the construction domain.
+
+### Guidance Relay Capabilities
+
+CRI may:
+- Derive intelligence from construction-domain truths
+- Observe architecture context from Construction OS repos
+- Relay architecture guidance to active construction systems
+- Document observations to registry
+
+CRI must NOT:
+- Redefine doctrine
+- Own canonical topology
+- Mutate frozen authorities
+- Replace registry authority
+
+### Architecture Relay Relationship
+
+```
+UTK / ValidKernel authorities
+  ↓
+ValidKernelOS_VKBUS              ← governed guidance / observation / relay
+  ↓
+Construction core
+  ↓
+Construction_Reference_Intelligence  ← analogous construction-family relay
+  ↓
+Active construction systems
+```
+
+Neither relay layer replaces doctrine owners or registries.
+
+## Dependencies
+
+| Dependency | Relationship |
+|------------|-------------|
+| **Construction-domain truths** | Derives intelligence from registered construction-domain truth kernels and their outputs |
+| **Construction OS repos** | Observes architecture context from Construction OS repositories |
+
+## What This Repo Does NOT Own
+
+This repo does **not** own canonical kernel truth schemas. Those belong to the five sibling kernel repositories:
+
+| Kernel | Owns |
+|--------|------|
+| Construction_Specification_Kernel | Specification truth |
+| Construction_Assembly_Kernel | Assembly truth |
+| Construction_Material_Kernel | Material truth |
+| Construction_Chemistry_Kernel | Chemistry truth |
+| Construction_Scope_Kernel | Scope truth |
+
+## Family Architecture
+
+This repo is the **intelligence layer** in a six-repo construction-kernel family. The five canonical truth kernels listed above produce and maintain domain truth. This repo aggregates, cross-references, and preserves reference intelligence derived from and linked to those truths.
+
+Where registered, these repositories are tracked in **ValidKernel_Registry**, which governs kernel identity, versioning, and cross-repo validation.
+
+## Initial Domain Focus
+
+**CSI Division 07 -- Building Envelope Systems (Thermal and Moisture Protection)**
+
+All initial intelligence artifacts, control-layer definitions, and interface-zone registries target Division 07 enclosure systems. The domain is framed as an enclosure control-layer system, not merely a product bucket.
+
+## Drift Sentinel (Optional Capability)
+
+Drift Sentinel is an observational and advisory architecture drift detection capability available to the guidance relay role.
+
+### What Drift Sentinel Observes
+
+- Registry topology mismatches
+- Missing dependency edges
+- Architecture wording contradictions
+- Stale lineage references
+- Boundary violations
+- Rename-lineage loss detection
+
+### Drift Sentinel Operation Rules
+
+Drift Sentinel may only:
+- Generate reports
+- Open pull requests
+- Propose fixes
+
+Drift Sentinel may NOT:
+- Directly modify repositories
+- Bypass governance
+- Alter frozen authorities
+
+This capability is observational and advisory only.
+
+## CRI Signal Contract v0.1
+
+CRI produces structured intelligence signals for the Cognitive Bus via the `cri/` module.
+
+### Signal Types
+
+| Signal Type | Event Class | Description |
+|---|---|---|
+| `observation` | `Observation` | Non-authoritative intelligence observation derived from analysis |
+| `proposal` | `Proposal` | Suggested action based on analysis, for downstream consideration |
+
+### What CRI Signals ARE
+
+- Non-authoritative hints, observations, and proposals
+- Structured intelligence carrying lineage metadata
+- Valid Cognitive Bus event envelopes (schema v0.1)
+- Inputs for the Awareness Cache to compile into frozen awareness
+
+### What CRI Signals ARE NOT
+
+- **NOT truth claims** — CRI never asserts canonical truth
+- **NOT ExternallyValidatedEvent** — CRI must never emit this event class
+- **NOT direct Awareness Cache writes** — CRI emits to the bus only
+- **NOT directives or commands** — signals are suggestions, not orders
+
+### Module Structure
+
+| File | Purpose |
+|---|---|
+| `cri/config.py` | Identity constants, schema version, allowed signal types |
+| `cri/signal_contract.py` | Signal type definitions and validation rules |
+| `cri/signal_mapper.py` | Maps CRI signal types to Cognitive Bus event classes |
+| `cri/signal_envelope_builder.py` | Builds valid Cognitive Bus event envelopes |
+
+## Governance
+
+- Fail-closed posture
+- Immutable history
+- Standards-aware without copying standards text

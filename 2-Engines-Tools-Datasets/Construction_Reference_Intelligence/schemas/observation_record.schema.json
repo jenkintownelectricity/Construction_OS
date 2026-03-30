@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Observation Record",
+  "description": "Field or analytical observation record.",
+  "type": "object",
+  "required": ["schema_version", "observation_id", "observation_type", "title", "status", "confidence", "observed_date"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "observation_id": { "type": "string" },
+    "observation_type": { "type": "string", "enum": ["field", "analytical", "sensor", "inspection"] },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "draft", "deprecated", "superseded"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high", "established"] },
+    "observed_date": { "type": "string", "format": "date" },
+    "location": { "type": "string" },
+    "control_layers": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["bulk_water_control", "capillary_control", "air_control", "vapor_control", "thermal_control", "fire_smoke_control", "movement_control", "weathering_surface", "drainage_plane", "protection_layer", "vegetation_support_layer"] }
+    },
+    "interface_zones": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["roof_to_wall", "parapet_transition", "penetration", "fenestration_edge", "below_grade_transition", "expansion_joint", "deck_to_wall", "roof_edge", "curb_transition", "drain_transition"] }
+    },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } },
+    "photos": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

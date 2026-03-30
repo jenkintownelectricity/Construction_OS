@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Lifecycle Context",
+  "description": "Lifecycle context block for stage-specific metadata.",
+  "type": "object",
+  "required": ["schema_version", "stage"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "stage": { "type": "string", "enum": ["design", "procurement", "installation", "commissioning", "operation", "maintenance", "failure", "replacement"] },
+    "stage_specific_notes": { "type": "string" },
+    "duration_estimate": { "type": "string" },
+    "prerequisites": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "v1",
+  "pattern_id": "SP-07-001",
+  "title": "Fully-Adhered EPDM System at Roof-to-Wall Transition — 15-Year Performance",
+  "status": "active",
+  "confidence": "high",
+  "success_mode": "Fully-adhered 60-mil EPDM membrane with factory-fabricated inside/outside corners and bonding adhesive applied to primed concrete masonry substrate. Membrane carried 8 inches minimum up wall with terminated reglet counter-flashing. Continuous air barrier connection achieved via compatible fluid-applied transition strip at membrane-to-wall junction.",
+  "control_layers": ["bulk_water_control", "air_control", "thermal_control"],
+  "interface_zones": ["roof_to_wall"],
+  "contributing_factors": "Proper substrate priming, factory-fabricated corners eliminating field seams at stress points, minimum 8-inch wall carry height, compatible transition materials between EPDM and fluid-applied air barrier, continuous cant strip at base angle",
+  "frequency": "documented across 6 projects with 10-15 year service records, zero reported leaks at transition",
+  "evidence_refs": ["EV-010", "EV-011", "EV-012"],
+  "kernel_refs": [
+    {"kernel": "Construction_Assembly_Kernel", "entry_id": "ASSY-RTW-003"},
+    {"kernel": "Construction_Material_Kernel", "entry_id": "MAT-EPDM-001"},
+    {"kernel": "Construction_Chemistry_Kernel", "entry_id": "CHEM-ADH-002"}
+  ],
+  "climate_context": {
+    "schema_version": "v1",
+    "ashrae_climate_zone": "5A",
+    "exposure_flags": ["freeze_thaw"],
+    "exposure_class": "moderate"
+  },
+  "lifecycle_stage": "operation",
+  "notes": "Key differentiator from failed systems is the factory-fabricated corner treatment and the verified compatibility between EPDM bonding adhesive and fluid-applied air barrier transition material. Pull-test values remained above 5 pli at 15-year inspection."
+}

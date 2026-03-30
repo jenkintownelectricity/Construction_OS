@@ -1,0 +1,26 @@
+{
+  "schema_version": "v1",
+  "repo": "Construction_Reference_Intelligence",
+  "family": "construction-kernel",
+  "role": "reference-intelligence",
+  "baseline": "construction-kernel-pass-2",
+  "status": "hardened",
+  "pass": 2,
+  "created": "2026-03-17",
+  "updated": "2026-03-17",
+  "domain_focus": "CSI Division 07 - Building Envelope Systems",
+  "file_count": 122,
+  "structure": {
+    "docs_doctrine": 5,
+    "docs_architecture": 11,
+    "docs_system": 4,
+    "shared": 9,
+    "intelligence": 24,
+    "schemas": 23,
+    "contracts": 13,
+    "maps": 17,
+    "examples": 14,
+    "state": 1,
+    "root": 1
+  }
+}

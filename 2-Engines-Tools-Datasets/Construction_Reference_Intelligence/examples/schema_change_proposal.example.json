@@ -1,0 +1,9 @@
+{
+  "schema_version": "v1",
+  "proposal_id": "SCP-001",
+  "target_schema": "failure_pattern.schema.json",
+  "title": "Add wind_uplift_zone Field to Failure Pattern Schema",
+  "status": "proposed",
+  "proposed_date": "2025-10-01",
+  "rationale": "Pattern detection record PD-07-003 identified that 7 of 12 roof edge and parapet failure patterns correlate with ASCE 7 wind uplift zone classification (Zone 1 field, Zone 2 perimeter, Zone 3 corner). Current failure_pattern schema has no field to capture this critical exposure variable. Adding a wind_uplift_zone enum field (values: zone_1_field, zone_2_perimeter, zone_3_corner) would enable filtering and aggregation of failure patterns by wind exposure classification, improving risk assessment accuracy for roof system intelligence. The field should be optional to avoid breaking existing records. SPRI ES-1 and FM Global I-90 test protocols both reference these zones, making the classification well-established in Division 07 practice."
+}

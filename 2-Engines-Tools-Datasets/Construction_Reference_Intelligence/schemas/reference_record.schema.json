@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reference Record",
+  "description": "Base reference record for notes, annotations, and cross-references within the intelligence layer.",
+  "type": "object",
+  "required": ["schema_version", "record_id", "record_type", "title", "status", "confidence", "created_date"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "record_id": { "type": "string", "description": "Unique identifier for this reference record." },
+    "record_type": { "type": "string", "enum": ["reference_note", "annotation", "cross_reference"] },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "draft", "deprecated", "superseded"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high", "established"] },
+    "created_date": { "type": "string", "format": "date" },
+    "kernel_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kernel", "entry_id"],
+        "properties": {
+          "kernel": { "type": "string" },
+          "entry_id": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } },
+    "control_layers": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["bulk_water_control", "capillary_control", "air_control", "vapor_control", "thermal_control", "fire_smoke_control", "movement_control", "weathering_surface", "drainage_plane", "protection_layer", "vegetation_support_layer"] }
+    },
+    "interface_zones": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["roof_to_wall", "parapet_transition", "penetration", "fenestration_edge", "below_grade_transition", "expansion_joint", "deck_to_wall", "roof_edge", "curb_transition", "drain_transition"] }
+    },
+    "lifecycle_stage": { "type": "string", "enum": ["design", "procurement", "installation", "commissioning", "operation", "maintenance", "failure", "replacement"] },
+    "climate_context": { "$ref": "climate_context.schema.json" },
+    "geometry_context": { "$ref": "geometry_context.schema.json" },
+    "lineage": { "type": "string", "description": "Provenance or derivation lineage." },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

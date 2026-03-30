@@ -1,0 +1,24 @@
+{
+  "schema_version": "v1",
+  "precedent_id": "PR-07-001",
+  "title": "Silicone Sealant Adhesion Failure Over Uncured Urethane Foam",
+  "status": "active",
+  "confidence": "established",
+  "case_date": "2021-03-15",
+  "location": "Minneapolis, MN — commercial office building, curtain wall perimeter",
+  "description": "Silicone perimeter sealant was applied to window rough openings where single-component urethane spray foam had been installed the same day. The foam had not fully cured (minimum 24-hour cure at 70F required). Silicone sealant failed to develop adhesion to the uncured foam substrate, resulting in cohesive failure within the foam layer and complete loss of air and water seal at 47 window openings.",
+  "outcome": "Full removal and replacement of foam and sealant at all 47 openings. Cost: $185,000. Schedule delay: 3 weeks. Warranty claim denied by sealant manufacturer due to application over uncured substrate.",
+  "evidence_refs": ["EV-030", "EV-031", "EV-032"],
+  "kernel_refs": [
+    {"kernel": "Construction_Chemistry_Kernel", "entry_id": "CHEM-ADH-007"},
+    {"kernel": "Construction_Material_Kernel", "entry_id": "MAT-SEAL-003"},
+    {"kernel": "Construction_Scope_Kernel", "entry_id": "SCOPE-07-008"}
+  ],
+  "lessons": [
+    "Urethane spray foam requires minimum 24-hour cure before sealant application — verify cure with manufacturer TDS",
+    "Silicone sealants do not bond to uncured polyurethane chemistry — no primer resolves this",
+    "Sequencing between foam applicator and sealant applicator must include mandatory cure wait period",
+    "Field adhesion testing per ASTM C1521 should be performed before production sealant installation begins"
+  ],
+  "notes": "This is a well-documented chemistry incompatibility. The silicone moisture-cure mechanism is not affected, but the urethane substrate is still evolving CO2 during cure, preventing stable bond formation. Trade coordination failure — foam installer and sealant installer on different subcontracts with no sequencing coordination."
+}

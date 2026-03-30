@@ -1,0 +1,13 @@
+{
+  "schema_version": "v1",
+  "candidate_id": "DC-07-001",
+  "title": "NRCA Annual Roofing Industry Survey Data",
+  "source_type": "literature",
+  "relevance": "Comprehensive annual survey of roofing industry trends including material usage rates, failure claim frequencies, regional installation volumes, and workforce data. Directly supports trend record development for Division 07 roofing systems and provides baseline statistics for failure pattern frequency assessment.",
+  "url": "https://www.nrca.net/research",
+  "format": "PDF reports with embedded tables; some years have supplemental spreadsheet data",
+  "estimated_size": "Annual reports approximately 80-120 pages; 15 years of historical data available (2010-2025)",
+  "data_quality": "High — conducted by established industry association with consistent methodology. Sample sizes typically exceed 1,000 roofing contractors per survey cycle.",
+  "coverage": "National US coverage across all roofing system types: single-ply (TPO, PVC, EPDM), modified bitumen, built-up roofing, metal, steep-slope shingles. Limited international coverage.",
+  "notes": "Data is published annually. Historical trend analysis requires digitization of older PDF reports. Survey methodology has remained consistent since 2012, enabling reliable year-over-year comparison. Some proprietary data restrictions may limit redistribution."
+}

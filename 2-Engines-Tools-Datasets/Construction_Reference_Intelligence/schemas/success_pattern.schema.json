@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Success Pattern",
+  "description": "Documented success pattern for proven construction approaches.",
+  "type": "object",
+  "required": ["schema_version", "pattern_id", "title", "status", "confidence", "success_mode"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "pattern_id": { "type": "string" },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "draft", "deprecated", "superseded"] },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high", "established"] },
+    "success_mode": { "type": "string", "description": "Description of the successful approach." },
+    "control_layers": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["bulk_water_control", "capillary_control", "air_control", "vapor_control", "thermal_control", "fire_smoke_control", "movement_control", "weathering_surface", "drainage_plane", "protection_layer", "vegetation_support_layer"] }
+    },
+    "interface_zones": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["roof_to_wall", "parapet_transition", "penetration", "fenestration_edge", "below_grade_transition", "expansion_joint", "deck_to_wall", "roof_edge", "curb_transition", "drain_transition"] }
+    },
+    "contributing_factors": { "type": "string", "description": "Key factors contributing to success." },
+    "frequency": { "type": "string" },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } },
+    "kernel_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kernel", "entry_id"],
+        "properties": { "kernel": { "type": "string" }, "entry_id": { "type": "string" } },
+        "additionalProperties": false
+      }
+    },
+    "climate_context": { "$ref": "climate_context.schema.json" },
+    "geometry_context": { "$ref": "geometry_context.schema.json" },
+    "lifecycle_stage": { "type": "string", "enum": ["design", "procurement", "installation", "commissioning", "operation", "maintenance", "failure", "replacement"] },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

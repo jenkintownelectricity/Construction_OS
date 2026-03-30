@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DB Expansion Proposal",
+  "description": "Proposal for expanding a database zone within the construction intelligence system.",
+  "type": "object",
+  "required": ["schema_version", "proposal_id", "target_zone", "title", "status", "proposed_date", "rationale"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "proposal_id": { "type": "string" },
+    "target_zone": { "type": "string", "enum": ["canonical_truth_zone", "reference_intelligence_zone", "proposal_zone"] },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["proposed", "approved", "rejected", "implemented"] },
+    "proposed_date": { "type": "string", "format": "date" },
+    "rationale": { "type": "string" }
+  },
+  "additionalProperties": false
+}

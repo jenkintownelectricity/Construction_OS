@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "pattern_id": "FP-07-001",
+  "title": "TPO Membrane Delamination at Parapet Transition — Freeze-Thaw Climate",
+  "status": "active",
+  "confidence": "high",
+  "failure_mode": "Membrane delamination from parapet substrate at base flashing termination",
+  "control_layers": ["bulk_water_control", "air_control"],
+  "interface_zones": ["parapet_transition"],
+  "root_cause_category": "installation_error",
+  "frequency": "recurring — observed across 12 projects in climate zones 5A/6A",
+  "severity": "high",
+  "evidence_refs": [{"evidence_id": "EV-001", "summary": "Forensic pull-test results showing <2 pli adhesion at parapet base"}],
+  "kernel_refs": [{"kernel": "Construction_Assembly_Kernel", "entry_id": "ASSY-PAR-001"}],
+  "climate_context": {"ashrae_climate_zone": "5A", "exposure_flags": ["freeze_thaw"]},
+  "lifecycle_stage": "operation",
+  "notes": "Most failures observed 3-7 years post-installation. Correlated with inadequate substrate priming."
+}

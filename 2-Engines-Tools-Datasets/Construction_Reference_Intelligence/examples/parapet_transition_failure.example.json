@@ -1,0 +1,26 @@
+{
+  "schema_version": "v1",
+  "pattern_id": "FP-07-002",
+  "title": "Air Barrier Discontinuity at Parapet Cap — Cold Climate",
+  "status": "active",
+  "confidence": "high",
+  "failure_mode": "Air barrier terminates at parapet base without connection to cap flashing, creating bypass path for air leakage and condensation",
+  "control_layers": ["air_control", "vapor_control"],
+  "interface_zones": ["parapet_transition"],
+  "root_cause_category": "design_error",
+  "frequency": "recurring — observed in 8 projects across climate zones 5A/6A/7",
+  "severity": "high",
+  "evidence_refs": ["EV-002", "EV-003", "EV-004"],
+  "kernel_refs": [
+    {"kernel": "Construction_Assembly_Kernel", "entry_id": "ASSY-PAR-001"},
+    {"kernel": "Construction_Specification_Kernel", "entry_id": "SPEC-07-2700"}
+  ],
+  "climate_context": {
+    "schema_version": "v1",
+    "ashrae_climate_zone": "6A",
+    "exposure_flags": ["freeze_thaw"],
+    "exposure_class": "severe"
+  },
+  "lifecycle_stage": "operation",
+  "notes": "Condensation forms on interior face of parapet during heating season. Staining and mold growth observed within 2-4 years. Root cause is detailing gap — air barrier membrane stops at roof deck level and is not carried over or through parapet wall."
+}

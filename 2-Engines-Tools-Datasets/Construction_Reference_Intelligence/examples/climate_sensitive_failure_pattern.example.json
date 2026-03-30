@@ -1,0 +1,26 @@
+{
+  "schema_version": "v1",
+  "pattern_id": "FP-07-004",
+  "title": "SBS Modified Bitumen Granule Loss in High-UV Desert Climate",
+  "status": "active",
+  "confidence": "high",
+  "failure_mode": "Accelerated granule loss on SBS modified bitumen cap sheet membranes in desert climates exceeding 120 kLy/year UV exposure. Granule embedment degrades as SBS modifier softens under sustained high surface temperatures (>170F), releasing ceramic-coated granules and exposing the bitumen matrix to direct UV attack. Progressive cycle leads to alligatoring and membrane embrittlement within 8-12 years versus expected 20-year service life.",
+  "control_layers": ["weathering_surface", "bulk_water_control"],
+  "interface_zones": ["roof_edge"],
+  "root_cause_category": "aging_degradation",
+  "frequency": "recurring — observed across 15 projects in ASHRAE climate zones 2B/3B, Phoenix/Las Vegas/Tucson metro areas",
+  "severity": "high",
+  "evidence_refs": ["EV-050", "EV-051", "EV-052", "EV-053"],
+  "kernel_refs": [
+    {"kernel": "Construction_Material_Kernel", "entry_id": "MAT-BIT-012"},
+    {"kernel": "Construction_Specification_Kernel", "entry_id": "SPEC-07-5200"}
+  ],
+  "climate_context": {
+    "schema_version": "v1",
+    "ashrae_climate_zone": "2B",
+    "exposure_flags": ["high_uv"],
+    "exposure_class": "extreme"
+  },
+  "lifecycle_stage": "operation",
+  "notes": "Higher-reflectance granule colors (white, light gray) show 30-40% slower degradation than dark granules in same exposure. APP-modified bitumen shows better UV resistance than SBS in these climates but has reduced low-temperature flexibility. Specifiers in desert climates should evaluate reflective cap sheet options and consider ASTM D6164 Type I Grade S requirements."
+}

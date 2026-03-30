@@ -1,0 +1,9 @@
+{
+  "schema_version": "v1",
+  "detection_id": "PD-07-001",
+  "hypothesis": "Fluid-applied air/vapor barrier membranes are experiencing increasing adhesion failure rates in high-humidity subtropical climates (ASHRAE 2A/3A) when applied over concrete masonry unit substrates with residual moisture content exceeding 8%. Preliminary data suggests that substrate moisture drives vapor pressure beneath the membrane during solar heating cycles, causing blistering and delamination within 12-24 months of installation.",
+  "status": "under_review",
+  "confidence": "medium",
+  "supporting_records": ["FP-07-010", "FP-07-011", "EV-060", "EV-061", "EV-062", "TR-07-001"],
+  "detected_date": "2025-08-20"
+}

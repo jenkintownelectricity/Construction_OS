@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Geometry Context",
+  "description": "Geometry context block for spatial and geometric metadata.",
+  "type": "object",
+  "required": ["schema_version"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v1" },
+    "geometry_type": { "type": "string", "enum": ["low_slope_roof", "steep_slope_roof", "complex_roof_geometry", "large_parapet_run", "multi_penetration_field", "irregular_drainage_geometry", "tall_wall_field", "podium_condition"] },
+    "slope_degrees": { "type": "number" },
+    "complexity_rating": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}
