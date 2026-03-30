@@ -4,6 +4,9 @@
 
 Armand Lefebvre, L0 — Lefebvre Design Solutions LLC
 
+## Classification
+FROZEN DOCTRINE — Ring 0
+
 ## Truth Hierarchy
 
 ```
@@ -110,8 +113,6 @@ Universal_Truth_Kernel
 - Universal_Truth_Kernel must not be omitted from the lineage
 - Intent Truth and Actual Truth must not be collapsed into one plane
 
-## Doctrine Lock
-
-Construction OS v2 Doctrine-Frozen Rollout
-Integrity-Level Hierarchy
-Seam-Gated Sentinel Observation
+## Frozen State
+This truth model is frozen as of Construction OS v2 genesis.
+Modification requires L0 command authority.
