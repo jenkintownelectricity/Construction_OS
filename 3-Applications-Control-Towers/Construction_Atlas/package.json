@@ -1,0 +1,12 @@
+{
+  "name": "construction-atlas",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Canonical spatial construction context layer — spatial object graph, zones, adjacency, selectors, anchors, and context resolution.",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
