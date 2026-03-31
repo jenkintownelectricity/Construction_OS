@@ -92,7 +92,7 @@ Construction OS is a **domain-plane** system. It executes domain workloads.
 ## Repository Structure
 
 | Directory | Purpose |
-|-----------|---------|
+|-----------|----------|
 | `0-Frozen-Doctrine/` | Frozen governance doctrine for Construction OS |
 | `1-Governance-Registry-Runtime/` | Construction Kernel, Runtime, Registry, Cognitive Bus |
 | `2-Engines-Tools-Datasets/` | Domain engines, tools, and datasets |
@@ -118,3 +118,17 @@ Construction OS operates under VKG command governance with:
 - [0-Frozen-Doctrine/](0-Frozen-Doctrine/) — Frozen doctrine documents
 - [BRANCH_PROTECTION.md](BRANCH_PROTECTION.md) — Branch protection rules
 - ValidKernel-Governance: governance/CONTROL_PLANE_BOUNDARY_RULES_v0.1.md
+
+---
+
+## CONSTRUCTION_OS DOMAIN STATUS
+
+Construction_OS is Domain d1 and executes construction-domain logic.
+
+Construction_OS has been successfully consolidated into a fully functioning governed 7-ring domain operating system.
+
+This consolidation remains valid and is preserved.
+
+The post-monorepo architecture restoration corrected platform/control-plane sovereignty boundaries only and does not reverse the successful Construction_OS domain consolidation.
+
+Construction_OS remains strictly domain-plane execution.

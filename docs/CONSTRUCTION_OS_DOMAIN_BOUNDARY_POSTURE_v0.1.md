@@ -41,7 +41,7 @@ This means:
 ## What Construction OS Owns
 
 | Component | Ownership |
-|-----------|-----------|
+|-----------|----------|
 | Construction_Kernel | Canonical owner — construction domain truth kernels |
 | Construction_Runtime | Canonical owner — construction execution engine |
 | Construction_Atlas | Canonical owner — spatial context truth layer |
@@ -55,7 +55,7 @@ This means:
 ## What Construction OS Does NOT Own
 
 | Component | Actual Owner |
-|-----------|--------------|
+|-----------|-------------|
 | ValidKernel-Governance | Governance layer (Layer 1) |
 | ValidKernel_Registry | Observer plane — global system memory |
 | ValidKernelOS_VKBUS | Observer plane — signal fabric |
@@ -111,3 +111,23 @@ The control plane may NOT:
 - [../README.md](../README.md) — Construction OS overview
 - [../0-Frozen-Doctrine/](../0-Frozen-Doctrine/) — Frozen doctrine
 - ValidKernel-Governance: governance/CONTROL_PLANE_BOUNDARY_RULES_v0.1.md
+
+---
+
+## SOVEREIGNTY INHERITANCE
+
+This domain inherits ARCHITECTURE_SOVEREIGNTY_RULE_v0.1.
+
+Repository structure, package structure, code colocation, or import paths may not transfer authority between layers.
+
+Construction_OS executes construction-domain logic only.
+
+Construction_OS does not inherit governance, registry, signal, fabric, or foundry authority through code proximity.
+
+---
+
+## LESSON LOCKED FROM MONOREPO RECONSTRUCTION
+
+A successful domain-plane consolidation does not justify control-plane sovereignty collapse.
+
+Construction_OS may remain a fully consolidated governed 7-ring domain while Governance, Registry, VKBus, Fabric, and Foundry remain distinct sovereign layers.
