@@ -74,6 +74,13 @@
       "governance_tier": "derived_inference"
     },
     {
+      "edge_id": "EDGE-SUPPORTS-006",
+      "from_node": "MFR-SYSTEM-MECHR-001",
+      "to_node": "MFR-COND-SUBSTRATE-002",
+      "relationship": "supports",
+      "governance_tier": "derived_inference"
+    },
+    {
       "edge_id": "EDGE-RESOLVEDBY-001",
       "from_node": "MFR-COND-HIGHWIND-001",
       "to_node": "MFR-ASSY-ADHERO-HW-001",
