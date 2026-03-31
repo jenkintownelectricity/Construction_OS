@@ -1,0 +1,50 @@
+[
+  {
+    "record_id": "MFR-PROD-MEMBRANE-001",
+    "type": "product",
+    "label": "Roofing Membrane (Scaffold)",
+    "domain": "building_envelope",
+    "status": "scaffold",
+    "product_category": "membrane",
+    "material_class": "TPO/PVC/EPDM",
+    "scaffold_reason": "Specific product model requires manufacturer catalog data"
+  },
+  {
+    "record_id": "MFR-PROD-INSULATION-001",
+    "type": "product",
+    "label": "Roof Insulation Board (Scaffold)",
+    "domain": "building_envelope",
+    "status": "scaffold",
+    "product_category": "insulation",
+    "material_class": "polyiso/EPS/XPS",
+    "scaffold_reason": "R-value and thickness require manufacturer specifications"
+  },
+  {
+    "record_id": "MFR-PROD-FASTENER-001",
+    "type": "product",
+    "label": "Mechanical Fastener (Scaffold)",
+    "domain": "building_envelope",
+    "status": "scaffold",
+    "product_category": "fastener",
+    "scaffold_reason": "Fastener type, length, and pullout values require manufacturer data"
+  },
+  {
+    "record_id": "MFR-PROD-ADHESIVE-001",
+    "type": "product",
+    "label": "Bonding Adhesive (Scaffold)",
+    "domain": "building_envelope",
+    "status": "scaffold",
+    "product_category": "adhesive",
+    "scaffold_reason": "Application rates and compatibility require manufacturer TDS"
+  },
+  {
+    "record_id": "MFR-PROD-WRB-001",
+    "type": "product",
+    "label": "Weather Resistive Barrier (Scaffold)",
+    "domain": "building_envelope",
+    "status": "scaffold",
+    "product_category": "weather_barrier",
+    "envelope_zone": "wall",
+    "scaffold_reason": "Permeance rating and overlap requirements need manufacturer specs"
+  }
+]
