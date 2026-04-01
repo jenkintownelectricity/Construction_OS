@@ -1,0 +1,33 @@
+{
+  "receipt_id": "wave5_condition_resolution_receipt",
+  "receipt_type": "wave_execution",
+  "wave": 5,
+  "wave_name": "Condition Resolution Engine",
+  "status": "complete",
+  "execution_mode": "L04R",
+  "failure_posture": "FAIL_CLOSED",
+  "outputs": {
+    "condition_resolver": "tools/condition_resolver.py",
+    "receipt": "receipts/barrett_ingestion/wave5_condition_resolution_receipt.json"
+  },
+  "evidence": {
+    "resolves_parapet_termination": true,
+    "resolves_roof_drain": true,
+    "resolves_pipe_penetration": true,
+    "resolves_roof_to_wall_transition": true,
+    "resolves_edge_termination": true,
+    "fail_closed_on_unknown_condition": true,
+    "selects_best_match_by_component_count": true,
+    "filters_by_system_type": true,
+    "loads_assembly_index_from_disk": true,
+    "deterministic": true
+  },
+  "capability_proven": "condition_resolution",
+  "capability_confidence": "high",
+  "lineage": {
+    "executed_at": "2026-04-01T00:00:00Z",
+    "executed_by": "wave5_condition_resolution_builder",
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "00-validkernel-governance"
+  }
+}

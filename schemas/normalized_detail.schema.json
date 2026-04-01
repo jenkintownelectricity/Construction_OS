@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://construction-os.validkernel.local/schemas/normalized_detail.schema.json",
+  "title": "Normalized Detail — Assembly Kernel JSON",
+  "description": "Schema for the output of the Detail Atlas Semantic Normalizer. Transforms DXF geometry extraction into construction-meaningful assembly kernel JSON.",
+  "type": "object",
+  "required": [
+    "assembly_id", "assembly_version", "node_id",
+    "manufacturer_id", "manufacturer_name",
+    "condition_type", "system_type",
+    "components", "assembly_constraints",
+    "lineage", "artifacts_enabled"
+  ],
+  "properties": {
+    "assembly_id": { "type": "string", "description": "Deterministic SHA-256 based assembly identifier" },
+    "assembly_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "node_id": { "type": "string", "description": "Deterministic node identifier" },
+    "manufacturer_id": { "type": "string" },
+    "manufacturer_name": { "type": "string" },
+    "condition_type": {
+      "type": "string",
+      "enum": ["parapet_termination", "roof_drain", "pipe_penetration", "roof_to_wall_transition", "edge_termination", "expansion_joint", "curb_condition"]
+    },
+    "system_type": { "type": "string" },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["component_id", "name", "material", "position", "required"],
+        "properties": {
+          "component_id": { "type": "string" },
+          "name": { "type": "string" },
+          "material": { "type": "string" },
+          "position": { "type": "string" },
+          "required": { "type": "boolean" },
+          "parameters": { "type": "object" },
+          "source_block": { "type": "string" },
+          "block_count": { "type": "integer" }
+        }
+      }
+    },
+    "assembly_constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule_id", "description", "severity", "check"],
+        "properties": {
+          "rule_id": { "type": "string" },
+          "description": { "type": "string" },
+          "severity": { "type": "string", "enum": ["HALT", "WARN"] },
+          "check": { "type": "string" }
+        }
+      }
+    },
+    "template_path": { "type": ["string", "null"] },
+    "source_quantities": {
+      "type": "object",
+      "properties": {
+        "linear_feet_by_layer": { "type": "object", "additionalProperties": { "type": "number" } },
+        "total_linear_feet": { "type": "number" },
+        "block_counts": { "type": "object", "additionalProperties": { "type": "integer" } }
+      }
+    },
+    "source_dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value_raw": { "type": ["number", "null"] },
+          "value_feet": { "type": ["number", "null"] },
+          "override_text": { "type": ["string", "null"] },
+          "layer": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "required": ["source_authority", "source_file", "source_format", "normalizer", "normalizer_version", "created", "created_by", "governance_kernel", "truth_kernel"],
+      "properties": {
+        "source_authority": { "type": "string" },
+        "source_file": { "type": "string" },
+        "source_format": { "type": "string" },
+        "normalizer": { "type": "string" },
+        "normalizer_version": { "type": "string" },
+        "config_id": { "type": "string" },
+        "config_version": { "type": "string" },
+        "created": { "type": "string", "format": "date-time" },
+        "created_by": { "type": "string" },
+        "governance_kernel": { "type": "string" },
+        "truth_kernel": { "type": "string" }
+      }
+    },
+    "artifacts_enabled": {
+      "type": "object",
+      "properties": {
+        "detail_packet": { "type": "boolean" },
+        "compliance_certificate": { "type": "boolean" },
+        "svg_overlay": { "type": "boolean" },
+        "system_passport": { "type": "boolean" }
+      }
+    }
+  }
+}
