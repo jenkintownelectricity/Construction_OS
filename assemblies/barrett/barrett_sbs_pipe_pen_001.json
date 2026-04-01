@@ -1,0 +1,21 @@
+{
+  "primitive_type": "assembly",
+  "manufacturer": "Barrett",
+  "system_family": "SBS Modified Bitumen",
+  "detail_id": "barrett_sbs_pipe_pen_001",
+  "condition_type": "pipe_penetration",
+  "variant_type": "standard_penetration",
+  "source_detail_path": "10-Construction_OS/config/detail_atlas_mapping.barrett.json",
+  "evidence": {
+    "layers": ["PENETRATION", "MECH", "HVAC"],
+    "material_roles": ["SBS_modified_bitumen", "lead", "rubber"],
+    "source_kind": "condition_heuristic_derived"
+  },
+  "governance_density": "full",
+  "mint_status": "minted",
+  "minted_at": "2026-04-01T00:00:00Z",
+  "lineage": {
+    "source_json": "10-Construction_OS/config/detail_atlas_mapping.barrett.json",
+    "receipt_path": "10-Construction_OS/receipts/barrett_ingestion/foundry_assembly_mint_barrett_sbs_pipe_pen_001.json"
+  }
+}
