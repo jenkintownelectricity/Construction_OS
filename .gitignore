@@ -1,2 +1,15 @@
-__pycache__/
-*.pyc
+# CAD source files
+source/**/*.dwg
+source/**/*.dxf
+
+# generated geometry
+source/**/*.json
+
+# ingestion logs
+logs/**
+receipts/**
+
+# CAD temporary files
+*.bak
+*.sv$
+*.tmp
