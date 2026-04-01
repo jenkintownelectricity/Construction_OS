@@ -1,0 +1,21 @@
+{
+  "primitive_type": "assembly",
+  "manufacturer": "Barrett",
+  "system_family": "SBS Modified Bitumen",
+  "detail_id": "barrett_sbs_roof_drain_001",
+  "condition_type": "roof_drain",
+  "variant_type": "standard_drain",
+  "source_detail_path": "10-Construction_OS/config/detail_atlas_mapping.barrett.json",
+  "evidence": {
+    "layers": ["DRAIN", "DRAINAGE", "PLUMBING"],
+    "material_roles": ["cast_iron", "SBS_modified_bitumen"],
+    "source_kind": "condition_heuristic_derived"
+  },
+  "governance_density": "full",
+  "mint_status": "minted",
+  "minted_at": "2026-04-01T00:00:00Z",
+  "lineage": {
+    "source_json": "10-Construction_OS/config/detail_atlas_mapping.barrett.json",
+    "receipt_path": "10-Construction_OS/receipts/barrett_ingestion/foundry_assembly_mint_barrett_sbs_roof_drain_001.json"
+  }
+}

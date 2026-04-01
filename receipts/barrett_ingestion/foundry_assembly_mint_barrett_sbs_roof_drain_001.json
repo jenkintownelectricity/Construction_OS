@@ -1,0 +1,33 @@
+{
+  "receipt_id": "receipt_foundry_mint_barrett_sbs_roof_drain_001",
+  "receipt_type": "foundry_assembly_mint",
+  "status": "success",
+  "primitive_type": "assembly",
+  "detail_id": "barrett_sbs_roof_drain_001",
+  "manufacturer": "Barrett",
+  "system_family": "SBS Modified Bitumen",
+  "condition_type": "roof_drain",
+  "variant_type": "standard_drain",
+  "governance_density": "full",
+  "source_detail_path": "10-Construction_OS/config/detail_atlas_mapping.barrett.json",
+  "output_primitive_path": "10-Construction_OS/assemblies/barrett/barrett_sbs_roof_drain_001.json",
+  "output_receipt_path": "10-Construction_OS/receipts/barrett_ingestion/foundry_assembly_mint_barrett_sbs_roof_drain_001.json",
+  "evidence_summary": {
+    "layers_count": 3,
+    "material_roles_count": 2,
+    "source_kind": "condition_heuristic_derived",
+    "completeness": "derived"
+  },
+  "sentinel_checks": {
+    "source_candidate_selected": true,
+    "manufacturer_resolved": true,
+    "system_family_resolved": true,
+    "condition_resolved": true,
+    "output_path_valid": true,
+    "receipt_path_valid": true
+  },
+  "minted_at": "2026-04-01T00:00:00Z",
+  "minted_by": "construction_foundry",
+  "governance_kernel": "00-validkernel-governance",
+  "source_authority": "10-Construction_OS"
+}
