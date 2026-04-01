@@ -1,0 +1,148 @@
+{
+  "source_library_id": "barrett_sbs_source_library",
+  "source_library_version": "0.1.0",
+  "manufacturer_id": "barrett",
+  "manufacturer_name": "Barrett Company",
+  "system_family": "SBS Modified Bitumen",
+  "description": "Barrett manufacturer truth set — source detail library index for SBS Modified Bitumen roofing systems",
+  "authority": "10-Construction_OS",
+  "governance_kernel": "00-validkernel-governance",
+
+  "source_artifacts": {
+    "mapping_config": {
+      "path": "config/detail_atlas_mapping.barrett.json",
+      "type": "mapping_configuration",
+      "description": "Layer-to-system, block-to-component, regex manufacturer/system detection, condition heuristics, template lookup, default assembly constraints",
+      "status": "canonical"
+    },
+    "normalized_example": {
+      "path": "examples/normalized/barrett_example_output.json",
+      "type": "normalized_detail",
+      "description": "Normalized assembly output from DXF processor — parapet termination with source quantities, dimensions, and lineage",
+      "status": "canonical"
+    },
+    "svg_template": {
+      "path": "templates/barrett_parapet_base.svg",
+      "type": "detail_template",
+      "description": "SVG detail template for parapet termination with component labels, dimension lines, and Detail Atlas branding",
+      "status": "canonical"
+    }
+  },
+
+  "assembly_primitives": [
+    {
+      "path": "assemblies/barrett/barrett_sbs_parapet_ext_001.json",
+      "detail_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "parapet_termination",
+      "variant_type": "exterior_parapet",
+      "completeness": "complete",
+      "components_count": 9,
+      "constraints_count": 8,
+      "has_warranty_envelope": true,
+      "has_csi_section": true
+    },
+    {
+      "path": "assemblies/barrett/barrett_sbs_roof_drain_001.json",
+      "detail_id": "barrett_sbs_roof_drain_001",
+      "condition_type": "roof_drain",
+      "variant_type": "standard_drain",
+      "completeness": "derived",
+      "components_count": 0,
+      "constraints_count": 0,
+      "has_warranty_envelope": false,
+      "has_csi_section": false
+    },
+    {
+      "path": "assemblies/barrett/barrett_sbs_pipe_pen_001.json",
+      "detail_id": "barrett_sbs_pipe_pen_001",
+      "condition_type": "pipe_penetration",
+      "variant_type": "standard_penetration",
+      "completeness": "derived",
+      "components_count": 0,
+      "constraints_count": 0,
+      "has_warranty_envelope": false,
+      "has_csi_section": false
+    },
+    {
+      "path": "assemblies/barrett/barrett_sbs_wall_trans_001.json",
+      "detail_id": "barrett_sbs_wall_trans_001",
+      "condition_type": "roof_to_wall_transition",
+      "variant_type": "base_flashing",
+      "completeness": "derived",
+      "components_count": 0,
+      "constraints_count": 0,
+      "has_warranty_envelope": false,
+      "has_csi_section": false
+    },
+    {
+      "path": "assemblies/barrett/barrett_sbs_edge_term_001.json",
+      "detail_id": "barrett_sbs_edge_term_001",
+      "condition_type": "edge_termination",
+      "variant_type": "metal_edge",
+      "completeness": "derived",
+      "components_count": 0,
+      "constraints_count": 0,
+      "has_warranty_envelope": false,
+      "has_csi_section": false
+    }
+  ],
+
+  "condition_catalog": [
+    { "condition_type": "parapet_termination", "status": "complete", "assembly_count": 1 },
+    { "condition_type": "roof_drain", "status": "derived", "assembly_count": 1 },
+    { "condition_type": "pipe_penetration", "status": "derived", "assembly_count": 1 },
+    { "condition_type": "roof_to_wall_transition", "status": "derived", "assembly_count": 1 },
+    { "condition_type": "edge_termination", "status": "derived", "assembly_count": 1 }
+  ],
+
+  "tools": {
+    "normalizer": {
+      "path": "tools/detail_atlas_normalizer.py",
+      "type": "normalization_engine",
+      "status": "proven",
+      "test_path": "tests/test_detail_atlas_normalizer.py",
+      "test_count": 38,
+      "test_status": "all_pass"
+    },
+    "compiler": {
+      "path": "tools/detailatlas_compiler.py",
+      "type": "detail_compiler",
+      "status": "proven",
+      "dependencies": ["reportlab"]
+    },
+    "validator": {
+      "path": "tools/validator.py",
+      "type": "constraint_validator",
+      "status": "proven"
+    }
+  },
+
+  "receipts": {
+    "path": "receipts/barrett_ingestion/",
+    "count": 5,
+    "files": [
+      "foundry_assembly_mint_barrett_sbs_parapet_ext_001.json",
+      "foundry_assembly_mint_barrett_sbs_roof_drain_001.json",
+      "foundry_assembly_mint_barrett_sbs_pipe_pen_001.json",
+      "foundry_assembly_mint_barrett_sbs_wall_trans_001.json",
+      "foundry_assembly_mint_barrett_sbs_edge_term_001.json"
+    ]
+  },
+
+  "summary": {
+    "total_assemblies": 5,
+    "complete_assemblies": 1,
+    "derived_assemblies": 4,
+    "total_conditions": 5,
+    "total_tools": 3,
+    "total_templates": 1,
+    "total_receipts": 5
+  },
+
+  "lineage": {
+    "created": "2026-04-01T00:00:00Z",
+    "created_by": "wave1_source_library_cataloger",
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "00-validkernel-governance"
+  }
+}

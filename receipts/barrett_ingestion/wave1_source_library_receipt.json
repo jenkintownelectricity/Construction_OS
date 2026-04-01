@@ -1,0 +1,38 @@
+{
+  "receipt_id": "wave1_source_library_receipt",
+  "receipt_type": "wave_execution",
+  "wave": 1,
+  "wave_name": "Source Detail Library",
+  "status": "complete",
+  "execution_mode": "L04R",
+  "failure_posture": "FAIL_CLOSED",
+
+  "outputs": {
+    "posture_document": "docs/BARRETT_SOURCE_LIBRARY_POSTURE_v0.1.md",
+    "source_library_index": "docs/barrett_source_library_index.json",
+    "receipt": "receipts/barrett_ingestion/wave1_source_library_receipt.json"
+  },
+
+  "evidence": {
+    "assembly_primitives_count": 5,
+    "complete_assemblies": 1,
+    "derived_assemblies": 4,
+    "conditions_cataloged": 5,
+    "tools_verified": 3,
+    "templates_verified": 1,
+    "normalizer_tests_passed": 38,
+    "normalizer_tests_total": 38,
+    "mapping_config_exists": true,
+    "normalized_example_exists": true
+  },
+
+  "capability_proven": "source_library",
+  "capability_confidence": "high",
+
+  "lineage": {
+    "executed_at": "2026-04-01T00:00:00Z",
+    "executed_by": "wave1_source_library_cataloger",
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "00-validkernel-governance"
+  }
+}
