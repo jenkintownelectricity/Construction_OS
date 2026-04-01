@@ -1,0 +1,36 @@
+[33mb2c5c08[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Wave 2 — Absorb Construction_ALEXANDER_Engine as Ring-2 advisory reasoning engine
+ .gitignore                                         |   2 [32m+[m
+ .../Construction_ALEXANDER_Engine/README.md        |  16 [32m++[m
+ .../contracts/__init__.py                          |   0
+ .../contracts/pattern_kernel_consumer.py           | 296 [32m+++++++++++++++++++++[m
+ .../contracts/runtime_resolution_contract.md       |  16 [32m++[m
+ .../docs/REPO_MANIFEST.md                          |  97 [32m+++++++[m
+ .../engine/__init__.py                             |  12 [32m+[m
+ .../engine/condition_intake.py                     | 110 [32m++++++++[m
+ .../Construction_ALEXANDER_Engine/engine/config.py |  95 [32m+++++++[m
+ .../engine/conflict_detector.py                    | 105 [32m++++++++[m
+ .../engine/constraint_engine.py                    | 217 [32m+++++++++++++++[m
+ .../engine/event_emitter.py                        | 185 [32m+++++++++++++[m
+ .../engine/family_classifier.py                    | 130 [32m+++++++++[m
+ .../engine/normalizer.py                           | 108 [32m++++++++[m
+ .../engine/pattern_resolver.py                     | 162 [32m+++++++++++[m
+ .../engine/resolution_pipeline.py                  | 269 [32m+++++++++++++++++++[m
+ .../engine/scoring_engine.py                       |  85 [32m++++++[m
+ .../engine/variant_selector.py                     | 155 [32m+++++++++++[m
+ .../manifest/engine_manifest.yaml                  |  76 [32m++++++[m
+ .../schemas/condition_signature.schema.json        | 152 [32m+++++++++++[m
+ .../schemas/observation_event.schema.json          |  95 [32m+++++++[m
+ .../schemas/proposal_event.schema.json             | 103 [32m+++++++[m
+ .../schemas/resolution_result.schema.json          | 215 [32m+++++++++++++++[m
+ .../tests/__init__.py                              |   0
+ .../tests/test_condition_intake.py                 | 112 [32m++++++++[m
+ .../tests/test_conflict_detector.py                | 106 [32m++++++++[m
+ .../tests/test_constraint_engine.py                | 187 [32m+++++++++++++[m
+ .../tests/test_event_emitter.py                    | 111 [32m++++++++[m
+ .../tests/test_fail_closed.py                      | 119 [32m+++++++++[m
+ .../tests/test_family_classifier.py                | 108 [32m++++++++[m
+ .../tests/test_integration.py                      | 274 [32m+++++++++++++++++++[m
+ .../tests/test_pattern_resolver.py                 |  82 [32m++++++[m
+ .../tests/test_scoring_engine.py                   | 115 [32m++++++++[m
+ .../tests/test_variant_selector.py                 |  74 [32m++++++[m
+ 34 files changed, 3989 insertions(+)
