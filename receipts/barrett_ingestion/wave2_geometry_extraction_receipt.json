@@ -1,0 +1,41 @@
+{
+  "receipt_id": "wave2_geometry_extraction_receipt",
+  "receipt_type": "wave_execution",
+  "wave": 2,
+  "wave_name": "Geometry Extraction",
+  "status": "complete",
+  "execution_mode": "L04R",
+  "failure_posture": "FAIL_CLOSED",
+
+  "outputs": {
+    "geometry_schema": "schemas/detail_geometry.schema.json",
+    "receipt": "receipts/barrett_ingestion/wave2_geometry_extraction_receipt.json"
+  },
+
+  "evidence": {
+    "schema_defines_lenses": ["spatial", "quantity", "specs", "full"],
+    "geometry_types_covered": ["LINE", "LWPOLYLINE", "POLYLINE", "CIRCLE", "ARC", "ELLIPSE", "SPLINE", "HATCH", "POINT"],
+    "entity_types_covered": ["TEXT", "MTEXT", "INSERT", "DIMENSION", "LEADER", "LINE", "LWPOLYLINE", "POLYLINE", "CIRCLE", "ARC", "ELLIPSE", "SPLINE", "HATCH", "POINT"],
+    "extraction_targets": {
+      "lines": true,
+      "polylines": true,
+      "blocks": true,
+      "text": true,
+      "layers": true,
+      "hatches": true,
+      "dimensions": true
+    },
+    "normalizer_consumes_schema": true,
+    "test_fixtures_conform": true
+  },
+
+  "capability_proven": "geometry_extraction",
+  "capability_confidence": "high",
+
+  "lineage": {
+    "executed_at": "2026-04-01T00:00:00Z",
+    "executed_by": "wave2_geometry_extraction_formalizer",
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "00-validkernel-governance"
+  }
+}

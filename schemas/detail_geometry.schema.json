@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://construction-os.validkernel.local/schemas/detail_geometry.schema.json",
+  "title": "Detail Geometry — DXF-to-JSON Extraction Output",
+  "description": "Schema for the multi-lens DXF geometry extraction output consumed by the Detail Atlas normalizer. Defines the expected structure from the cad_processor DXF-to-JSON pipeline.",
+  "type": "object",
+  "required": ["spatial", "quantity", "specs", "full"],
+  "properties": {
+    "spatial": {
+      "$ref": "#/$defs/spatial_lens"
+    },
+    "quantity": {
+      "$ref": "#/$defs/quantity_lens"
+    },
+    "specs": {
+      "$ref": "#/$defs/specs_lens"
+    },
+    "full": {
+      "$ref": "#/$defs/full_lens"
+    }
+  },
+  "additionalProperties": false,
+
+  "$defs": {
+    "meta_block": {
+      "type": "object",
+      "required": ["filename", "units", "units_code", "conversion_to_feet", "layers"],
+      "properties": {
+        "filename": { "type": "string", "description": "Source DXF filename" },
+        "units": { "type": "string", "description": "Drawing units (Inches, Feet, Millimeters)" },
+        "units_code": { "type": "integer", "description": "DXF units code" },
+        "conversion_to_feet": { "type": "number", "description": "Multiplier to convert to feet" },
+        "layers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "All layers present in the drawing"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "geometry_entity": {
+      "type": "object",
+      "required": ["type", "layer"],
+      "properties": {
+        "type": { "type": "string", "enum": ["LINE", "LWPOLYLINE", "POLYLINE", "CIRCLE", "ARC", "ELLIPSE", "SPLINE", "HATCH", "POINT"] },
+        "layer": { "type": "string" },
+        "bounds": {
+          "type": "object",
+          "properties": {
+            "min_x": { "type": "number" },
+            "min_y": { "type": "number" },
+            "max_x": { "type": "number" },
+            "max_y": { "type": "number" }
+          }
+        },
+        "closed": { "type": "boolean" },
+        "start": { "type": "array", "items": { "type": "number" } },
+        "end": { "type": "array", "items": { "type": "number" } },
+        "center": { "type": "array", "items": { "type": "number" } },
+        "radius": { "type": "number" },
+        "vertices": { "type": "array", "items": { "type": "array", "items": { "type": "number" } } },
+        "length_raw": { "type": "number" },
+        "length_feet": { "type": "number" },
+        "area_raw": { "type": "number" },
+        "area_sqft": { "type": "number" }
+      }
+    },
+
+    "spatial_lens": {
+      "type": "object",
+      "required": ["format", "meta", "geometry", "layers_with_geometry", "geometry_count"],
+      "properties": {
+        "format": { "type": "string", "const": "SPATIAL" },
+        "purpose": { "type": "string" },
+        "meta": { "$ref": "#/$defs/meta_block" },
+        "geometry": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/geometry_entity" }
+        },
+        "layers_with_geometry": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "geometry_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+
+    "quantity_lens": {
+      "type": "object",
+      "required": ["format", "meta", "linear_feet_by_layer", "total_linear_feet", "block_counts", "entity_counts_by_layer"],
+      "properties": {
+        "format": { "type": "string", "const": "QUANTITY" },
+        "purpose": { "type": "string" },
+        "meta": { "$ref": "#/$defs/meta_block" },
+        "linear_feet_by_layer": {
+          "type": "object",
+          "additionalProperties": { "type": "number" }
+        },
+        "total_linear_feet": { "type": "number", "minimum": 0 },
+        "block_counts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" }
+        },
+        "entity_counts_by_layer": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": { "type": "integer" }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "note_entry": {
+      "type": "object",
+      "required": ["layer", "text"],
+      "properties": {
+        "layer": { "type": "string" },
+        "text": { "type": "string" },
+        "location": { "type": "array", "items": { "type": "number" } },
+        "height": { "type": "number" }
+      }
+    },
+
+    "dimension_entry": {
+      "type": "object",
+      "properties": {
+        "layer": { "type": "string" },
+        "value_raw": { "type": "number" },
+        "value_feet": { "type": "number" },
+        "override_text": { "type": "string" }
+      }
+    },
+
+    "leader_entry": {
+      "type": "object",
+      "properties": {
+        "layer": { "type": "string" },
+        "annotation": { "type": "string" },
+        "vertices": { "type": "array", "items": { "type": "array", "items": { "type": "number" } } }
+      }
+    },
+
+    "specs_lens": {
+      "type": "object",
+      "required": ["format", "meta", "notes", "dimensions", "leaders"],
+      "properties": {
+        "format": { "type": "string", "const": "SPECS" },
+        "purpose": { "type": "string" },
+        "meta": { "$ref": "#/$defs/meta_block" },
+        "notes": { "type": "array", "items": { "$ref": "#/$defs/note_entry" } },
+        "dimensions": { "type": "array", "items": { "$ref": "#/$defs/dimension_entry" } },
+        "leaders": { "type": "array", "items": { "$ref": "#/$defs/leader_entry" } },
+        "note_count": { "type": "integer" },
+        "dimension_count": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+
+    "full_entity": {
+      "type": "object",
+      "required": ["type", "layer"],
+      "properties": {
+        "type": { "type": "string", "enum": ["LINE", "LWPOLYLINE", "POLYLINE", "CIRCLE", "ARC", "ELLIPSE", "SPLINE", "HATCH", "POINT", "TEXT", "MTEXT", "INSERT", "DIMENSION", "LEADER"] },
+        "layer": { "type": "string" },
+        "content": { "type": "string" },
+        "location": { "type": "array", "items": { "type": "number" } },
+        "color": { "type": ["integer", "null"] },
+        "block_name": { "type": "string" },
+        "scale": { "type": "array", "items": { "type": "number" } },
+        "rotation": { "type": "number" },
+        "start": { "type": "array", "items": { "type": "number" } },
+        "end": { "type": "array", "items": { "type": "number" } },
+        "length_raw": { "type": "number" },
+        "length_feet": { "type": "number" },
+        "annotation": { "type": "string" }
+      }
+    },
+
+    "full_lens": {
+      "type": "object",
+      "required": ["format", "meta", "entities", "entity_count"],
+      "properties": {
+        "format": { "type": "string", "const": "FULL" },
+        "purpose": { "type": "string" },
+        "meta": { "$ref": "#/$defs/meta_block" },
+        "entities": { "type": "array", "items": { "$ref": "#/$defs/full_entity" } },
+        "entity_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  }
+}
