@@ -1,0 +1,24 @@
+{
+  "sheet_id": "A-603",
+  "sheet_name": "Drain Conditions",
+  "manufacturer": "barrett",
+  "details": [
+    {
+      "detail_id": "barrett_sbs_pipe_pen_001",
+      "condition_type": "pipe_penetration",
+      "variant_type": "standard_penetration",
+      "source_path": "assemblies/barrett/barrett_sbs_pipe_pen_001.json",
+      "components_count": 0
+    },
+    {
+      "detail_id": "barrett_sbs_roof_drain_001",
+      "condition_type": "roof_drain",
+      "variant_type": "standard_drain",
+      "source_path": "assemblies/barrett/barrett_sbs_roof_drain_001.json",
+      "components_count": 0
+    }
+  ],
+  "detail_count": 2,
+  "generated_at": "2026-04-01T18:14:37.317385+00:00",
+  "generated_by": "sheet_distributor"
+}

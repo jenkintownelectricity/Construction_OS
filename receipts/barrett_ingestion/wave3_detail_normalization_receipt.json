@@ -1,0 +1,39 @@
+{
+  "receipt_id": "wave3_detail_normalization_receipt",
+  "receipt_type": "wave_execution",
+  "wave": 3,
+  "wave_name": "Detail Normalization",
+  "status": "complete",
+  "execution_mode": "L04R",
+  "failure_posture": "FAIL_CLOSED",
+  "outputs": {
+    "normalized_detail_schema": "schemas/normalized_detail.schema.json",
+    "normalizer_tool": "tools/detail_atlas_normalizer.py",
+    "normalizer_tests": "tests/test_detail_atlas_normalizer.py",
+    "mapping_config": "config/detail_atlas_mapping.barrett.json",
+    "normalized_example": "examples/normalized/barrett_example_output.json",
+    "receipt": "receipts/barrett_ingestion/wave3_detail_normalization_receipt.json"
+  },
+  "evidence": {
+    "normalizer_tests_passed": 38,
+    "normalizer_tests_total": 38,
+    "detects_membrane": true,
+    "detects_insulation": true,
+    "detects_deck": true,
+    "detects_flashing": true,
+    "detects_termination": true,
+    "detects_fasteners": true,
+    "condition_types_detected": ["parapet_termination", "roof_drain", "pipe_penetration", "roof_to_wall_transition", "edge_termination"],
+    "fail_closed_on_ambiguous": true,
+    "deterministic_ids": true,
+    "config_driven": true
+  },
+  "capability_proven": "detail_normalization",
+  "capability_confidence": "high",
+  "lineage": {
+    "executed_at": "2026-04-01T00:00:00Z",
+    "executed_by": "wave3_normalization_verifier",
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "00-validkernel-governance"
+  }
+}

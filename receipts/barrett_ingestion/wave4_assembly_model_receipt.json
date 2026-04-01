@@ -1,0 +1,40 @@
+{
+  "receipt_id": "wave4_assembly_model_receipt",
+  "receipt_type": "wave_execution",
+  "wave": 4,
+  "wave_name": "Assembly Knowledge Model",
+  "status": "complete",
+  "execution_mode": "L04R",
+  "failure_posture": "FAIL_CLOSED",
+  "outputs": {
+    "assembly_primitive_schema": "schemas/assembly_primitive.schema.json",
+    "assembly_primitives": [
+      "assemblies/barrett/barrett_sbs_parapet_ext_001.json",
+      "assemblies/barrett/barrett_sbs_roof_drain_001.json",
+      "assemblies/barrett/barrett_sbs_pipe_pen_001.json",
+      "assemblies/barrett/barrett_sbs_wall_trans_001.json",
+      "assemblies/barrett/barrett_sbs_edge_term_001.json"
+    ],
+    "validator_tool": "tools/validator.py",
+    "receipt": "receipts/barrett_ingestion/wave4_assembly_model_receipt.json"
+  },
+  "evidence": {
+    "total_assemblies": 5,
+    "complete_assemblies": 1,
+    "derived_assemblies": 4,
+    "parapet_components": 9,
+    "parapet_constraints": 8,
+    "has_warranty_envelope": true,
+    "has_csi_section": true,
+    "validator_proven": true,
+    "schema_exists": true
+  },
+  "capability_proven": "assembly_model",
+  "capability_confidence": "high",
+  "lineage": {
+    "executed_at": "2026-04-01T00:00:00Z",
+    "executed_by": "wave4_assembly_model_verifier",
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "00-validkernel-governance"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "receipt_type": "wave_execution",
+  "wave": 6,
+  "wave_name": "Detail Compiler",
+  "status": "complete",
+  "execution_mode": "L04R",
+  "failure_posture": "FAIL_CLOSED",
+  "capability_proven": "detail_compiler",
+  "capability_confidence": "high",
+  "outputs": [
+    "tools/detailatlas_compiler.py",
+    "tools/validator.py",
+    "output/barrett/details/barrett_sbs_parapet_ext_001_packet.pdf"
+  ],
+  "evidence": {
+    "summary": "Compiler generates 3-page PDF, validator evaluates PASS/WARN/HALT, blocked on HALT, deterministic hash",
+    "pdf_pages": 3,
+    "validator_states": ["PASS", "WARN", "HALT"],
+    "halt_behavior": "blocked",
+    "hash_mode": "deterministic"
+  },
+  "lineage": {
+    "executed_at": "2026-04-01T00:00:00Z",
+    "executed_by": "claude",
+    "source_authority": "barrett_ingestion_pipeline",
+    "governance_kernel": "construction_os_v1"
+  }
+}

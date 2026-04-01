@@ -1,0 +1,29 @@
+{
+  "receipt_type": "wave_execution",
+  "wave": 10,
+  "wave_name": "Manufacturer Intelligence",
+  "status": "complete",
+  "execution_mode": "L04R",
+  "failure_posture": "FAIL_CLOSED",
+  "capability_proven": "manufacturer_intelligence",
+  "capability_confidence": "high",
+  "outputs": [
+    "tools/manufacturer_intelligence.py"
+  ],
+  "evidence": {
+    "summary": "Generates analytics (condition distribution, material frequency, completeness score, sheet coverage, top issues)",
+    "analytics": [
+      "condition_distribution",
+      "material_frequency",
+      "completeness_score",
+      "sheet_coverage",
+      "top_issues"
+    ]
+  },
+  "lineage": {
+    "executed_at": "2026-04-01T00:00:00Z",
+    "executed_by": "claude",
+    "source_authority": "barrett_ingestion_pipeline",
+    "governance_kernel": "construction_os_v1"
+  }
+}

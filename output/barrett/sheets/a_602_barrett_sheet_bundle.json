@@ -1,0 +1,17 @@
+{
+  "sheet_id": "A-602",
+  "sheet_name": "Wall Transitions",
+  "manufacturer": "barrett",
+  "details": [
+    {
+      "detail_id": "barrett_sbs_wall_trans_001",
+      "condition_type": "roof_to_wall_transition",
+      "variant_type": "base_flashing",
+      "source_path": "assemblies/barrett/barrett_sbs_wall_trans_001.json",
+      "components_count": 0
+    }
+  ],
+  "detail_count": 1,
+  "generated_at": "2026-04-01T18:14:37.317251+00:00",
+  "generated_by": "sheet_distributor"
+}
