@@ -1,0 +1,29 @@
+{
+  "receipt_type": "wave_execution",
+  "wave": 9,
+  "wave_name": "Learning Layer (Alexander)",
+  "status": "complete",
+  "execution_mode": "L04R",
+  "failure_posture": "FAIL_CLOSED",
+  "capability_proven": "alexander_advisory",
+  "capability_confidence": "high",
+  "outputs": [
+    "tools/alexander_advisor.py"
+  ],
+  "evidence": {
+    "summary": "Detects completeness gaps, governance gaps, warranty gaps, improvement opportunities, CSI gaps",
+    "gap_detection": [
+      "completeness_gaps",
+      "governance_gaps",
+      "warranty_gaps",
+      "improvement_opportunities",
+      "csi_gaps"
+    ]
+  },
+  "lineage": {
+    "executed_at": "2026-04-01T00:00:00Z",
+    "executed_by": "claude",
+    "source_authority": "barrett_ingestion_pipeline",
+    "governance_kernel": "construction_os_v1"
+  }
+}

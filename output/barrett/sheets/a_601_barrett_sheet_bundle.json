@@ -1,0 +1,24 @@
+{
+  "sheet_id": "A-601",
+  "sheet_name": "Roof Details",
+  "manufacturer": "barrett",
+  "details": [
+    {
+      "detail_id": "barrett_sbs_edge_term_001",
+      "condition_type": "edge_termination",
+      "variant_type": "metal_edge",
+      "source_path": "assemblies/barrett/barrett_sbs_edge_term_001.json",
+      "components_count": 0
+    },
+    {
+      "detail_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "parapet_termination",
+      "variant_type": "",
+      "source_path": "assemblies/barrett/barrett_sbs_parapet_ext_001.json",
+      "components_count": 9
+    }
+  ],
+  "detail_count": 2,
+  "generated_at": "2026-04-01T18:14:37.317029+00:00",
+  "generated_by": "sheet_distributor"
+}

@@ -1,0 +1,30 @@
+{
+  "receipt_type": "wave_execution",
+  "wave": 8,
+  "wave_name": "Truth Spine",
+  "status": "complete",
+  "execution_mode": "L04R",
+  "failure_posture": "FAIL_CLOSED",
+  "capability_proven": "truth_spine_linkage",
+  "capability_confidence": "high",
+  "outputs": [
+    "tools/truth_spine.py"
+  ],
+  "evidence": {
+    "summary": "Traces source -> assembly -> receipt -> compiled packet -> sheet bundle, deterministic",
+    "trace_chain": [
+      "source",
+      "assembly",
+      "receipt",
+      "compiled_packet",
+      "sheet_bundle"
+    ],
+    "deterministic": true
+  },
+  "lineage": {
+    "executed_at": "2026-04-01T00:00:00Z",
+    "executed_by": "claude",
+    "source_authority": "barrett_ingestion_pipeline",
+    "governance_kernel": "construction_os_v1"
+  }
+}
