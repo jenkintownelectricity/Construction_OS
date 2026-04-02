@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Condition Node",
+  "description": "A detected building condition from imported boundary geometry analysis",
+  "type": "object",
+  "required": [
+    "condition_id",
+    "boundary_id",
+    "type",
+    "position",
+    "orientation",
+    "status",
+    "evidence",
+    "lineage"
+  ],
+  "properties": {
+    "condition_id": {
+      "type": "string",
+      "pattern": "^CND-",
+      "description": "Unique condition identifier"
+    },
+    "boundary_id": {
+      "type": "string",
+      "pattern": "^BND-",
+      "description": "Source boundary identifier"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PARAPET",
+        "INSIDE_CORNER",
+        "OUTSIDE_CORNER",
+        "DRAIN",
+        "CURB",
+        "EXPANSION_JOINT",
+        "WALL_INTERSECTION"
+      ],
+      "description": "Detected condition type"
+    },
+    "position": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "[x, y] position of the condition"
+    },
+    "orientation": {
+      "type": "number",
+      "description": "Orientation angle in degrees"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["DETECTED", "DERIVED", "UNRESOLVED"],
+      "description": "Detection status"
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["rule", "geometry_inputs", "tolerances_used"],
+      "properties": {
+        "rule": { "type": "string" },
+        "geometry_inputs": { "type": "string" },
+        "tolerances_used": { "type": "object" }
+      },
+      "description": "Evidence supporting the detection"
+    },
+    "lineage": {
+      "type": "object",
+      "required": ["source_authority", "boundary_id", "detection_method"],
+      "properties": {
+        "source_authority": { "type": "string" },
+        "boundary_id": { "type": "string" },
+        "trace_type": { "type": "string" },
+        "units": { "type": "string" },
+        "detection_method": { "type": "string" },
+        "detected_at": { "type": "string", "format": "date-time" }
+      },
+      "description": "Lineage chain for the condition"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,29 @@
+{
+  "condition_id": "CND-BND-0001-FDN-008",
+  "boundary_id": "BND-0001-FDN",
+  "type": "PARAPET",
+  "position": [
+    48.0,
+    16.0
+  ],
+  "orientation": 90.0,
+  "status": "DETECTED",
+  "evidence": {
+    "rule": "every_edge_of_closed_foundation_outline_is_parapet",
+    "geometry_inputs": "edge_1_from_(48,0)_to_(48,32)_length_32.0",
+    "tolerances_used": {
+      "minimum_edge_length_units": 0.5,
+      "require_closed_polygon": true,
+      "require_trace_type": "FOUNDATION_OUTLINE"
+    },
+    "edge_length": 32.0
+  },
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "boundary_id": "BND-0001-FDN",
+    "trace_type": "FOUNDATION_OUTLINE",
+    "units": "feet",
+    "detection_method": "geometry_edge_analysis",
+    "detected_at": "2026-04-02T01:19:39.574387+00:00"
+  }
+}

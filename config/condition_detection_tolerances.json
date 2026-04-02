@@ -1,0 +1,23 @@
+{
+  "tolerance_version": "1.0.0",
+  "description": "Deterministic constants for geometry-based condition detection from imported boundaries",
+  "corner_angle_threshold_degrees": 10,
+  "inside_corner_threshold_degrees": 170,
+  "outside_corner_threshold_degrees": 190,
+  "parapet_distance_threshold_units": 3,
+  "minimum_drain_hole_area_units2": 1,
+  "vertex_merge_tolerance_units": 0.25,
+  "self_intersection_fail_closed": true,
+  "minimum_edge_length_units": 0.5,
+  "parapet_edge_detection": {
+    "description": "Every edge of a closed FOUNDATION_OUTLINE boundary is treated as a parapet edge",
+    "require_closed_polygon": true,
+    "require_trace_type": "FOUNDATION_OUTLINE"
+  },
+  "corner_detection": {
+    "description": "Corners detected via cross-product sign at polygon vertices",
+    "method": "cross_product_sign",
+    "inside_corner_cross_product": "negative",
+    "outside_corner_cross_product": "positive"
+  }
+}

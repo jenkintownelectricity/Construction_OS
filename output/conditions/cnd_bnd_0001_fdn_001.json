@@ -1,0 +1,30 @@
+{
+  "condition_id": "CND-BND-0001-FDN-001",
+  "boundary_id": "BND-0001-FDN",
+  "type": "OUTSIDE_CORNER",
+  "position": [
+    0,
+    0
+  ],
+  "orientation": 90.0,
+  "status": "DETECTED",
+  "evidence": {
+    "rule": "cross_product_sign(positive_in_CCW_polygon",
+    "geometry_inputs": "vertex_0_of_6_at_(0,0)",
+    "tolerances_used": {
+      "corner_angle_threshold_degrees": 10,
+      "vertex_merge_tolerance_units": 0.25,
+      "minimum_edge_length_units": 0.5
+    },
+    "cross_product": 960,
+    "angle_degrees": 90.0
+  },
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "boundary_id": "BND-0001-FDN",
+    "trace_type": "FOUNDATION_OUTLINE",
+    "units": "feet",
+    "detection_method": "geometry_vertex_analysis",
+    "detected_at": "2026-04-02T01:19:39.574290+00:00"
+  }
+}

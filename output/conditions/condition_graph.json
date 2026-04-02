@@ -1,0 +1,433 @@
+{
+  "graph_id": "condition_graph_v1",
+  "generated_at": "2026-04-02T01:19:39.574840+00:00",
+  "source_authority": "10-Construction_OS",
+  "node_count": 24,
+  "edge_count": 40,
+  "nodes": [
+    {
+      "node_id": "BND-0001-FDN",
+      "node_type": "boundary",
+      "label": "BND-0001-FDN"
+    },
+    {
+      "node_id": "BND-0002-FDN",
+      "node_type": "boundary",
+      "label": "BND-0002-FDN"
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-001",
+      "node_type": "condition",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-002",
+      "node_type": "condition",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED",
+      "position": [
+        48,
+        0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-003",
+      "node_type": "condition",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED",
+      "position": [
+        48,
+        32
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-004",
+      "node_type": "condition",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED",
+      "position": [
+        24,
+        32
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-005",
+      "node_type": "condition",
+      "condition_type": "INSIDE_CORNER",
+      "status": "DETECTED",
+      "position": [
+        24,
+        20
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-006",
+      "node_type": "condition",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED",
+      "position": [
+        0,
+        20
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-007",
+      "node_type": "condition",
+      "condition_type": "PARAPET",
+      "status": "DETECTED",
+      "position": [
+        24.0,
+        0.0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-008",
+      "node_type": "condition",
+      "condition_type": "PARAPET",
+      "status": "DETECTED",
+      "position": [
+        48.0,
+        16.0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-009",
+      "node_type": "condition",
+      "condition_type": "PARAPET",
+      "status": "DETECTED",
+      "position": [
+        36.0,
+        32.0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-010",
+      "node_type": "condition",
+      "condition_type": "PARAPET",
+      "status": "DETECTED",
+      "position": [
+        24.0,
+        26.0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-011",
+      "node_type": "condition",
+      "condition_type": "PARAPET",
+      "status": "DETECTED",
+      "position": [
+        12.0,
+        20.0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0001-FDN-012",
+      "node_type": "condition",
+      "condition_type": "PARAPET",
+      "status": "DETECTED",
+      "position": [
+        0.0,
+        10.0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0002-FDN-001",
+      "node_type": "condition",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0002-FDN-002",
+      "node_type": "condition",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED",
+      "position": [
+        60,
+        0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0002-FDN-003",
+      "node_type": "condition",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED",
+      "position": [
+        60,
+        40
+      ]
+    },
+    {
+      "node_id": "CND-BND-0002-FDN-004",
+      "node_type": "condition",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED",
+      "position": [
+        0,
+        40
+      ]
+    },
+    {
+      "node_id": "CND-BND-0002-FDN-005",
+      "node_type": "condition",
+      "condition_type": "PARAPET",
+      "status": "DETECTED",
+      "position": [
+        30.0,
+        0.0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0002-FDN-006",
+      "node_type": "condition",
+      "condition_type": "PARAPET",
+      "status": "DETECTED",
+      "position": [
+        60.0,
+        20.0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0002-FDN-007",
+      "node_type": "condition",
+      "condition_type": "PARAPET",
+      "status": "DETECTED",
+      "position": [
+        30.0,
+        40.0
+      ]
+    },
+    {
+      "node_id": "CND-BND-0002-FDN-008",
+      "node_type": "condition",
+      "condition_type": "PARAPET",
+      "status": "DETECTED",
+      "position": [
+        0.0,
+        20.0
+      ]
+    },
+    {
+      "node_id": "barrett_sbs_edge_term_001",
+      "node_type": "assembly_candidate",
+      "condition_type": "edge_termination",
+      "manufacturer": "Barrett"
+    },
+    {
+      "node_id": "barrett_sbs_parapet_ext_001",
+      "node_type": "assembly_candidate",
+      "condition_type": "parapet_termination",
+      "manufacturer": "Barrett Company"
+    }
+  ],
+  "edges": [
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-001",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-002",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-003",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-004",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-005",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-006",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-007",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-008",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-009",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-010",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-011",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0001-FDN",
+      "target": "CND-BND-0001-FDN-012",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0002-FDN",
+      "target": "CND-BND-0002-FDN-001",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0002-FDN",
+      "target": "CND-BND-0002-FDN-002",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0002-FDN",
+      "target": "CND-BND-0002-FDN-003",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0002-FDN",
+      "target": "CND-BND-0002-FDN-004",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0002-FDN",
+      "target": "CND-BND-0002-FDN-005",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0002-FDN",
+      "target": "CND-BND-0002-FDN-006",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0002-FDN",
+      "target": "CND-BND-0002-FDN-007",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "BND-0002-FDN",
+      "target": "CND-BND-0002-FDN-008",
+      "relationship": "detected_in"
+    },
+    {
+      "source": "CND-BND-0001-FDN-001",
+      "target": "barrett_sbs_edge_term_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-002",
+      "target": "barrett_sbs_edge_term_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-003",
+      "target": "barrett_sbs_edge_term_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-004",
+      "target": "barrett_sbs_edge_term_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-005",
+      "target": "barrett_sbs_edge_term_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-006",
+      "target": "barrett_sbs_edge_term_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-007",
+      "target": "barrett_sbs_parapet_ext_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-008",
+      "target": "barrett_sbs_parapet_ext_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-009",
+      "target": "barrett_sbs_parapet_ext_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-010",
+      "target": "barrett_sbs_parapet_ext_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-011",
+      "target": "barrett_sbs_parapet_ext_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0001-FDN-012",
+      "target": "barrett_sbs_parapet_ext_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0002-FDN-001",
+      "target": "barrett_sbs_edge_term_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0002-FDN-002",
+      "target": "barrett_sbs_edge_term_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0002-FDN-003",
+      "target": "barrett_sbs_edge_term_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0002-FDN-004",
+      "target": "barrett_sbs_edge_term_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0002-FDN-005",
+      "target": "barrett_sbs_parapet_ext_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0002-FDN-006",
+      "target": "barrett_sbs_parapet_ext_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0002-FDN-007",
+      "target": "barrett_sbs_parapet_ext_001",
+      "relationship": "resolves_to"
+    },
+    {
+      "source": "CND-BND-0002-FDN-008",
+      "target": "barrett_sbs_parapet_ext_001",
+      "relationship": "resolves_to"
+    }
+  ]
+}
