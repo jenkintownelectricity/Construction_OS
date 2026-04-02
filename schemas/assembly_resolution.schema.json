@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Assembly Resolution",
+  "description": "Resolution of a detected condition to a Barrett assembly primitive",
+  "type": "object",
+  "required": ["assembly_resolution_id", "condition_id", "selected_assembly_id", "status", "evidence", "lineage"],
+  "properties": {
+    "assembly_resolution_id": { "type": "string", "pattern": "^ASR-" },
+    "condition_id": { "type": "string", "pattern": "^CND-" },
+    "candidate_assembly_ids": { "type": "array", "items": { "type": "string" } },
+    "selected_assembly_id": { "type": "string" },
+    "recipe_family": { "type": "string" },
+    "manufacturer": { "type": "string" },
+    "system_family": { "type": "string" },
+    "status": { "type": "string", "enum": ["RESOLVED", "DERIVED", "UNRESOLVED"] },
+    "evidence": { "type": "object" },
+    "lineage": {
+      "type": "object",
+      "required": ["source_authority"],
+      "properties": {
+        "source_authority": { "type": "string" },
+        "resolved_at": { "type": "string", "format": "date-time" },
+        "resolver": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

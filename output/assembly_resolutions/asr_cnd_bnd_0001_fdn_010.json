@@ -1,0 +1,22 @@
+{
+  "assembly_resolution_id": "ASR-CND-BND-0001-FDN-010",
+  "condition_id": "CND-BND-0001-FDN-010",
+  "candidate_assembly_ids": [
+    "barrett_sbs_parapet_ext_001"
+  ],
+  "selected_assembly_id": "barrett_sbs_parapet_ext_001",
+  "recipe_family": "parapet_termination",
+  "manufacturer": "Barrett",
+  "system_family": "SBS Modified Bitumen",
+  "status": "RESOLVED",
+  "evidence": {
+    "resolution_method": "condition_to_assembly_lookup",
+    "assembly_completeness": "complete",
+    "components_count": 9
+  },
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "resolved_at": "2026-04-02T02:19:34.884230+00:00",
+    "resolver": "condition_to_assembly_resolver + assembly_recipe_selector"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "receipt_type": "geometry_ingestion",
+  "receipt_id": "RCT-GEOM-001",
+  "status": "complete",
+  "generated_at": "2026-04-02T03:00:00Z",
+  "source_authority": "10-Construction_OS",
+  "summary": {
+    "boundaries_normalized": 2,
+    "symbol_instances_extracted": 0,
+    "polyline_semantics_classified": 0,
+    "wall_centerlines_found": 0
+  },
+  "tools_executed": [
+    "tools/geometry_normalizer.py",
+    "tools/dxf_block_extractor.py",
+    "tools/polyline_semantic_classifier.py",
+    "tools/layer_classifier.py"
+  ],
+  "outputs": [
+    "output/geometry/symbol_instances.json",
+    "output/geometry/polyline_semantics.json"
+  ],
+  "evidence": {
+    "boundary_source": "trace_ingestor boundary data (2 FOUNDATION_OUTLINE traces)",
+    "dxf_source": "NO_SOURCE — no raw DXF/DWG files present",
+    "symbol_source": "NO_SOURCE — no INSERT entities available",
+    "polyline_source": "NO_SOURCE — no LWPOLYLINE entities available"
+  },
+  "limitations": [
+    "Symbol extraction requires DXF source files with INSERT entities",
+    "Polyline semantic classification requires DXF source files",
+    "Wall centerline extraction requires WALL_CENTERLINE trace type data"
+  ],
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "00-validkernel-governance"
+  }
+}

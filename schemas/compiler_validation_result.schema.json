@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Compiler Validation Result",
+  "description": "Result of constraint validation for a detail candidate",
+  "type": "object",
+  "required": ["validation_id", "detail_candidate_id", "decision", "rule_hits", "evidence", "lineage"],
+  "properties": {
+    "validation_id": { "type": "string", "pattern": "^VAL-" },
+    "detail_candidate_id": { "type": "string", "pattern": "^DTL-" },
+    "decision": { "type": "string", "enum": ["PASS", "WARN", "HALT"] },
+    "rule_hits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rule_id": { "type": "string" },
+          "severity": { "type": "string", "enum": ["HALT", "WARN"] },
+          "description": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "evidence": { "type": "object" },
+    "lineage": {
+      "type": "object",
+      "required": ["source_authority", "validation_method"],
+      "properties": {
+        "source_authority": { "type": "string" },
+        "validation_method": { "type": "string" },
+        "validated_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

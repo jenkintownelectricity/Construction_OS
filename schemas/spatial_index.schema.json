@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Spatial Index",
+  "description": "Derived spatial index for Atlas-scale retrieval. No truth ownership.",
+  "type": "object",
+  "required": ["spatial_index_id", "generated_at", "entry_count", "entries"],
+  "properties": {
+    "spatial_index_id": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_authority": { "type": "string" },
+    "entry_count": { "type": "integer" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["entry_type", "id"],
+        "properties": {
+          "entry_type": { "type": "string", "enum": ["condition", "detail_candidate", "assembly_resolution", "compiled_artifact"] },
+          "id": { "type": "string" },
+          "boundary_id": { "type": "string" },
+          "condition_id": { "type": "string" },
+          "position": { "type": "array" },
+          "condition_type": { "type": "string" },
+          "status": { "type": "string" },
+          "assembly_id": { "type": "string" },
+          "format": { "type": "string" },
+          "artifact_path": { "type": "string" }
+        }
+      }
+    },
+    "lineage": { "type": "object" }
+  },
+  "additionalProperties": false
+}

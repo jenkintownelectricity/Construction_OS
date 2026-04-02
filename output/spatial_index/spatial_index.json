@@ -1,0 +1,713 @@
+{
+  "spatial_index_id": "spatial_index_v1",
+  "generated_at": "2026-04-02T02:19:55.704185+00:00",
+  "source_authority": "10-Construction_OS",
+  "entry_count": 80,
+  "entries": [
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-001",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        0,
+        0
+      ],
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-002",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        48,
+        0
+      ],
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-003",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        48,
+        32
+      ],
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-004",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        24,
+        32
+      ],
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-005",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        24,
+        20
+      ],
+      "condition_type": "INSIDE_CORNER",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-006",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        0,
+        20
+      ],
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-007",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        24.0,
+        0.0
+      ],
+      "condition_type": "PARAPET",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-008",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        48.0,
+        16.0
+      ],
+      "condition_type": "PARAPET",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-009",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        36.0,
+        32.0
+      ],
+      "condition_type": "PARAPET",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-010",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        24.0,
+        26.0
+      ],
+      "condition_type": "PARAPET",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-011",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        12.0,
+        20.0
+      ],
+      "condition_type": "PARAPET",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0001-FDN-012",
+      "boundary_id": "BND-0001-FDN",
+      "position": [
+        0.0,
+        10.0
+      ],
+      "condition_type": "PARAPET",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0002-FDN-001",
+      "boundary_id": "BND-0002-FDN",
+      "position": [
+        0,
+        0
+      ],
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0002-FDN-002",
+      "boundary_id": "BND-0002-FDN",
+      "position": [
+        60,
+        0
+      ],
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0002-FDN-003",
+      "boundary_id": "BND-0002-FDN",
+      "position": [
+        60,
+        40
+      ],
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0002-FDN-004",
+      "boundary_id": "BND-0002-FDN",
+      "position": [
+        0,
+        40
+      ],
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0002-FDN-005",
+      "boundary_id": "BND-0002-FDN",
+      "position": [
+        30.0,
+        0.0
+      ],
+      "condition_type": "PARAPET",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0002-FDN-006",
+      "boundary_id": "BND-0002-FDN",
+      "position": [
+        60.0,
+        20.0
+      ],
+      "condition_type": "PARAPET",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0002-FDN-007",
+      "boundary_id": "BND-0002-FDN",
+      "position": [
+        30.0,
+        40.0
+      ],
+      "condition_type": "PARAPET",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "condition",
+      "id": "CND-BND-0002-FDN-008",
+      "boundary_id": "BND-0002-FDN",
+      "position": [
+        0.0,
+        20.0
+      ],
+      "condition_type": "PARAPET",
+      "status": "DETECTED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-001",
+      "condition_id": "CND-BND-0001-FDN-001",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-002",
+      "condition_id": "CND-BND-0001-FDN-002",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-003",
+      "condition_id": "CND-BND-0001-FDN-003",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-004",
+      "condition_id": "CND-BND-0001-FDN-004",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-005",
+      "condition_id": "CND-BND-0001-FDN-005",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "condition_type": "INSIDE_CORNER",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-006",
+      "condition_id": "CND-BND-0001-FDN-006",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-007",
+      "condition_id": "CND-BND-0001-FDN-007",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "PARAPET",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-008",
+      "condition_id": "CND-BND-0001-FDN-008",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "PARAPET",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-009",
+      "condition_id": "CND-BND-0001-FDN-009",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "PARAPET",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-010",
+      "condition_id": "CND-BND-0001-FDN-010",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "PARAPET",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-011",
+      "condition_id": "CND-BND-0001-FDN-011",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "PARAPET",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0001-FDN-012",
+      "condition_id": "CND-BND-0001-FDN-012",
+      "boundary_id": "BND-0001-FDN",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "PARAPET",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0002-FDN-001",
+      "condition_id": "CND-BND-0002-FDN-001",
+      "boundary_id": "BND-0002-FDN",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0002-FDN-002",
+      "condition_id": "CND-BND-0002-FDN-002",
+      "boundary_id": "BND-0002-FDN",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0002-FDN-003",
+      "condition_id": "CND-BND-0002-FDN-003",
+      "boundary_id": "BND-0002-FDN",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0002-FDN-004",
+      "condition_id": "CND-BND-0002-FDN-004",
+      "boundary_id": "BND-0002-FDN",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "condition_type": "OUTSIDE_CORNER",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0002-FDN-005",
+      "condition_id": "CND-BND-0002-FDN-005",
+      "boundary_id": "BND-0002-FDN",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "PARAPET",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0002-FDN-006",
+      "condition_id": "CND-BND-0002-FDN-006",
+      "boundary_id": "BND-0002-FDN",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "PARAPET",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0002-FDN-007",
+      "condition_id": "CND-BND-0002-FDN-007",
+      "boundary_id": "BND-0002-FDN",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "PARAPET",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "detail_candidate",
+      "id": "DTL-CND-BND-0002-FDN-008",
+      "condition_id": "CND-BND-0002-FDN-008",
+      "boundary_id": "BND-0002-FDN",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "condition_type": "PARAPET",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-001",
+      "condition_id": "CND-BND-0001-FDN-001",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-002",
+      "condition_id": "CND-BND-0001-FDN-002",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-003",
+      "condition_id": "CND-BND-0001-FDN-003",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-004",
+      "condition_id": "CND-BND-0001-FDN-004",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-005",
+      "condition_id": "CND-BND-0001-FDN-005",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-006",
+      "condition_id": "CND-BND-0001-FDN-006",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-007",
+      "condition_id": "CND-BND-0001-FDN-007",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-008",
+      "condition_id": "CND-BND-0001-FDN-008",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-009",
+      "condition_id": "CND-BND-0001-FDN-009",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-010",
+      "condition_id": "CND-BND-0001-FDN-010",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-011",
+      "condition_id": "CND-BND-0001-FDN-011",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0001-FDN-012",
+      "condition_id": "CND-BND-0001-FDN-012",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0002-FDN-001",
+      "condition_id": "CND-BND-0002-FDN-001",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0002-FDN-002",
+      "condition_id": "CND-BND-0002-FDN-002",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0002-FDN-003",
+      "condition_id": "CND-BND-0002-FDN-003",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0002-FDN-004",
+      "condition_id": "CND-BND-0002-FDN-004",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "status": "DERIVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0002-FDN-005",
+      "condition_id": "CND-BND-0002-FDN-005",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0002-FDN-006",
+      "condition_id": "CND-BND-0002-FDN-006",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0002-FDN-007",
+      "condition_id": "CND-BND-0002-FDN-007",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "assembly_resolution",
+      "id": "ASR-CND-BND-0002-FDN-008",
+      "condition_id": "CND-BND-0002-FDN-008",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "status": "RESOLVED"
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-001",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-001",
+      "format": "PDF",
+      "status": "BLOCKED",
+      "artifact_path": ""
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-002",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-002",
+      "format": "PDF",
+      "status": "BLOCKED",
+      "artifact_path": ""
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-003",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-003",
+      "format": "PDF",
+      "status": "BLOCKED",
+      "artifact_path": ""
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-004",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-004",
+      "format": "PDF",
+      "status": "BLOCKED",
+      "artifact_path": ""
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-005",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-005",
+      "format": "PDF",
+      "status": "BLOCKED",
+      "artifact_path": ""
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-006",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-006",
+      "format": "PDF",
+      "status": "BLOCKED",
+      "artifact_path": ""
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-007",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-007",
+      "format": "PDF",
+      "status": "PROVISIONAL",
+      "artifact_path": "output/compiled_details/dtl_cnd_bnd_0001_fdn_007_provisional.pdf"
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-008",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-008",
+      "format": "PDF",
+      "status": "PROVISIONAL",
+      "artifact_path": "output/compiled_details/dtl_cnd_bnd_0001_fdn_008_provisional.pdf"
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-009",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-009",
+      "format": "PDF",
+      "status": "PROVISIONAL",
+      "artifact_path": "output/compiled_details/dtl_cnd_bnd_0001_fdn_009_provisional.pdf"
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-010",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-010",
+      "format": "PDF",
+      "status": "PROVISIONAL",
+      "artifact_path": "output/compiled_details/dtl_cnd_bnd_0001_fdn_010_provisional.pdf"
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-011",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-011",
+      "format": "PDF",
+      "status": "PROVISIONAL",
+      "artifact_path": "output/compiled_details/dtl_cnd_bnd_0001_fdn_011_provisional.pdf"
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0001-FDN-012",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-012",
+      "format": "PDF",
+      "status": "PROVISIONAL",
+      "artifact_path": "output/compiled_details/dtl_cnd_bnd_0001_fdn_012_provisional.pdf"
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0002-FDN-001",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-001",
+      "format": "PDF",
+      "status": "BLOCKED",
+      "artifact_path": ""
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0002-FDN-002",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-002",
+      "format": "PDF",
+      "status": "BLOCKED",
+      "artifact_path": ""
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0002-FDN-003",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-003",
+      "format": "PDF",
+      "status": "BLOCKED",
+      "artifact_path": ""
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0002-FDN-004",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-004",
+      "format": "PDF",
+      "status": "BLOCKED",
+      "artifact_path": ""
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0002-FDN-005",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-005",
+      "format": "PDF",
+      "status": "PROVISIONAL",
+      "artifact_path": "output/compiled_details/dtl_cnd_bnd_0002_fdn_005_provisional.pdf"
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0002-FDN-006",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-006",
+      "format": "PDF",
+      "status": "PROVISIONAL",
+      "artifact_path": "output/compiled_details/dtl_cnd_bnd_0002_fdn_006_provisional.pdf"
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0002-FDN-007",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-007",
+      "format": "PDF",
+      "status": "PROVISIONAL",
+      "artifact_path": "output/compiled_details/dtl_cnd_bnd_0002_fdn_007_provisional.pdf"
+    },
+    {
+      "entry_type": "compiled_artifact",
+      "id": "ART-DTL-CND-BND-0002-FDN-008",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-008",
+      "format": "PDF",
+      "status": "PROVISIONAL",
+      "artifact_path": "output/compiled_details/dtl_cnd_bnd_0002_fdn_008_provisional.pdf"
+    }
+  ],
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "built_by": "spatial_index_builder",
+    "note": "Derived index only \u2014 no truth ownership"
+  }
+}

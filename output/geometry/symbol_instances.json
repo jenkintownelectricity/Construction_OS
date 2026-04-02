@@ -1,0 +1,12 @@
+{
+  "symbol_instances": [],
+  "count": 0,
+  "status": "NO_SOURCE_EVIDENCE",
+  "reason": "No DXF/DWG files with INSERT entities are present in the repository. Symbol extraction requires raw DXF source files.",
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "tool": "tools/dxf_block_extractor.py",
+    "generated_at": "2026-04-02T03:00:00Z",
+    "config_version": "1.0.0"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "library_id": "barrett_sbs_detail_library_v1",
+  "generated_at": "2026-04-02T02:19:49.219176+00:00",
+  "source_authority": "10-Construction_OS",
+  "manufacturer": "Barrett",
+  "system_family": "SBS Modified Bitumen",
+  "total_records": 10,
+  "admitted_count": 0,
+  "provisional_count": 10,
+  "rejected_count": 10,
+  "records": [
+    {
+      "library_record_id": "LIB-ART-DTL-CND-BND-0001-FDN-007",
+      "condition_type": "PARAPET",
+      "admission_status": "PROVISIONAL"
+    },
+    {
+      "library_record_id": "LIB-ART-DTL-CND-BND-0001-FDN-008",
+      "condition_type": "PARAPET",
+      "admission_status": "PROVISIONAL"
+    },
+    {
+      "library_record_id": "LIB-ART-DTL-CND-BND-0001-FDN-009",
+      "condition_type": "PARAPET",
+      "admission_status": "PROVISIONAL"
+    },
+    {
+      "library_record_id": "LIB-ART-DTL-CND-BND-0001-FDN-010",
+      "condition_type": "PARAPET",
+      "admission_status": "PROVISIONAL"
+    },
+    {
+      "library_record_id": "LIB-ART-DTL-CND-BND-0001-FDN-011",
+      "condition_type": "PARAPET",
+      "admission_status": "PROVISIONAL"
+    },
+    {
+      "library_record_id": "LIB-ART-DTL-CND-BND-0001-FDN-012",
+      "condition_type": "PARAPET",
+      "admission_status": "PROVISIONAL"
+    },
+    {
+      "library_record_id": "LIB-ART-DTL-CND-BND-0002-FDN-005",
+      "condition_type": "PARAPET",
+      "admission_status": "PROVISIONAL"
+    },
+    {
+      "library_record_id": "LIB-ART-DTL-CND-BND-0002-FDN-006",
+      "condition_type": "PARAPET",
+      "admission_status": "PROVISIONAL"
+    },
+    {
+      "library_record_id": "LIB-ART-DTL-CND-BND-0002-FDN-007",
+      "condition_type": "PARAPET",
+      "admission_status": "PROVISIONAL"
+    },
+    {
+      "library_record_id": "LIB-ART-DTL-CND-BND-0002-FDN-008",
+      "condition_type": "PARAPET",
+      "admission_status": "PROVISIONAL"
+    }
+  ],
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "built_by": "detail_library_admitter"
+  }
+}

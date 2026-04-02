@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "manufacturer": "Barrett Company",
+  "description": "Constraint validation rules for Barrett SBS detail compilation",
+  "rules": [
+    {
+      "rule_id": "CONSTRAINT-EDGE-TERM-001",
+      "description": "All edge terminations require metal drip edge or coping",
+      "applies_to": ["edge_termination"],
+      "severity": "HALT",
+      "check": "assembly must include metal_edge or metal_coping component",
+      "evidence_required": "component list"
+    },
+    {
+      "rule_id": "CONSTRAINT-PARAPET-MIN-HEIGHT",
+      "description": "Parapet flashing must extend minimum 8 inches above roof surface",
+      "applies_to": ["parapet_termination"],
+      "severity": "HALT",
+      "check": "flashing.parameters.min_height_inches >= 8",
+      "evidence_required": "assembly component parameters"
+    },
+    {
+      "rule_id": "CONSTRAINT-CHEMISTRY-SBS",
+      "description": "SBS assemblies must not mix with TPO/PVC/EPDM chemistry",
+      "applies_to": ["parapet_termination", "edge_termination", "roof_drain", "pipe_penetration", "roof_to_wall_transition"],
+      "severity": "HALT",
+      "check": "no component material in [TPO, PVC, EPDM] when system is SBS",
+      "evidence_required": "component material list"
+    },
+    {
+      "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+      "description": "Warranty requires certified Barrett applicator",
+      "applies_to": ["parapet_termination", "edge_termination", "roof_drain"],
+      "severity": "WARN",
+      "check": "warranty_envelope.requires_certified_applicator == true",
+      "evidence_required": "warranty envelope"
+    },
+    {
+      "rule_id": "CONSTRAINT-INSULATION-R-VALUE",
+      "description": "Insulation must meet minimum R-20 for warranty compliance",
+      "applies_to": ["parapet_termination"],
+      "severity": "WARN",
+      "check": "insulation.parameters.min_r_value >= 20",
+      "evidence_required": "insulation parameters"
+    },
+    {
+      "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+      "description": "Detail compilation requires a complete (non-derived) assembly",
+      "applies_to": ["parapet_termination", "edge_termination", "roof_drain", "pipe_penetration", "roof_to_wall_transition"],
+      "severity": "HALT",
+      "check": "assembly completeness != derived OR components_count > 0",
+      "evidence_required": "assembly primitive"
+    }
+  ]
+}

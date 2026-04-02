@@ -1,0 +1,24 @@
+{
+  "receipt_type": "detail_constraint_validation",
+  "receipt_id": "RCT-VALIDATION-001",
+  "status": "complete",
+  "generated_at": "2026-04-02T03:00:00Z",
+  "source_authority": "10-Construction_OS",
+  "summary": {
+    "candidates_validated": 20,
+    "pass_count": 0,
+    "warn_count": 10,
+    "halt_count": 10
+  },
+  "tools_executed": ["tools/detail_constraint_validator.py"],
+  "config_used": "config/detail_constraint_rules.barrett.json",
+  "outputs": ["output/compiler_manifests/validation_results.json"],
+  "evidence": {
+    "halt_reason": "10 candidates linked to derived assemblies with 0 components",
+    "warn_reason": "10 candidates linked to complete parapet assembly — warranty applicator advisory"
+  },
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "00-validkernel-governance"
+  }
+}

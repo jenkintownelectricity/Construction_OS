@@ -1,0 +1,485 @@
+{
+  "validation_results": [
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-001",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-001",
+      "decision": "HALT",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+          "severity": "HALT",
+          "description": "Detail compilation requires a complete (non-derived) assembly",
+          "reason": "Assembly is derived with 0 components"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_edge_term_001",
+        "condition_type": "OUTSIDE_CORNER",
+        "components_count": 0
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.171494+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-002",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-002",
+      "decision": "HALT",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+          "severity": "HALT",
+          "description": "Detail compilation requires a complete (non-derived) assembly",
+          "reason": "Assembly is derived with 0 components"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_edge_term_001",
+        "condition_type": "OUTSIDE_CORNER",
+        "components_count": 0
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.171742+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-003",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-003",
+      "decision": "HALT",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+          "severity": "HALT",
+          "description": "Detail compilation requires a complete (non-derived) assembly",
+          "reason": "Assembly is derived with 0 components"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_edge_term_001",
+        "condition_type": "OUTSIDE_CORNER",
+        "components_count": 0
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.171894+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-004",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-004",
+      "decision": "HALT",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+          "severity": "HALT",
+          "description": "Detail compilation requires a complete (non-derived) assembly",
+          "reason": "Assembly is derived with 0 components"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_edge_term_001",
+        "condition_type": "OUTSIDE_CORNER",
+        "components_count": 0
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.172026+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-005",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-005",
+      "decision": "HALT",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+          "severity": "HALT",
+          "description": "Detail compilation requires a complete (non-derived) assembly",
+          "reason": "Assembly is derived with 0 components"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_edge_term_001",
+        "condition_type": "INSIDE_CORNER",
+        "components_count": 0
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.172166+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-006",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-006",
+      "decision": "HALT",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+          "severity": "HALT",
+          "description": "Detail compilation requires a complete (non-derived) assembly",
+          "reason": "Assembly is derived with 0 components"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_edge_term_001",
+        "condition_type": "OUTSIDE_CORNER",
+        "components_count": 0
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.172300+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-007",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-007",
+      "decision": "WARN",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+          "severity": "WARN",
+          "description": "Warranty requires certified Barrett applicator",
+          "reason": "Certified applicator required for warranty"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_parapet_ext_001",
+        "condition_type": "PARAPET",
+        "components_count": 9
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.172379+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-008",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-008",
+      "decision": "WARN",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+          "severity": "WARN",
+          "description": "Warranty requires certified Barrett applicator",
+          "reason": "Certified applicator required for warranty"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_parapet_ext_001",
+        "condition_type": "PARAPET",
+        "components_count": 9
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.172465+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-009",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-009",
+      "decision": "WARN",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+          "severity": "WARN",
+          "description": "Warranty requires certified Barrett applicator",
+          "reason": "Certified applicator required for warranty"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_parapet_ext_001",
+        "condition_type": "PARAPET",
+        "components_count": 9
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.172539+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-010",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-010",
+      "decision": "WARN",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+          "severity": "WARN",
+          "description": "Warranty requires certified Barrett applicator",
+          "reason": "Certified applicator required for warranty"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_parapet_ext_001",
+        "condition_type": "PARAPET",
+        "components_count": 9
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.172613+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-011",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-011",
+      "decision": "WARN",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+          "severity": "WARN",
+          "description": "Warranty requires certified Barrett applicator",
+          "reason": "Certified applicator required for warranty"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_parapet_ext_001",
+        "condition_type": "PARAPET",
+        "components_count": 9
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.172710+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0001-FDN-012",
+      "detail_candidate_id": "DTL-CND-BND-0001-FDN-012",
+      "decision": "WARN",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+          "severity": "WARN",
+          "description": "Warranty requires certified Barrett applicator",
+          "reason": "Certified applicator required for warranty"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_parapet_ext_001",
+        "condition_type": "PARAPET",
+        "components_count": 9
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.172796+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0002-FDN-001",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-001",
+      "decision": "HALT",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+          "severity": "HALT",
+          "description": "Detail compilation requires a complete (non-derived) assembly",
+          "reason": "Assembly is derived with 0 components"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_edge_term_001",
+        "condition_type": "OUTSIDE_CORNER",
+        "components_count": 0
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.172930+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0002-FDN-002",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-002",
+      "decision": "HALT",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+          "severity": "HALT",
+          "description": "Detail compilation requires a complete (non-derived) assembly",
+          "reason": "Assembly is derived with 0 components"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_edge_term_001",
+        "condition_type": "OUTSIDE_CORNER",
+        "components_count": 0
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.173057+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0002-FDN-003",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-003",
+      "decision": "HALT",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+          "severity": "HALT",
+          "description": "Detail compilation requires a complete (non-derived) assembly",
+          "reason": "Assembly is derived with 0 components"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_edge_term_001",
+        "condition_type": "OUTSIDE_CORNER",
+        "components_count": 0
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.173651+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0002-FDN-004",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-004",
+      "decision": "HALT",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-COMPLETE-ASSEMBLY",
+          "severity": "HALT",
+          "description": "Detail compilation requires a complete (non-derived) assembly",
+          "reason": "Assembly is derived with 0 components"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_edge_term_001",
+        "condition_type": "OUTSIDE_CORNER",
+        "components_count": 0
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.173888+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0002-FDN-005",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-005",
+      "decision": "WARN",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+          "severity": "WARN",
+          "description": "Warranty requires certified Barrett applicator",
+          "reason": "Certified applicator required for warranty"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_parapet_ext_001",
+        "condition_type": "PARAPET",
+        "components_count": 9
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.173972+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0002-FDN-006",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-006",
+      "decision": "WARN",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+          "severity": "WARN",
+          "description": "Warranty requires certified Barrett applicator",
+          "reason": "Certified applicator required for warranty"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_parapet_ext_001",
+        "condition_type": "PARAPET",
+        "components_count": 9
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.174069+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0002-FDN-007",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-007",
+      "decision": "WARN",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+          "severity": "WARN",
+          "description": "Warranty requires certified Barrett applicator",
+          "reason": "Certified applicator required for warranty"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_parapet_ext_001",
+        "condition_type": "PARAPET",
+        "components_count": 9
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.174170+00:00"
+      }
+    },
+    {
+      "validation_id": "VAL-DTL-CND-BND-0002-FDN-008",
+      "detail_candidate_id": "DTL-CND-BND-0002-FDN-008",
+      "decision": "WARN",
+      "rule_hits": [
+        {
+          "rule_id": "CONSTRAINT-WARRANTY-APPLICATOR",
+          "severity": "WARN",
+          "description": "Warranty requires certified Barrett applicator",
+          "reason": "Certified applicator required for warranty"
+        }
+      ],
+      "rules_evaluated": 0,
+      "evidence": {
+        "assembly_id": "barrett_sbs_parapet_ext_001",
+        "condition_type": "PARAPET",
+        "components_count": 9
+      },
+      "lineage": {
+        "source_authority": "10-Construction_OS",
+        "validation_method": "detail_constraint_validator",
+        "validated_at": "2026-04-02T02:19:07.174251+00:00"
+      }
+    }
+  ],
+  "count": 20
+}

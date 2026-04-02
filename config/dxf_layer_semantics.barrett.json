@@ -1,0 +1,73 @@
+{
+  "version": "1.0.0",
+  "description": "DXF layer semantic classification for Barrett SBS systems",
+  "manufacturer": "Barrett Company",
+  "block_to_component_map": {
+    "CANT_STRIP": {
+      "component_name": "Perlite Cant Strip",
+      "classified_type": "CURB",
+      "system_family": "SBS Modified Bitumen"
+    },
+    "TERM_BAR": {
+      "component_name": "Aluminum Termination Bar",
+      "classified_type": "PENETRATION",
+      "system_family": "SBS Modified Bitumen"
+    },
+    "TERMINATION_BAR": {
+      "component_name": "Aluminum Termination Bar",
+      "classified_type": "PENETRATION",
+      "system_family": "SBS Modified Bitumen"
+    },
+    "ROOF_DRAIN": {
+      "component_name": "Roof Drain Assembly",
+      "classified_type": "DRAIN",
+      "system_family": "Drainage System"
+    },
+    "DRAIN": {
+      "component_name": "Roof Drain Assembly",
+      "classified_type": "DRAIN",
+      "system_family": "Drainage System"
+    },
+    "COPING": {
+      "component_name": "Metal Coping",
+      "classified_type": "SCUPPER",
+      "system_family": "Sheet Metal"
+    },
+    "METAL_COPING": {
+      "component_name": "Metal Coping",
+      "classified_type": "SCUPPER",
+      "system_family": "Sheet Metal"
+    },
+    "INSULATION": {
+      "component_name": "Polyisocyanurate Insulation",
+      "classified_type": "UNKNOWN",
+      "system_family": "Thermal Envelope"
+    },
+    "EXPANSION_JOINT": {
+      "component_name": "Expansion Joint Cover",
+      "classified_type": "EXPANSION_JOINT",
+      "system_family": "SBS Modified Bitumen"
+    },
+    "PENETRATION": {
+      "component_name": "Pipe Penetration Boot",
+      "classified_type": "PENETRATION",
+      "system_family": "SBS Modified Bitumen"
+    },
+    "SCUPPER": {
+      "component_name": "Scupper Assembly",
+      "classified_type": "SCUPPER",
+      "system_family": "Drainage System"
+    }
+  },
+  "polyline_layer_semantic_map": {
+    "PARAPET": "PARAPET_LINE",
+    "WALL": "WALL_TRANSITION",
+    "COPING": "PARAPET_LINE",
+    "EDGE": "ROOF_EDGE",
+    "ROOF_EDGE": "ROOF_EDGE",
+    "EXPANSION": "JOINT_LINE",
+    "JOINT": "JOINT_LINE",
+    "FLASHING": "PARAPET_LINE",
+    "TRANSITION": "WALL_TRANSITION"
+  }
+}

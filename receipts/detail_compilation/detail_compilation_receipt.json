@@ -1,0 +1,35 @@
+{
+  "receipt_type": "detail_compilation",
+  "receipt_id": "RCT-COMPILE-BATCH-001",
+  "status": "complete",
+  "generated_at": "2026-04-02T03:00:00Z",
+  "source_authority": "10-Construction_OS",
+  "summary": {
+    "manifests_built": 20,
+    "artifacts_compiled": 0,
+    "artifacts_provisional": 10,
+    "artifacts_blocked": 10,
+    "library_records_admitted": 0,
+    "library_records_provisional": 10,
+    "library_records_rejected": 10
+  },
+  "tools_executed": [
+    "tools/detail_manifest_builder.py",
+    "tools/detail_constraint_validator.py",
+    "tools/detail_library_admitter.py"
+  ],
+  "outputs": [
+    "output/compiler_manifests/",
+    "output/compiled_details/",
+    "output/detail_library/",
+    "output/assembly_resolutions/"
+  ],
+  "evidence": {
+    "provisional_reason": "PARAPET conditions with complete assembly pass validation with WARN (warranty applicator advisory)",
+    "blocked_reason": "OUTSIDE_CORNER and INSIDE_CORNER conditions have derived assemblies with 0 components — HALT on CONSTRAINT-COMPLETE-ASSEMBLY"
+  },
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "00-validkernel-governance"
+  }
+}

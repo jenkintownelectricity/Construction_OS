@@ -1,0 +1,22 @@
+{
+  "assembly_resolution_id": "ASR-CND-BND-0001-FDN-005",
+  "condition_id": "CND-BND-0001-FDN-005",
+  "candidate_assembly_ids": [
+    "barrett_sbs_edge_term_001"
+  ],
+  "selected_assembly_id": "barrett_sbs_edge_term_001",
+  "recipe_family": "edge_termination",
+  "manufacturer": "Barrett",
+  "system_family": "SBS Modified Bitumen",
+  "status": "DERIVED",
+  "evidence": {
+    "resolution_method": "condition_to_assembly_lookup",
+    "assembly_completeness": "derived",
+    "components_count": 0
+  },
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "resolved_at": "2026-04-02T02:19:34.884230+00:00",
+    "resolver": "condition_to_assembly_resolver + assembly_recipe_selector"
+  }
+}

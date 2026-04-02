@@ -1,0 +1,30 @@
+{
+  "manifest_id": "MAN-DTL-CND-BND-0001-FDN-004",
+  "detail_candidate_id": "DTL-CND-BND-0001-FDN-004",
+  "assembly_resolution_id": "ASR-CND-BND-0001-FDN-004",
+  "assembly_id": "barrett_sbs_edge_term_001",
+  "recipe_id": "",
+  "condition_type": "OUTSIDE_CORNER",
+  "manufacturer": "Barrett",
+  "system_family": "SBS Modified Bitumen",
+  "validation_decision": "HALT",
+  "target_formats": [],
+  "geometry_context": {
+    "boundary_id": "BND-0001-FDN",
+    "condition_position": [
+      24,
+      32
+    ]
+  },
+  "annotation_context": {
+    "manufacturer_name": "Barrett",
+    "system_type": "SBS Modified Bitumen",
+    "condition_type": "OUTSIDE_CORNER"
+  },
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "built_by": "detail_manifest_builder",
+    "built_at": "2026-04-02T02:19:34.884230+00:00",
+    "validation_id": "VAL-DTL-CND-BND-0001-FDN-004"
+  }
+}

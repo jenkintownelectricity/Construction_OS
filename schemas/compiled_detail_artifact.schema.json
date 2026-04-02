@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Compiled Detail Artifact",
+  "description": "Output of the detail compiler — a compiled or blocked artifact",
+  "type": "object",
+  "required": ["artifact_id", "manifest_id", "detail_candidate_id", "format", "status", "lineage"],
+  "properties": {
+    "artifact_id": { "type": "string", "pattern": "^ART-" },
+    "manifest_id": { "type": "string", "pattern": "^MAN-" },
+    "detail_candidate_id": { "type": "string" },
+    "condition_id": { "type": "string" },
+    "assembly_id": { "type": "string" },
+    "manufacturer": { "type": "string" },
+    "system_family": { "type": "string" },
+    "condition_type": { "type": "string" },
+    "format": { "type": "string", "enum": ["DXF", "PDF", "SVG"] },
+    "status": { "type": "string", "enum": ["COMPILED", "BLOCKED", "PROVISIONAL"] },
+    "artifact_path": { "type": "string" },
+    "receipt_id": { "type": "string" },
+    "lineage": { "type": "object" }
+  },
+  "additionalProperties": false
+}
