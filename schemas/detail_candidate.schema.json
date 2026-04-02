@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Detail Candidate",
+  "description": "A detail candidate resolved from a condition node to a Barrett assembly primitive",
+  "type": "object",
+  "required": [
+    "detail_candidate_id",
+    "condition_id",
+    "manufacturer",
+    "system_family",
+    "condition_type",
+    "status",
+    "evidence",
+    "lineage"
+  ],
+  "properties": {
+    "detail_candidate_id": {
+      "type": "string",
+      "pattern": "^DTL-",
+      "description": "Unique detail candidate identifier"
+    },
+    "condition_id": {
+      "type": "string",
+      "pattern": "^CND-",
+      "description": "Source condition node identifier"
+    },
+    "assembly_id": {
+      "type": ["string", "null"],
+      "description": "Matched assembly primitive ID, null if unresolved"
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "Manufacturer name"
+    },
+    "system_family": {
+      "type": "string",
+      "description": "Roofing system family"
+    },
+    "condition_type": {
+      "type": "string",
+      "description": "Condition type from detection"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["RESOLVED", "DERIVED", "UNRESOLVED"],
+      "description": "Resolution status"
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["rule"],
+      "properties": {
+        "rule": { "type": "string" },
+        "matched_assembly_id": { "type": "string" },
+        "components_count": { "type": "integer" },
+        "constraints_count": { "type": "integer" },
+        "source_kind": { "type": "string" },
+        "condition_position": {
+          "type": "array",
+          "items": { "type": "number" }
+        }
+      },
+      "description": "Evidence supporting the resolution"
+    },
+    "lineage": {
+      "type": "object",
+      "required": ["source_authority", "condition_id", "resolution_method"],
+      "properties": {
+        "source_authority": { "type": "string" },
+        "condition_id": { "type": "string" },
+        "boundary_id": { "type": "string" },
+        "assembly_file": { "type": "string" },
+        "resolved_at": { "type": "string", "format": "date-time" },
+        "resolution_method": { "type": "string" }
+      },
+      "description": "Lineage chain for the resolution"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+  "detail_candidate_id": "DTL-CND-BND-0001-FDN-005",
+  "condition_id": "CND-BND-0001-FDN-005",
+  "assembly_id": "barrett_sbs_edge_term_001",
+  "manufacturer": "Barrett",
+  "system_family": "SBS Modified Bitumen",
+  "condition_type": "INSIDE_CORNER",
+  "status": "DERIVED",
+  "evidence": {
+    "rule": "assembly_match_edge_termination",
+    "matched_assembly_id": "barrett_sbs_edge_term_001",
+    "components_count": 0,
+    "constraints_count": 0,
+    "source_kind": "condition_heuristic_derived",
+    "condition_position": [
+      24,
+      20
+    ]
+  },
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "condition_id": "CND-BND-0001-FDN-005",
+    "boundary_id": "BND-0001-FDN",
+    "assembly_file": "/home/user/10-Construction_OS/assemblies/barrett/barrett_sbs_edge_term_001.json",
+    "resolved_at": "2026-04-02T01:20:19.397720+00:00",
+    "resolution_method": "condition_to_assembly_lookup"
+  }
+}

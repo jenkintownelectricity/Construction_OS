@@ -1,0 +1,64 @@
+{
+  "receipt_id": "receipt_condition_detection_v1",
+  "receipt_type": "condition_detection",
+  "status": "success",
+  "generated_at": "2026-04-02T01:19:39.577627+00:00",
+  "source_authority": "10-Construction_OS",
+  "summary": {
+    "total_conditions_detected": 20,
+    "condition_type_counts": {
+      "OUTSIDE_CORNER": 9,
+      "INSIDE_CORNER": 1,
+      "PARAPET": 10
+    },
+    "status_counts": {
+      "DETECTED": 20
+    },
+    "boundaries_processed": 2,
+    "graph_node_count": 24,
+    "graph_edge_count": 40
+  },
+  "supported_condition_types": [
+    "INSIDE_CORNER",
+    "OUTSIDE_CORNER",
+    "PARAPET"
+  ],
+  "unsupported_condition_types": [
+    "DRAIN",
+    "CURB",
+    "EXPANSION_JOINT"
+  ],
+  "derived_condition_types": [
+    "WALL_INTERSECTION"
+  ],
+  "files_written": [
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_001.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_002.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_003.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_004.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_005.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_006.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_007.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_008.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_009.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_010.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_011.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0001_fdn_012.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0002_fdn_001.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0002_fdn_002.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0002_fdn_003.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0002_fdn_004.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0002_fdn_005.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0002_fdn_006.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0002_fdn_007.json",
+    "/home/user/10-Construction_OS/output/conditions/cnd_bnd_0002_fdn_008.json",
+    "/home/user/10-Construction_OS/output/conditions/condition_graph.json"
+  ],
+  "tolerances_config": "10-Construction_OS/config/condition_detection_tolerances.json",
+  "sentinel_checks": {
+    "tolerances_loaded": true,
+    "boundaries_loaded": true,
+    "self_intersection_check": true,
+    "fail_closed_enforced": true
+  }
+}

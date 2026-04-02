@@ -1,0 +1,28 @@
+{
+  "detail_candidate_id": "DTL-CND-BND-0001-FDN-011",
+  "condition_id": "CND-BND-0001-FDN-011",
+  "assembly_id": "barrett_sbs_parapet_ext_001",
+  "manufacturer": "Barrett Company",
+  "system_family": "SBS Modified Bitumen",
+  "condition_type": "PARAPET",
+  "status": "RESOLVED",
+  "evidence": {
+    "rule": "assembly_match_parapet_termination",
+    "matched_assembly_id": "barrett_sbs_parapet_ext_001",
+    "components_count": 9,
+    "constraints_count": 8,
+    "source_kind": "assembly_primitive",
+    "condition_position": [
+      12.0,
+      20.0
+    ]
+  },
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "condition_id": "CND-BND-0001-FDN-011",
+    "boundary_id": "BND-0001-FDN",
+    "assembly_file": "/home/user/10-Construction_OS/assemblies/barrett/barrett_sbs_parapet_ext_001.json",
+    "resolved_at": "2026-04-02T01:20:19.397754+00:00",
+    "resolution_method": "condition_to_assembly_lookup"
+  }
+}
