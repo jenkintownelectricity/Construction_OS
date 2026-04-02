@@ -1,0 +1,20 @@
+{
+  "artifact_id": "ART-DTL-CND-BND-0002-FDN-007",
+  "manifest_id": "MAN-DTL-CND-BND-0002-FDN-007",
+  "detail_candidate_id": "DTL-CND-BND-0002-FDN-007",
+  "condition_id": "CND-BND-0002-FDN-007",
+  "assembly_id": "barrett_sbs_parapet_ext_001",
+  "manufacturer": "Barrett Company",
+  "system_family": "SBS Modified Bitumen",
+  "condition_type": "PARAPET",
+  "format": "PDF",
+  "status": "PROVISIONAL",
+  "artifact_path": "output/compiled_details/dtl_cnd_bnd_0002_fdn_007_provisional.pdf",
+  "receipt_id": "RCT-COMPILE-DTL-CND-BND-0002-FDN-007",
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "compiled_by": "detail_compiler",
+    "compiled_at": "2026-04-02T02:19:34.884230+00:00",
+    "manifest_id": "MAN-DTL-CND-BND-0002-FDN-007"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "receipt_type": "detail_library_admission",
+  "receipt_id": "RCT-LIBRARY-001",
+  "status": "complete",
+  "generated_at": "2026-04-02T03:00:00Z",
+  "source_authority": "10-Construction_OS",
+  "summary": {
+    "total_artifacts_evaluated": 20,
+    "admitted": 0,
+    "provisional": 10,
+    "rejected": 10
+  },
+  "tools_executed": ["tools/detail_library_admitter.py"],
+  "outputs": [
+    "output/detail_library/library_index.json",
+    "output/detail_library/lib_*.json"
+  ],
+  "evidence": {
+    "no_admitted_reason": "All compilable candidates are PROVISIONAL (WARN) not fully COMPILED (PASS). No PASS validation exists because warranty applicator constraint fires on all complete assemblies.",
+    "rejected_reason": "10 BLOCKED artifacts from derived assemblies with HALT validation"
+  },
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "00-validkernel-governance"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Compiler Manifest",
+  "description": "Contract between resolver and compiler for detail compilation",
+  "type": "object",
+  "required": ["manifest_id", "detail_candidate_id", "assembly_id", "validation_decision", "lineage"],
+  "properties": {
+    "manifest_id": { "type": "string", "pattern": "^MAN-" },
+    "detail_candidate_id": { "type": "string" },
+    "assembly_resolution_id": { "type": "string" },
+    "assembly_id": { "type": "string" },
+    "recipe_id": { "type": "string" },
+    "condition_type": { "type": "string" },
+    "manufacturer": { "type": "string" },
+    "system_family": { "type": "string" },
+    "validation_decision": { "type": "string", "enum": ["PASS", "WARN", "HALT"] },
+    "target_formats": { "type": "array", "items": { "type": "string" } },
+    "geometry_context": { "type": "object" },
+    "annotation_context": { "type": "object" },
+    "lineage": { "type": "object" }
+  },
+  "additionalProperties": false
+}

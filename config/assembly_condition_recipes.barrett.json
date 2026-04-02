@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "manufacturer": "Barrett Company",
+  "system_family": "SBS Modified Bitumen",
+  "description": "Condition-to-assembly recipe mappings for Barrett SBS roofing systems",
+  "recipes": [
+    {
+      "recipe_id": "RCP-BARRETT-PARAPET-001",
+      "recipe_family": "parapet_termination",
+      "condition_type": "parapet_termination",
+      "assembly_id": "barrett_sbs_parapet_ext_001",
+      "manufacturer": "Barrett",
+      "system_family": "SBS Modified Bitumen",
+      "description": "Standard SBS parapet termination with flashing, cant strip, termination bar, metal coping"
+    },
+    {
+      "recipe_id": "RCP-BARRETT-DRAIN-001",
+      "recipe_family": "roof_drain",
+      "condition_type": "roof_drain",
+      "assembly_id": "barrett_sbs_roof_drain_001",
+      "manufacturer": "Barrett",
+      "system_family": "SBS Modified Bitumen",
+      "description": "Roof drain with flashing collar and clamping ring"
+    },
+    {
+      "recipe_id": "RCP-BARRETT-PIPE-001",
+      "recipe_family": "pipe_penetration",
+      "condition_type": "pipe_penetration",
+      "assembly_id": "barrett_sbs_pipe_pen_001",
+      "manufacturer": "Barrett",
+      "system_family": "SBS Modified Bitumen",
+      "description": "Pipe penetration through SBS membrane"
+    },
+    {
+      "recipe_id": "RCP-BARRETT-WALL-001",
+      "recipe_family": "wall_transition",
+      "condition_type": "roof_to_wall_transition",
+      "assembly_id": "barrett_sbs_wall_trans_001",
+      "manufacturer": "Barrett",
+      "system_family": "SBS Modified Bitumen",
+      "description": "Roof-to-wall transition with base flashing"
+    },
+    {
+      "recipe_id": "RCP-BARRETT-EDGE-001",
+      "recipe_family": "edge_termination",
+      "condition_type": "edge_termination",
+      "assembly_id": "barrett_sbs_edge_term_001",
+      "manufacturer": "Barrett",
+      "system_family": "SBS Modified Bitumen",
+      "description": "Perimeter edge termination with metal drip edge"
+    }
+  ]
+}

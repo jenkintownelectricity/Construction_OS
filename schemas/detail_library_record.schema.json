@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Detail Library Record",
+  "description": "An admitted compiled detail in the detail library",
+  "type": "object",
+  "required": ["library_record_id", "artifact_id", "detail_candidate_id", "admission_status", "lineage"],
+  "properties": {
+    "library_record_id": { "type": "string", "pattern": "^LIB-" },
+    "artifact_id": { "type": "string" },
+    "detail_candidate_id": { "type": "string" },
+    "manufacturer": { "type": "string" },
+    "system_family": { "type": "string" },
+    "condition_type": { "type": "string" },
+    "assembly_id": { "type": "string" },
+    "artifact_path": { "type": "string" },
+    "artifact_format": { "type": "string" },
+    "admission_status": { "type": "string", "enum": ["ADMITTED", "PROVISIONAL", "REJECTED"] },
+    "lineage": { "type": "object" }
+  },
+  "additionalProperties": false
+}

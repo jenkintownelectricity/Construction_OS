@@ -1,0 +1,20 @@
+{
+  "artifact_id": "ART-DTL-CND-BND-0002-FDN-004",
+  "manifest_id": "MAN-DTL-CND-BND-0002-FDN-004",
+  "detail_candidate_id": "DTL-CND-BND-0002-FDN-004",
+  "condition_id": "CND-BND-0002-FDN-004",
+  "assembly_id": "barrett_sbs_edge_term_001",
+  "manufacturer": "Barrett",
+  "system_family": "SBS Modified Bitumen",
+  "condition_type": "OUTSIDE_CORNER",
+  "format": "PDF",
+  "status": "BLOCKED",
+  "artifact_path": "",
+  "receipt_id": "RCT-COMPILE-DTL-CND-BND-0002-FDN-004",
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "compiled_by": "detail_compiler",
+    "compiled_at": "2026-04-02T02:19:34.884230+00:00",
+    "manifest_id": "MAN-DTL-CND-BND-0002-FDN-004"
+  }
+}

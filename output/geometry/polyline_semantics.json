@@ -1,0 +1,12 @@
+{
+  "polyline_semantics": [],
+  "count": 0,
+  "status": "NO_SOURCE_EVIDENCE",
+  "reason": "No DXF/DWG files with LWPOLYLINE/POLYLINE entities are present in the repository. Polyline classification requires raw DXF source files.",
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "tool": "tools/polyline_semantic_classifier.py",
+    "generated_at": "2026-04-02T03:00:00Z",
+    "config_version": "1.0.0"
+  }
+}
