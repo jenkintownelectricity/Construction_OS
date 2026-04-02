@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "description": "Ownership class definitions and default handling rules",
+  "classes": {
+    "SYSTEM_OWNED": {
+      "description": "Geometry belonging to the manufacturer's roofing/waterproofing assembly",
+      "includes_in_assembly": true,
+      "tracked_for_quantity": true,
+      "appears_in_detail": true
+    },
+    "CONTEXT_ONLY": {
+      "description": "Geometry shown for readability/context but not owned by the system",
+      "includes_in_assembly": false,
+      "tracked_for_quantity": false,
+      "appears_in_detail": true
+    },
+    "ANNOTATION": {
+      "description": "Text, dimensions, callouts, leaders — not geometry",
+      "includes_in_assembly": false,
+      "tracked_for_quantity": false,
+      "appears_in_detail": true
+    }
+  },
+  "ambiguity_rules": {
+    "unknown_layer": "CONTEXT_ONLY",
+    "unknown_entity_type": "CONTEXT_ONLY",
+    "others_layer": "CONTEXT_ONLY",
+    "text_layer": "ANNOTATION",
+    "defpoints_layer": "ANNOTATION",
+    "promotion_requires_evidence": true,
+    "demotion_allowed_without_evidence": true
+  }
+}

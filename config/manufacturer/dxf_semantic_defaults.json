@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "description": "Default semantic classification rules for DXF entities by type and layer",
+  "entity_type_defaults": {
+    "TEXT": "ANNOTATION",
+    "MTEXT": "ANNOTATION",
+    "MULTILEADER": "ANNOTATION",
+    "DIMENSION": "ANNOTATION",
+    "LWPOLYLINE": "CLASSIFY_BY_LAYER",
+    "HATCH": "CLASSIFY_BY_LAYER",
+    "LINE": "CLASSIFY_BY_LAYER",
+    "ARC": "CLASSIFY_BY_LAYER",
+    "CIRCLE": "CLASSIFY_BY_LAYER",
+    "INSERT": "CLASSIFY_BY_LAYER",
+    "SPLINE": "CLASSIFY_BY_LAYER",
+    "POLYLINE": "CLASSIFY_BY_LAYER",
+    "ELLIPSE": "CLASSIFY_BY_LAYER",
+    "POINT": "CLASSIFY_BY_LAYER"
+  },
+  "layer_patterns": [
+    { "pattern": "membrane|sheet", "class": "SYSTEM_OWNED", "role": "membrane" },
+    { "pattern": "primer|adhesive", "class": "SYSTEM_OWNED", "role": "primer_adhesive" },
+    { "pattern": "flash|flashing", "class": "SYSTEM_OWNED", "role": "flashing" },
+    { "pattern": "fleece|reinforcement", "class": "SYSTEM_OWNED", "role": "reinforcement" },
+    { "pattern": "topcoat|basecoat|top coat|base coat", "class": "SYSTEM_OWNED", "role": "coating" },
+    { "pattern": "protection course|protection", "class": "SYSTEM_OWNED", "role": "protection" },
+    { "pattern": "cant|cant strip", "class": "SYSTEM_OWNED", "role": "transition" },
+    { "pattern": "termination|term bar", "class": "SYSTEM_OWNED", "role": "termination" },
+    { "pattern": "sealant|caulk", "class": "SYSTEM_OWNED", "role": "sealant" },
+    { "pattern": "substrate|slab|deck|concrete", "class": "CONTEXT_ONLY", "role": "substrate" },
+    { "pattern": "wall|masonry|cmu|backup", "class": "CONTEXT_ONLY", "role": "wall" },
+    { "pattern": "steel|framing|structural", "class": "CONTEXT_ONLY", "role": "structure" },
+    { "pattern": "overburden|paver|ballast", "class": "CONTEXT_ONLY", "role": "overburden" },
+    { "pattern": "insulation|insul", "class": "CONTEXT_ONLY", "role": "insulation" },
+    { "pattern": "others", "class": "CONTEXT_ONLY", "role": "unclassified_context" },
+    { "pattern": "text|defpoints", "class": "ANNOTATION", "role": "annotation" }
+  ],
+  "fallback_class": "CONTEXT_ONLY",
+  "fallback_role": "unclassified_context"
+}
