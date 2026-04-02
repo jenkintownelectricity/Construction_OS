@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "description": "Rules for classifying assembly definition readiness",
+  "readiness_states": {
+    "READY": {
+      "description": "Assembly definition is complete with all required components, layer mappings, and at least one representative DXF",
+      "requires": ["family_id", "manufacturer_id", "system_name", "components_defined", "owned_layers_mapped", "representative_dxf_parsed", "condition_support_defined"]
+    },
+    "PARTIAL": {
+      "description": "Assembly definition exists but is missing some components, layer mappings, or representative details",
+      "requires": ["family_id", "manufacturer_id", "system_name"],
+      "missing_allowed": ["full_component_list", "all_layer_mappings", "all_condition_types"]
+    },
+    "BLOCKED": {
+      "description": "Assembly definition cannot proceed due to missing critical evidence",
+      "blockers": ["no_representative_dxf", "no_product_data", "incompatible_format", "unresolvable_layer_ambiguity"]
+    },
+    "NO_SOURCE": {
+      "description": "No source evidence exists for this assembly family",
+      "requires_to_unblock": ["representative_dxf_files", "product_documentation"]
+    }
+  }
+}

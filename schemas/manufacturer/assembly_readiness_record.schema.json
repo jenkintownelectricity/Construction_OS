@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Assembly Readiness Record",
+  "description": "Readiness audit record for a manufacturer assembly family",
+  "type": "object",
+  "required": ["audit_id", "family_id", "readiness", "lineage"],
+  "properties": {
+    "audit_id": { "type": "string", "pattern": "^AUD-" },
+    "family_id": { "type": "string" },
+    "manufacturer_id": { "type": "string" },
+    "system_name": { "type": "string" },
+    "readiness": { "type": "string", "enum": ["READY", "PARTIAL", "BLOCKED", "NO_SOURCE"] },
+    "checklist": {
+      "type": "object",
+      "properties": {
+        "family_defined": { "type": "boolean" },
+        "components_listed": { "type": "boolean" },
+        "layers_mapped": { "type": "boolean" },
+        "representative_dxf_available": { "type": "boolean" },
+        "dxf_json_parsed": { "type": "boolean" },
+        "condition_support_defined": { "type": "boolean" },
+        "ownership_classified": { "type": "boolean" },
+        "product_data_available": { "type": "boolean" }
+      }
+    },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" },
+    "lineage": {
+      "type": "object",
+      "required": ["source_authority", "audited_at"],
+      "properties": {
+        "source_authority": { "type": "string" },
+        "audited_at": { "type": "string", "format": "date-time" },
+        "audited_by": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

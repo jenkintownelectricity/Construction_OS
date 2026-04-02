@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Manufacturer Family Definition",
+  "description": "Defines a manufacturer's system family with components, layer ownership, and readiness classification",
+  "type": "object",
+  "required": ["family_id", "manufacturer_id", "manufacturer_name", "system_name", "system_description", "readiness", "lineage"],
+  "properties": {
+    "family_id": { "type": "string", "pattern": "^FAM-", "description": "Unique family identifier" },
+    "manufacturer_id": { "type": "string", "description": "Manufacturer identifier" },
+    "manufacturer_name": { "type": "string" },
+    "system_name": { "type": "string", "description": "Human-readable system name" },
+    "system_description": { "type": "string" },
+    "csi_section": { "type": "string", "description": "CSI section code if applicable" },
+    "product_components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["component_id", "name", "role"],
+        "properties": {
+          "component_id": { "type": "string" },
+          "name": { "type": "string" },
+          "role": { "type": "string", "enum": ["membrane", "primer_adhesive", "flashing", "reinforcement", "coating", "protection", "transition", "termination", "sealant", "substrate", "insulation", "other"] },
+          "material_type": { "type": "string" },
+          "ownership_class": { "type": "string", "enum": ["SYSTEM_OWNED", "CONTEXT_ONLY"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "owned_layers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "DXF layer names that are SYSTEM_OWNED for this family"
+    },
+    "context_layers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Expected CONTEXT_ONLY layers"
+    },
+    "annotation_layers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Expected ANNOTATION layers"
+    },
+    "supported_conditions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Condition types this family supports"
+    },
+    "representative_sources": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Paths to representative DXF or JSON files"
+    },
+    "readiness": {
+      "type": "string",
+      "enum": ["READY", "PARTIAL", "BLOCKED", "NO_SOURCE"],
+      "description": "Current readiness classification"
+    },
+    "readiness_blockers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of blockers if not READY"
+    },
+    "lineage": {
+      "type": "object",
+      "required": ["source_authority", "created_at"],
+      "properties": {
+        "source_authority": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "created_by": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": false
+}
