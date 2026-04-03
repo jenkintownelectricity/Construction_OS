@@ -1,0 +1,62 @@
+{
+  "family_id": "FAM-BARRETT-BLACK-PEARL",
+  "system_name": "Black Pearl Waterproofing System",
+  "manufacturer": "Barrett Company",
+  "manufacturer_id": "MFR-BARRETT-001",
+  "system_type": "waterproofing",
+  "system_description": "Cold-applied rubberized asphalt waterproofing system composed of Black Pearl Adhesive and Black Pearl Sheet Membrane. Used for below-grade and plaza waterproofing applications.",
+  "csi_section": "07 11 13",
+  "components": [
+    {
+      "component_id": "black-pearl-adhesive",
+      "name": "Black Pearl Adhesive",
+      "role": "primer_adhesive",
+      "material_type": "cold_applied_rubberized_asphalt",
+      "ownership_class": "SYSTEM_OWNED"
+    },
+    {
+      "component_id": "black-pearl-sheet",
+      "name": "Black Pearl Sheet Membrane",
+      "role": "membrane",
+      "material_type": "rubberized_asphalt_sheet",
+      "ownership_class": "SYSTEM_OWNED"
+    },
+    {
+      "component_id": "protection-course",
+      "name": "Protection Course",
+      "role": "protection",
+      "material_type": "protection_board",
+      "ownership_class": "SYSTEM_OWNED"
+    }
+  ],
+  "owned_layers": ["RAM Black Pearl Sheet", "Black Pearl", "Protection Course"],
+  "context_layers": ["Others", "Substrate", "Concrete", "Structural Slab", "Overburden"],
+  "annotation_layers": ["Text", "Defpoints", "MULTILEADER"],
+  "supported_conditions": ["field_membrane", "wall_transition", "foundation_wall", "plaza_deck", "below_grade"],
+  "assembly_validation": {
+    "components_evidence_based": false,
+    "layers_confirmed_from_dxf": false,
+    "conditions_confirmed_from_dxf": false,
+    "notes": "Component list derived from product knowledge and definition file. Layer names are estimated from product names; not validated against parsed DXF JSON layer inventory. Conditions list is estimated from typical application scope."
+  },
+  "dxf_evidence": {
+    "total_dxf_files": 21,
+    "golden_seed_candidate": false,
+    "cleanest_noise_score": 5.8118,
+    "cleanest_file": "source/barrett/json/Black_Pearl/202-R00-V01-071352-BARR-BP-PE-02-PENETRATION-STD.json",
+    "cleanest_phase": "CLEAN_5"
+  },
+  "readiness": "PARTIAL",
+  "readiness_blockers": [
+    "DXF source files are local-only (gitignored) — layer mapping not validated against parsed JSON",
+    "Component list derived from product knowledge, not confirmed from DXF geometry evidence",
+    "Ownership classification needs DXF layer-to-role confirmation pass",
+    "Condition support list is estimated, not confirmed from representative detail inventory"
+  ],
+  "cross_family_relationships": [],
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "updated_at": "2026-04-03T00:00:00Z",
+    "updated_by": "dxf_validation_readiness_wave"
+  }
+}

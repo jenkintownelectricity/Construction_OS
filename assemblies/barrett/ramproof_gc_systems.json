@@ -1,0 +1,57 @@
+{
+  "family_id": "FAM-BARRETT-RAMPROOF-GC",
+  "system_name": "RamProof GC Waterproofing System",
+  "manufacturer": "Barrett Company",
+  "manufacturer_id": "MFR-BARRETT-001",
+  "system_type": "waterproofing",
+  "system_description": "Single-component fluid-applied elastomeric rubberized asphalt waterproofing membrane. Cold-applied, single-coat system for below-grade and foundation waterproofing.",
+  "csi_section": "07 11 13",
+  "components": [
+    {
+      "component_id": "ramproof-gc-membrane",
+      "name": "RamProof GC Membrane",
+      "role": "membrane",
+      "material_type": "fluid_applied_rubberized_asphalt",
+      "ownership_class": "SYSTEM_OWNED"
+    },
+    {
+      "component_id": "ramproof-gc-primer",
+      "name": "RamProof GC Primer",
+      "role": "primer_adhesive",
+      "material_type": "asphalt_primer",
+      "ownership_class": "SYSTEM_OWNED"
+    }
+  ],
+  "owned_layers": ["RamProof GC", "RamProof", "Membrane"],
+  "context_layers": ["Others", "Substrate", "Concrete", "Foundation Wall", "Structural"],
+  "annotation_layers": ["Text", "Defpoints", "MULTILEADER"],
+  "supported_conditions": ["field_membrane", "foundation_wall", "below_grade", "wall_transition"],
+  "assembly_validation": {
+    "components_evidence_based": false,
+    "layers_confirmed_from_dxf": false,
+    "conditions_confirmed_from_dxf": false,
+    "notes": "Component list from product knowledge and definition file. RamProof GC has the best DXF evidence of all families: 26 files, a confirmed GOLDEN_SEED candidate (noise score 3.8034), and a semantic seed layer map exists (barrett_layer_semantic_seed_ramproof_gc.json). However, layer mapping has NOT been validated against parsed DXF JSON by a local operator. The semantic seed shows additional layers (RamProof SYSTEM LIQUID, RamProof SYSTEM MESH, Ram Mastic, RAM POLY FELT 3.5 FILTER FABRIC, Drainage Mat, Protection Course, Primer) that may extend the component list beyond what the definition file currently captures."
+  },
+  "dxf_evidence": {
+    "total_dxf_files": 26,
+    "golden_seed_candidate": true,
+    "cleanest_noise_score": 3.8034,
+    "cleanest_file": "source/barrett/json/RamProof_GC/202-R00-V01-071416-BARR-RP-RA-01-ROOFASSEMBLY-STD.json",
+    "cleanest_phase": "GOLDEN_SEED",
+    "semantic_seed_exists": true,
+    "semantic_seed_path": "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json"
+  },
+  "readiness": "PARTIAL",
+  "readiness_blockers": [
+    "DXF source files are local-only (gitignored) — layer mapping not validated against parsed JSON by local operator",
+    "Semantic seed layer map exists but has not been confirmed against actual DXF layer inventory",
+    "Definition file lists only 2 components but semantic seed suggests additional owned layers (mesh, mastic, filter fabric, drainage mat, protection course, primer) — component list may be incomplete",
+    "Ownership classification needs local operator DXF layer confirmation"
+  ],
+  "cross_family_relationships": [],
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "updated_at": "2026-04-03T00:00:00Z",
+    "updated_by": "dxf_validation_readiness_wave"
+  }
+}

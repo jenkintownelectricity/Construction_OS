@@ -1,0 +1,95 @@
+{
+  "version": "0.1.0",
+  "seed_source": "golden_seed_candidate_rank_1",
+  "golden_seed_file": "202-R00-V01-071416-BARR-RP-RA-01-ROOFASSEMBLY-STD",
+  "family": "RamProof_GC",
+  "description": "Seed semantic map derived from committed RamProof GC layer seed and entity-type defaults. Layer names sourced from config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json. Full validation requires LOCAL_OPERATOR_REQUIRED with access to raw DXF JSON.",
+  "layers": {
+    "RamProof SYSTEM LIQUID": {
+      "semantic_role": "liquid_applied_membrane",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "RamProof SYSTEM MESH": {
+      "semantic_role": "reinforcement_mesh",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "Ram Mastic": {
+      "semantic_role": "sealant",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "RAM POLY FELT 3.5 FILTER FABRIC": {
+      "semantic_role": "filter_fabric",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "Drainage Mat": {
+      "semantic_role": "drainage_layer",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "Protection Course": {
+      "semantic_role": "protection_course",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "Primer": {
+      "semantic_role": "primer",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "Others": {
+      "semantic_role": "context_geometry",
+      "classification_basis": "layer_map",
+      "confidence": 0.95,
+      "operator_confirmed": false
+    },
+    "Text": {
+      "semantic_role": "annotation",
+      "classification_basis": "entity_type_default",
+      "confidence": 0.95,
+      "operator_confirmed": false
+    },
+    "Dimensions": {
+      "semantic_role": "annotation",
+      "classification_basis": "entity_type_default",
+      "confidence": 0.95,
+      "operator_confirmed": false
+    },
+    "Defpoints": {
+      "semantic_role": "reference_geometry",
+      "classification_basis": "entity_type_default",
+      "confidence": 0.95,
+      "operator_confirmed": false
+    }
+  },
+  "entity_type_defaults": {
+    "TEXT": { "semantic_role": "annotation", "classification_basis": "entity_type_default" },
+    "MTEXT": { "semantic_role": "annotation", "classification_basis": "entity_type_default" },
+    "MULTILEADER": { "semantic_role": "annotation", "classification_basis": "entity_type_default" },
+    "DIMENSION": { "semantic_role": "annotation", "classification_basis": "entity_type_default" },
+    "LWPOLYLINE": { "semantic_role": "classify_by_layer", "classification_basis": "entity_type_default" },
+    "HATCH": { "semantic_role": "classify_by_layer", "classification_basis": "entity_type_default" },
+    "LINE": { "semantic_role": "classify_by_layer", "classification_basis": "entity_type_default" },
+    "ARC": { "semantic_role": "classify_by_layer", "classification_basis": "entity_type_default" },
+    "CIRCLE": { "semantic_role": "classify_by_layer", "classification_basis": "entity_type_default" },
+    "INSERT": { "semantic_role": "classify_by_layer", "classification_basis": "entity_type_default" },
+    "SPLINE": { "semantic_role": "classify_by_layer", "classification_basis": "entity_type_default" },
+    "POLYLINE": { "semantic_role": "classify_by_layer", "classification_basis": "entity_type_default" },
+    "ELLIPSE": { "semantic_role": "classify_by_layer", "classification_basis": "entity_type_default" },
+    "POINT": { "semantic_role": "classify_by_layer", "classification_basis": "entity_type_default" }
+  },
+  "fallback": {
+    "unknown_layer": { "semantic_role": "context_geometry", "classification_basis": "fallback_default" },
+    "unknown_entity_type": { "semantic_role": "context_geometry", "classification_basis": "fallback_default" }
+  }
+}

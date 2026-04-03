@@ -1,0 +1,97 @@
+{
+  "receipt_id": "RECEIPT-BARRETT-LAYER-CENSUS-001",
+  "title": "Barrett Layer Census - PART 1 Artifacts",
+  "timestamp": "2026-04-03",
+  "status": "PARTIAL",
+  "status_reason": "Layer inventory compiled from committed evidence. Full frequency counts require LOCAL_OPERATOR access to gitignored DXF JSON files.",
+
+  "accomplished": {
+    "layer_inventory": {
+      "description": "Compiled 31 unique layer names from all committed evidence sources",
+      "breakdown": {
+        "SYSTEM_OWNED": 18,
+        "ANNOTATION": 3,
+        "CONTEXT_ONLY": 10
+      },
+      "output_file": "source/barrett/census/barrett_layer_frequency_table.json",
+      "output_file_md": "source/barrett/census/barrett_layer_frequency_table.md"
+    },
+    "cleanliness_ranking_json": {
+      "description": "Converted the 74-file cleanliness ranking from markdown to structured JSON",
+      "source_file": "source/barrett/census/barrett_dxf_cleanliness_ranking.md",
+      "output_file": "source/barrett/census/barrett_dxf_cleanliness_ranking.json",
+      "entries": 74,
+      "phase_distribution": {
+        "GOLDEN_SEED": 1,
+        "CLEAN_5": 5,
+        "MODERATE_5": 5,
+        "NOISY_10": 10,
+        "REMAINDER": 53
+      },
+      "family_distribution": {
+        "RamProof_GC": 28,
+        "RT-250": 25,
+        "Black_Pearl": 20,
+        "PMMA": 1
+      }
+    }
+  },
+
+  "requires_local_operator": {
+    "full_layer_frequency_counts": {
+      "description": "Per-layer frequency counts (how many of the 74 files contain each layer, total entity counts per layer) require parsing the raw DXF JSON files at source/barrett/json/",
+      "reason": "DXF JSON files are gitignored and exist only on local Windows machine",
+      "action_required": "Run layer enumeration script against all 74 parsed JSON files and update barrett_layer_frequency_table.json with actual counts"
+    },
+    "undiscovered_layers": {
+      "description": "The 31 layers catalogued are only those referenced in committed config/definition files. Actual DXF files may contain additional layers not yet documented.",
+      "action_required": "Cross-reference enumerated layers from JSON files against the current 31-layer inventory to identify any missing layers"
+    }
+  },
+
+  "evidence_basis": [
+    {
+      "file": "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json",
+      "type": "seed_map",
+      "contribution": "11 layer names with semantic roles and ownership roles (RamProof GC family ground truth)"
+    },
+    {
+      "file": "source/barrett/definitions/black_pearl.definition.json",
+      "type": "family_definition",
+      "contribution": "3 owned layers, 5 context layers, 3 annotation layers"
+    },
+    {
+      "file": "source/barrett/definitions/pmma.definition.json",
+      "type": "family_definition",
+      "contribution": "4 owned layers, 4 context layers, 3 annotation layers"
+    },
+    {
+      "file": "source/barrett/definitions/ramproof_gc.definition.json",
+      "type": "family_definition",
+      "contribution": "3 owned layers, 5 context layers, 3 annotation layers"
+    },
+    {
+      "file": "source/barrett/definitions/rt250.definition.json",
+      "type": "family_definition",
+      "contribution": "5 owned layers, 5 context layers, 3 annotation layers"
+    },
+    {
+      "file": "source/barrett/census/barrett_dxf_cleanliness_ranking.md",
+      "type": "cleanliness_ranking",
+      "contribution": "74 files with noise scores, layer counts, entity counts, annotation/context ratios"
+    }
+  ],
+
+  "semantic_rules_applied": {
+    "Others": "context_geometry / CONTEXT_ONLY (per specification)",
+    "Text_MTEXT_MULTILEADER_DIMENSION": "annotation / ANNOTATION (per specification)",
+    "Defpoints": "reference_geometry / CONTEXT_ONLY (per specification)"
+  },
+
+  "artifacts_created": [
+    "source/barrett/census/barrett_layer_frequency_table.json",
+    "source/barrett/census/barrett_layer_frequency_table.md",
+    "source/barrett/census/barrett_dxf_cleanliness_ranking.json",
+    "receipts/barrett_ingestion/layer_census_receipt.json"
+  ]
+}

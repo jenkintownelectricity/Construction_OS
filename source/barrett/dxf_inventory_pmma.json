@@ -1,0 +1,38 @@
+{
+  "family_id": "FAM-BARRETT-PMMA",
+  "family_name": "RamFlash PMMA Flashing System",
+  "inventory_date": "2026-04-03",
+  "source_evidence": "barrett_dxf_cleanliness_ranking.md",
+  "total_files": 1,
+  "files": [
+    {
+      "filename": "202-R00-V01-071416-BARR-LF-CU-01-CURB-STD.json",
+      "path": "source/barrett/json/PMMA/202-R00-V01-071416-BARR-LF-CU-01-CURB-STD.json",
+      "noise_score": 18.4205,
+      "progressive_phase": "REMAINDER",
+      "progressive_rank": 67,
+      "layer_count": 14,
+      "total_entities": 78,
+      "annotation_ratio": 0.3205,
+      "context_ratio": 0.3077,
+      "detail_layers": "LOCAL_OPERATOR_REQUIRED"
+    }
+  ],
+  "phase_summary": {
+    "GOLDEN_SEED": 0,
+    "CLEAN_5": 0,
+    "MODERATE_5": 0,
+    "NOISY_10": 0,
+    "REMAINDER": 1
+  },
+  "noise_score_range": {
+    "min": 18.4205,
+    "max": 18.4205
+  },
+  "status": "PARTIAL",
+  "local_operator_required": [
+    "Layer name enumeration per file",
+    "Entity-level detail extraction",
+    "DXF/JSON files are gitignored and not accessible in repo"
+  ]
+}

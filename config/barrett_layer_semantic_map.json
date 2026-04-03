@@ -1,0 +1,288 @@
+{
+  "_version": "0.2.0",
+  "_description": "Full semantic map for all known Barrett layers across all 4 product families. Combines family definitions, RamProof GC seed data, and layer pattern defaults.",
+  "_date": "2026-04-03",
+  "_notes": [
+    "Layers appearing in only one family are marked single_family=true and require operator confirmation before global promotion.",
+    "Evidence sources: definition = family definition file, seed = ramproof_gc seed file, pattern = layer pattern matching."
+  ],
+  "layers": {
+    "RAM Black Pearl Sheet": {
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["Black_Pearl"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Black Pearl": {
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["Black_Pearl"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "RamProof GC": {
+      "semantic_role": "liquid_applied_membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RamProof_GC"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "RamProof": {
+      "semantic_role": "liquid_applied_membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RamProof_GC"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "RamProof SYSTEM LIQUID": {
+      "semantic_role": "liquid_applied_membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RamProof_GC"],
+      "single_family": true,
+      "evidence_source": "seed",
+      "confidence": 0.9
+    },
+    "RamProof SYSTEM MESH": {
+      "semantic_role": "reinforcement_mesh",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RamProof_GC"],
+      "single_family": true,
+      "evidence_source": "seed",
+      "confidence": 0.9
+    },
+    "Membrane": {
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RamProof_GC", "RT-250"],
+      "single_family": false,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "RamTough 250": {
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RT-250"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "RT-250": {
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RT-250"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "RT250": {
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RT-250"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "PMMA": {
+      "semantic_role": "flashing",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["PMMA"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "RamFlash": {
+      "semantic_role": "flashing",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["PMMA"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Fleece": {
+      "semantic_role": "fleece",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["PMMA"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Primer": {
+      "semantic_role": "primer",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["PMMA", "RamProof_GC"],
+      "single_family": false,
+      "evidence_source": "seed",
+      "confidence": 0.9
+    },
+    "Ram Mastic": {
+      "semantic_role": "sealant",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RamProof_GC"],
+      "single_family": true,
+      "evidence_source": "seed",
+      "confidence": 0.9
+    },
+    "RAM POLY FELT 3.5 FILTER FABRIC": {
+      "semantic_role": "filter_fabric",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RamProof_GC"],
+      "single_family": true,
+      "evidence_source": "seed",
+      "confidence": 0.9
+    },
+    "Drainage Mat": {
+      "semantic_role": "drainage_layer",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["RamProof_GC"],
+      "single_family": true,
+      "evidence_source": "seed",
+      "confidence": 0.9
+    },
+    "Protection Course": {
+      "semantic_role": "protection_course",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_families": ["Black_Pearl", "RamProof_GC", "RT-250"],
+      "single_family": false,
+      "evidence_source": "seed",
+      "confidence": 0.9
+    },
+    "Others": {
+      "semantic_role": "context_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "single_family": false,
+      "evidence_source": "seed",
+      "confidence": 1.0
+    },
+    "Substrate": {
+      "semantic_role": "substrate",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "single_family": false,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Concrete": {
+      "semantic_role": "substrate",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_families": ["Black_Pearl", "PMMA", "RamProof_GC"],
+      "single_family": false,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Structural Slab": {
+      "semantic_role": "slab",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_families": ["Black_Pearl", "RT-250"],
+      "single_family": false,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Foundation Wall": {
+      "semantic_role": "wall",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_families": ["RamProof_GC"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Foundation": {
+      "semantic_role": "wall",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_families": ["RT-250"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Wall": {
+      "semantic_role": "wall",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_families": ["PMMA"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Structural": {
+      "semantic_role": "structure",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_families": ["RamProof_GC"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Overburden": {
+      "semantic_role": "overburden",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_families": ["Black_Pearl"],
+      "single_family": true,
+      "evidence_source": "definition",
+      "confidence": 0.9
+    },
+    "Text": {
+      "semantic_role": "annotation",
+      "ownership_role": "ANNOTATION",
+      "source_families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "single_family": false,
+      "evidence_source": "seed",
+      "confidence": 1.0
+    },
+    "Dimensions": {
+      "semantic_role": "annotation",
+      "ownership_role": "ANNOTATION",
+      "source_families": ["RamProof_GC"],
+      "single_family": true,
+      "evidence_source": "seed",
+      "confidence": 1.0
+    },
+    "Defpoints": {
+      "semantic_role": "reference_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "single_family": false,
+      "evidence_source": "seed",
+      "confidence": 1.0
+    },
+    "MULTILEADER": {
+      "semantic_role": "annotation",
+      "ownership_role": "ANNOTATION",
+      "source_families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "single_family": false,
+      "evidence_source": "definition",
+      "confidence": 1.0
+    }
+  },
+  "layer_patterns": [
+    { "pattern": "ramproof.*liquid|liquid.*membrane", "semantic_role": "liquid_applied_membrane", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "ramproof.*mesh|reinforcement.*mesh", "semantic_role": "reinforcement_mesh", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "membrane|sheet", "semantic_role": "membrane", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "primer|adhesive", "semantic_role": "primer", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "flash|flashing", "semantic_role": "flashing", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "fleece", "semantic_role": "fleece", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "topcoat|top coat", "semantic_role": "topcoat", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "basecoat|base coat", "semantic_role": "basecoat", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "protection course|protection board", "semantic_role": "protection_course", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "cant|cant strip", "semantic_role": "transition", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "termination|term bar", "semantic_role": "termination", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "sealant|caulk|mastic", "semantic_role": "sealant", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "filter.*fabric|poly.*felt", "semantic_role": "filter_fabric", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "drainage.*mat|drain.*layer", "semantic_role": "drainage_layer", "ownership_role": "SYSTEM_OWNED", "confidence": 0.7 },
+    { "pattern": "substrate|slab|deck|concrete", "semantic_role": "substrate", "ownership_role": "CONTEXT_ONLY", "confidence": 0.7 },
+    { "pattern": "wall|masonry|cmu|backup|foundation", "semantic_role": "wall", "ownership_role": "CONTEXT_ONLY", "confidence": 0.7 },
+    { "pattern": "steel|framing|structural", "semantic_role": "structure", "ownership_role": "CONTEXT_ONLY", "confidence": 0.7 },
+    { "pattern": "overburden|paver|ballast", "semantic_role": "overburden", "ownership_role": "CONTEXT_ONLY", "confidence": 0.7 },
+    { "pattern": "insulation|insul", "semantic_role": "insulation", "ownership_role": "CONTEXT_ONLY", "confidence": 0.7 },
+    { "pattern": "^others$", "semantic_role": "context_geometry", "ownership_role": "CONTEXT_ONLY", "confidence": 1.0 },
+    { "pattern": "^defpoints$", "semantic_role": "reference_geometry", "ownership_role": "CONTEXT_ONLY", "confidence": 1.0 },
+    { "pattern": "^text$|^dimensions$|^notes$|^annotation$|^anno$", "semantic_role": "annotation", "ownership_role": "ANNOTATION", "confidence": 1.0 }
+  ],
+  "fallback": {
+    "semantic_role": "unclassified_context",
+    "ownership_role": "CONTEXT_ONLY",
+    "confidence": 0.5
+  }
+}

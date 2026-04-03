@@ -1,0 +1,65 @@
+{
+  "family_id": "FAM-BARRETT-RT250",
+  "validation_date": "2026-04-03",
+  "validation_type": "assembly_definition_validation",
+  "checks": [
+    {
+      "check": "family_defined",
+      "status": "PASS",
+      "evidence": "rt250.definition.json defines FAM-BARRETT-RT250 with system_name, manufacturer_id, and system_description"
+    },
+    {
+      "check": "components_listed",
+      "status": "PASS",
+      "evidence": "3 components defined: RamTough 250 Membrane, RamTough 250 Primer, Protection Course"
+    },
+    {
+      "check": "layers_mapped_from_dxf",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — owned_layers (RamTough 250, RT-250, RT250, Membrane, Protection Course) include multiple aliases and are not confirmed against parsed DXF JSON layer inventory"
+    },
+    {
+      "check": "dxf_json_parsed",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — 26 DXF files exist in census (cleanest noise score 4.6852, CLEAN_5 phase) but JSON parse results are local-only"
+    },
+    {
+      "check": "ownership_classified_from_evidence",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — ownership roles assigned from product knowledge, not from DXF layer analysis"
+    },
+    {
+      "check": "condition_support_confirmed",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — supported conditions (field_membrane, foundation_wall, below_grade, plaza_deck, wall_transition) estimated from product scope, not confirmed from DXF details"
+    },
+    {
+      "check": "golden_seed_available",
+      "status": "FAIL",
+      "evidence": "No GOLDEN_SEED phase file exists for RT-250. Cleanest file is CLEAN_5 phase at noise score 4.6852"
+    },
+    {
+      "check": "semantic_seed_exists",
+      "status": "FAIL",
+      "evidence": "No semantic seed layer mapping file exists for RT-250 family"
+    },
+    {
+      "check": "layer_alias_resolution",
+      "status": "FAIL",
+      "evidence": "Multiple layer name aliases (RamTough 250, RT-250, RT250) need resolution — unclear which are actual DXF layer names vs. product name variants"
+    },
+    {
+      "check": "cross_family_modeled",
+      "status": "PASS",
+      "evidence": "Cross-family relationship documented: RT-250 commonly paired with PMMA for flashing/detail conditions"
+    }
+  ],
+  "overall_status": "PARTIAL",
+  "pass_count": 3,
+  "fail_count": 7,
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "validated_at": "2026-04-03T00:00:00Z",
+    "validated_by": "dxf_validation_readiness_wave"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "receipt_type": "wave_execution",
+  "wave": "PART_6",
+  "wave_name": "Assembly Validation",
+  "status": "complete",
+  "execution_mode": "L04R",
+  "failure_posture": "FAIL_CLOSED",
+  "capability_proven": "assembly_definition_validation",
+  "capability_confidence": "high",
+  "outputs": [
+    "assemblies/barrett/black_pearl_systems.json",
+    "assemblies/barrett/pmma_systems.json",
+    "assemblies/barrett/ramproof_gc_systems.json",
+    "assemblies/barrett/rt250_systems.json",
+    "schemas/barrett_assembly_definition.schema.json",
+    "source/barrett/validations/black_pearl.validation.json",
+    "source/barrett/validations/pmma.validation.json",
+    "source/barrett/validations/ramproof_gc.validation.json",
+    "source/barrett/validations/rt250.validation.json"
+  ],
+  "evidence": {
+    "summary": "Created assembly system definition files for all 4 Barrett families with honest validation checks. All families PARTIAL. No readiness inflation.",
+    "families_validated": 4,
+    "total_checks_run": 38,
+    "total_pass": 14,
+    "total_fail": 24,
+    "all_families_partial": true,
+    "no_family_inflated_to_ready": true,
+    "inputs_consumed": [
+      "source/barrett/definitions/black_pearl.definition.json",
+      "source/barrett/definitions/pmma.definition.json",
+      "source/barrett/definitions/ramproof_gc.definition.json",
+      "source/barrett/definitions/rt250.definition.json",
+      "source/barrett/census/barrett_dxf_cleanliness_ranking.md",
+      "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json",
+      "source/barrett/audits/barrett_assembly_readiness_audit.json"
+    ]
+  },
+  "lineage": {
+    "executed_at": "2026-04-03T00:00:00Z",
+    "executed_by": "dxf_validation_readiness_wave",
+    "source_authority": "10-Construction_OS",
+    "governance_kernel": "construction_os_v1"
+  }
+}
