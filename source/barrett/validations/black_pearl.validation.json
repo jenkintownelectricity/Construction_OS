@@ -1,0 +1,60 @@
+{
+  "family_id": "FAM-BARRETT-BLACK-PEARL",
+  "validation_date": "2026-04-03",
+  "validation_type": "assembly_definition_validation",
+  "checks": [
+    {
+      "check": "family_defined",
+      "status": "PASS",
+      "evidence": "black_pearl.definition.json defines FAM-BARRETT-BLACK-PEARL with system_name, manufacturer_id, and system_description"
+    },
+    {
+      "check": "components_listed",
+      "status": "PASS",
+      "evidence": "3 components defined: Black Pearl Adhesive (primer_adhesive), Black Pearl Sheet Membrane (membrane), Protection Course (protection)"
+    },
+    {
+      "check": "layers_mapped_from_dxf",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — owned_layers (RAM Black Pearl Sheet, Black Pearl, Protection Course) are product-knowledge-derived, not confirmed against parsed DXF JSON layer inventory"
+    },
+    {
+      "check": "dxf_json_parsed",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — 21 DXF files exist in census (cleanest noise score 5.8118) but JSON parse results are local-only and not accessible for validation"
+    },
+    {
+      "check": "ownership_classified_from_evidence",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — ownership roles (SYSTEM_OWNED, CONTEXT_ONLY, ANNOTATION) assigned from product knowledge, not from DXF layer analysis"
+    },
+    {
+      "check": "condition_support_confirmed",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — supported conditions (field_membrane, wall_transition, foundation_wall, plaza_deck, below_grade) estimated from product scope, not confirmed from representative DXF detail inventory"
+    },
+    {
+      "check": "golden_seed_available",
+      "status": "FAIL",
+      "evidence": "No GOLDEN_SEED phase file exists for Black Pearl. Cleanest file is CLEAN_5 phase at noise score 5.8118"
+    },
+    {
+      "check": "semantic_seed_exists",
+      "status": "FAIL",
+      "evidence": "No semantic seed layer mapping file exists for Black Pearl family (exists only for RamProof GC)"
+    },
+    {
+      "check": "cross_family_modeled",
+      "status": "PASS",
+      "evidence": "No critical cross-family dependencies for Black Pearl (PMMA pairing is optional, not required)"
+    }
+  ],
+  "overall_status": "PARTIAL",
+  "pass_count": 3,
+  "fail_count": 6,
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "validated_at": "2026-04-03T00:00:00Z",
+    "validated_by": "dxf_validation_readiness_wave"
+  }
+}

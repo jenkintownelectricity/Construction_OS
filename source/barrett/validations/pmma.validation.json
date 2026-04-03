@@ -1,0 +1,65 @@
+{
+  "family_id": "FAM-BARRETT-PMMA",
+  "validation_date": "2026-04-03",
+  "validation_type": "assembly_definition_validation",
+  "checks": [
+    {
+      "check": "family_defined",
+      "status": "PASS",
+      "evidence": "pmma.definition.json defines FAM-BARRETT-PMMA with system_name, manufacturer_id, and system_description"
+    },
+    {
+      "check": "components_listed",
+      "status": "PASS",
+      "evidence": "4 components defined: RamFlash PMMA Primer, RamFlash PMMA Membrane, RamFlash Fleece, RamFlash Catalyst"
+    },
+    {
+      "check": "layers_mapped_from_dxf",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — owned_layers (PMMA, RamFlash, Fleece, Primer) are speculative, not confirmed against parsed DXF JSON layer inventory"
+    },
+    {
+      "check": "dxf_json_parsed",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — only 1 DXF file exists in census (noise score 18.4205, REMAINDER phase) and JSON parse status is unknown"
+    },
+    {
+      "check": "ownership_classified_from_evidence",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — ownership roles assigned from product knowledge, not from DXF layer analysis"
+    },
+    {
+      "check": "condition_support_confirmed",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — supported conditions (parapet_flashing, penetration_flashing, wall_transition, detail_flashing, counter_flashing) estimated from product scope, not confirmed from DXF details"
+    },
+    {
+      "check": "golden_seed_available",
+      "status": "FAIL",
+      "evidence": "No GOLDEN_SEED phase file exists for PMMA. Only 1 file exists and it is REMAINDER phase with high noise"
+    },
+    {
+      "check": "semantic_seed_exists",
+      "status": "FAIL",
+      "evidence": "No semantic seed layer mapping file exists for PMMA family"
+    },
+    {
+      "check": "sufficient_dxf_coverage",
+      "status": "FAIL",
+      "evidence": "Only 1 DXF file (curb detail) — insufficient to validate the 5 claimed supported conditions"
+    },
+    {
+      "check": "cross_family_modeled",
+      "status": "PASS",
+      "evidence": "Cross-family relationships documented: PMMA pairs with RT-250 (primary) and Black Pearl (secondary) as flashing partner"
+    }
+  ],
+  "overall_status": "PARTIAL",
+  "pass_count": 3,
+  "fail_count": 7,
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "validated_at": "2026-04-03T00:00:00Z",
+    "validated_by": "dxf_validation_readiness_wave"
+  }
+}

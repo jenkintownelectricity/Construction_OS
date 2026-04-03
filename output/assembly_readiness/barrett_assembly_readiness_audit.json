@@ -1,0 +1,216 @@
+{
+  "audit_id": "AUD-BARRETT-READINESS-002",
+  "audit_date": "2026-04-03T00:00:00Z",
+  "manufacturer_id": "MFR-BARRETT-001",
+  "manufacturer_name": "Barrett Company",
+  "auditor": "dxf_validation_readiness_wave",
+  "wave": "PART 6+7: Assembly Validation and Readiness Audit",
+  "summary": {
+    "total_families": 4,
+    "ready": 0,
+    "partial": 4,
+    "blocked": 0,
+    "no_source": 0,
+    "total_dxf_files_in_census": 74,
+    "families_with_golden_seed": 1,
+    "families_with_semantic_seed": 1
+  },
+  "families": [
+    {
+      "audit_id": "AUD-FAM-BLACK-PEARL-002",
+      "family_id": "FAM-BARRETT-BLACK-PEARL",
+      "system_name": "Black Pearl Waterproofing System",
+      "system_type": "waterproofing",
+      "readiness": "PARTIAL",
+      "checklist": {
+        "family_defined": true,
+        "components_listed": true,
+        "layers_mapped": false,
+        "representative_dxf_available": true,
+        "dxf_json_parsed": false,
+        "condition_support_defined": true,
+        "ownership_classified": false,
+        "product_data_available": true,
+        "assembly_definition_created": true,
+        "validation_file_created": true,
+        "golden_seed_available": false,
+        "semantic_seed_available": false
+      },
+      "dxf_evidence": {
+        "total_dxf_files": 21,
+        "cleanest_noise_score": 5.8118,
+        "cleanest_phase": "CLEAN_5"
+      },
+      "validation_summary": {
+        "pass_count": 3,
+        "fail_count": 6,
+        "critical_gaps": ["layers_mapped_from_dxf", "ownership_classified_from_evidence"]
+      },
+      "blockers": [
+        "DXF source files are local-only (gitignored) — layer mapping not validated against parsed JSON",
+        "Ownership classification needs DXF layer confirmation",
+        "No golden seed or semantic seed available for this family"
+      ],
+      "notes": "21 DXF files in census. Cleanest file is CLEAN_5 phase (5.8118). Assembly definition and validation files created in this wave. Needs local operator to confirm layer names and ownership classifications against parsed DXF JSON.",
+      "path_to_ready": [
+        "Local operator parses DXF JSON and confirms layer inventory",
+        "Layer-to-ownership mapping confirmed from DXF evidence",
+        "Condition support validated against representative detail files",
+        "Semantic seed created from confirmed layer mapping"
+      ]
+    },
+    {
+      "audit_id": "AUD-FAM-PMMA-002",
+      "family_id": "FAM-BARRETT-PMMA",
+      "system_name": "RamFlash PMMA Flashing System",
+      "system_type": "flashing",
+      "readiness": "PARTIAL",
+      "checklist": {
+        "family_defined": true,
+        "components_listed": true,
+        "layers_mapped": false,
+        "representative_dxf_available": true,
+        "dxf_json_parsed": false,
+        "condition_support_defined": true,
+        "ownership_classified": false,
+        "product_data_available": true,
+        "assembly_definition_created": true,
+        "validation_file_created": true,
+        "golden_seed_available": false,
+        "semantic_seed_available": false
+      },
+      "dxf_evidence": {
+        "total_dxf_files": 1,
+        "cleanest_noise_score": 18.4205,
+        "cleanest_phase": "REMAINDER"
+      },
+      "validation_summary": {
+        "pass_count": 3,
+        "fail_count": 7,
+        "critical_gaps": ["dxf_json_parsed", "sufficient_dxf_coverage", "layers_mapped_from_dxf"]
+      },
+      "blockers": [
+        "Only 1 DXF file in census — insufficient for condition validation",
+        "DXF source files are local-only — layer names not confirmed from parsed JSON",
+        "Single DXF has high noise score (18.4205) — poor golden seed candidate",
+        "DXF JSON parse status unknown for PMMA family"
+      ],
+      "notes": "Weakest DXF evidence of all families (1 file, high noise). PMMA is primarily a flashing/detail system paired with RT-250 or Black Pearl. The single DXF is a curb detail. Assembly definition and validation files created in this wave. Cross-family relationships documented.",
+      "path_to_ready": [
+        "Locate additional PMMA DXF source files (PMMA may appear as layers within RT-250 or Black Pearl details)",
+        "Local operator parses DXF JSON and confirms layer inventory",
+        "Layer-to-ownership mapping confirmed from DXF evidence",
+        "Validate that PMMA appears as detail/flashing layers in cross-family DXF files"
+      ]
+    },
+    {
+      "audit_id": "AUD-FAM-RAMPROOF-GC-002",
+      "family_id": "FAM-BARRETT-RAMPROOF-GC",
+      "system_name": "RamProof GC Waterproofing System",
+      "system_type": "waterproofing",
+      "readiness": "PARTIAL",
+      "checklist": {
+        "family_defined": true,
+        "components_listed": true,
+        "layers_mapped": false,
+        "representative_dxf_available": true,
+        "dxf_json_parsed": false,
+        "condition_support_defined": true,
+        "ownership_classified": false,
+        "product_data_available": true,
+        "assembly_definition_created": true,
+        "validation_file_created": true,
+        "golden_seed_available": true,
+        "semantic_seed_available": true
+      },
+      "dxf_evidence": {
+        "total_dxf_files": 26,
+        "cleanest_noise_score": 3.8034,
+        "cleanest_phase": "GOLDEN_SEED"
+      },
+      "validation_summary": {
+        "pass_count": 5,
+        "fail_count": 5,
+        "critical_gaps": ["layers_mapped_from_dxf", "component_completeness"]
+      },
+      "blockers": [
+        "DXF source files are local-only — semantic seed not validated by local operator against parsed JSON",
+        "Definition lists 2 components but semantic seed suggests 7 SYSTEM_OWNED layers — possible component gap",
+        "Ownership classification from semantic seed needs local operator confirmation"
+      ],
+      "notes": "Closest to READY of all families. Has GOLDEN_SEED (noise 3.8034) and semantic seed layer map with 11 mapped layers. Assembly definition and validation files created in this wave. Key gap: definition file may be missing components that the semantic seed reveals (mesh, mastic, filter fabric, drainage mat, protection course).",
+      "path_to_ready": [
+        "Local operator validates semantic seed against parsed DXF JSON layer inventory",
+        "Resolve component gap: reconcile 2-component definition with 7 SYSTEM_OWNED semantic seed layers",
+        "Confirm ownership classifications from semantic seed",
+        "Condition support validated against 26 representative DXF detail files"
+      ]
+    },
+    {
+      "audit_id": "AUD-FAM-RT250-002",
+      "family_id": "FAM-BARRETT-RT250",
+      "system_name": "RamTough 250 Waterproofing System",
+      "system_type": "waterproofing",
+      "readiness": "PARTIAL",
+      "checklist": {
+        "family_defined": true,
+        "components_listed": true,
+        "layers_mapped": false,
+        "representative_dxf_available": true,
+        "dxf_json_parsed": false,
+        "condition_support_defined": true,
+        "ownership_classified": false,
+        "product_data_available": true,
+        "assembly_definition_created": true,
+        "validation_file_created": true,
+        "golden_seed_available": false,
+        "semantic_seed_available": false
+      },
+      "dxf_evidence": {
+        "total_dxf_files": 26,
+        "cleanest_noise_score": 4.6852,
+        "cleanest_phase": "CLEAN_5"
+      },
+      "validation_summary": {
+        "pass_count": 3,
+        "fail_count": 7,
+        "critical_gaps": ["layers_mapped_from_dxf", "layer_alias_resolution", "ownership_classified_from_evidence"]
+      },
+      "blockers": [
+        "DXF source files are local-only — layer names not confirmed from parsed JSON",
+        "Multiple layer name aliases (RamTough 250, RT-250, RT250) need resolution",
+        "Cross-family dependency with PMMA flashing system not yet modeled at assembly level",
+        "Ownership classification needs DXF layer confirmation"
+      ],
+      "notes": "Strong DXF evidence (26 files, second-cleanest overall at 4.6852). Assembly definition and validation files created in this wave. Cross-family relationship with PMMA documented. Key gap: layer name aliases need resolution to determine which are actual DXF layer names.",
+      "path_to_ready": [
+        "Local operator parses DXF JSON and confirms layer inventory",
+        "Resolve layer name aliases: determine which of RamTough 250 / RT-250 / RT250 are actual DXF layer names",
+        "Layer-to-ownership mapping confirmed from DXF evidence",
+        "Create semantic seed from confirmed layer mapping",
+        "Condition support validated against 26 representative DXF detail files"
+      ]
+    }
+  ],
+  "wave_accomplishments": [
+    "Created assembly system definition files for all 4 families (black_pearl_systems.json, pmma_systems.json, ramproof_gc_systems.json, rt250_systems.json)",
+    "Created validation files for all 4 families with honest PASS/FAIL check results",
+    "Created JSON Schema for assembly system definition files (barrett_assembly_definition.schema.json)",
+    "Documented DXF evidence state per family from cleanliness ranking census (74 total files)",
+    "Documented cross-family relationships (RT-250 + PMMA pairing)",
+    "Identified component completeness gap in RamProof GC (definition vs. semantic seed discrepancy)",
+    "All families remain PARTIAL — no readiness inflation"
+  ],
+  "universal_blockers": [
+    "DXF source files are local-only (gitignored) and not accessible in the repository",
+    "No layer mapping has been validated against parsed DXF JSON by a local operator",
+    "No ownership classification has been confirmed from DXF layer evidence",
+    "Condition support lists are estimated from product knowledge, not confirmed from DXF detail review"
+  ],
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "previous_audit": "AUD-BARRETT-READINESS-001",
+    "audited_at": "2026-04-03T00:00:00Z",
+    "audited_by": "dxf_validation_readiness_wave"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "version": "0.1.0",
+  "seed_source": "golden_seed_candidate_rank_1",
+  "golden_seed_file": "202-R00-V01-071416-BARR-RP-RA-01-ROOFASSEMBLY-STD",
+  "family": "RamProof_GC",
+  "description": "Seed ownership map derived from committed RamProof GC layer seed. Layer names sourced from config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json. Full validation requires LOCAL_OPERATOR_REQUIRED with access to raw DXF JSON.",
+  "layers": {
+    "RamProof SYSTEM LIQUID": {
+      "ownership_role": "SYSTEM_OWNED",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "RamProof SYSTEM MESH": {
+      "ownership_role": "SYSTEM_OWNED",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "Ram Mastic": {
+      "ownership_role": "SYSTEM_OWNED",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "RAM POLY FELT 3.5 FILTER FABRIC": {
+      "ownership_role": "SYSTEM_OWNED",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "Drainage Mat": {
+      "ownership_role": "SYSTEM_OWNED",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "Protection Course": {
+      "ownership_role": "SYSTEM_OWNED",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "Primer": {
+      "ownership_role": "SYSTEM_OWNED",
+      "classification_basis": "manual_seed",
+      "confidence": 0.90,
+      "operator_confirmed": false
+    },
+    "Others": {
+      "ownership_role": "CONTEXT_ONLY",
+      "classification_basis": "layer_map",
+      "confidence": 0.95,
+      "operator_confirmed": false
+    },
+    "Text": {
+      "ownership_role": "ANNOTATION",
+      "classification_basis": "entity_type_default",
+      "confidence": 0.95,
+      "operator_confirmed": false
+    },
+    "Dimensions": {
+      "ownership_role": "ANNOTATION",
+      "classification_basis": "entity_type_default",
+      "confidence": 0.95,
+      "operator_confirmed": false
+    },
+    "Defpoints": {
+      "ownership_role": "CONTEXT_ONLY",
+      "classification_basis": "entity_type_default",
+      "confidence": 0.95,
+      "operator_confirmed": false
+    }
+  },
+  "ambiguity_rules": {
+    "unknown_layer": "CONTEXT_ONLY",
+    "unknown_entity_type": "CONTEXT_ONLY",
+    "others_layer": "CONTEXT_ONLY",
+    "text_layer": "ANNOTATION",
+    "defpoints_layer": "CONTEXT_ONLY",
+    "promotion_requires_evidence": true,
+    "demotion_allowed_without_evidence": true
+  }
+}

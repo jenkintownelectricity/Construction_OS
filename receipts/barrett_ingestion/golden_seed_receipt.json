@@ -1,0 +1,83 @@
+{
+  "receipt_id": "RECEIPT-GOLDEN-SEED-BARRETT-RAMPROOF-GC-001",
+  "receipt_type": "golden_seed_selection",
+  "created_at": "2026-04-03T00:00:00Z",
+  "status": "PARTIAL",
+  "status_reason": "Full seed validation requires local DXF JSON access (LOCAL_OPERATOR_REQUIRED). Seed maps created from committed evidence only.",
+  "golden_seed_candidate": {
+    "identified": true,
+    "file": "202-R00-V01-071416-BARR-RP-RA-01-ROOFASSEMBLY-STD",
+    "file_path": "source/barrett/json/RamProof_GC/202-R00-V01-071416-BARR-RP-RA-01-ROOFASSEMBLY-STD.json",
+    "family": "RamProof_GC",
+    "rank": 1,
+    "noise_score": 3.8034,
+    "layer_count": 8,
+    "entity_count": 464,
+    "annotation_ratio": 0.0151,
+    "context_ratio": 0.9698,
+    "evidence_basis": "source/barrett/census/barrett_dxf_cleanliness_ranking.md (Rank 1 of 74 files)"
+  },
+  "seed_semantic_map": {
+    "created": true,
+    "output_path": "config/barrett_layer_semantic_map.seed.json",
+    "layer_count": 11,
+    "system_owned_layers": 7,
+    "context_layers": 2,
+    "annotation_layers": 2,
+    "evidence_basis": "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json (11 layers with semantic_role and ownership_role)"
+  },
+  "seed_ownership_map": {
+    "created": true,
+    "output_path": "config/barrett_layer_ownership_map.seed.json",
+    "layer_count": 11,
+    "evidence_basis": "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json and config/manufacturer/ownership_class_defaults.json"
+  },
+  "entity_defaults": {
+    "confirmed": true,
+    "source": "config/manufacturer/dxf_semantic_defaults.json",
+    "annotation_entity_types": ["TEXT", "MTEXT", "MULTILEADER", "DIMENSION"],
+    "classify_by_layer_entity_types": ["LWPOLYLINE", "HATCH", "LINE", "ARC", "CIRCLE", "INSERT", "SPLINE", "POLYLINE", "ELLIPSE", "POINT"],
+    "fallback_class": "CONTEXT_ONLY",
+    "evidence_basis": "config/manufacturer/dxf_semantic_defaults.json (version 1.0.0, committed)"
+  },
+  "manufacturer_fingerprint_seed": {
+    "noted": true,
+    "manufacturer": "Barrett Company",
+    "manufacturer_id": "MFR-BARRETT-001",
+    "family_id": "FAM-BARRETT-RAMPROOF-GC",
+    "system_name": "RamProof GC Waterproofing System",
+    "csi_section": "07 11 13",
+    "layer_naming_pattern": "Product-descriptive names with mixed case conventions",
+    "file_naming_pattern": "202-R00-V01-071416-BARR-RP-{detail_code}-{detail_type}",
+    "context_layer_convention": "Others = context_geometry (CONTEXT_ONLY, not junk)",
+    "evidence_basis": "source/barrett/definitions/ramproof_gc.definition.json and config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json"
+  },
+  "validation_gaps": [
+    {
+      "gap": "golden_seed_file_not_inspected",
+      "description": "Raw DXF JSON is gitignored. Cannot verify actual layers in golden seed file.",
+      "resolution": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "gap": "layer_count_discrepancy",
+      "description": "Cleanliness ranking reports 8 layers in golden seed, but seed map has 11 layers. Seed map may include layers from other RamProof GC files.",
+      "resolution": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "gap": "cross_file_layer_consistency",
+      "description": "Layer consistency across all 20 RamProof GC files has not been verified.",
+      "resolution": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "gap": "single_occurrence_layers",
+      "description": "Layers appearing in only one file cannot be promoted to global classification without operator confirmation.",
+      "resolution": "LOCAL_OPERATOR_REQUIRED"
+    }
+  ],
+  "artifacts_produced": [
+    "config/barrett_layer_semantic_map.seed.json",
+    "config/barrett_layer_ownership_map.seed.json",
+    "docs/BARRETT_GOLDEN_SEED_POSTURE_v0.1.md",
+    "receipts/barrett_ingestion/golden_seed_receipt.json"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "_version": "0.2.0",
+  "_description": "Entity type defaults for Barrett DXF semantic enrichment. Entity type rules take precedence over layer rules for ANNOTATION types.",
+  "_date": "2026-04-03",
+  "entity_type_defaults": {
+    "TEXT": {
+      "ownership_role": "ANNOTATION",
+      "semantic_role": "annotation",
+      "override_allowed": false,
+      "note": "Always ANNOTATION regardless of layer name"
+    },
+    "MTEXT": {
+      "ownership_role": "ANNOTATION",
+      "semantic_role": "annotation",
+      "override_allowed": false,
+      "note": "Always ANNOTATION regardless of layer name"
+    },
+    "MULTILEADER": {
+      "ownership_role": "ANNOTATION",
+      "semantic_role": "annotation",
+      "override_allowed": false,
+      "note": "Always ANNOTATION regardless of layer name"
+    },
+    "DIMENSION": {
+      "ownership_role": "ANNOTATION",
+      "semantic_role": "annotation",
+      "override_allowed": false,
+      "note": "Always ANNOTATION regardless of layer name"
+    },
+    "LWPOLYLINE": {
+      "ownership_role": "CLASSIFY_BY_LAYER",
+      "semantic_role": null,
+      "override_allowed": true,
+      "note": "Most common geometry type in Barrett DXFs"
+    },
+    "HATCH": {
+      "ownership_role": "CLASSIFY_BY_LAYER",
+      "semantic_role": null,
+      "override_allowed": true,
+      "note": "Fill patterns representing material sections"
+    },
+    "LINE": {
+      "ownership_role": "CLASSIFY_BY_LAYER",
+      "semantic_role": null,
+      "override_allowed": true,
+      "note": "Simple line segments"
+    },
+    "ARC": {
+      "ownership_role": "CLASSIFY_BY_LAYER",
+      "semantic_role": null,
+      "override_allowed": true,
+      "note": "Arc segments"
+    },
+    "CIRCLE": {
+      "ownership_role": "CLASSIFY_BY_LAYER",
+      "semantic_role": null,
+      "override_allowed": true,
+      "note": "Circle entities"
+    },
+    "INSERT": {
+      "ownership_role": "CLASSIFY_BY_LAYER",
+      "semantic_role": null,
+      "override_allowed": true,
+      "note": "Block inserts — classify by layer or block name"
+    },
+    "SPLINE": {
+      "ownership_role": "CLASSIFY_BY_LAYER",
+      "semantic_role": null,
+      "override_allowed": true,
+      "note": "Spline curves"
+    },
+    "POLYLINE": {
+      "ownership_role": "CLASSIFY_BY_LAYER",
+      "semantic_role": null,
+      "override_allowed": true,
+      "note": "Legacy polyline entities"
+    },
+    "ELLIPSE": {
+      "ownership_role": "CLASSIFY_BY_LAYER",
+      "semantic_role": null,
+      "override_allowed": true,
+      "note": "Ellipse entities"
+    },
+    "POINT": {
+      "ownership_role": "CLASSIFY_BY_LAYER",
+      "semantic_role": null,
+      "override_allowed": true,
+      "note": "Point entities"
+    }
+  },
+  "annotation_entity_types": ["TEXT", "MTEXT", "MULTILEADER", "DIMENSION"],
+  "classify_by_layer_types": ["LWPOLYLINE", "HATCH", "LINE", "ARC", "CIRCLE", "INSERT", "SPLINE", "POLYLINE", "ELLIPSE", "POINT"],
+  "fallback": {
+    "ownership_role": "CONTEXT_ONLY",
+    "semantic_role": "unclassified_context",
+    "note": "Unknown entity types default to CONTEXT_ONLY"
+  }
+}

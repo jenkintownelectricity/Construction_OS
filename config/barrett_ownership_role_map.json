@@ -1,0 +1,175 @@
+{
+  "_version": "0.2.0",
+  "_description": "Ownership role map for all known Barrett layers across all 4 product families. Maps each layer to its ownership class with evidence.",
+  "_date": "2026-04-03",
+  "SYSTEM_OWNED": {
+    "RAM Black Pearl Sheet": {
+      "evidence_source": "definition:black_pearl",
+      "families": ["Black_Pearl"],
+      "single_family": true
+    },
+    "Black Pearl": {
+      "evidence_source": "definition:black_pearl",
+      "families": ["Black_Pearl"],
+      "single_family": true
+    },
+    "RamProof GC": {
+      "evidence_source": "definition:ramproof_gc",
+      "families": ["RamProof_GC"],
+      "single_family": true
+    },
+    "RamProof": {
+      "evidence_source": "definition:ramproof_gc",
+      "families": ["RamProof_GC"],
+      "single_family": true
+    },
+    "RamProof SYSTEM LIQUID": {
+      "evidence_source": "seed:ramproof_gc",
+      "families": ["RamProof_GC"],
+      "single_family": true
+    },
+    "RamProof SYSTEM MESH": {
+      "evidence_source": "seed:ramproof_gc",
+      "families": ["RamProof_GC"],
+      "single_family": true
+    },
+    "Membrane": {
+      "evidence_source": "definition:ramproof_gc,rt250",
+      "families": ["RamProof_GC", "RT-250"],
+      "single_family": false
+    },
+    "RamTough 250": {
+      "evidence_source": "definition:rt250",
+      "families": ["RT-250"],
+      "single_family": true
+    },
+    "RT-250": {
+      "evidence_source": "definition:rt250",
+      "families": ["RT-250"],
+      "single_family": true
+    },
+    "RT250": {
+      "evidence_source": "definition:rt250",
+      "families": ["RT-250"],
+      "single_family": true
+    },
+    "PMMA": {
+      "evidence_source": "definition:pmma",
+      "families": ["PMMA"],
+      "single_family": true
+    },
+    "RamFlash": {
+      "evidence_source": "definition:pmma",
+      "families": ["PMMA"],
+      "single_family": true
+    },
+    "Fleece": {
+      "evidence_source": "definition:pmma",
+      "families": ["PMMA"],
+      "single_family": true
+    },
+    "Primer": {
+      "evidence_source": "definition:pmma,seed:ramproof_gc",
+      "families": ["PMMA", "RamProof_GC"],
+      "single_family": false
+    },
+    "Ram Mastic": {
+      "evidence_source": "seed:ramproof_gc",
+      "families": ["RamProof_GC"],
+      "single_family": true
+    },
+    "RAM POLY FELT 3.5 FILTER FABRIC": {
+      "evidence_source": "seed:ramproof_gc",
+      "families": ["RamProof_GC"],
+      "single_family": true
+    },
+    "Drainage Mat": {
+      "evidence_source": "seed:ramproof_gc",
+      "families": ["RamProof_GC"],
+      "single_family": true
+    },
+    "Protection Course": {
+      "evidence_source": "definition:black_pearl,seed:ramproof_gc,definition:rt250",
+      "families": ["Black_Pearl", "RamProof_GC", "RT-250"],
+      "single_family": false
+    }
+  },
+  "CONTEXT_ONLY": {
+    "Others": {
+      "evidence_source": "seed:ramproof_gc,taxonomy_rule",
+      "semantic_note": "context_geometry — NOT junk. Always CONTEXT_ONLY.",
+      "families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "single_family": false
+    },
+    "Defpoints": {
+      "evidence_source": "seed:ramproof_gc,taxonomy_rule",
+      "semantic_note": "reference_geometry — AutoCAD reference layer. Always CONTEXT_ONLY.",
+      "families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "single_family": false
+    },
+    "Substrate": {
+      "evidence_source": "definition:all_families",
+      "families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "single_family": false
+    },
+    "Concrete": {
+      "evidence_source": "definition:black_pearl,pmma,ramproof_gc",
+      "families": ["Black_Pearl", "PMMA", "RamProof_GC"],
+      "single_family": false
+    },
+    "Structural Slab": {
+      "evidence_source": "definition:black_pearl,rt250",
+      "families": ["Black_Pearl", "RT-250"],
+      "single_family": false
+    },
+    "Foundation Wall": {
+      "evidence_source": "definition:ramproof_gc",
+      "families": ["RamProof_GC"],
+      "single_family": true
+    },
+    "Foundation": {
+      "evidence_source": "definition:rt250",
+      "families": ["RT-250"],
+      "single_family": true
+    },
+    "Wall": {
+      "evidence_source": "definition:pmma",
+      "families": ["PMMA"],
+      "single_family": true
+    },
+    "Structural": {
+      "evidence_source": "definition:ramproof_gc",
+      "families": ["RamProof_GC"],
+      "single_family": true
+    },
+    "Overburden": {
+      "evidence_source": "definition:black_pearl",
+      "families": ["Black_Pearl"],
+      "single_family": true
+    }
+  },
+  "ANNOTATION": {
+    "Text": {
+      "evidence_source": "seed:ramproof_gc,taxonomy_rule",
+      "families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "single_family": false
+    },
+    "Dimensions": {
+      "evidence_source": "seed:ramproof_gc",
+      "families": ["RamProof_GC"],
+      "single_family": true
+    },
+    "MULTILEADER": {
+      "evidence_source": "definition:all_families",
+      "families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "single_family": false
+    }
+  },
+  "ambiguity_rules": {
+    "unknown_layer": "CONTEXT_ONLY",
+    "others_layer": "CONTEXT_ONLY",
+    "defpoints_layer": "CONTEXT_ONLY",
+    "promotion_to_system_owned_requires": "evidence from definition, seed, or operator confirmation",
+    "single_family_global_promotion_requires": "operator confirmation"
+  }
+}

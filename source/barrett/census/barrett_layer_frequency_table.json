@@ -1,0 +1,315 @@
+{
+  "_metadata": {
+    "title": "Barrett DXF Layer Frequency Table",
+    "description": "Layer inventory compiled from all committed evidence in the repository. Full frequency counts require local operator access to the raw DXF JSON files (gitignored, Windows-local only).",
+    "status": "PARTIAL",
+    "generated": "2026-04-03",
+    "evidence_sources": [
+      "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json",
+      "source/barrett/definitions/black_pearl.definition.json",
+      "source/barrett/definitions/pmma.definition.json",
+      "source/barrett/definitions/ramproof_gc.definition.json",
+      "source/barrett/definitions/rt250.definition.json",
+      "source/barrett/census/barrett_dxf_cleanliness_ranking.md"
+    ],
+    "frequency_data_status": "LOCAL_OPERATOR_REQUIRED — raw DXF JSON files at source/barrett/json/ are gitignored and not available in this environment. A local operator must run layer enumeration against the 74 parsed JSON files to produce per-layer frequency counts.",
+    "total_files_in_corpus": 74,
+    "families_represented": ["RamProof_GC", "RT-250", "Black_Pearl", "PMMA"]
+  },
+  "layers": [
+    {
+      "layer_name": "RamProof SYSTEM LIQUID",
+      "semantic_role": "liquid_applied_membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json"],
+      "families": ["RamProof_GC"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "RamProof SYSTEM MESH",
+      "semantic_role": "reinforcement_mesh",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json"],
+      "families": ["RamProof_GC"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Ram Mastic",
+      "semantic_role": "sealant",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json"],
+      "families": ["RamProof_GC"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "RAM POLY FELT 3.5 FILTER FABRIC",
+      "semantic_role": "filter_fabric",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json"],
+      "families": ["RamProof_GC"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Drainage Mat",
+      "semantic_role": "drainage_layer",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json"],
+      "families": ["RamProof_GC"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Protection Course",
+      "semantic_role": "protection_course",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": [
+        "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json",
+        "source/barrett/definitions/black_pearl.definition.json",
+        "source/barrett/definitions/rt250.definition.json"
+      ],
+      "families": ["RamProof_GC", "Black_Pearl", "RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Primer",
+      "semantic_role": "primer",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": [
+        "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json",
+        "source/barrett/definitions/pmma.definition.json"
+      ],
+      "families": ["RamProof_GC", "PMMA"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Others",
+      "semantic_role": "context_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_evidence": [
+        "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json",
+        "source/barrett/definitions/black_pearl.definition.json",
+        "source/barrett/definitions/pmma.definition.json",
+        "source/barrett/definitions/ramproof_gc.definition.json",
+        "source/barrett/definitions/rt250.definition.json"
+      ],
+      "families": ["RamProof_GC", "Black_Pearl", "PMMA", "RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Text",
+      "semantic_role": "annotation",
+      "ownership_role": "ANNOTATION",
+      "source_evidence": [
+        "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json",
+        "source/barrett/definitions/black_pearl.definition.json",
+        "source/barrett/definitions/pmma.definition.json",
+        "source/barrett/definitions/ramproof_gc.definition.json",
+        "source/barrett/definitions/rt250.definition.json"
+      ],
+      "families": ["RamProof_GC", "Black_Pearl", "PMMA", "RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Dimensions",
+      "semantic_role": "annotation",
+      "ownership_role": "ANNOTATION",
+      "source_evidence": ["config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json"],
+      "families": ["RamProof_GC"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Defpoints",
+      "semantic_role": "reference_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_evidence": [
+        "config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json",
+        "source/barrett/definitions/black_pearl.definition.json",
+        "source/barrett/definitions/pmma.definition.json",
+        "source/barrett/definitions/ramproof_gc.definition.json",
+        "source/barrett/definitions/rt250.definition.json"
+      ],
+      "families": ["RamProof_GC", "Black_Pearl", "PMMA", "RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "RAM Black Pearl Sheet",
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["source/barrett/definitions/black_pearl.definition.json"],
+      "families": ["Black_Pearl"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Black Pearl",
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["source/barrett/definitions/black_pearl.definition.json"],
+      "families": ["Black_Pearl"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Substrate",
+      "semantic_role": "context_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_evidence": [
+        "source/barrett/definitions/black_pearl.definition.json",
+        "source/barrett/definitions/pmma.definition.json",
+        "source/barrett/definitions/ramproof_gc.definition.json",
+        "source/barrett/definitions/rt250.definition.json"
+      ],
+      "families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Concrete",
+      "semantic_role": "context_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_evidence": [
+        "source/barrett/definitions/black_pearl.definition.json",
+        "source/barrett/definitions/pmma.definition.json",
+        "source/barrett/definitions/ramproof_gc.definition.json",
+        "source/barrett/definitions/rt250.definition.json"
+      ],
+      "families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Structural Slab",
+      "semantic_role": "context_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_evidence": [
+        "source/barrett/definitions/black_pearl.definition.json",
+        "source/barrett/definitions/rt250.definition.json"
+      ],
+      "families": ["Black_Pearl", "RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Overburden",
+      "semantic_role": "context_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_evidence": ["source/barrett/definitions/black_pearl.definition.json"],
+      "families": ["Black_Pearl"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "MULTILEADER",
+      "semantic_role": "annotation",
+      "ownership_role": "ANNOTATION",
+      "source_evidence": [
+        "source/barrett/definitions/black_pearl.definition.json",
+        "source/barrett/definitions/pmma.definition.json",
+        "source/barrett/definitions/ramproof_gc.definition.json",
+        "source/barrett/definitions/rt250.definition.json"
+      ],
+      "families": ["Black_Pearl", "PMMA", "RamProof_GC", "RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "PMMA",
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["source/barrett/definitions/pmma.definition.json"],
+      "families": ["PMMA"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "RamFlash",
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["source/barrett/definitions/pmma.definition.json"],
+      "families": ["PMMA"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Fleece",
+      "semantic_role": "reinforcement_mesh",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["source/barrett/definitions/pmma.definition.json"],
+      "families": ["PMMA"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Wall",
+      "semantic_role": "context_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_evidence": ["source/barrett/definitions/pmma.definition.json"],
+      "families": ["PMMA"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "RamProof GC",
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["source/barrett/definitions/ramproof_gc.definition.json"],
+      "families": ["RamProof_GC"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "RamProof",
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["source/barrett/definitions/ramproof_gc.definition.json"],
+      "families": ["RamProof_GC"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Membrane",
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": [
+        "source/barrett/definitions/ramproof_gc.definition.json",
+        "source/barrett/definitions/rt250.definition.json"
+      ],
+      "families": ["RamProof_GC", "RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Foundation Wall",
+      "semantic_role": "context_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_evidence": ["source/barrett/definitions/ramproof_gc.definition.json"],
+      "families": ["RamProof_GC"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Structural",
+      "semantic_role": "context_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_evidence": ["source/barrett/definitions/ramproof_gc.definition.json"],
+      "families": ["RamProof_GC"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "RamTough 250",
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["source/barrett/definitions/rt250.definition.json"],
+      "families": ["RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "RT-250",
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["source/barrett/definitions/rt250.definition.json"],
+      "families": ["RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "RT250",
+      "semantic_role": "membrane",
+      "ownership_role": "SYSTEM_OWNED",
+      "source_evidence": ["source/barrett/definitions/rt250.definition.json"],
+      "families": ["RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    },
+    {
+      "layer_name": "Foundation",
+      "semantic_role": "context_geometry",
+      "ownership_role": "CONTEXT_ONLY",
+      "source_evidence": ["source/barrett/definitions/rt250.definition.json"],
+      "families": ["RT-250"],
+      "frequency": "LOCAL_OPERATOR_REQUIRED"
+    }
+  ]
+}

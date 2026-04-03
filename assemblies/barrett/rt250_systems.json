@@ -1,0 +1,69 @@
+{
+  "family_id": "FAM-BARRETT-RT250",
+  "system_name": "RamTough 250 Waterproofing System",
+  "manufacturer": "Barrett Company",
+  "manufacturer_id": "MFR-BARRETT-001",
+  "system_type": "waterproofing",
+  "system_description": "Hot fluid-applied rubberized asphalt membrane waterproofing system. Applied at elevated temperature for monolithic seamless waterproofing. Often used with RamFlash PMMA for detail/flashing work.",
+  "csi_section": "07 11 13",
+  "components": [
+    {
+      "component_id": "rt250-membrane",
+      "name": "RamTough 250 Membrane",
+      "role": "membrane",
+      "material_type": "hot_fluid_applied_rubberized_asphalt",
+      "ownership_class": "SYSTEM_OWNED"
+    },
+    {
+      "component_id": "rt250-primer",
+      "name": "RamTough 250 Primer",
+      "role": "primer_adhesive",
+      "material_type": "asphalt_primer",
+      "ownership_class": "SYSTEM_OWNED"
+    },
+    {
+      "component_id": "rt250-protection",
+      "name": "Protection Course",
+      "role": "protection",
+      "material_type": "protection_board",
+      "ownership_class": "SYSTEM_OWNED"
+    }
+  ],
+  "owned_layers": ["RamTough 250", "RT-250", "RT250", "Membrane", "Protection Course"],
+  "context_layers": ["Others", "Substrate", "Concrete", "Structural Slab", "Foundation"],
+  "annotation_layers": ["Text", "Defpoints", "MULTILEADER"],
+  "supported_conditions": ["field_membrane", "foundation_wall", "below_grade", "plaza_deck", "wall_transition"],
+  "assembly_validation": {
+    "components_evidence_based": false,
+    "layers_confirmed_from_dxf": false,
+    "conditions_confirmed_from_dxf": false,
+    "notes": "Component list derived from product knowledge and definition file. RT-250 has strong DXF evidence (26 files) with the second-cleanest file overall (noise score 4.6852, CLEAN_5 phase). Layer names include multiple aliases (RamTough 250, RT-250, RT250) that need DXF confirmation. Cross-family dependency with PMMA flashing system is documented but not modeled at assembly level."
+  },
+  "dxf_evidence": {
+    "total_dxf_files": 26,
+    "golden_seed_candidate": false,
+    "cleanest_noise_score": 4.6852,
+    "cleanest_file": "source/barrett/json/RT-250/202-R00-V01-071413-BARR-RT250-RA-01-ROOFASSEMBLY-STD.json",
+    "cleanest_phase": "CLEAN_5"
+  },
+  "readiness": "PARTIAL",
+  "readiness_blockers": [
+    "DXF source files are local-only (gitignored) — layer mapping not validated against parsed JSON",
+    "Component list derived from product knowledge, not confirmed from DXF geometry evidence",
+    "Multiple layer name aliases (RamTough 250, RT-250, RT250) need confirmation from DXF layer inventory",
+    "Cross-family dependency with PMMA flashing system not yet modeled at assembly level",
+    "Ownership classification needs DXF layer-to-role confirmation pass"
+  ],
+  "cross_family_relationships": [
+    {
+      "related_family_id": "FAM-BARRETT-PMMA",
+      "relationship": "flashing_partner",
+      "description": "RT-250 field membrane is commonly paired with PMMA for flashing and detail conditions"
+    }
+  ],
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "updated_at": "2026-04-03T00:00:00Z",
+    "updated_by": "dxf_validation_readiness_wave"
+  }
+}

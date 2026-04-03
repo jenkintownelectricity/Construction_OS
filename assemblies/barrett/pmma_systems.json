@@ -1,0 +1,81 @@
+{
+  "family_id": "FAM-BARRETT-PMMA",
+  "system_name": "RamFlash PMMA Flashing System",
+  "manufacturer": "Barrett Company",
+  "manufacturer_id": "MFR-BARRETT-001",
+  "system_type": "flashing",
+  "system_description": "PMMA-based flashing system composed of RamFlash PMMA Primer, PMMA Membrane resin, Fleece reinforcement, and Catalyst. Used as a flashing and detail system often paired with RamTough 250 or Black Pearl field membranes.",
+  "csi_section": "07 62 00",
+  "components": [
+    {
+      "component_id": "pmma-primer",
+      "name": "RamFlash PMMA Primer",
+      "role": "primer_adhesive",
+      "material_type": "PMMA_primer",
+      "ownership_class": "SYSTEM_OWNED"
+    },
+    {
+      "component_id": "pmma-membrane",
+      "name": "RamFlash PMMA Membrane",
+      "role": "membrane",
+      "material_type": "PMMA_resin",
+      "ownership_class": "SYSTEM_OWNED"
+    },
+    {
+      "component_id": "pmma-fleece",
+      "name": "RamFlash Fleece",
+      "role": "reinforcement",
+      "material_type": "polyester_fleece",
+      "ownership_class": "SYSTEM_OWNED"
+    },
+    {
+      "component_id": "pmma-catalyst",
+      "name": "RamFlash Catalyst",
+      "role": "primer_adhesive",
+      "material_type": "PMMA_catalyst",
+      "ownership_class": "SYSTEM_OWNED"
+    }
+  ],
+  "owned_layers": ["PMMA", "RamFlash", "Fleece", "Primer"],
+  "context_layers": ["Others", "Substrate", "Concrete", "Wall"],
+  "annotation_layers": ["Text", "Defpoints", "MULTILEADER"],
+  "supported_conditions": ["parapet_flashing", "penetration_flashing", "wall_transition", "detail_flashing", "counter_flashing"],
+  "assembly_validation": {
+    "components_evidence_based": false,
+    "layers_confirmed_from_dxf": false,
+    "conditions_confirmed_from_dxf": false,
+    "notes": "Component list derived from product knowledge. Only 1 DXF file exists in the ranking census (a curb detail), making layer validation extremely limited. Layer names are speculative; the single DXF file may not represent all PMMA conditions. PMMA is primarily a flashing/detail system paired with RT-250 or Black Pearl field membranes."
+  },
+  "dxf_evidence": {
+    "total_dxf_files": 1,
+    "golden_seed_candidate": false,
+    "cleanest_noise_score": 18.4205,
+    "cleanest_file": "source/barrett/json/PMMA/202-R00-V01-071416-BARR-LF-CU-01-CURB-STD.json",
+    "cleanest_phase": "REMAINDER"
+  },
+  "readiness": "PARTIAL",
+  "readiness_blockers": [
+    "Only 1 DXF file in census — insufficient coverage for condition validation",
+    "DXF source files are local-only (gitignored) — layer mapping not validated against parsed JSON",
+    "Layer names are speculative — need confirmation from actual DXF layer inventory",
+    "DXF JSON parse status unknown for PMMA family",
+    "Single DXF has high noise score (18.4205) — poor golden seed candidate"
+  ],
+  "cross_family_relationships": [
+    {
+      "related_family_id": "FAM-BARRETT-RT250",
+      "relationship": "flashing_partner",
+      "description": "PMMA is the standard flashing/detail system paired with RT-250 field membrane"
+    },
+    {
+      "related_family_id": "FAM-BARRETT-BLACK-PEARL",
+      "relationship": "flashing_partner",
+      "description": "PMMA can also be used as flashing/detail system with Black Pearl field membrane"
+    }
+  ],
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "updated_at": "2026-04-03T00:00:00Z",
+    "updated_by": "dxf_validation_readiness_wave"
+  }
+}

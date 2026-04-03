@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Barrett Assembly Definition",
+  "description": "Schema for Barrett manufacturer assembly system definition files. Captures product family identity, components, layer mappings, DXF evidence state, and readiness classification.",
+  "type": "object",
+  "required": [
+    "family_id",
+    "system_name",
+    "manufacturer",
+    "manufacturer_id",
+    "system_type",
+    "components",
+    "owned_layers",
+    "context_layers",
+    "annotation_layers",
+    "supported_conditions",
+    "assembly_validation",
+    "dxf_evidence",
+    "readiness",
+    "readiness_blockers",
+    "lineage"
+  ],
+  "properties": {
+    "family_id": {
+      "type": "string",
+      "pattern": "^FAM-BARRETT-",
+      "description": "Unique family identifier following FAM-BARRETT-{FAMILY} pattern"
+    },
+    "system_name": {
+      "type": "string",
+      "description": "Human-readable system name"
+    },
+    "manufacturer": {
+      "type": "string",
+      "const": "Barrett Company"
+    },
+    "manufacturer_id": {
+      "type": "string",
+      "pattern": "^MFR-BARRETT-",
+      "description": "Manufacturer identifier"
+    },
+    "system_type": {
+      "type": "string",
+      "enum": ["waterproofing", "flashing", "roofing"],
+      "description": "Primary system classification"
+    },
+    "system_description": {
+      "type": "string",
+      "description": "Detailed description of the system and its application"
+    },
+    "csi_section": {
+      "type": "string",
+      "description": "CSI MasterFormat section number"
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["component_id", "name", "role", "material_type", "ownership_class"],
+        "properties": {
+          "component_id": {
+            "type": "string",
+            "description": "Unique component identifier within the family"
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable component name"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["membrane", "primer_adhesive", "protection", "reinforcement", "sealant", "drainage", "filter"],
+            "description": "Functional role of the component in the assembly"
+          },
+          "material_type": {
+            "type": "string",
+            "description": "Material classification"
+          },
+          "ownership_class": {
+            "type": "string",
+            "enum": ["SYSTEM_OWNED", "CONTEXT_ONLY", "ANNOTATION"],
+            "description": "Ownership classification for the component"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "owned_layers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "DXF layer names owned by the manufacturer system"
+    },
+    "context_layers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "DXF layer names representing context geometry (substrate, structure, etc.)"
+    },
+    "annotation_layers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "DXF layer names used for annotations, dimensions, and reference points"
+    },
+    "supported_conditions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Construction conditions this system supports"
+    },
+    "assembly_validation": {
+      "type": "object",
+      "required": ["components_evidence_based", "layers_confirmed_from_dxf", "conditions_confirmed_from_dxf", "notes"],
+      "properties": {
+        "components_evidence_based": {
+          "type": "boolean",
+          "description": "True only if components were confirmed from DXF geometry evidence"
+        },
+        "layers_confirmed_from_dxf": {
+          "type": "boolean",
+          "description": "True only if layer names were confirmed against parsed DXF JSON"
+        },
+        "conditions_confirmed_from_dxf": {
+          "type": "boolean",
+          "description": "True only if supported conditions were confirmed from representative DXF details"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Free-text notes on validation state"
+        }
+      },
+      "additionalProperties": false
+    },
+    "dxf_evidence": {
+      "type": "object",
+      "required": ["total_dxf_files", "golden_seed_candidate", "cleanest_noise_score"],
+      "properties": {
+        "total_dxf_files": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of DXF files in the cleanliness ranking census"
+        },
+        "golden_seed_candidate": {
+          "type": "boolean",
+          "description": "True if at least one file is classified as GOLDEN_SEED phase"
+        },
+        "cleanest_noise_score": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Lowest noise score among all DXF files for this family"
+        },
+        "cleanest_file": {
+          "type": "string",
+          "description": "Path to the cleanest DXF JSON file"
+        },
+        "cleanest_phase": {
+          "type": "string",
+          "enum": ["GOLDEN_SEED", "CLEAN_5", "MODERATE_5", "NOISY_10", "REMAINDER"],
+          "description": "Cleanliness phase classification of the cleanest file"
+        },
+        "semantic_seed_exists": {
+          "type": "boolean",
+          "description": "True if a semantic seed layer mapping file exists for this family"
+        },
+        "semantic_seed_path": {
+          "type": "string",
+          "description": "Path to the semantic seed configuration file"
+        }
+      },
+      "additionalProperties": false
+    },
+    "readiness": {
+      "type": "string",
+      "enum": ["READY", "PARTIAL", "BLOCKED", "NO_SOURCE"],
+      "description": "Assembly definition readiness state"
+    },
+    "readiness_blockers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of specific blockers preventing READY status"
+    },
+    "cross_family_relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["related_family_id", "relationship", "description"],
+        "properties": {
+          "related_family_id": { "type": "string" },
+          "relationship": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "description": "Relationships to other Barrett system families"
+    },
+    "lineage": {
+      "type": "object",
+      "required": ["source_authority", "updated_at", "updated_by"],
+      "properties": {
+        "source_authority": { "type": "string" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "updated_by": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,65 @@
+{
+  "family_id": "FAM-BARRETT-RAMPROOF-GC",
+  "validation_date": "2026-04-03",
+  "validation_type": "assembly_definition_validation",
+  "checks": [
+    {
+      "check": "family_defined",
+      "status": "PASS",
+      "evidence": "ramproof_gc.definition.json defines FAM-BARRETT-RAMPROOF-GC with system_name, manufacturer_id, and system_description"
+    },
+    {
+      "check": "components_listed",
+      "status": "PASS",
+      "evidence": "2 components in definition file: RamProof GC Membrane, RamProof GC Primer. Note: semantic seed suggests additional owned layers (mesh, mastic, filter fabric, drainage mat, protection course) that may indicate missing components"
+    },
+    {
+      "check": "layers_mapped_from_dxf",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — semantic seed exists (barrett_layer_semantic_seed_ramproof_gc.json) with 11 mapped layers but has not been validated against parsed DXF JSON by local operator"
+    },
+    {
+      "check": "dxf_json_parsed",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — 26 DXF files exist in census including a GOLDEN_SEED (noise 3.8034) but JSON parse results are local-only"
+    },
+    {
+      "check": "ownership_classified_from_evidence",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — semantic seed provides ownership hints (SYSTEM_OWNED for 7 layers, CONTEXT_ONLY for 2, ANNOTATION for 2) but needs local confirmation"
+    },
+    {
+      "check": "condition_support_confirmed",
+      "status": "FAIL",
+      "evidence": "LOCAL_OPERATOR_REQUIRED — supported conditions (field_membrane, foundation_wall, below_grade, wall_transition) need confirmation from representative DXF detail inventory"
+    },
+    {
+      "check": "golden_seed_available",
+      "status": "PASS",
+      "evidence": "GOLDEN_SEED file confirmed at rank 1: 202-R00-V01-071416-BARR-RP-RA-01-ROOFASSEMBLY-STD.json (noise 3.8034, 8 layers, 464 entities)"
+    },
+    {
+      "check": "semantic_seed_exists",
+      "status": "PASS",
+      "evidence": "Semantic seed exists at config/manufacturer/barrett_layer_semantic_seed_ramproof_gc.json with 11 layer mappings"
+    },
+    {
+      "check": "component_completeness",
+      "status": "FAIL",
+      "evidence": "Definition lists 2 components but semantic seed shows 7 SYSTEM_OWNED layers — potential component gap needs resolution"
+    },
+    {
+      "check": "cross_family_modeled",
+      "status": "PASS",
+      "evidence": "No cross-family dependencies for RamProof GC — standalone system"
+    }
+  ],
+  "overall_status": "PARTIAL",
+  "pass_count": 5,
+  "fail_count": 5,
+  "lineage": {
+    "source_authority": "10-Construction_OS",
+    "validated_at": "2026-04-03T00:00:00Z",
+    "validated_by": "dxf_validation_readiness_wave"
+  }
+}
