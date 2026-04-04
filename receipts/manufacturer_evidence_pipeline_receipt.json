@@ -1,0 +1,90 @@
+{
+  "receipt_id": "RCPT-MFR-EVIDENCE-PIPELINE-2026-04-04",
+  "receipt_type": "manufacturer_evidence_pipeline_build",
+  "timestamp_utc": "2026-04-04T00:00:00Z",
+  "mission_id": "MANUFACTURER_EVIDENCE_PIPELINE_AND_DEMO_SURFACE",
+  "authority": "L0_ARMAND_LEFEBVRE",
+  "repos_touched": [
+    "10-Construction_OS",
+    "Construction_Application_OS",
+    "Construction_OS_Sales_Command_Center"
+  ],
+  "artifacts_created": {
+    "10-Construction_OS": [
+      "supabase/migrations/001_evidence_pipeline.sql",
+      "supabase/seed/barrett_demo_seed.sql",
+      "tools/detect_condition_geometry.py",
+      "schemas/manufacturer/evidence_ingest_job.schema.json",
+      "receipts/manufacturer_evidence_pipeline_receipt.json"
+    ],
+    "Construction_Application_OS": [
+      "src/lib/supabase/client.ts",
+      "src/types/evidence.ts",
+      "src/services/evidence/manufacturerCatalog.ts",
+      "src/pages/manufacturer-evidence/ManufacturerEvidencePage.tsx",
+      "src/pages/manufacturer-catalog/ManufacturerCatalogPage.tsx",
+      "src/pages/condition-resolver/ConditionResolverPage.tsx"
+    ],
+    "Construction_OS_Sales_Command_Center": [
+      "docs/MANUFACTURER_DEMO_FLOW_v1.md",
+      "docs/MANUFACTURER_SYSTEM_LOCK_v1.md",
+      "docs/CONDITION_DRIVEN_DETAIL_GENERATION_v1.md",
+      "docs/MANUFACTURER_ONBOARDING_PLAYBOOK_v1.md",
+      "docs/DIVISION07_PLATFORM_POSITIONING_v1.md",
+      "src/demo/manufacturer_demo_flow.ts",
+      "src/demo/system_lock_examples.ts",
+      "src/demo/demo_condition_selector.ts"
+    ]
+  },
+  "artifacts_modified": {
+    "Construction_Application_OS": [
+      "src/layout/controlTowerTypes.ts",
+      "src/layout/ControlTowerLayout.tsx"
+    ]
+  },
+  "supabase_integration": {
+    "migration_files": 1,
+    "seed_files": 1,
+    "tables_created": ["companies", "jobs", "submittals", "manufacturers", "system_families", "systems", "system_components", "system_details", "ingest_jobs", "evidence_records", "generated_reports"],
+    "views_created": ["v_evidence_summary"],
+    "enums_created": ["storage_posture", "processing_status", "evidence_kind"],
+    "storage_buckets": ["manufacturer-ingest-temp", "manufacturer-ingest-queue-safe", "customer-evidence-vault"],
+    "rls_enabled": ["ingest_jobs", "evidence_records", "generated_reports"]
+  },
+  "condition_kernel": {
+    "location": "10-Construction_OS/tools/detect_condition_geometry.py",
+    "conditions_supported": ["parapet", "drain", "penetration", "corner", "expansion_joint"],
+    "detection_method": "heuristic",
+    "ai_required": false
+  },
+  "manufacturer_demo": {
+    "manufacturers_seeded": ["Barrett Roofing", "ISOVER Fireproofing (scaffold)", "GCP Applied Technologies (scaffold)"],
+    "systems_seeded": ["RamProof GC Standard", "Barrett SBS Standard"],
+    "components_seeded": 7,
+    "condition_details_seeded": 10,
+    "demo_job": "JOB-BARRETT-DEMO-001",
+    "demo_submittal": "SUB-BARRETT-DEMO-001"
+  },
+  "ui_surfaces": {
+    "new_routes": ["manufacturer-evidence", "manufacturer-catalog", "condition-resolver"],
+    "nav_group": "Manufacturer",
+    "supabase_fallback": "Demo mode with seeded data when Supabase not configured"
+  },
+  "sales_command_center": {
+    "commercial_docs": 5,
+    "demo_artifacts": 3,
+    "observer_only": true,
+    "upstream_mutation": false
+  },
+  "governance_compliance": {
+    "utk_mutated": false,
+    "governance_mutated": false,
+    "registry_mutated": false,
+    "fabric_mutated": false,
+    "vkbus_mutated": false,
+    "foundry_mutated": false,
+    "utc_enforced": true,
+    "fail_closed": true
+  },
+  "verdict": "PASS"
+}
