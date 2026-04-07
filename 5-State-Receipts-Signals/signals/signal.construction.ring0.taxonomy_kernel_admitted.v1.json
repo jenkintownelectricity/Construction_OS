@@ -1,0 +1,14 @@
+{
+  "signal_id": "SIG-TXNMY-ADMIT-001",
+  "signal_type": "ring0.kernel_admitted",
+  "version": "1",
+  "timestamp": "2026-04-07T00:00:00Z",
+  "source": "10-Construction_OS",
+  "kernel_id": "KRN-TXNMY-001",
+  "kernel_name": "Construction_Taxonomy_Kernel",
+  "ring": 0,
+  "status": "ADMITTED",
+  "truth_domain": "navigation_hierarchy_classification_structure_browse_paths",
+  "microdomains": 6,
+  "authority": "L0_ARMAND_LEFEBVRE"
+}
