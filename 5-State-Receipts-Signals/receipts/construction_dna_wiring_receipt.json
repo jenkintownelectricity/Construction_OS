@@ -1,0 +1,14 @@
+{
+  "receipt_type": "kernel_wiring",
+  "timestamp": "2026-04-07T00:00:00Z",
+  "authority": "L0_ARMAND_LEFEBVRE",
+  "status": "WIRED",
+  "kernels_wired": [
+    {"kernel_id": "KRN-MATDNA-001", "wired_to": ["Construction_Kernel", "Chemistry_Kernel", "Specification_Kernel", "Construction_Runtime", "Construction_ALEXANDER_Engine", "Construction_Atlas"]},
+    {"kernel_id": "KRN-TXNMY-001", "wired_to": ["Construction_Kernel", "Construction_Material_DNA_Kernel", "Construction_Atlas", "Construction_Application_OS", "70-manufacturer-mirror", "Construction_ALEXANDER_Engine"]}
+  ],
+  "truth_layer_updated": true,
+  "fabric_placement_emitted": true,
+  "foundry_birth_emitted": true,
+  "registry_reference_emitted": true
+}

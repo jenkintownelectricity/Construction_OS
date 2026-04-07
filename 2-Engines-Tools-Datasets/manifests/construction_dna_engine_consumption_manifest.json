@@ -1,0 +1,37 @@
+{
+  "manifest_id": "MAN-DNAENG-001",
+  "version": "0.1.0",
+  "description": "Engine consumption rules for the Construction DNA kernel stack",
+  "installed_date": "2026-04-07",
+  "authority": "L0_ARMAND_LEFEBVRE",
+  "consumers": [
+    {
+      "engine": "Construction_ALEXANDER_Engine",
+      "consumes_from": ["Construction_Material_DNA_Kernel", "Construction_Taxonomy_Kernel"],
+      "usage": "Pattern family classification using taxonomy nodes. Material property lookup for constraint evaluation.",
+      "permission": "READ_ONLY",
+      "may_mutate": false
+    },
+    {
+      "engine": "Construction_Runtime",
+      "consumes_from": ["Construction_Material_DNA_Kernel"],
+      "usage": "Material property validation during execution pipeline. Compatibility checking during assembly validation.",
+      "permission": "READ_ONLY",
+      "may_mutate": false
+    },
+    {
+      "engine": "construction_development_scraper",
+      "consumes_from": [],
+      "feeds_to": ["Construction_Material_DNA_Kernel"],
+      "usage": "Ingestion pipeline that feeds scraped material data into Material DNA Kernel admission queue. Does NOT directly mutate kernel — feeds admission queue only.",
+      "permission": "FEED_ONLY",
+      "may_mutate": false
+    }
+  ],
+  "rules": [
+    "Engines consume kernel truth via typed contracts",
+    "Engines may NOT mutate kernel truth",
+    "Engines may NOT bypass kernel contracts",
+    "Engines may cache kernel data for performance but must respect version freshness"
+  ]
+}
