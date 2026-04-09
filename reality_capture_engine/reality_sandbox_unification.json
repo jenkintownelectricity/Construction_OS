@@ -1,64 +1,79 @@
 {
-  "system": "reality_sandbox_unification",
-  "version": "1.0.0",
-  "description": "Integrates Reality Capture Engine with Predicted Build Sandbox, Time Engine, and Global Atlas.",
-  "integrations": {
+  "system_id": "reality_sandbox_unification",
+  "version": "2.0.0",
+  "description": "Integration layer connecting Reality Capture Engine with Predicted Build Sandbox, Time Engine, and Global Atlas. Runs a continuous deviation-detection and correction loop.",
+  "integrated_systems": {
     "predicted_build_sandbox": {
-      "role": "source_of_truth_for_planned_state",
-      "sync_fields": ["planned_geometry", "schedule_sequence", "material_specs", "tolerance_thresholds"],
+      "role": "Source of truth for planned construction state at any point in time",
+      "interface": "sandbox_api_v2",
+      "sync_fields": ["planned_element_positions", "scheduled_sequences", "resource_allocations", "tolerance_thresholds"],
       "update_trigger": "on_deviation_detected"
     },
     "time_engine": {
-      "role": "temporal_indexing_and_playback",
-      "sync_fields": ["scan_timestamps", "daily_progress_index", "crew_timeline", "installation_events"],
+      "role": "Temporal index aligning scan timestamps to construction schedule phases",
+      "interface": "time_engine_api_v1",
+      "sync_fields": ["schedule_phase_map", "milestone_timestamps", "lag_lead_analysis", "crew_timeline"],
       "update_trigger": "on_new_scan_ingested"
     },
     "global_atlas": {
-      "role": "spatial_reference_and_site_map",
-      "sync_fields": ["site_coordinate_frame", "element_locations", "zone_boundaries", "as_built_layer"],
+      "role": "Geospatial registry mapping site coordinates to project elements and zones",
+      "interface": "atlas_spatial_api_v3",
+      "sync_fields": ["site_coordinate_system", "element_spatial_index", "region_boundaries", "as_built_layer"],
       "update_trigger": "on_mesh_model_published"
     }
   },
   "unification_loop": {
-    "description": "Continuous closed-loop pipeline from capture to corrective action.",
+    "loop_id": "reality_deviation_loop",
+    "trigger": "on_scan_complete | scheduled_daily | manual_trigger",
+    "batch_time_utc": "02:00",
     "steps": [
       {
         "step": 1,
-        "name": "reality_capture",
-        "action": "Ingest normalized point_clouds, mesh_models, image_sets from spatial_device_adapters.",
-        "output": "raw_as_built_snapshot"
+        "name": "Reality Capture",
+        "description": "Ingest normalized point_clouds, mesh_models, image_sets from spatial_device_adapters.",
+        "outputs": ["as_built_snapshot", "scan_timestamp", "coverage_map"]
       },
       {
         "step": 2,
-        "name": "compare_design",
-        "action": "Diff raw_as_built_snapshot against BIM design model from Predicted Build Sandbox.",
-        "output": "design_deviation_report"
+        "name": "Compare Design",
+        "description": "Diff as_built_snapshot against BIM design model retrieved from Global Atlas.",
+        "outputs": ["design_deviation_report", "element_delta_list"]
       },
       {
         "step": 3,
-        "name": "compare_planned",
-        "action": "Diff raw_as_built_snapshot against planned schedule geometry from Time Engine.",
-        "output": "schedule_deviation_report"
+        "name": "Compare Planned",
+        "description": "Diff as_built_snapshot against Predicted Build Sandbox state at scan_timestamp via Time Engine.",
+        "outputs": ["schedule_deviation_report", "ahead_behind_delta"]
       },
       {
         "step": 4,
-        "name": "detect_deviation",
-        "action": "Merge design_deviation_report and schedule_deviation_report. Flag elements exceeding tolerance.",
-        "output": "unified_deviation_manifest"
+        "name": "Detect Deviation",
+        "description": "Classify deviations by severity — pass (<15mm), flag (15–50mm), fail (>50mm). Flag schedule slippage.",
+        "outputs": ["deviation_classifications", "risk_flags", "inspection_triggers"]
       },
       {
         "step": 5,
-        "name": "suggest_correction",
-        "action": "Generate correction recommendations per flagged element. Route to responsible trade and RFI system.",
-        "output": "correction_action_list"
+        "name": "Suggest Correction",
+        "description": "Generate corrective actions: rework orders, RFIs, schedule adjustments, re-scan requests.",
+        "outputs": ["correction_suggestions", "rfi_drafts", "schedule_change_proposals"]
       },
       {
         "step": 6,
-        "name": "update_sandbox",
-        "action": "Push verified as-built geometry to Predicted Build Sandbox, update Global Atlas as-built layer, log to Time Engine.",
-        "output": "updated_sandbox_state"
+        "name": "Update Sandbox",
+        "description": "Push verified as-built data back into Predicted Build Sandbox to rebase future predictions. Update Global Atlas and Time Engine.",
+        "outputs": ["updated_sandbox_state", "rebase_confirmation", "atlas_spatial_index_update"]
       }
-    ],
-    "loop_cadence": "on_scan_complete | scheduled_daily | manual_trigger"
+    ]
+  },
+  "data_contracts": {
+    "scan_ingest_payload": {
+      "required": ["scan_id", "scan_timestamp", "adapter_id", "point_cloud_ref", "mesh_ref", "coverage_bounds"]
+    },
+    "deviation_event": {
+      "required": ["element_id", "deviation_mm", "severity", "step_triggered", "correction_suggested"]
+    },
+    "sandbox_rebase_payload": {
+      "required": ["as_built_elements", "verified_timestamp", "lineage_hash", "atlas_region_ids"]
+    }
   }
 }
