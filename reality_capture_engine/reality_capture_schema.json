@@ -56,11 +56,7 @@
   "design_vs_reality_comparator": {
     "inputs": ["bim_design_model", "reality_truth_layer"],
     "checks": ["geometric_deviation", "element_placement", "installation_completeness", "elevation_accuracy"],
-    "deviation_thresholds": {
-      "critical_mm": 25,
-      "warning_mm": 10,
-      "acceptable_mm": 5
-    },
+    "deviation_thresholds": { "critical_mm": 25, "warning_mm": 10, "acceptable_mm": 5 },
     "output": "comparison_report"
   },
   "asbuilt_model_store": {
@@ -89,4 +85,3 @@
     }
   }
 }
-
