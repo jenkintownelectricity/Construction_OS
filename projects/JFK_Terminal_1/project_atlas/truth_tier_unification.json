@@ -31,71 +31,13 @@
     }
   },
   "unification_flow": [
-    {
-      "step": 1,
-      "id": "STEP-SCRAPE",
-      "label": "Scraped Truth Ingest",
-      "from": "manufacturer_source / spec_document",
-      "to": "canonical_truth_tier",
-      "operation": "parse_and_type_to_dna_assembly",
-      "output": "typed_assembly_kernel"
-    },
-    {
-      "step": 2,
-      "id": "STEP-DNA",
-      "label": "Typed DNA Assembly",
-      "from": "canonical_truth_tier",
-      "to": "project_truth_tier",
-      "operation": "map_canonical_kernel_to_project_zone",
-      "output": "project_assembly_selection"
-    },
-    {
-      "step": 3,
-      "id": "STEP-PROJECT-MAP",
-      "label": "Project Mapping",
-      "from": "project_truth_tier",
-      "to": "zone_assembly_index",
-      "operation": "bind_assembly_to_zone_and_approve_variants",
-      "output": "zone_assembly_map"
-    },
-    {
-      "step": 4,
-      "id": "STEP-GEO",
-      "label": "Geo Anchoring",
-      "from": "zone_assembly_map",
-      "to": "atlas_map_surface",
-      "operation": "anchor_zone_to_gps_coordinates_and_building_footprint",
-      "output": "geo_anchored_zone_record"
-    },
-    {
-      "step": 5,
-      "id": "STEP-FIELD",
-      "label": "Field Intelligence Enrichment",
-      "from": "field_intelligence_tier",
-      "to": "geo_anchored_zone_record",
-      "operation": "append_observations_deviations_and_corrections",
-      "output": "enriched_zone_record",
-      "constraint": "no_canonical_or_project_mutation"
-    },
-    {
-      "step": 6,
-      "id": "STEP-REGEN",
-      "label": "Packet Regeneration",
-      "from": "enriched_zone_record + revision_intelligence_graph",
-      "to": "packet_store",
-      "operation": "evaluate_revision_queue_and_regenerate_affected_packets",
-      "output": "regenerated_packet",
-      "trigger_ref": "revision_intelligence_graph.json"
-    },
-    {
-      "step": 7,
-      "id": "STEP-ATLAS",
-      "label": "Atlas Enrichment",
-      "from": "regenerated_packet + geo_anchored_zone_record",
-      "to": "atlas_map_surface",
-      "operation": "publish_revision_markers_evidence_markers_and_packet_links",
-      "output": "atlas_enriched_map_state"
-    }
+    { "step": 1, "id": "STEP-SCRAPE", "label": "Scraped Truth Ingest", "from": "manufacturer_source/spec_document", "to": "canonical_truth_tier", "operation": "parse_and_type_to_dna_assembly", "output": "typed_assembly_kernel" },
+    { "step": 2, "id": "STEP-DNA", "label": "Typed DNA Assembly", "from": "canonical_truth_tier", "to": "project_truth_tier", "operation": "map_canonical_kernel_to_project_zone", "output": "project_assembly_selection" },
+    { "step": 3, "id": "STEP-PROJECT-MAP", "label": "Project Mapping", "from": "project_truth_tier", "to": "zone_assembly_index", "operation": "bind_assembly_to_zone_and_approve_variants", "output": "zone_assembly_map" },
+    { "step": 4, "id": "STEP-GEO", "label": "Geo Anchoring", "from": "zone_assembly_map", "to": "atlas_map_surface", "operation": "anchor_zone_to_gps_and_building_footprint", "output": "geo_anchored_zone_record" },
+    { "step": 5, "id": "STEP-FIELD", "label": "Field Intel Enrichment", "from": "field_intelligence_tier", "to": "geo_anchored_zone_record", "operation": "append_observations_deviations_corrections", "output": "enriched_zone_record", "constraint": "no_canonical_or_project_mutation" },
+    { "step": 6, "id": "STEP-REGEN", "label": "Packet Regeneration", "from": "enriched_zone_record+revision_graph", "to": "packet_store", "operation": "evaluate_revision_queue_and_regenerate_packets", "output": "regenerated_packet", "trigger_ref": "revision_intelligence_graph.json" },
+    { "step": 7, "id": "STEP-ATLAS", "label": "Atlas Enrichment", "from": "regenerated_packet+geo_anchored_zone_record", "to": "atlas_map_surface", "operation": "publish_revision_evidence_and_packet_markers", "output": "atlas_enriched_map_state" }
   ],
   "integrity_checks": [
     { "check_id": "IC-001", "description": "Canonical tier ID collision detection — reject any project or field record sharing a canonical kernel ID", "enforcement": "hard_reject" },
