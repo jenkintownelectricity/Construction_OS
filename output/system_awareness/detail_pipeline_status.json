@@ -1,0 +1,53 @@
+{
+  "pipeline_id": "detail_generation_pipeline_v1",
+  "last_updated": "2026-04-16T01:00:00Z",
+  "export_modes": {
+    "SCREEN_MODE": {
+      "description": "Dark UI workstation — dark background, cyan/orange highlights",
+      "status": "ACTIVE",
+      "use_case": "Interactive workstation viewing and geometry editing",
+      "print_safe": false
+    },
+    "PRINT_STANDARD": {
+      "description": "White background, black/grayscale linework, print-safe fonts",
+      "status": "ACTIVATING",
+      "use_case": "Client deliverables, printed detail sheets, PDF packets",
+      "print_safe": true,
+      "rules": {
+        "background": "#FFFFFF",
+        "primary_lines": "#000000",
+        "secondary_lines": "#555555",
+        "dimensions": "#666666",
+        "text": "#000000",
+        "structural_fill": "#F0F0F0",
+        "insulation_fill": "#E8E8E8 with diagonal hatch",
+        "membrane_fill": "#D8D8D8",
+        "metal_fill": "#E0E0E0",
+        "font_family": "Arial, Helvetica, sans-serif",
+        "titleblock": "required",
+        "callout_legend": "required"
+      }
+    },
+    "CAD_MODE": {
+      "description": "DXF export with proper layering for CAD consumption",
+      "status": "NOT_YET_ACTIVE",
+      "use_case": "AutoCAD/Revit import, shop drawing overlay"
+    }
+  },
+  "pipeline_stages": [
+    {"stage": 1, "name": "condition_resolution", "status": "OPERATIONAL", "source": "canonical_conditions_v2 + assembly records"},
+    {"stage": 2, "name": "assembly_validation", "status": "OPERATIONAL", "source": "assembly JSON records + constraints"},
+    {"stage": 3, "name": "geometry_generation", "status": "OPERATIONAL", "method": "parametric SVG from assembly truth"},
+    {"stage": 4, "name": "svg_export", "status": "OPERATIONAL", "modes": ["SCREEN_MODE", "PRINT_STANDARD"]},
+    {"stage": 5, "name": "pdf_compilation", "status": "REQUIRES_TOOLING", "blocker": "Server-side SVG-to-PDF renderer needed"},
+    {"stage": 6, "name": "dxf_export", "status": "REQUIRES_TOOLING", "blocker": "ezdxf or equivalent DXF writer needed"},
+    {"stage": 7, "name": "packet_compilation", "status": "SVG_COMPLETE_PDF_PENDING", "note": "SVG packets complete, PDF compilation requires operator step"}
+  ],
+  "receipt_generation": {
+    "condition_receipt": true,
+    "assembly_receipt": true,
+    "geometry_receipt": true,
+    "export_receipt": true,
+    "packet_receipt": true
+  }
+}

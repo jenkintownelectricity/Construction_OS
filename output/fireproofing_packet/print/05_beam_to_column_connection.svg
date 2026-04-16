@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1056 816" width="1056" height="816">
+  <defs>
+    <pattern id="stipple" patternUnits="userSpaceOnUse" width="6" height="6">
+      <rect width="6" height="6" fill="#D8D8D8"/>
+      <circle cx="1" cy="1" r="0.6" fill="#999"/>
+      <circle cx="4" cy="4" r="0.6" fill="#999"/>
+    </pattern>
+    <pattern id="stipple-lg" patternUnits="userSpaceOnUse" width="8" height="8">
+      <rect width="8" height="8" fill="#D8D8D8"/>
+      <circle cx="2" cy="2" r="0.7" fill="#999"/>
+      <circle cx="6" cy="6" r="0.7" fill="#999"/>
+      <circle cx="6" cy="2" r="0.5" fill="#aaa"/>
+      <circle cx="2" cy="6" r="0.5" fill="#aaa"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1056" height="816" fill="#FFFFFF"/>
+
+  <!-- DRAFT Watermark -->
+  <text x="528" y="400" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="48" fill="#CCCCCC" opacity="0.3" transform="rotate(-25,528,400)">DRAFT</text>
+
+  <!-- Title -->
+  <text x="528" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#000000">Fireproofing — Beam-to-Column Connection</text>
+  <text x="528" y="68" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333333">Elevation Detail — Continuous SFRM Through Connection Zone</text>
+
+  <!-- Fire Rating Badge -->
+  <rect x="900" y="32" width="100" height="28" rx="3" fill="none" stroke="#000000" stroke-width="1.5"/>
+  <text x="950" y="51" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#000000">2-HR RATED</text>
+
+  <!-- === MAIN DRAWING (elevation view) === -->
+
+  <!-- SFRM on column (behind steel, drawn first) -->
+  <rect x="370" y="100" width="220" height="600" rx="3" fill="url(#stipple-lg)" stroke="#666666" stroke-width="1"/>
+
+  <!-- SFRM on beam (behind steel) -->
+  <rect x="560" y="270" width="380" height="180" rx="3" fill="url(#stipple-lg)" stroke="#666666" stroke-width="1"/>
+
+  <!-- Transition zone SFRM (overlapping area highlighted) -->
+  <rect x="540" y="275" width="50" height="170" fill="url(#stipple)" stroke="#666666" stroke-width="0.75" stroke-dasharray="3,2"/>
+
+  <!-- Column (W-shape shown as elevation/side view) -->
+  <!-- Column flanges -->
+  <rect x="400" y="110" width="20" height="580" fill="#E0E0E0" stroke="#000000" stroke-width="1.5"/>
+  <rect x="540" y="110" width="20" height="580" fill="#E0E0E0" stroke="#000000" stroke-width="1.5"/>
+  <!-- Column web -->
+  <rect x="420" y="110" width="120" height="580" fill="#E0E0E0" stroke="#000000" stroke-width="1.5"/>
+
+  <!-- Beam (framing into column from right) -->
+  <!-- Beam top flange -->
+  <rect x="560" y="290" width="370" height="16" fill="#E0E0E0" stroke="#000000" stroke-width="1.5"/>
+  <!-- Beam bottom flange -->
+  <rect x="560" y="420" width="370" height="16" fill="#E0E0E0" stroke="#000000" stroke-width="1.5"/>
+  <!-- Beam web -->
+  <rect x="560" y="306" width="370" height="114" fill="#E0E0E0" stroke="#000000" stroke-width="1.5"/>
+
+  <!-- Connection plate -->
+  <rect x="555" y="280" width="15" height="166" fill="#C0C0C0" stroke="#000000" stroke-width="1.5"/>
+
+  <!-- Bolts (3 rows) -->
+  <circle cx="562" cy="320" r="6" fill="#A0A0A0" stroke="#000000" stroke-width="1"/>
+  <circle cx="562" cy="362" r="6" fill="#A0A0A0" stroke="#000000" stroke-width="1"/>
+  <circle cx="562" cy="404" r="6" fill="#A0A0A0" stroke="#000000" stroke-width="1"/>
+  <!-- Bolt center marks -->
+  <line x1="558" y1="320" x2="566" y2="320" stroke="#000000" stroke-width="0.5"/>
+  <line x1="562" y1="316" x2="562" y2="324" stroke="#000000" stroke-width="0.5"/>
+  <line x1="558" y1="362" x2="566" y2="362" stroke="#000000" stroke-width="0.5"/>
+  <line x1="562" y1="358" x2="562" y2="366" stroke="#000000" stroke-width="0.5"/>
+  <line x1="558" y1="404" x2="566" y2="404" stroke="#000000" stroke-width="0.5"/>
+  <line x1="562" y1="400" x2="562" y2="408" stroke="#000000" stroke-width="0.5"/>
+
+  <!-- === CALLOUTS === -->
+  <!-- Column -->
+  <line x1="480" y1="160" x2="200" y2="140" stroke="#000000" stroke-width="0.5"/>
+  <circle cx="480" cy="160" r="2" fill="#000000"/>
+  <text x="60" y="134" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#000000">COLUMN</text>
+  <text x="60" y="148" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">W12x65 (typ.)</text>
+
+  <!-- Beam -->
+  <line x1="750" y1="363" x2="900" y2="540" stroke="#000000" stroke-width="0.5"/>
+  <circle cx="750" cy="363" r="2" fill="#000000"/>
+  <text x="860" y="554" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#000000">BEAM</text>
+  <text x="860" y="568" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">W16x31 (typ.)</text>
+
+  <!-- Connection Plate -->
+  <line x1="562" y1="280" x2="200" y2="250" stroke="#000000" stroke-width="0.5"/>
+  <circle cx="562" cy="280" r="2" fill="#000000"/>
+  <text x="60" y="244" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#000000">CONNECTION PLATE</text>
+  <text x="60" y="258" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">Welded to column flange</text>
+
+  <!-- Bolts -->
+  <line x1="570" y1="320" x2="200" y2="340" stroke="#000000" stroke-width="0.5"/>
+  <circle cx="570" cy="320" r="2" fill="#000000"/>
+  <text x="60" y="334" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#000000">BOLTS</text>
+  <text x="60" y="348" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">3/4" A325 (typ.)</text>
+
+  <!-- Continuous SFRM -->
+  <line x1="390" y1="400" x2="200" y2="450" stroke="#000000" stroke-width="0.5"/>
+  <circle cx="390" cy="400" r="2" fill="#000000"/>
+  <text x="60" y="444" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#000000">CONTINUOUS SFRM</text>
+  <text x="60" y="458" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">SFRM continuous over column</text>
+  <text x="60" y="472" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">and through connection zone</text>
+
+  <!-- Transition Zone -->
+  <line x1="555" y1="450" x2="200" y2="540" stroke="#000000" stroke-width="0.5"/>
+  <circle cx="555" cy="450" r="2" fill="#000000"/>
+  <text x="60" y="534" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#000000">TRANSITION ZONE</text>
+  <text x="60" y="548" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">Column SFRM transitions to beam SFRM</text>
+  <text x="60" y="562" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">No gaps or voids permitted</text>
+
+  <!-- SFRM on beam callout -->
+  <line x1="650" y1="280" x2="800" y2="170" stroke="#000000" stroke-width="0.5"/>
+  <circle cx="650" cy="280" r="2" fill="#000000"/>
+  <text x="805" y="168" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#000000">BEAM SFRM</text>
+  <text x="805" y="182" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">Encapsulates beam section</text>
+
+  <!-- Notes -->
+  <text x="80" y="630" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#000000">NOTES:</text>
+  <text x="80" y="646" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">1. SFRM shall be continuous through beam-to-column connection zone.</text>
+  <text x="80" y="660" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">2. Connection hardware (plates, bolts) to be fully encapsulated in SFRM.</text>
+  <text x="80" y="674" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">3. No gaps or voids at transition between column and beam fireproofing.</text>
+  <text x="80" y="688" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">4. Minimum thickness maintained at all points including over bolt heads.</text>
+
+  <text x="80" y="715" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#333333">SCALE: NOT TO SCALE | VIEW: ELEVATION</text>
+
+  <!-- === TITLE BLOCK === -->
+  <line x1="40" y1="760" x2="1016" y2="760" stroke="#000000" stroke-width="0.75"/>
+  <text x="60" y="778" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#000000">DETAIL ATLAS | CONSTRUCTION INTELLIGENCE</text>
+  <text x="528" y="778" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#000000">Fireproofing — SFRM / Enclosure</text>
+  <text x="996" y="778" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#000000">DRAFT | 2026-04-16</text>
+  <text x="528" y="796" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#333333">CSI 07 81 00 | Generic SFRM | Starter Packet</text>
+  <text x="996" y="796" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#333333">Sheet 05 of 10</text>
+</svg>
