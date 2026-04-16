@@ -1,0 +1,26 @@
+{
+  "manifest_id": "RENDERED-CONDITION-MANIFEST-001",
+  "sweep_date": "2026-04-16",
+  "renderer": "renderers/svg_section_renderer.py",
+  "generator": "generators/pmma/pmma_flash_generator.py",
+  "input_root": "output/barrett_pmma_parametric_test/json/",
+  "output_root": "output/barrett_pmma_parametric_rendered/",
+  "conditions_attempted": 10,
+  "conditions_passed": 10,
+  "conditions_failed": 0,
+  "combined_pdf": "output/barrett_pmma_parametric_rendered/pdf/Barrett_PMMA_Parametric_Rendered_Packet_v1.pdf",
+  "combined_pdf_pages": 11,
+  "combined_pdf_size_kb": 270.6,
+  "conditions": [
+    {"number": "01", "id": "barrett_pmma_parapet_wall_001", "svg": "svg/01_parapet_wall_termination_rendered.svg", "pdf": "pdf/01_parapet_wall_termination_rendered.pdf", "status": "PASS", "checks": "7/7"},
+    {"number": "02", "id": "barrett_pmma_edge_drip_001", "svg": "svg/02_edge_drip_edge_rendered.svg", "pdf": "pdf/02_edge_drip_edge_rendered.pdf", "status": "PASS", "checks": "7/7"},
+    {"number": "03", "id": "barrett_pmma_primary_drain_001", "svg": "svg/03_primary_drain_rendered.svg", "pdf": "pdf/03_primary_drain_rendered.pdf", "status": "PASS", "checks": "7/7"},
+    {"number": "04", "id": "barrett_pmma_pipe_penetration_001", "svg": "svg/04_pipe_penetration_rendered.svg", "pdf": "pdf/04_pipe_penetration_rendered.pdf", "status": "PASS", "checks": "7/7"},
+    {"number": "05", "id": "barrett_pmma_equipment_curb_001", "svg": "svg/05_equipment_curb_rendered.svg", "pdf": "pdf/05_equipment_curb_rendered.pdf", "status": "PASS", "checks": "7/7"},
+    {"number": "06", "id": "barrett_pmma_inside_corner_001", "svg": "svg/06_inside_corner_rendered.svg", "pdf": "pdf/06_inside_corner_rendered.pdf", "status": "PASS", "checks": "7/7"},
+    {"number": "07", "id": "barrett_pmma_outside_corner_001", "svg": "svg/07_outside_corner_rendered.svg", "pdf": "pdf/07_outside_corner_rendered.pdf", "status": "PASS", "checks": "7/7"},
+    {"number": "08", "id": "barrett_pmma_crack_control_001", "svg": "svg/08_crack_control_joint_rendered.svg", "pdf": "pdf/08_crack_control_joint_rendered.pdf", "status": "PASS", "checks": "7/7"},
+    {"number": "09", "id": "barrett_pmma_tile_overburden_001", "svg": "svg/09_tile_overburden_assembly_rendered.svg", "pdf": "pdf/09_tile_overburden_assembly_rendered.pdf", "status": "PASS", "checks": "7/7"},
+    {"number": "10", "id": "barrett_pmma_expansion_joint_001", "svg": "svg/10_expansion_joint_rendered.svg", "pdf": "pdf/10_expansion_joint_rendered.pdf", "status": "PASS", "checks": "7/7"}
+  ]
+}
