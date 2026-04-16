@@ -1,0 +1,19 @@
+{
+  "manifest_id": "CONDITION-MANIFEST-BARRETT-PMMA-001",
+  "generated_at": "2026-04-16",
+  "family_id": "FAM-BARRETT-PMMA",
+  "total_conditions": 10,
+  "all_resolved": true,
+  "conditions": [
+    {"number": "01", "id": "barrett_pmma_parapet_wall_001", "condition_type": "parapet_wall_termination", "resolved": true, "json": true, "svg_screen": true, "svg_print": "pending", "atlas_ref": "COND-R-009"},
+    {"number": "02", "id": "barrett_pmma_edge_drip_001", "condition_type": "edge_drip_termination", "resolved": true, "json": true, "svg_screen": true, "svg_print": "pending", "atlas_ref": "COND-R-008"},
+    {"number": "03", "id": "barrett_pmma_primary_drain_001", "condition_type": "primary_roof_drain", "resolved": true, "json": true, "svg_screen": true, "svg_print": "pending", "atlas_ref": "COND-R-011"},
+    {"number": "04", "id": "barrett_pmma_pipe_penetration_001", "condition_type": "pipe_penetration", "resolved": true, "json": true, "svg_screen": true, "svg_print": "pending", "atlas_ref": "COND-R-013"},
+    {"number": "05", "id": "barrett_pmma_equipment_curb_001", "condition_type": "equipment_curb", "resolved": true, "json": true, "svg_screen": true, "svg_print": "pending", "atlas_ref": "COND-R-016"},
+    {"number": "06", "id": "barrett_pmma_inside_corner_001", "condition_type": "inside_corner_reinforcement", "resolved": true, "json": true, "svg_screen": true, "svg_print": "pending", "atlas_ref": "COND-G-010"},
+    {"number": "07", "id": "barrett_pmma_outside_corner_001", "condition_type": "outside_corner_reinforcement", "resolved": true, "json": true, "svg_screen": true, "svg_print": "pending", "atlas_ref": "COND-G-011"},
+    {"number": "08", "id": "barrett_pmma_crack_control_001", "condition_type": "crack_control_joint", "resolved": true, "json": true, "svg_screen": true, "svg_print": "pending", "atlas_ref": "COND-G-009"},
+    {"number": "09", "id": "barrett_pmma_tile_overburden_001", "condition_type": "tile_overburden_assembly", "resolved": true, "json": true, "svg_screen": true, "svg_print": "pending", "atlas_ref": "COND-W-005"},
+    {"number": "10", "id": "barrett_pmma_expansion_joint_001", "condition_type": "expansion_joint", "resolved": true, "json": true, "svg_screen": true, "svg_print": "pending", "atlas_ref": "COND-R-017"}
+  ]
+}
