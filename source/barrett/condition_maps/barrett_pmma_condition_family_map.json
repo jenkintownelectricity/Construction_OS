@@ -1,0 +1,119 @@
+{
+  "map_id": "barrett_pmma_condition_family_map_v1",
+  "family_id": "FAM-BARRETT-PMMA",
+  "template_ref": "kernels/assembly_dna/pmma/barrett_pmma_flash_template.json",
+  "generator_ref": "generators/pmma/pmma_flash_generator.py",
+  "calibration_ref": "source/barrett/calibration/barrett_pmma_calibration_specimen_001.json",
+  "conditions": [
+    {
+      "condition_id": "barrett_pmma_parapet_wall_001",
+      "family": "parapet",
+      "generator_function": "generate_parapet",
+      "requires_reinforcement": true,
+      "required_dimensions": ["slab_thickness", "insulation_thickness", "wall_thickness", "turnup_height", "cant_dimension", "coping_width"],
+      "variant_support": ["PMMA", "HIPPA_COAT"],
+      "sheet_title": "Barrett PMMA — Parapet Wall Termination",
+      "output_code": "LF-PW-01",
+      "atlas_ref": "COND-R-009"
+    },
+    {
+      "condition_id": "barrett_pmma_edge_drip_001",
+      "family": "edge",
+      "generator_function": "generate_edge",
+      "requires_reinforcement": true,
+      "required_dimensions": ["slab_thickness", "insulation_thickness", "horizontal_extension"],
+      "variant_support": ["PMMA"],
+      "sheet_title": "Barrett PMMA — Edge / Drip Edge",
+      "output_code": "LF-ED-01",
+      "atlas_ref": "COND-R-008"
+    },
+    {
+      "condition_id": "barrett_pmma_primary_drain_001",
+      "family": "drain",
+      "generator_function": "generate_primary_drain",
+      "requires_reinforcement": true,
+      "required_dimensions": ["slab_thickness", "insulation_thickness", "drain_bowl_diameter", "fleece_collar_radius"],
+      "variant_support": ["PMMA"],
+      "sheet_title": "Barrett PMMA — Primary Roof Drain",
+      "output_code": "LF-DR-01",
+      "atlas_ref": "COND-R-011"
+    },
+    {
+      "condition_id": "barrett_pmma_pipe_penetration_001",
+      "family": "penetration",
+      "generator_function": "generate_pipe_penetration",
+      "requires_reinforcement": true,
+      "required_dimensions": ["slab_thickness", "insulation_thickness", "pipe_diameter", "turnup_height"],
+      "variant_support": ["PMMA"],
+      "sheet_title": "Barrett PMMA — Pipe Penetration",
+      "output_code": "LF-PP-01",
+      "atlas_ref": "COND-R-013"
+    },
+    {
+      "condition_id": "barrett_pmma_equipment_curb_001",
+      "family": "curb",
+      "generator_function": "generate_equipment_curb",
+      "requires_reinforcement": true,
+      "required_dimensions": ["slab_thickness", "insulation_thickness", "curb_height", "curb_width", "cant_dimension", "horizontal_extension"],
+      "variant_support": ["PMMA", "HIPPA_COAT"],
+      "sheet_title": "Barrett PMMA — Equipment Curb",
+      "output_code": "LF-CU-01",
+      "atlas_ref": "COND-R-016"
+    },
+    {
+      "condition_id": "barrett_pmma_inside_corner_001",
+      "family": "corner",
+      "generator_function": "generate_inside_corner",
+      "requires_reinforcement": true,
+      "required_dimensions": ["corner_reinforcement_extension"],
+      "variant_support": ["PMMA"],
+      "sheet_title": "Barrett PMMA — Inside Corner Reinforcement",
+      "output_code": "LF-IC-01",
+      "atlas_ref": "COND-G-010"
+    },
+    {
+      "condition_id": "barrett_pmma_outside_corner_001",
+      "family": "corner",
+      "generator_function": "generate_outside_corner",
+      "requires_reinforcement": true,
+      "required_dimensions": ["corner_reinforcement_extension"],
+      "variant_support": ["PMMA"],
+      "sheet_title": "Barrett PMMA — Outside Corner Reinforcement",
+      "output_code": "LF-OC-01",
+      "atlas_ref": "COND-G-011"
+    },
+    {
+      "condition_id": "barrett_pmma_crack_control_001",
+      "family": "joint",
+      "generator_function": "generate_crack_control_joint",
+      "requires_reinforcement": true,
+      "required_dimensions": ["slab_thickness", "reinforcement_width", "joint_gap"],
+      "variant_support": ["PMMA"],
+      "sheet_title": "Barrett PMMA — Crack / Control Joint",
+      "output_code": "LF-CJ-01",
+      "atlas_ref": "COND-G-009"
+    },
+    {
+      "condition_id": "barrett_pmma_tile_overburden_001",
+      "family": "overburden",
+      "generator_function": "generate_tile_overburden",
+      "requires_reinforcement": true,
+      "required_dimensions": ["slab_thickness", "overburden_depth", "slope_inch_per_ft"],
+      "variant_support": ["PMMA", "HYPPOCOAT_250"],
+      "sheet_title": "Barrett PMMA — Tile / Overburden Assembly",
+      "output_code": "LF-TO-01",
+      "atlas_ref": "COND-W-005"
+    },
+    {
+      "condition_id": "barrett_pmma_expansion_joint_001",
+      "family": "joint",
+      "generator_function": "generate_expansion_joint",
+      "requires_reinforcement": true,
+      "required_dimensions": ["slab_thickness", "insulation_thickness", "joint_gap", "membrane_each_side", "bellows_width"],
+      "variant_support": ["PMMA"],
+      "sheet_title": "Barrett PMMA — Expansion Joint",
+      "output_code": "LF-EJ-01",
+      "atlas_ref": "COND-R-017"
+    }
+  ]
+}
