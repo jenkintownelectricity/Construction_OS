@@ -1,0 +1,161 @@
+{
+  "condition_type": "equipment_curb",
+  "title": "Barrett PMMA \u2014 Equipment Curb",
+  "output_code": "LF-CU-01",
+  "system": "RamFlash PMMA",
+  "family_id": "FAM-BARRETT-PMMA",
+  "elements": [
+    {
+      "type": "rect",
+      "x": 100,
+      "y": 450,
+      "w": 500,
+      "h": 180,
+      "layer": "substrate",
+      "label": null
+    },
+    {
+      "type": "rect",
+      "x": 100,
+      "y": 390,
+      "w": 500,
+      "h": 60,
+      "layer": "insulation",
+      "label": null
+    },
+    {
+      "type": "rect",
+      "x": 200,
+      "y": 150,
+      "w": 180,
+      "h": 240,
+      "layer": "substrate",
+      "label": "Curb Frame"
+    },
+    {
+      "type": "path",
+      "points": [
+        [
+          80,
+          390
+        ],
+        [
+          200,
+          390
+        ],
+        [
+          200,
+          270
+        ]
+      ],
+      "layer": "context",
+      "style": "solid",
+      "closed": true
+    },
+    {
+      "type": "line",
+      "x1": 110,
+      "y1": 387,
+      "x2": 200,
+      "y2": 387,
+      "layer": "membrane",
+      "style": "solid"
+    },
+    {
+      "type": "line",
+      "x1": 203,
+      "y1": 270,
+      "x2": 203,
+      "y2": 150,
+      "layer": "membrane",
+      "style": "solid"
+    },
+    {
+      "type": "line",
+      "x1": 110,
+      "y1": 384,
+      "x2": 200,
+      "y2": 384,
+      "layer": "fleece",
+      "style": "dashed"
+    },
+    {
+      "type": "rect",
+      "x": 195,
+      "y": 142,
+      "w": 190,
+      "h": 8,
+      "layer": "metal",
+      "label": "Counter-Flashing"
+    }
+  ],
+  "dimensions": [
+    {
+      "type": "dimension",
+      "x1": 395,
+      "y1": 390,
+      "x2": 395,
+      "y2": 150,
+      "text": "8\" MIN",
+      "side": "right"
+    }
+  ],
+  "callouts": [
+    {
+      "number": 1,
+      "label": "Substrate / Deck",
+      "cx": 400,
+      "cy": 480
+    },
+    {
+      "number": 2,
+      "label": "Insulation",
+      "cx": 400,
+      "cy": 420
+    },
+    {
+      "number": 3,
+      "label": "Curb Frame",
+      "cx": 290.0,
+      "cy": 270.0
+    },
+    {
+      "number": 4,
+      "label": "Cant Strip",
+      "cx": 140.0,
+      "cy": 330.0
+    },
+    {
+      "number": 5,
+      "label": "PMMA System",
+      "cx": 155.0,
+      "cy": 386
+    },
+    {
+      "number": 6,
+      "label": "Fleece",
+      "cx": 155.0,
+      "cy": 383
+    },
+    {
+      "number": 7,
+      "label": "Counter-Flashing",
+      "cx": 290.0,
+      "cy": 146
+    }
+  ],
+  "notes": [],
+  "layer_stack": [
+    "substrate",
+    "insulation",
+    "curb_frame",
+    "nailer",
+    "cant_strip",
+    "primer",
+    "pmma_resin",
+    "fleece",
+    "seal_coat",
+    "counter_flashing"
+  ],
+  "condition_id": "barrett_pmma_equipment_curb_001"
+}
