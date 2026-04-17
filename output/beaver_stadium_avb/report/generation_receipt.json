@@ -1,0 +1,32 @@
+{
+  "receipt_id": "RECEIPT-AVB-BEAVER-STADIUM-001",
+  "project": "Beaver Stadium West Side Renovation",
+  "manufacturer": "GCP Applied Technologies",
+  "system": "Perm-A-Barrier VPS30",
+  "scope": "air_vapor_barrier",
+  "generated_at": "2026-04-16",
+  "generator": "generators/avb/avb_vps30_generator.py",
+  "renderer": "renderers/svg_section_renderer.py",
+  "conditions_targeted": 18,
+  "conditions_generated": 18,
+  "conditions_failed": 0,
+  "outputs": {
+    "json": 18,
+    "svg": 18,
+    "pdf_individual": 18,
+    "pdf_combined": "beaver_stadium_avb/pdf/Beaver_Stadium_GCP_VPS30_AVB_Shop_Drawing_Set.pdf",
+    "pdf_combined_pages": 18,
+    "pdf_combined_size_kb": 435.8,
+    "dxf": 18
+  },
+  "conditions": [
+    "wall_field", "window_head", "window_sill", "window_jamb",
+    "door_head", "door_jamb", "door_threshold",
+    "pipe_penetration", "duct_penetration", "beam_penetration",
+    "roof_transition", "foundation_transition",
+    "control_joint", "expansion_joint",
+    "termination_top", "termination_bottom",
+    "inside_corner", "outside_corner"
+  ],
+  "status": "COMPLETE"
+}
